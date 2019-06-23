@@ -2268,73 +2268,43 @@ _default_int_handler_entry_asm___kernel_default_int_handler_entry_237:
 _inhno___kernel_default_int_handler_entry_237:                     /* 割込み番号 */ 		
 	.long  237 											
 
-	.global __kernel__kernel_inthdr_238_238											
 	.align 2                       							
-__kernel__kernel_inthdr_238_238:													
+__kernel_default_int_handler_entry_238:													
 #ifndef USE_BANKED_REG    									
 		 /*  必要最小限のレジスタをスタックに待避  */ 		
 	mov.l r7,@-r15 											
 	mov.l r6,@-r15											
-	mov.l r5,@-r15											
-	mov.l r4,@-r15											
 #endif /* USE_BANKED_REG */   								
-	stc   sr,r7								/* SRの保存 */ 	
-	mov.l _iipm_disall___kernel__kernel_inthdr_238_238,r6							
-	ldc	  r6,sr								/* 全割込み禁止 */ 
-		 /* 共有割込み入口処理 */    	
-	mov.l _common_routine___kernel__kernel_inthdr_238_238,r4 						
-		 /* 割込みハンドラの先頭アドレス */ 
-	mov.l _c_routine___kernel__kernel_inthdr_238_238,r6     						
-	mov.l _inhno___kernel__kernel_inthdr_238_238,r5					/* 割込み番号 */ 
-	jmp	  @r4												
-	 nop													
-	.align 2												
-		 /* 割込み禁止用マスク */ 			
-_iipm_disall___kernel__kernel_inthdr_238_238:										
-		 /* ipm以外のビットはゼロで良い */ 	
-	.long  __kernel_iipm_disall								
-_c_routine___kernel__kernel_inthdr_238_238:/* 割込みハンドラの先頭アドレス */				
-	.long  __kernel_inthdr_238         					
-		 /* cpu_support.S内の分岐先アドレス */			
-_common_routine___kernel__kernel_inthdr_238_238: 									
-	.long  __kernel_interrupt_entry							
-_inhno___kernel__kernel_inthdr_238_238:							/* 割込み番号	*/	
+							/* cpu_support.S内の分岐先アドレス	*/ 	
+	mov.l _default_int_handler_entry_asm___kernel_default_int_handler_entry_238,r7 		
+	mov.l _inhno___kernel_default_int_handler_entry_238,r6				/* 割込み番号 */	
+	jmp	  @r7                        						
+	 nop						 	 						
+	.align 2						 						
+		/* cpu_support.S内の分岐先アドレス	*/ 	
+_default_int_handler_entry_asm___kernel_default_int_handler_entry_238:						
+	.long  __kernel_default_int_handler_entry				
+_inhno___kernel_default_int_handler_entry_238:                     /* 割込み番号 */ 		
 	.long  238 											
 
-
-	.global __kernel__kernel_inthdr_239_239											
 	.align 2                       							
-__kernel__kernel_inthdr_239_239:													
+__kernel_default_int_handler_entry_239:													
 #ifndef USE_BANKED_REG    									
 		 /*  必要最小限のレジスタをスタックに待避  */ 		
 	mov.l r7,@-r15 											
 	mov.l r6,@-r15											
-	mov.l r5,@-r15											
-	mov.l r4,@-r15											
 #endif /* USE_BANKED_REG */   								
-	stc   sr,r7								/* SRの保存 */ 	
-	mov.l _iipm_disall___kernel__kernel_inthdr_239_239,r6							
-	ldc	  r6,sr								/* 全割込み禁止 */ 
-		 /* 共有割込み入口処理 */    	
-	mov.l _common_routine___kernel__kernel_inthdr_239_239,r4 						
-		 /* 割込みハンドラの先頭アドレス */ 
-	mov.l _c_routine___kernel__kernel_inthdr_239_239,r6     						
-	mov.l _inhno___kernel__kernel_inthdr_239_239,r5					/* 割込み番号 */ 
-	jmp	  @r4												
-	 nop													
-	.align 2												
-		 /* 割込み禁止用マスク */ 			
-_iipm_disall___kernel__kernel_inthdr_239_239:										
-		 /* ipm以外のビットはゼロで良い */ 	
-	.long  __kernel_iipm_disall								
-_c_routine___kernel__kernel_inthdr_239_239:/* 割込みハンドラの先頭アドレス */				
-	.long  __kernel_inthdr_239         					
-		 /* cpu_support.S内の分岐先アドレス */			
-_common_routine___kernel__kernel_inthdr_239_239: 									
-	.long  __kernel_interrupt_entry							
-_inhno___kernel__kernel_inthdr_239_239:							/* 割込み番号	*/	
+							/* cpu_support.S内の分岐先アドレス	*/ 	
+	mov.l _default_int_handler_entry_asm___kernel_default_int_handler_entry_239,r7 		
+	mov.l _inhno___kernel_default_int_handler_entry_239,r6				/* 割込み番号 */	
+	jmp	  @r7                        						
+	 nop						 	 						
+	.align 2						 						
+		/* cpu_support.S内の分岐先アドレス	*/ 	
+_default_int_handler_entry_asm___kernel_default_int_handler_entry_239:						
+	.long  __kernel_default_int_handler_entry				
+_inhno___kernel_default_int_handler_entry_239:                     /* 割込み番号 */ 		
 	.long  239 											
-
 
 	.align 2                       							
 __kernel_default_int_handler_entry_240:													
@@ -2450,43 +2420,73 @@ _default_int_handler_entry_asm___kernel_default_int_handler_entry_245:
 _inhno___kernel_default_int_handler_entry_245:                     /* 割込み番号 */ 		
 	.long  245 											
 
+	.global __kernel__kernel_inthdr_246_246											
 	.align 2                       							
-__kernel_default_int_handler_entry_246:													
+__kernel__kernel_inthdr_246_246:													
 #ifndef USE_BANKED_REG    									
 		 /*  必要最小限のレジスタをスタックに待避  */ 		
 	mov.l r7,@-r15 											
 	mov.l r6,@-r15											
+	mov.l r5,@-r15											
+	mov.l r4,@-r15											
 #endif /* USE_BANKED_REG */   								
-							/* cpu_support.S内の分岐先アドレス	*/ 	
-	mov.l _default_int_handler_entry_asm___kernel_default_int_handler_entry_246,r7 		
-	mov.l _inhno___kernel_default_int_handler_entry_246,r6				/* 割込み番号 */	
-	jmp	  @r7                        						
-	 nop						 	 						
-	.align 2						 						
-		/* cpu_support.S内の分岐先アドレス	*/ 	
-_default_int_handler_entry_asm___kernel_default_int_handler_entry_246:						
-	.long  __kernel_default_int_handler_entry				
-_inhno___kernel_default_int_handler_entry_246:                     /* 割込み番号 */ 		
+	stc   sr,r7								/* SRの保存 */ 	
+	mov.l _iipm_disall___kernel__kernel_inthdr_246_246,r6							
+	ldc	  r6,sr								/* 全割込み禁止 */ 
+		 /* 共有割込み入口処理 */    	
+	mov.l _common_routine___kernel__kernel_inthdr_246_246,r4 						
+		 /* 割込みハンドラの先頭アドレス */ 
+	mov.l _c_routine___kernel__kernel_inthdr_246_246,r6     						
+	mov.l _inhno___kernel__kernel_inthdr_246_246,r5					/* 割込み番号 */ 
+	jmp	  @r4												
+	 nop													
+	.align 2												
+		 /* 割込み禁止用マスク */ 			
+_iipm_disall___kernel__kernel_inthdr_246_246:										
+		 /* ipm以外のビットはゼロで良い */ 	
+	.long  __kernel_iipm_disall								
+_c_routine___kernel__kernel_inthdr_246_246:/* 割込みハンドラの先頭アドレス */				
+	.long  __kernel_inthdr_246         					
+		 /* cpu_support.S内の分岐先アドレス */			
+_common_routine___kernel__kernel_inthdr_246_246: 									
+	.long  __kernel_interrupt_entry							
+_inhno___kernel__kernel_inthdr_246_246:							/* 割込み番号	*/	
 	.long  246 											
 
+
+	.global __kernel__kernel_inthdr_247_247											
 	.align 2                       							
-__kernel_default_int_handler_entry_247:													
+__kernel__kernel_inthdr_247_247:													
 #ifndef USE_BANKED_REG    									
 		 /*  必要最小限のレジスタをスタックに待避  */ 		
 	mov.l r7,@-r15 											
 	mov.l r6,@-r15											
+	mov.l r5,@-r15											
+	mov.l r4,@-r15											
 #endif /* USE_BANKED_REG */   								
-							/* cpu_support.S内の分岐先アドレス	*/ 	
-	mov.l _default_int_handler_entry_asm___kernel_default_int_handler_entry_247,r7 		
-	mov.l _inhno___kernel_default_int_handler_entry_247,r6				/* 割込み番号 */	
-	jmp	  @r7                        						
-	 nop						 	 						
-	.align 2						 						
-		/* cpu_support.S内の分岐先アドレス	*/ 	
-_default_int_handler_entry_asm___kernel_default_int_handler_entry_247:						
-	.long  __kernel_default_int_handler_entry				
-_inhno___kernel_default_int_handler_entry_247:                     /* 割込み番号 */ 		
+	stc   sr,r7								/* SRの保存 */ 	
+	mov.l _iipm_disall___kernel__kernel_inthdr_247_247,r6							
+	ldc	  r6,sr								/* 全割込み禁止 */ 
+		 /* 共有割込み入口処理 */    	
+	mov.l _common_routine___kernel__kernel_inthdr_247_247,r4 						
+		 /* 割込みハンドラの先頭アドレス */ 
+	mov.l _c_routine___kernel__kernel_inthdr_247_247,r6     						
+	mov.l _inhno___kernel__kernel_inthdr_247_247,r5					/* 割込み番号 */ 
+	jmp	  @r4												
+	 nop													
+	.align 2												
+		 /* 割込み禁止用マスク */ 			
+_iipm_disall___kernel__kernel_inthdr_247_247:										
+		 /* ipm以外のビットはゼロで良い */ 	
+	.long  __kernel_iipm_disall								
+_c_routine___kernel__kernel_inthdr_247_247:/* 割込みハンドラの先頭アドレス */				
+	.long  __kernel_inthdr_247         					
+		 /* cpu_support.S内の分岐先アドレス */			
+_common_routine___kernel__kernel_inthdr_247_247: 									
+	.long  __kernel_interrupt_entry							
+_inhno___kernel__kernel_inthdr_247_247:							/* 割込み番号	*/	
 	.long  247 											
+
 
 	.align 2                       							
 __kernel_default_int_handler_entry_248:													
@@ -4627,16 +4627,16 @@ __kernel_vectors:
 	.long __kernel_default_int_handler_entry_235 /* 235 */
 	.long __kernel_default_int_handler_entry_236 /* 236 */
 	.long __kernel_default_int_handler_entry_237 /* 237 */
-	.long __kernel__kernel_inthdr_238_238 /* 238 */
-	.long __kernel__kernel_inthdr_239_239 /* 239 */
+	.long __kernel_default_int_handler_entry_238 /* 238 */
+	.long __kernel_default_int_handler_entry_239 /* 239 */
 	.long __kernel_default_int_handler_entry_240 /* 240 */
 	.long __kernel_default_int_handler_entry_241 /* 241 */
 	.long __kernel_default_int_handler_entry_242 /* 242 */
 	.long __kernel_default_int_handler_entry_243 /* 243 */
 	.long __kernel_default_int_handler_entry_244 /* 244 */
 	.long __kernel_default_int_handler_entry_245 /* 245 */
-	.long __kernel_default_int_handler_entry_246 /* 246 */
-	.long __kernel_default_int_handler_entry_247 /* 247 */
+	.long __kernel__kernel_inthdr_246_246 /* 246 */
+	.long __kernel__kernel_inthdr_247_247 /* 247 */
 	.long __kernel_default_int_handler_entry_248 /* 248 */
 	.long __kernel_default_int_handler_entry_249 /* 249 */
 	.long __kernel_default_int_handler_entry_250 /* 250 */

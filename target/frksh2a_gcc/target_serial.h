@@ -54,10 +54,10 @@
  *	SIOの割込みハンドラのベクタ番号
  *	　注意：target_syssvc.h内にも同様の定義が必要。
  */
-#define INHNO_SIO_TX	 SCIF1_TXI_VECTOR /* 割込みハンドラ番号 */
-#define INTNO_SIO_TX	 SCIF1_TXI_VECTOR /* 割込み番号 */
-#define INHNO_SIO_RX	 SCIF1_RXI_VECTOR /* 割込みハンドラ番号 */
-#define INTNO_SIO_RX	 SCIF1_RXI_VECTOR /* 割込み番号 */
+#define INHNO_SIO_TX	 SCIF3_TXI_VECTOR /* 割込みハンドラ番号 */
+#define INTNO_SIO_TX	 SCIF3_TXI_VECTOR /* 割込み番号 */
+#define INHNO_SIO_RX	 SCIF3_RXI_VECTOR /* 割込みハンドラ番号 */
+#define INTNO_SIO_RX	 SCIF3_RXI_VECTOR /* 割込み番号 */
 #define INTPRI_SIO		 (-4)			  /* 割込み優先度 */
 #define INTATR_SIO		 0U 			  /* 割込み属性 */
 

@@ -51,7 +51,7 @@
 #include "target_syssvc.h"	/*  TNUM_SIOP  */
 
 
-static const INTNO intno_sio_tx_table[TNUM_SIOP] = { 
+static const INTNO intno_sio_rx_table[TNUM_SIOP] = { 
     SCIF0_RXI_VECTOR
 #if TNUM_SIOP > 1
     ,SCIF1_RXI_VECTOR
@@ -76,7 +76,7 @@ static const INTNO intno_sio_tx_table[TNUM_SIOP] = {
 #endif /* TNUM_SIOP > 7 */
 }; 
 
-static const INTNO intno_sio_rx_table[TNUM_SIOP] = { 
+static const INTNO intno_sio_tx_table[TNUM_SIOP] = { 
     SCIF0_TXI_VECTOR
 #if TNUM_SIOP > 1
     ,SCIF1_TXI_VECTOR

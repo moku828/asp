@@ -511,7 +511,11 @@
  *  ポートC
  */
 #define PCCR2_h		0xfffe384aU
-#define PCCR1_h		0xfffe384cU
+
+/*
+ *  ポートF
+ */
+#define PFCR1_h		0xfffe38acU
 
 
 #endif /* TOPPERS_SH7711_H */

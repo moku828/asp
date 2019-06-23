@@ -129,19 +129,19 @@ extern void target_exit(void) NoReturn;
 
 
 /*
- *	STBCR2〜4の初期値（各1バイト）
+ *	STBCR2〜8の初期値（各1バイト）
  */
 	/*
 	 *	・H-UDI
 	 *	　・ROM化時：停止
 	 *	　・デバッグ時：動作
 	 *	・DMACは停止
-	 *	・FPUは停止
+	 *	・FPUは動作
 	 */
 #ifdef ROM_BOOT		/*	ROM化の場合  */
-#define STBCR2_VALUE	 (STBCR2_HUDI | STBCR2_DMAC | STBCR2_FPU)
+#define STBCR2_VALUE	 (STBCR2_HUDI | STBCR2_DMAC)
 #else				/*	RAM上でデバッグする場合  */
-#define STBCR2_VALUE	 (STBCR2_DMAC | STBCR2_FPU)
+#define STBCR2_VALUE	 (STBCR2_DMAC)
 #endif
 
 	/*
