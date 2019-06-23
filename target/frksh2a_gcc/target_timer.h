@@ -47,9 +47,9 @@
 
 /*
  *	タイマ値の内部表現と msec 単位との変換
- *	FRK-SH2Aでは、Pクロックが40MHz
+ *	FRK-SH2Aでは、Pクロックが24MHz
  *	分周比 /8,/32,/128,/512 のいずれかを選択
- *	/8	 :	5MHz tick 5000
+ *	/8	 :	3MHz tick 3000
  */
 
 #define CMCSR_CKS  0x0000U

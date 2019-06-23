@@ -371,28 +371,51 @@
 #define STBCR_b			UINT_C(0xfffe0014)
 #define STBCR2_b		UINT_C(0xfffe0018)
  #define STBCR2_HUDI	UINT_C(0x80)
- #define STBCR2_UCB		UINT_C(0x40)
  #define STBCR2_DMAC	UINT_C(0x20)
+ #define STBCR2_FPU		UINT_C(0x10)
 #define STBCR3_b		UINT_C(0xfffe0408)
  #define STBCR3_HZ		UINT_C(0x80)
- #define STBCR3_MTU2S	UINT_C(0x40)
+ #define STBCR3_IEB		UINT_C(0x40)
  #define STBCR3_MTU2	UINT_C(0x20)
- #define STBCR3_POE2	UINT_C(0x10)
- #define STBCR3_IIC3	UINT_C(0x08)
+ #define STBCR3_SDHI0	UINT_C(0x10)
+ #define STBCR3_SDHI1	UINT_C(0x08)
  #define STBCR3_ADC		UINT_C(0x04)
- #define STBCR3_DAC		UINT_C(0x02)
- #define STBCR3_FLASH	UINT_C(0x01)
+ #define STBCR3_RTC		UINT_C(0x01)
 #define STBCR4_b		UINT_C(0xfffe040C)
  #define STBCR4_SCIF0	UINT_C(0x80)
  #define STBCR4_SCIF1	UINT_C(0x40)
  #define STBCR4_SCIF2	UINT_C(0x20)
  #define STBCR4_SCIF3	UINT_C(0x10)
- #define STBCR4_CMT		UINT_C(0x04)
- #define STBCR4_WAVEIF	UINT_C(0x02)
+ #define STBCR4_SCIF4	UINT_C(0x08)
+ #define STBCR4_SCIF5	UINT_C(0x04)
+ #define STBCR4_SCIF6	UINT_C(0x02)
+ #define STBCR4_SCIF7	UINT_C(0x01)
 #define STBCR5_b		UINT_C(0xfffe0410)
+ #define STBCR5_IIC30	UINT_C(0x80)
+ #define STBCR5_IIC31	UINT_C(0x40)
+ #define STBCR5_IIC32	UINT_C(0x20)
+ #define STBCR5_CAN0	UINT_C(0x08)
+ #define STBCR5_CAN1	UINT_C(0x04)
+ #define STBCR5_RSPI0	UINT_C(0x02)
+ #define STBCR5_RSPI1	UINT_C(0x01)
 #define STBCR6_b		UINT_C(0xfffe0414)
+ #define STBCR6_SSI0	UINT_C(0x80)
+ #define STBCR6_SSI1	UINT_C(0x40)
+ #define STBCR6_SSI2	UINT_C(0x20)
+ #define STBCR6_SSI3	UINT_C(0x10)
+ #define STBCR6_CDD		UINT_C(0x08)
+ #define STBCR6_SRC0	UINT_C(0x04)
+ #define STBCR6_SRC1	UINT_C(0x02)
+ #define STBCR6_USBH	UINT_C(0x01)
 #define STBCR7_b		UINT_C(0xfffe0418)
+ #define STBCR7_FSSI	UINT_C(0x80)
+ #define STBCR7_SPDIF	UINT_C(0x40)
+ #define STBCR7_VDC3	UINT_C(0x10)
+ #define STBCR7_CMT		UINT_C(0x04)
+ #define STBCR7_NAND	UINT_C(0x01)
 #define STBCR8_b		UINT_C(0xfffe041c)
+ #define STBCR8_PWM		UINT_C(0x80)
+ #define STBCR8_DCU		UINT_C(0x01)
 
 #define SYSCR1_b		UINT_C(0xfffe0400)
 #define SYSCR2_b		UINT_C(0xfffe0404)
@@ -478,6 +501,17 @@
 
 /*  タイマインタラプトイネーブルレジスタ（TIER）  */
 #define TIER_TCIEV	0x10U	/*  オーバフローインタラプトイネーブル  */
+
+
+/*
+ *  汎用入出力ポートGPIO
+ */
+
+/*
+ *  ポートC
+ */
+#define PCCR2_h		0xfffe384aU
+#define PCCR1_h		0xfffe384cU
 
 
 #endif /* TOPPERS_SH7711_H */

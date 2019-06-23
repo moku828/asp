@@ -59,6 +59,21 @@ static const INTNO intno_sio_tx_table[TNUM_SIOP] = {
 #if TNUM_SIOP > 2
     ,SCIF2_RXI_VECTOR
 #endif /* TNUM_SIOP > 2 */
+#if TNUM_SIOP > 3
+    ,SCIF3_RXI_VECTOR
+#endif /* TNUM_SIOP > 3 */
+#if TNUM_SIOP > 4
+    ,SCIF4_RXI_VECTOR
+#endif /* TNUM_SIOP > 4 */
+#if TNUM_SIOP > 5
+    ,SCIF5_RXI_VECTOR
+#endif /* TNUM_SIOP > 5 */
+#if TNUM_SIOP > 6
+    ,SCIF6_RXI_VECTOR
+#endif /* TNUM_SIOP > 6 */
+#if TNUM_SIOP > 7
+    ,SCIF7_RXI_VECTOR
+#endif /* TNUM_SIOP > 7 */
 }; 
 
 static const INTNO intno_sio_rx_table[TNUM_SIOP] = { 
@@ -69,6 +84,21 @@ static const INTNO intno_sio_rx_table[TNUM_SIOP] = {
 #if TNUM_SIOP > 2
     ,SCIF2_TXI_VECTOR
 #endif /* TNUM_SIOP > 2 */
+#if TNUM_SIOP > 3
+    ,SCIF3_TXI_VECTOR
+#endif /* TNUM_SIOP > 3 */
+#if TNUM_SIOP > 4
+    ,SCIF4_TXI_VECTOR
+#endif /* TNUM_SIOP > 4 */
+#if TNUM_SIOP > 5
+    ,SCIF5_TXI_VECTOR
+#endif /* TNUM_SIOP > 5 */
+#if TNUM_SIOP > 6
+    ,SCIF6_TXI_VECTOR
+#endif /* TNUM_SIOP > 6 */
+#if TNUM_SIOP > 7
+    ,SCIF7_TXI_VECTOR
+#endif /* TNUM_SIOP > 7 */
 }; 
 
 /* 

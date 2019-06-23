@@ -91,22 +91,28 @@ extern void	target_fput_log(char_t c);
 /*
  *	シリアルポート数の定義
  */
-#define TNUM_PORT		 2		  /* サポートするシリアルポートの数 */
-#define TNUM_SIOP		 2
+#define TNUM_PORT		 8		  /* サポートするシリアルポートの数 */
+#define TNUM_SIOP		 8
 
 /*
  *	使用するシリアルポートID
  */
-#define SIO_PORTID	 2
+#define SIO_PORTID	 4
 
 #define LOGTASK_PORTID	 SIO_PORTID
 
 /*
  *	ボーレート
  */
-#define BPS_SETTING 38400
+#define BPS_SETTING 19200
 #define SCIF0_BPS_SETTING  (((PCLOCK / 32) / BPS_SETTING) - 1)
 #define SCIF1_BPS_SETTING  (((PCLOCK / 32) / BPS_SETTING) - 1)
+#define SCIF2_BPS_SETTING  (((PCLOCK / 32) / BPS_SETTING) - 1)
+#define SCIF3_BPS_SETTING  (((PCLOCK / 32) / BPS_SETTING) - 1)
+#define SCIF4_BPS_SETTING  (((PCLOCK / 32) / BPS_SETTING) - 1)
+#define SCIF5_BPS_SETTING  (((PCLOCK / 32) / BPS_SETTING) - 1)
+#define SCIF6_BPS_SETTING  (((PCLOCK / 32) / BPS_SETTING) - 1)
+#define SCIF7_BPS_SETTING  (((PCLOCK / 32) / BPS_SETTING) - 1)
 
 /*
  * 起動時の待ち時間(1ビット分)

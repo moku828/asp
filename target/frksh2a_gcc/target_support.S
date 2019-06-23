@@ -81,10 +81,10 @@ _dummy:
 _hardware_init_hook:
 	/*
 	 *	クロック発信器(CPG)設定
-	 *	　IΦ=160MHz,BΦ=40MHz,PΦ=40MHz
+	 *	　IΦ=144MHz,BΦ=48MHz,PΦ=24MHz
 	 */
 	mov.l _frqcr_addr_h, r1
-	movi20 #0x1303, r2
+	movi20 #0x0104, r2
 	mov.w r2, @r1
 
 	/* 省電力モードの設定 */
@@ -109,6 +109,18 @@ _hardware_init_hook:
 	mov   #(STBCR4_VALUE), r2
 	mov.b r2, @((STBCR4_b - PDM_BASE2), r1)
 
+	mov   #(STBCR5_VALUE), r2
+	mov.b r2, @((STBCR5_b - PDM_BASE2), r1)
+
+	mov   #(STBCR6_VALUE), r2
+	mov.b r2, @((STBCR6_b - PDM_BASE2), r1)
+
+	mov   #(STBCR7_VALUE), r2
+	mov.b r2, @((STBCR7_b - PDM_BASE2), r1)
+
+	mov   #(STBCR8_VALUE), r2
+	mov.b r2, @((STBCR8_b - PDM_BASE2), r1)
+
 	/*
 	 *	内部RAMを有効にする
 	 *
@@ -124,50 +136,6 @@ _hardware_init_hook:
 							/*	内蔵RAMへのライト有効  */
 	mov.b r0, @((SYSCR2_b - PDM_BASE2), r1)	/*	r0=0xff  */
 	mov.b @((SYSCR2_b - PDM_BASE2), r1), r3	/*	ダミーリード  */
-
-	/* バスステートコントローラ（BSC）の設定 */
-	mov.l _bsc_base_addr, r1
-	movi20 #0x00001010, r0
-	mov.l r0, @((CMNCR_w - BSC_BASE),r1)
-	movi20 #0x00004400, r0
-	mov.l r0, @((CS3BCR_w - BSC_BASE),r1)
-	movi20 #0x00002491, r0
-	mov.l r0, @((CS3WCR_w - BSC_BASE),r1)
-	movi20 #0x00000909, r0
-	mov.l r0, @((SDCR_w - BSC_BASE),r1)
-	mov.l _rtcsr_val, r0
-	mov.l r0, @((RTCSR_w - BSC_BASE),r1)
-	mov.l _rtcor_val, r0
-	mov.l r0, @((RTCOR_w - BSC_BASE),r1)
-
-	/* SDRAM 接続ポートの初期化 */
-	mov.l _pfc_base_addr, r1
-	movi20 #0x1111, r0
-	mov.w r0, @((PACRL4_h - PFC_BASE),r1)
-	mov.w r0, @((PACRL3_h - PFC_BASE),r1)	/*	r0=0x1111  */
-	mov.w r0, @((PACRL2_h - PFC_BASE),r1)	/*	r0=0x1111  */
-	movi20 #0x1110, r0
-	mov.w r0, @((PACRL1_h - PFC_BASE),r1)
-
-	mov   #0x00, r0
-	mov.w r0, @((PBIORH_h - PFC_BASE),r1)
-	mov.w r0, @((PBIORL_h - PFC_BASE),r1)	/*	r0=0x0000  */
-	mov   #0x10, r0
-	mov.w r0, @((PBCRH1_h - PFC_BASE),r1)
-	mov   #0x11, r0
-	mov.w r0, @((PBCRL3_h - PFC_BASE),r1)
-	movi20 #0x0111, r0
-	mov.w r0, @((PBCRL2_h - PFC_BASE),r1)
-	movi20 #0x1010, r0
-	mov.w r0, @((PBCRL1_h - PFC_BASE),r1)
-
-	mov   #0x00, r0
-	mov.w r0, @((PDIOR_h - PFC_BASE),r1)
-	movi20 #0x1111, r0
-	mov.w r0, @((PDCRL4_h - PFC_BASE),r1)
-	mov.w r0, @((PDCRL3_h - PFC_BASE),r1)	/*	r0=0x1111  */
-	mov.w r0, @((PDCRL2_h - PFC_BASE),r1)	/*	r0=0x1111  */
-	mov.w r0, @((PDCRL1_h - PFC_BASE),r1)	/*	r0=0x1111  */
 
 	/*
 	 *	100usec待ち
@@ -190,11 +158,8 @@ _hardware_init_hook:
 	tst   r2, r0				/*	コンペアマッチフラグの判定	*/
 	bt	  1b
 
-	mov.l _sdram_mode_addr, r1	/*	外部RAM上のモード設定レジスタ  */
-	mov   #0x00, r2
-
 	rts
-	 mov.w r2, @r1
+	nop
 
 	.align 4
 _frqcr_addr_h:
@@ -205,19 +170,6 @@ _stbcr_addr_b:
 _pdm_base2_addr:
 	.long PDM_BASE2
 
-_bsc_base_addr:
-	.long BSC_BASE
-_rtcsr_val:
-	.long 0xa55a0008
-_rtcor_val:
-	.long 0xa55a009c
-
-_pfc_base_addr:
-	.long PFC_BASE
-
 _cmt_base_addr:
 	.long CMT_BASE
-
-_sdram_mode_addr:
-	.long 0xfffc5040
 

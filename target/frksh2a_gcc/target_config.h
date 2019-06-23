@@ -76,7 +76,7 @@
 /*
  *	ターゲット依存の文字出力に使用するポートの定義
  */
-#define TARGET_PUTC_PORTID 2
+#define TARGET_PUTC_PORTID 4
 
 /*
  *	ASPカーネル動作時のメモリマップと関連する定義
@@ -93,7 +93,7 @@
 #endif /*  ROM_BOOT  */
 
 /*	スタック領域の底 */
-#define DEFAULT_ISTK_BOTTOM		INNER_RAM_PAGE4_END
+#define DEFAULT_ISTK_BOTTOM		INNER_RAM_PAGE3_END
 
 /*	スタック領域の先頭番地（スタック領域の底ではないので、注意） */
 #define DEFAULT_ISTK	  (void *)(DEFAULT_ISTK_BOTTOM - DEFAULT_ISTKSZ)
@@ -135,37 +135,83 @@ extern void target_exit(void) NoReturn;
 	 *	・H-UDI
 	 *	　・ROM化時：停止
 	 *	　・デバッグ時：動作
-	 *	・UBCは停止
 	 *	・DMACは停止
+	 *	・FPUは停止
 	 */
 #ifdef ROM_BOOT		/*	ROM化の場合  */
-#define STBCR2_VALUE	 (STBCR2_HUDI | STBCR2_UCB | STBCR2_DMAC)
+#define STBCR2_VALUE	 (STBCR2_HUDI | STBCR2_DMAC | STBCR2_FPU)
 #else				/*	RAM上でデバッグする場合  */
-#define STBCR2_VALUE	 (STBCR2_UCB | STBCR2_DMAC)
+#define STBCR2_VALUE	 (STBCR2_DMAC | STBCR2_FPU)
 #endif
 
 	/*
 	 *	・低消費電力モード時に端子状態を保持する。
-	 *	・MTU2Sは停止
+	 *	・IEBは停止
 	 *	・MTU2は停止
-	 *	・POE2は停止
-	 *	・IIC3は停止
+	 *	・SDHI0は停止
+	 *	・SDHI1は停止
 	 *	・ADCは停止
-	 *	・DACは停止
-	 *	・フラッシュメモリは動作
+	 *	・RTCは停止
 	 */
-#define STBCR3_VALUE	 (STBCR3_HZ | STBCR3_MTU2S | STBCR3_MTU2 | STBCR3_POE2 \
-						  | STBCR3_IIC3 | STBCR3_ADC | STBCR3_DAC)
+#define STBCR3_VALUE	 (STBCR3_IEB | STBCR3_MTU2 | STBCR3_SDHI0 \
+						  | STBCR3_SDHI1 | STBCR3_ADC | STBCR3_RTC)
 
 	/*
 	 *	・SCFI0は停止
-	 *	・SCFI1は動作
+	 *	・SCFI1は停止
 	 *	・SCFI2は停止
-	 *	・SCFI3は停止
-	 *	・CMTは動作
-	 *	・WAVEIFは停止
+	 *	・SCFI3は動作
+	 *	・SCFI4は停止
+	 *	・SCFI5は停止
+	 *	・SCFI6は停止
+	 *	・SCFI7は停止
 	 */
-#define STBCR4_VALUE	 (STBCR4_SCIF0 | STBCR4_SCIF2 |  STBCR4_SCIF3 | STBCR4_WAVEIF)
+#define STBCR4_VALUE	 (STBCR4_SCIF0 | STBCR4_SCIF1 | STBCR4_SCIF2 \
+						  | STBCR4_SCIF4 | STBCR4_SCIF5 | STBCR4_SCIF6 | STBCR4_SCIF7)
+
+
+	/*
+	 *	・IIC30は停止
+	 *	・IIC31は停止
+	 *	・IIC32は停止
+	 *	・CAN0は停止
+	 *	・CAN1は停止
+	 *	・RSPI0は停止
+	 *	・RSPI1は停止
+	 */
+#define STBCR5_VALUE	 (STBCR5_IIC30 | STBCR5_IIC31 | STBCR5_IIC32 \
+						  | STBCR5_CAN0 | STBCR5_CAN1 | STBCR5_RSPI0 | STBCR5_RSPI1)
+
+
+	/*
+	 *	・SSI0は停止
+	 *	・SSI1は停止
+	 *	・SSI2は停止
+	 *	・SSI3は停止
+	 *	・CDDは停止
+	 *	・SRC0は停止
+	 *	・SRC1は停止
+	 *	・USBHは停止
+	 */
+#define STBCR6_VALUE	 (STBCR6_SSI0 | STBCR6_SSI1 | STBCR6_SSI2 | STBCR6_SSI3 \
+						  | STBCR6_CDD | STBCR6_SRC0 | STBCR6_SRC1 | STBCR6_USBH)
+
+
+	/*
+	 *	・FSSIは停止
+	 *	・SPDIFは停止
+	 *	・VDC3は停止
+	 *	・CMTは動作
+	 *	・NANDは停止
+	 */
+#define STBCR7_VALUE	 (STBCR7_FSSI | STBCR7_SPDIF | STBCR7_VDC3 | STBCR7_NAND)
+
+
+	/*
+	 *	・PWMは停止
+	 *	・DCUは停止
+	 */
+#define STBCR8_VALUE	 (STBCR8_PWM | STBCR8_DCU)
 
 
 /*

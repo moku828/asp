@@ -181,8 +181,78 @@ static const SIOPINIB siopinib_table[TNUM_SIOP] = {
         (uint16_t *)(SH_SCIF2_BASE + SCIF_SCFDR),
         (uint16_t *)(SH_SCIF2_BASE + SCIF_SCSPTR),
         SCIF2_BPS_SETTING,
-    }
+    },
 #endif /* TNUM_SIOP > 2 */
+#if TNUM_SIOP > 3
+    {
+        (uint16_t *)(SH_SCIF3_BASE + SCIF_SCSMR),
+        (uint8_t  *)(SH_SCIF3_BASE + SCIF_SCBRR),
+        (uint16_t *)(SH_SCIF3_BASE + SCIF_SCSCR),
+        (uint8_t  *)(SH_SCIF3_BASE + SCIF_SCFTDR),
+        (uint16_t *)(SH_SCIF3_BASE + SCIF_SCFSR),
+        (uint8_t  *)(SH_SCIF3_BASE + SCIF_SCFRDR),
+        (uint16_t *)(SH_SCIF3_BASE + SCIF_SCFCR),
+        (uint16_t *)(SH_SCIF3_BASE + SCIF_SCFDR),
+        (uint16_t *)(SH_SCIF3_BASE + SCIF_SCSPTR),
+        SCIF3_BPS_SETTING,
+    },
+#endif /* TNUM_SIOP > 3 */
+#if TNUM_SIOP > 4
+    {
+        (uint16_t *)(SH_SCIF4_BASE + SCIF_SCSMR),
+        (uint8_t  *)(SH_SCIF4_BASE + SCIF_SCBRR),
+        (uint16_t *)(SH_SCIF4_BASE + SCIF_SCSCR),
+        (uint8_t  *)(SH_SCIF4_BASE + SCIF_SCFTDR),
+        (uint16_t *)(SH_SCIF4_BASE + SCIF_SCFSR),
+        (uint8_t  *)(SH_SCIF4_BASE + SCIF_SCFRDR),
+        (uint16_t *)(SH_SCIF4_BASE + SCIF_SCFCR),
+        (uint16_t *)(SH_SCIF4_BASE + SCIF_SCFDR),
+        (uint16_t *)(SH_SCIF4_BASE + SCIF_SCSPTR),
+        SCIF4_BPS_SETTING,
+    },
+#endif /* TNUM_SIOP > 4 */
+#if TNUM_SIOP > 5
+    {
+        (uint16_t *)(SH_SCIF5_BASE + SCIF_SCSMR),
+        (uint8_t  *)(SH_SCIF5_BASE + SCIF_SCBRR),
+        (uint16_t *)(SH_SCIF5_BASE + SCIF_SCSCR),
+        (uint8_t  *)(SH_SCIF5_BASE + SCIF_SCFTDR),
+        (uint16_t *)(SH_SCIF5_BASE + SCIF_SCFSR),
+        (uint8_t  *)(SH_SCIF5_BASE + SCIF_SCFRDR),
+        (uint16_t *)(SH_SCIF5_BASE + SCIF_SCFCR),
+        (uint16_t *)(SH_SCIF5_BASE + SCIF_SCFDR),
+        (uint16_t *)(SH_SCIF5_BASE + SCIF_SCSPTR),
+        SCIF5_BPS_SETTING,
+    },
+#endif /* TNUM_SIOP > 5 */
+#if TNUM_SIOP > 6
+    {
+        (uint16_t *)(SH_SCIF6_BASE + SCIF_SCSMR),
+        (uint8_t  *)(SH_SCIF6_BASE + SCIF_SCBRR),
+        (uint16_t *)(SH_SCIF6_BASE + SCIF_SCSCR),
+        (uint8_t  *)(SH_SCIF6_BASE + SCIF_SCFTDR),
+        (uint16_t *)(SH_SCIF6_BASE + SCIF_SCFSR),
+        (uint8_t  *)(SH_SCIF6_BASE + SCIF_SCFRDR),
+        (uint16_t *)(SH_SCIF6_BASE + SCIF_SCFCR),
+        (uint16_t *)(SH_SCIF6_BASE + SCIF_SCFDR),
+        (uint16_t *)(SH_SCIF6_BASE + SCIF_SCSPTR),
+        SCIF6_BPS_SETTING,
+    },
+#endif /* TNUM_SIOP > 6 */
+#if TNUM_SIOP > 7
+    {
+        (uint16_t *)(SH_SCIF7_BASE + SCIF_SCSMR),
+        (uint8_t  *)(SH_SCIF7_BASE + SCIF_SCBRR),
+        (uint16_t *)(SH_SCIF7_BASE + SCIF_SCSCR),
+        (uint8_t  *)(SH_SCIF7_BASE + SCIF_SCFTDR),
+        (uint16_t *)(SH_SCIF7_BASE + SCIF_SCFSR),
+        (uint8_t  *)(SH_SCIF7_BASE + SCIF_SCFRDR),
+        (uint16_t *)(SH_SCIF7_BASE + SCIF_SCFCR),
+        (uint16_t *)(SH_SCIF7_BASE + SCIF_SCFDR),
+        (uint16_t *)(SH_SCIF7_BASE + SCIF_SCSPTR),
+        SCIF7_BPS_SETTING,
+    }
+#endif /* TNUM_SIOP > 7 */
 };
 
 

@@ -55,9 +55,9 @@
 #include "sh12a_gcc/sh7262.h"
 
 /*
- *	柒垄件收クロック P = 40MHz
+ *	柒垄件收クロック P = 24MHz
  */
-#define	PCLOCK			40000000
+#define	PCLOCK			24000000
 
 #ifndef TOPPERS_MACRO_ONLY
 

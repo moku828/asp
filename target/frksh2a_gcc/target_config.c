@@ -63,13 +63,12 @@ target_initialize(void)
 	/*
 	 *	LED接続ポートの初期化
 	 */
-	sil_wrh_mem((uint16_t *)PAIORH_h, 0x0280U);
-	sil_wrh_mem((uint16_t *)PAIORL_h, 0x0000U);
+	sil_wrh_mem((uint16_t *)PCCR2_h, sil_reh_mem((uint16_t *)PCCR2_h) & ~0x0003);
 	
 	/*
-	 *	SCIF1のI/Oポートの設定
+	 *	SCIF3のI/Oポートの設定
 	 */
-	sil_wrh_mem((uint16_t *)PACRH3_h, 0x55U);
+	sil_wrh_mem((uint16_t *)PCCR1_h, (sil_reh_mem((uint16_t *)PCCR1_h) & ~0x0007) | 0x0004);
 	
 	/*
 	 * バーナー出力用のシリアルコントローラの初期化

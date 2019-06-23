@@ -202,23 +202,156 @@ _inhno___kernel_default_int_handler_entry_71:                     /* 割込み番号 
 	.long  71 											
 
 	.align 2                       							
-__kernel_default_int_handler_entry_92:													
+__kernel_default_int_handler_entry_80:													
 #ifndef USE_BANKED_REG    									
 		 /*  必要最小限のレジスタをスタックに待避  */ 		
 	mov.l r7,@-r15 											
 	mov.l r6,@-r15											
 #endif /* USE_BANKED_REG */   								
 							/* cpu_support.S内の分岐先アドレス	*/ 	
-	mov.l _default_int_handler_entry_asm___kernel_default_int_handler_entry_92,r7 		
-	mov.l _inhno___kernel_default_int_handler_entry_92,r6				/* 割込み番号 */	
+	mov.l _default_int_handler_entry_asm___kernel_default_int_handler_entry_80,r7 		
+	mov.l _inhno___kernel_default_int_handler_entry_80,r6				/* 割込み番号 */	
 	jmp	  @r7                        						
 	 nop						 	 						
 	.align 2						 						
 		/* cpu_support.S内の分岐先アドレス	*/ 	
-_default_int_handler_entry_asm___kernel_default_int_handler_entry_92:						
+_default_int_handler_entry_asm___kernel_default_int_handler_entry_80:						
 	.long  __kernel_default_int_handler_entry				
-_inhno___kernel_default_int_handler_entry_92:                     /* 割込み番号 */ 		
-	.long  92 											
+_inhno___kernel_default_int_handler_entry_80:                     /* 割込み番号 */ 		
+	.long  80 											
+
+	.align 2                       							
+__kernel_default_int_handler_entry_81:													
+#ifndef USE_BANKED_REG    									
+		 /*  必要最小限のレジスタをスタックに待避  */ 		
+	mov.l r7,@-r15 											
+	mov.l r6,@-r15											
+#endif /* USE_BANKED_REG */   								
+							/* cpu_support.S内の分岐先アドレス	*/ 	
+	mov.l _default_int_handler_entry_asm___kernel_default_int_handler_entry_81,r7 		
+	mov.l _inhno___kernel_default_int_handler_entry_81,r6				/* 割込み番号 */	
+	jmp	  @r7                        						
+	 nop						 	 						
+	.align 2						 						
+		/* cpu_support.S内の分岐先アドレス	*/ 	
+_default_int_handler_entry_asm___kernel_default_int_handler_entry_81:						
+	.long  __kernel_default_int_handler_entry				
+_inhno___kernel_default_int_handler_entry_81:                     /* 割込み番号 */ 		
+	.long  81 											
+
+	.align 2                       							
+__kernel_default_int_handler_entry_82:													
+#ifndef USE_BANKED_REG    									
+		 /*  必要最小限のレジスタをスタックに待避  */ 		
+	mov.l r7,@-r15 											
+	mov.l r6,@-r15											
+#endif /* USE_BANKED_REG */   								
+							/* cpu_support.S内の分岐先アドレス	*/ 	
+	mov.l _default_int_handler_entry_asm___kernel_default_int_handler_entry_82,r7 		
+	mov.l _inhno___kernel_default_int_handler_entry_82,r6				/* 割込み番号 */	
+	jmp	  @r7                        						
+	 nop						 	 						
+	.align 2						 						
+		/* cpu_support.S内の分岐先アドレス	*/ 	
+_default_int_handler_entry_asm___kernel_default_int_handler_entry_82:						
+	.long  __kernel_default_int_handler_entry				
+_inhno___kernel_default_int_handler_entry_82:                     /* 割込み番号 */ 		
+	.long  82 											
+
+	.align 2                       							
+__kernel_default_int_handler_entry_83:													
+#ifndef USE_BANKED_REG    									
+		 /*  必要最小限のレジスタをスタックに待避  */ 		
+	mov.l r7,@-r15 											
+	mov.l r6,@-r15											
+#endif /* USE_BANKED_REG */   								
+							/* cpu_support.S内の分岐先アドレス	*/ 	
+	mov.l _default_int_handler_entry_asm___kernel_default_int_handler_entry_83,r7 		
+	mov.l _inhno___kernel_default_int_handler_entry_83,r6				/* 割込み番号 */	
+	jmp	  @r7                        						
+	 nop						 	 						
+	.align 2						 						
+		/* cpu_support.S内の分岐先アドレス	*/ 	
+_default_int_handler_entry_asm___kernel_default_int_handler_entry_83:						
+	.long  __kernel_default_int_handler_entry				
+_inhno___kernel_default_int_handler_entry_83:                     /* 割込み番号 */ 		
+	.long  83 											
+
+	.align 2                       							
+__kernel_default_int_handler_entry_84:													
+#ifndef USE_BANKED_REG    									
+		 /*  必要最小限のレジスタをスタックに待避  */ 		
+	mov.l r7,@-r15 											
+	mov.l r6,@-r15											
+#endif /* USE_BANKED_REG */   								
+							/* cpu_support.S内の分岐先アドレス	*/ 	
+	mov.l _default_int_handler_entry_asm___kernel_default_int_handler_entry_84,r7 		
+	mov.l _inhno___kernel_default_int_handler_entry_84,r6				/* 割込み番号 */	
+	jmp	  @r7                        						
+	 nop						 	 						
+	.align 2						 						
+		/* cpu_support.S内の分岐先アドレス	*/ 	
+_default_int_handler_entry_asm___kernel_default_int_handler_entry_84:						
+	.long  __kernel_default_int_handler_entry				
+_inhno___kernel_default_int_handler_entry_84:                     /* 割込み番号 */ 		
+	.long  84 											
+
+	.align 2                       							
+__kernel_default_int_handler_entry_85:													
+#ifndef USE_BANKED_REG    									
+		 /*  必要最小限のレジスタをスタックに待避  */ 		
+	mov.l r7,@-r15 											
+	mov.l r6,@-r15											
+#endif /* USE_BANKED_REG */   								
+							/* cpu_support.S内の分岐先アドレス	*/ 	
+	mov.l _default_int_handler_entry_asm___kernel_default_int_handler_entry_85,r7 		
+	mov.l _inhno___kernel_default_int_handler_entry_85,r6				/* 割込み番号 */	
+	jmp	  @r7                        						
+	 nop						 	 						
+	.align 2						 						
+		/* cpu_support.S内の分岐先アドレス	*/ 	
+_default_int_handler_entry_asm___kernel_default_int_handler_entry_85:						
+	.long  __kernel_default_int_handler_entry				
+_inhno___kernel_default_int_handler_entry_85:                     /* 割込み番号 */ 		
+	.long  85 											
+
+	.align 2                       							
+__kernel_default_int_handler_entry_86:													
+#ifndef USE_BANKED_REG    									
+		 /*  必要最小限のレジスタをスタックに待避  */ 		
+	mov.l r7,@-r15 											
+	mov.l r6,@-r15											
+#endif /* USE_BANKED_REG */   								
+							/* cpu_support.S内の分岐先アドレス	*/ 	
+	mov.l _default_int_handler_entry_asm___kernel_default_int_handler_entry_86,r7 		
+	mov.l _inhno___kernel_default_int_handler_entry_86,r6				/* 割込み番号 */	
+	jmp	  @r7                        						
+	 nop						 	 						
+	.align 2						 						
+		/* cpu_support.S内の分岐先アドレス	*/ 	
+_default_int_handler_entry_asm___kernel_default_int_handler_entry_86:						
+	.long  __kernel_default_int_handler_entry				
+_inhno___kernel_default_int_handler_entry_86:                     /* 割込み番号 */ 		
+	.long  86 											
+
+	.align 2                       							
+__kernel_default_int_handler_entry_87:													
+#ifndef USE_BANKED_REG    									
+		 /*  必要最小限のレジスタをスタックに待避  */ 		
+	mov.l r7,@-r15 											
+	mov.l r6,@-r15											
+#endif /* USE_BANKED_REG */   								
+							/* cpu_support.S内の分岐先アドレス	*/ 	
+	mov.l _default_int_handler_entry_asm___kernel_default_int_handler_entry_87,r7 		
+	mov.l _inhno___kernel_default_int_handler_entry_87,r6				/* 割込み番号 */	
+	jmp	  @r7                        						
+	 nop						 	 						
+	.align 2						 						
+		/* cpu_support.S内の分岐先アドレス	*/ 	
+_default_int_handler_entry_asm___kernel_default_int_handler_entry_87:						
+	.long  __kernel_default_int_handler_entry				
+_inhno___kernel_default_int_handler_entry_87:                     /* 割込み番号 */ 		
+	.long  87 											
 
 	.align 2                       							
 __kernel_default_int_handler_entry_108:													
@@ -524,39 +657,43 @@ _default_int_handler_entry_asm___kernel_default_int_handler_entry_137:
 _inhno___kernel_default_int_handler_entry_137:                     /* 割込み番号 */ 		
 	.long  137 											
 
-	.global __kernel_target_timer_handler_INHNO_TIMER											
 	.align 2                       							
-__kernel_target_timer_handler_INHNO_TIMER:													
+__kernel_default_int_handler_entry_140:													
 #ifndef USE_BANKED_REG    									
 		 /*  必要最小限のレジスタをスタックに待避  */ 		
 	mov.l r7,@-r15 											
 	mov.l r6,@-r15											
-	mov.l r5,@-r15											
-	mov.l r4,@-r15											
 #endif /* USE_BANKED_REG */   								
-	stc   sr,r7								/* SRの保存 */ 	
-	mov.l _iipm_disall___kernel_target_timer_handler_INHNO_TIMER,r6							
-	ldc	  r6,sr								/* 全割込み禁止 */ 
-		 /* 共有割込み入口処理 */    	
-	mov.l _common_routine___kernel_target_timer_handler_INHNO_TIMER,r4 						
-		 /* 割込みハンドラの先頭アドレス */ 
-	mov.l _c_routine___kernel_target_timer_handler_INHNO_TIMER,r6     						
-	mov.l _inhno___kernel_target_timer_handler_INHNO_TIMER,r5					/* 割込み番号 */ 
-	jmp	  @r4												
-	 nop													
-	.align 2												
-		 /* 割込み禁止用マスク */ 			
-_iipm_disall___kernel_target_timer_handler_INHNO_TIMER:										
-		 /* ipm以外のビットはゼロで良い */ 	
-	.long  __kernel_iipm_disall								
-_c_routine___kernel_target_timer_handler_INHNO_TIMER:/* 割込みハンドラの先頭アドレス */				
-	.long  _target_timer_handler         					
-		 /* cpu_support.S内の分岐先アドレス */			
-_common_routine___kernel_target_timer_handler_INHNO_TIMER: 									
-	.long  __kernel_interrupt_entry							
-_inhno___kernel_target_timer_handler_INHNO_TIMER:							/* 割込み番号	*/	
+							/* cpu_support.S内の分岐先アドレス	*/ 	
+	mov.l _default_int_handler_entry_asm___kernel_default_int_handler_entry_140,r7 		
+	mov.l _inhno___kernel_default_int_handler_entry_140,r6				/* 割込み番号 */	
+	jmp	  @r7                        						
+	 nop						 	 						
+	.align 2						 						
+		/* cpu_support.S内の分岐先アドレス	*/ 	
+_default_int_handler_entry_asm___kernel_default_int_handler_entry_140:						
+	.long  __kernel_default_int_handler_entry				
+_inhno___kernel_default_int_handler_entry_140:                     /* 割込み番号 */ 		
 	.long  140 											
 
+	.align 2                       							
+__kernel_default_int_handler_entry_141:													
+#ifndef USE_BANKED_REG    									
+		 /*  必要最小限のレジスタをスタックに待避  */ 		
+	mov.l r7,@-r15 											
+	mov.l r6,@-r15											
+#endif /* USE_BANKED_REG */   								
+							/* cpu_support.S内の分岐先アドレス	*/ 	
+	mov.l _default_int_handler_entry_asm___kernel_default_int_handler_entry_141,r7 		
+	mov.l _inhno___kernel_default_int_handler_entry_141,r6				/* 割込み番号 */	
+	jmp	  @r7                        						
+	 nop						 	 						
+	.align 2						 						
+		/* cpu_support.S内の分岐先アドレス	*/ 	
+_default_int_handler_entry_asm___kernel_default_int_handler_entry_141:						
+	.long  __kernel_default_int_handler_entry				
+_inhno___kernel_default_int_handler_entry_141:                     /* 割込み番号 */ 		
+	.long  141 											
 
 	.align 2                       							
 __kernel_default_int_handler_entry_144:													
@@ -578,6 +715,25 @@ _inhno___kernel_default_int_handler_entry_144:                     /* 割込み番号
 	.long  144 											
 
 	.align 2                       							
+__kernel_default_int_handler_entry_145:													
+#ifndef USE_BANKED_REG    									
+		 /*  必要最小限のレジスタをスタックに待避  */ 		
+	mov.l r7,@-r15 											
+	mov.l r6,@-r15											
+#endif /* USE_BANKED_REG */   								
+							/* cpu_support.S内の分岐先アドレス	*/ 	
+	mov.l _default_int_handler_entry_asm___kernel_default_int_handler_entry_145,r7 		
+	mov.l _inhno___kernel_default_int_handler_entry_145,r6				/* 割込み番号 */	
+	jmp	  @r7                        						
+	 nop						 	 						
+	.align 2						 						
+		/* cpu_support.S内の分岐先アドレス	*/ 	
+_default_int_handler_entry_asm___kernel_default_int_handler_entry_145:						
+	.long  __kernel_default_int_handler_entry				
+_inhno___kernel_default_int_handler_entry_145:                     /* 割込み番号 */ 		
+	.long  145 											
+
+	.align 2                       							
 __kernel_default_int_handler_entry_148:													
 #ifndef USE_BANKED_REG    									
 		 /*  必要最小限のレジスタをスタックに待避  */ 		
@@ -597,6 +753,25 @@ _inhno___kernel_default_int_handler_entry_148:                     /* 割込み番号
 	.long  148 											
 
 	.align 2                       							
+__kernel_default_int_handler_entry_149:													
+#ifndef USE_BANKED_REG    									
+		 /*  必要最小限のレジスタをスタックに待避  */ 		
+	mov.l r7,@-r15 											
+	mov.l r6,@-r15											
+#endif /* USE_BANKED_REG */   								
+							/* cpu_support.S内の分岐先アドレス	*/ 	
+	mov.l _default_int_handler_entry_asm___kernel_default_int_handler_entry_149,r7 		
+	mov.l _inhno___kernel_default_int_handler_entry_149,r6				/* 割込み番号 */	
+	jmp	  @r7                        						
+	 nop						 	 						
+	.align 2						 						
+		/* cpu_support.S内の分岐先アドレス	*/ 	
+_default_int_handler_entry_asm___kernel_default_int_handler_entry_149:						
+	.long  __kernel_default_int_handler_entry				
+_inhno___kernel_default_int_handler_entry_149:                     /* 割込み番号 */ 		
+	.long  149 											
+
+	.align 2                       							
 __kernel_default_int_handler_entry_152:													
 #ifndef USE_BANKED_REG    									
 		 /*  必要最小限のレジスタをスタックに待避  */ 		
@@ -614,6 +789,25 @@ _default_int_handler_entry_asm___kernel_default_int_handler_entry_152:
 	.long  __kernel_default_int_handler_entry				
 _inhno___kernel_default_int_handler_entry_152:                     /* 割込み番号 */ 		
 	.long  152 											
+
+	.align 2                       							
+__kernel_default_int_handler_entry_153:													
+#ifndef USE_BANKED_REG    									
+		 /*  必要最小限のレジスタをスタックに待避  */ 		
+	mov.l r7,@-r15 											
+	mov.l r6,@-r15											
+#endif /* USE_BANKED_REG */   								
+							/* cpu_support.S内の分岐先アドレス	*/ 	
+	mov.l _default_int_handler_entry_asm___kernel_default_int_handler_entry_153,r7 		
+	mov.l _inhno___kernel_default_int_handler_entry_153,r6				/* 割込み番号 */	
+	jmp	  @r7                        						
+	 nop						 	 						
+	.align 2						 						
+		/* cpu_support.S内の分岐先アドレス	*/ 	
+_default_int_handler_entry_asm___kernel_default_int_handler_entry_153:						
+	.long  __kernel_default_int_handler_entry				
+_inhno___kernel_default_int_handler_entry_153:                     /* 割込み番号 */ 		
+	.long  153 											
 
 	.align 2                       							
 __kernel_default_int_handler_entry_156:													
@@ -654,44 +848,6 @@ _inhno___kernel_default_int_handler_entry_157:                     /* 割込み番号
 	.long  157 											
 
 	.align 2                       							
-__kernel_default_int_handler_entry_158:													
-#ifndef USE_BANKED_REG    									
-		 /*  必要最小限のレジスタをスタックに待避  */ 		
-	mov.l r7,@-r15 											
-	mov.l r6,@-r15											
-#endif /* USE_BANKED_REG */   								
-							/* cpu_support.S内の分岐先アドレス	*/ 	
-	mov.l _default_int_handler_entry_asm___kernel_default_int_handler_entry_158,r7 		
-	mov.l _inhno___kernel_default_int_handler_entry_158,r6				/* 割込み番号 */	
-	jmp	  @r7                        						
-	 nop						 	 						
-	.align 2						 						
-		/* cpu_support.S内の分岐先アドレス	*/ 	
-_default_int_handler_entry_asm___kernel_default_int_handler_entry_158:						
-	.long  __kernel_default_int_handler_entry				
-_inhno___kernel_default_int_handler_entry_158:                     /* 割込み番号 */ 		
-	.long  158 											
-
-	.align 2                       							
-__kernel_default_int_handler_entry_159:													
-#ifndef USE_BANKED_REG    									
-		 /*  必要最小限のレジスタをスタックに待避  */ 		
-	mov.l r7,@-r15 											
-	mov.l r6,@-r15											
-#endif /* USE_BANKED_REG */   								
-							/* cpu_support.S内の分岐先アドレス	*/ 	
-	mov.l _default_int_handler_entry_asm___kernel_default_int_handler_entry_159,r7 		
-	mov.l _inhno___kernel_default_int_handler_entry_159,r6				/* 割込み番号 */	
-	jmp	  @r7                        						
-	 nop						 	 						
-	.align 2						 						
-		/* cpu_support.S内の分岐先アドレス	*/ 	
-_default_int_handler_entry_asm___kernel_default_int_handler_entry_159:						
-	.long  __kernel_default_int_handler_entry				
-_inhno___kernel_default_int_handler_entry_159:                     /* 割込み番号 */ 		
-	.long  159 											
-
-	.align 2                       							
 __kernel_default_int_handler_entry_160:													
 #ifndef USE_BANKED_REG    									
 		 /*  必要最小限のレジスタをスタックに待避  */ 		
@@ -728,25 +884,6 @@ _default_int_handler_entry_asm___kernel_default_int_handler_entry_161:
 	.long  __kernel_default_int_handler_entry				
 _inhno___kernel_default_int_handler_entry_161:                     /* 割込み番号 */ 		
 	.long  161 											
-
-	.align 2                       							
-__kernel_default_int_handler_entry_162:													
-#ifndef USE_BANKED_REG    									
-		 /*  必要最小限のレジスタをスタックに待避  */ 		
-	mov.l r7,@-r15 											
-	mov.l r6,@-r15											
-#endif /* USE_BANKED_REG */   								
-							/* cpu_support.S内の分岐先アドレス	*/ 	
-	mov.l _default_int_handler_entry_asm___kernel_default_int_handler_entry_162,r7 		
-	mov.l _inhno___kernel_default_int_handler_entry_162,r6				/* 割込み番号 */	
-	jmp	  @r7                        						
-	 nop						 	 						
-	.align 2						 						
-		/* cpu_support.S内の分岐先アドレス	*/ 	
-_default_int_handler_entry_asm___kernel_default_int_handler_entry_162:						
-	.long  __kernel_default_int_handler_entry				
-_inhno___kernel_default_int_handler_entry_162:                     /* 割込み番号 */ 		
-	.long  162 											
 
 	.align 2                       							
 __kernel_default_int_handler_entry_164:													
@@ -825,6 +962,44 @@ _inhno___kernel_default_int_handler_entry_169:                     /* 割込み番号
 	.long  169 											
 
 	.align 2                       							
+__kernel_default_int_handler_entry_170:													
+#ifndef USE_BANKED_REG    									
+		 /*  必要最小限のレジスタをスタックに待避  */ 		
+	mov.l r7,@-r15 											
+	mov.l r6,@-r15											
+#endif /* USE_BANKED_REG */   								
+							/* cpu_support.S内の分岐先アドレス	*/ 	
+	mov.l _default_int_handler_entry_asm___kernel_default_int_handler_entry_170,r7 		
+	mov.l _inhno___kernel_default_int_handler_entry_170,r6				/* 割込み番号 */	
+	jmp	  @r7                        						
+	 nop						 	 						
+	.align 2						 						
+		/* cpu_support.S内の分岐先アドレス	*/ 	
+_default_int_handler_entry_asm___kernel_default_int_handler_entry_170:						
+	.long  __kernel_default_int_handler_entry				
+_inhno___kernel_default_int_handler_entry_170:                     /* 割込み番号 */ 		
+	.long  170 											
+
+	.align 2                       							
+__kernel_default_int_handler_entry_171:													
+#ifndef USE_BANKED_REG    									
+		 /*  必要最小限のレジスタをスタックに待避  */ 		
+	mov.l r7,@-r15 											
+	mov.l r6,@-r15											
+#endif /* USE_BANKED_REG */   								
+							/* cpu_support.S内の分岐先アドレス	*/ 	
+	mov.l _default_int_handler_entry_asm___kernel_default_int_handler_entry_171,r7 		
+	mov.l _inhno___kernel_default_int_handler_entry_171,r6				/* 割込み番号 */	
+	jmp	  @r7                        						
+	 nop						 	 						
+	.align 2						 						
+		/* cpu_support.S内の分岐先アドレス	*/ 	
+_default_int_handler_entry_asm___kernel_default_int_handler_entry_171:						
+	.long  __kernel_default_int_handler_entry				
+_inhno___kernel_default_int_handler_entry_171:                     /* 割込み番号 */ 		
+	.long  171 											
+
+	.align 2                       							
 __kernel_default_int_handler_entry_172:													
 #ifndef USE_BANKED_REG    									
 		 /*  必要最小限のレジスタをスタックに待避  */ 		
@@ -863,6 +1038,59 @@ _inhno___kernel_default_int_handler_entry_173:                     /* 割込み番号
 	.long  173 											
 
 	.align 2                       							
+__kernel_default_int_handler_entry_174:													
+#ifndef USE_BANKED_REG    									
+		 /*  必要最小限のレジスタをスタックに待避  */ 		
+	mov.l r7,@-r15 											
+	mov.l r6,@-r15											
+#endif /* USE_BANKED_REG */   								
+							/* cpu_support.S内の分岐先アドレス	*/ 	
+	mov.l _default_int_handler_entry_asm___kernel_default_int_handler_entry_174,r7 		
+	mov.l _inhno___kernel_default_int_handler_entry_174,r6				/* 割込み番号 */	
+	jmp	  @r7                        						
+	 nop						 	 						
+	.align 2						 						
+		/* cpu_support.S内の分岐先アドレス	*/ 	
+_default_int_handler_entry_asm___kernel_default_int_handler_entry_174:						
+	.long  __kernel_default_int_handler_entry				
+_inhno___kernel_default_int_handler_entry_174:                     /* 割込み番号 */ 		
+	.long  174 											
+
+	.global __kernel_target_timer_handler_INHNO_TIMER											
+	.align 2                       							
+__kernel_target_timer_handler_INHNO_TIMER:													
+#ifndef USE_BANKED_REG    									
+		 /*  必要最小限のレジスタをスタックに待避  */ 		
+	mov.l r7,@-r15 											
+	mov.l r6,@-r15											
+	mov.l r5,@-r15											
+	mov.l r4,@-r15											
+#endif /* USE_BANKED_REG */   								
+	stc   sr,r7								/* SRの保存 */ 	
+	mov.l _iipm_disall___kernel_target_timer_handler_INHNO_TIMER,r6							
+	ldc	  r6,sr								/* 全割込み禁止 */ 
+		 /* 共有割込み入口処理 */    	
+	mov.l _common_routine___kernel_target_timer_handler_INHNO_TIMER,r4 						
+		 /* 割込みハンドラの先頭アドレス */ 
+	mov.l _c_routine___kernel_target_timer_handler_INHNO_TIMER,r6     						
+	mov.l _inhno___kernel_target_timer_handler_INHNO_TIMER,r5					/* 割込み番号 */ 
+	jmp	  @r4												
+	 nop													
+	.align 2												
+		 /* 割込み禁止用マスク */ 			
+_iipm_disall___kernel_target_timer_handler_INHNO_TIMER:										
+		 /* ipm以外のビットはゼロで良い */ 	
+	.long  __kernel_iipm_disall								
+_c_routine___kernel_target_timer_handler_INHNO_TIMER:/* 割込みハンドラの先頭アドレス */				
+	.long  _target_timer_handler         					
+		 /* cpu_support.S内の分岐先アドレス */			
+_common_routine___kernel_target_timer_handler_INHNO_TIMER: 									
+	.long  __kernel_interrupt_entry							
+_inhno___kernel_target_timer_handler_INHNO_TIMER:							/* 割込み番号	*/	
+	.long  175 											
+
+
+	.align 2                       							
 __kernel_default_int_handler_entry_176:													
 #ifndef USE_BANKED_REG    									
 		 /*  必要最小限のレジスタをスタックに待避  */ 		
@@ -899,6 +1127,44 @@ _default_int_handler_entry_asm___kernel_default_int_handler_entry_177:
 	.long  __kernel_default_int_handler_entry				
 _inhno___kernel_default_int_handler_entry_177:                     /* 割込み番号 */ 		
 	.long  177 											
+
+	.align 2                       							
+__kernel_default_int_handler_entry_178:													
+#ifndef USE_BANKED_REG    									
+		 /*  必要最小限のレジスタをスタックに待避  */ 		
+	mov.l r7,@-r15 											
+	mov.l r6,@-r15											
+#endif /* USE_BANKED_REG */   								
+							/* cpu_support.S内の分岐先アドレス	*/ 	
+	mov.l _default_int_handler_entry_asm___kernel_default_int_handler_entry_178,r7 		
+	mov.l _inhno___kernel_default_int_handler_entry_178,r6				/* 割込み番号 */	
+	jmp	  @r7                        						
+	 nop						 	 						
+	.align 2						 						
+		/* cpu_support.S内の分岐先アドレス	*/ 	
+_default_int_handler_entry_asm___kernel_default_int_handler_entry_178:						
+	.long  __kernel_default_int_handler_entry				
+_inhno___kernel_default_int_handler_entry_178:                     /* 割込み番号 */ 		
+	.long  178 											
+
+	.align 2                       							
+__kernel_default_int_handler_entry_179:													
+#ifndef USE_BANKED_REG    									
+		 /*  必要最小限のレジスタをスタックに待避  */ 		
+	mov.l r7,@-r15 											
+	mov.l r6,@-r15											
+#endif /* USE_BANKED_REG */   								
+							/* cpu_support.S内の分岐先アドレス	*/ 	
+	mov.l _default_int_handler_entry_asm___kernel_default_int_handler_entry_179,r7 		
+	mov.l _inhno___kernel_default_int_handler_entry_179,r6				/* 割込み番号 */	
+	jmp	  @r7                        						
+	 nop						 	 						
+	.align 2						 						
+		/* cpu_support.S内の分岐先アドレス	*/ 	
+_default_int_handler_entry_asm___kernel_default_int_handler_entry_179:						
+	.long  __kernel_default_int_handler_entry				
+_inhno___kernel_default_int_handler_entry_179:                     /* 割込み番号 */ 		
+	.long  179 											
 
 	.align 2                       							
 __kernel_default_int_handler_entry_180:													
@@ -996,6 +1262,63 @@ _inhno___kernel_default_int_handler_entry_184:                     /* 割込み番号
 	.long  184 											
 
 	.align 2                       							
+__kernel_default_int_handler_entry_185:													
+#ifndef USE_BANKED_REG    									
+		 /*  必要最小限のレジスタをスタックに待避  */ 		
+	mov.l r7,@-r15 											
+	mov.l r6,@-r15											
+#endif /* USE_BANKED_REG */   								
+							/* cpu_support.S内の分岐先アドレス	*/ 	
+	mov.l _default_int_handler_entry_asm___kernel_default_int_handler_entry_185,r7 		
+	mov.l _inhno___kernel_default_int_handler_entry_185,r6				/* 割込み番号 */	
+	jmp	  @r7                        						
+	 nop						 	 						
+	.align 2						 						
+		/* cpu_support.S内の分岐先アドレス	*/ 	
+_default_int_handler_entry_asm___kernel_default_int_handler_entry_185:						
+	.long  __kernel_default_int_handler_entry				
+_inhno___kernel_default_int_handler_entry_185:                     /* 割込み番号 */ 		
+	.long  185 											
+
+	.align 2                       							
+__kernel_default_int_handler_entry_186:													
+#ifndef USE_BANKED_REG    									
+		 /*  必要最小限のレジスタをスタックに待避  */ 		
+	mov.l r7,@-r15 											
+	mov.l r6,@-r15											
+#endif /* USE_BANKED_REG */   								
+							/* cpu_support.S内の分岐先アドレス	*/ 	
+	mov.l _default_int_handler_entry_asm___kernel_default_int_handler_entry_186,r7 		
+	mov.l _inhno___kernel_default_int_handler_entry_186,r6				/* 割込み番号 */	
+	jmp	  @r7                        						
+	 nop						 	 						
+	.align 2						 						
+		/* cpu_support.S内の分岐先アドレス	*/ 	
+_default_int_handler_entry_asm___kernel_default_int_handler_entry_186:						
+	.long  __kernel_default_int_handler_entry				
+_inhno___kernel_default_int_handler_entry_186:                     /* 割込み番号 */ 		
+	.long  186 											
+
+	.align 2                       							
+__kernel_default_int_handler_entry_187:													
+#ifndef USE_BANKED_REG    									
+		 /*  必要最小限のレジスタをスタックに待避  */ 		
+	mov.l r7,@-r15 											
+	mov.l r6,@-r15											
+#endif /* USE_BANKED_REG */   								
+							/* cpu_support.S内の分岐先アドレス	*/ 	
+	mov.l _default_int_handler_entry_asm___kernel_default_int_handler_entry_187,r7 		
+	mov.l _inhno___kernel_default_int_handler_entry_187,r6				/* 割込み番号 */	
+	jmp	  @r7                        						
+	 nop						 	 						
+	.align 2						 						
+		/* cpu_support.S内の分岐先アドレス	*/ 	
+_default_int_handler_entry_asm___kernel_default_int_handler_entry_187:						
+	.long  __kernel_default_int_handler_entry				
+_inhno___kernel_default_int_handler_entry_187:                     /* 割込み番号 */ 		
+	.long  187 											
+
+	.align 2                       							
 __kernel_default_int_handler_entry_188:													
 #ifndef USE_BANKED_REG    									
 		 /*  必要最小限のレジスタをスタックに待避  */ 		
@@ -1091,6 +1414,63 @@ _inhno___kernel_default_int_handler_entry_192:                     /* 割込み番号
 	.long  192 											
 
 	.align 2                       							
+__kernel_default_int_handler_entry_193:													
+#ifndef USE_BANKED_REG    									
+		 /*  必要最小限のレジスタをスタックに待避  */ 		
+	mov.l r7,@-r15 											
+	mov.l r6,@-r15											
+#endif /* USE_BANKED_REG */   								
+							/* cpu_support.S内の分岐先アドレス	*/ 	
+	mov.l _default_int_handler_entry_asm___kernel_default_int_handler_entry_193,r7 		
+	mov.l _inhno___kernel_default_int_handler_entry_193,r6				/* 割込み番号 */	
+	jmp	  @r7                        						
+	 nop						 	 						
+	.align 2						 						
+		/* cpu_support.S内の分岐先アドレス	*/ 	
+_default_int_handler_entry_asm___kernel_default_int_handler_entry_193:						
+	.long  __kernel_default_int_handler_entry				
+_inhno___kernel_default_int_handler_entry_193:                     /* 割込み番号 */ 		
+	.long  193 											
+
+	.align 2                       							
+__kernel_default_int_handler_entry_194:													
+#ifndef USE_BANKED_REG    									
+		 /*  必要最小限のレジスタをスタックに待避  */ 		
+	mov.l r7,@-r15 											
+	mov.l r6,@-r15											
+#endif /* USE_BANKED_REG */   								
+							/* cpu_support.S内の分岐先アドレス	*/ 	
+	mov.l _default_int_handler_entry_asm___kernel_default_int_handler_entry_194,r7 		
+	mov.l _inhno___kernel_default_int_handler_entry_194,r6				/* 割込み番号 */	
+	jmp	  @r7                        						
+	 nop						 	 						
+	.align 2						 						
+		/* cpu_support.S内の分岐先アドレス	*/ 	
+_default_int_handler_entry_asm___kernel_default_int_handler_entry_194:						
+	.long  __kernel_default_int_handler_entry				
+_inhno___kernel_default_int_handler_entry_194:                     /* 割込み番号 */ 		
+	.long  194 											
+
+	.align 2                       							
+__kernel_default_int_handler_entry_195:													
+#ifndef USE_BANKED_REG    									
+		 /*  必要最小限のレジスタをスタックに待避  */ 		
+	mov.l r7,@-r15 											
+	mov.l r6,@-r15											
+#endif /* USE_BANKED_REG */   								
+							/* cpu_support.S内の分岐先アドレス	*/ 	
+	mov.l _default_int_handler_entry_asm___kernel_default_int_handler_entry_195,r7 		
+	mov.l _inhno___kernel_default_int_handler_entry_195,r6				/* 割込み番号 */	
+	jmp	  @r7                        						
+	 nop						 	 						
+	.align 2						 						
+		/* cpu_support.S内の分岐先アドレス	*/ 	
+_default_int_handler_entry_asm___kernel_default_int_handler_entry_195:						
+	.long  __kernel_default_int_handler_entry				
+_inhno___kernel_default_int_handler_entry_195:                     /* 割込み番号 */ 		
+	.long  195 											
+
+	.align 2                       							
 __kernel_default_int_handler_entry_196:													
 #ifndef USE_BANKED_REG    									
 		 /*  必要最小限のレジスタをスタックに待避  */ 		
@@ -1148,6 +1528,25 @@ _inhno___kernel_default_int_handler_entry_198:                     /* 割込み番号
 	.long  198 											
 
 	.align 2                       							
+__kernel_default_int_handler_entry_199:													
+#ifndef USE_BANKED_REG    									
+		 /*  必要最小限のレジスタをスタックに待避  */ 		
+	mov.l r7,@-r15 											
+	mov.l r6,@-r15											
+#endif /* USE_BANKED_REG */   								
+							/* cpu_support.S内の分岐先アドレス	*/ 	
+	mov.l _default_int_handler_entry_asm___kernel_default_int_handler_entry_199,r7 		
+	mov.l _inhno___kernel_default_int_handler_entry_199,r6				/* 割込み番号 */	
+	jmp	  @r7                        						
+	 nop						 	 						
+	.align 2						 						
+		/* cpu_support.S内の分岐先アドレス	*/ 	
+_default_int_handler_entry_asm___kernel_default_int_handler_entry_199:						
+	.long  __kernel_default_int_handler_entry				
+_inhno___kernel_default_int_handler_entry_199:                     /* 割込み番号 */ 		
+	.long  199 											
+
+	.align 2                       							
 __kernel_default_int_handler_entry_200:													
 #ifndef USE_BANKED_REG    									
 		 /*  必要最小限のレジスタをスタックに待避  */ 		
@@ -1184,6 +1583,44 @@ _default_int_handler_entry_asm___kernel_default_int_handler_entry_201:
 	.long  __kernel_default_int_handler_entry				
 _inhno___kernel_default_int_handler_entry_201:                     /* 割込み番号 */ 		
 	.long  201 											
+
+	.align 2                       							
+__kernel_default_int_handler_entry_202:													
+#ifndef USE_BANKED_REG    									
+		 /*  必要最小限のレジスタをスタックに待避  */ 		
+	mov.l r7,@-r15 											
+	mov.l r6,@-r15											
+#endif /* USE_BANKED_REG */   								
+							/* cpu_support.S内の分岐先アドレス	*/ 	
+	mov.l _default_int_handler_entry_asm___kernel_default_int_handler_entry_202,r7 		
+	mov.l _inhno___kernel_default_int_handler_entry_202,r6				/* 割込み番号 */	
+	jmp	  @r7                        						
+	 nop						 	 						
+	.align 2						 						
+		/* cpu_support.S内の分岐先アドレス	*/ 	
+_default_int_handler_entry_asm___kernel_default_int_handler_entry_202:						
+	.long  __kernel_default_int_handler_entry				
+_inhno___kernel_default_int_handler_entry_202:                     /* 割込み番号 */ 		
+	.long  202 											
+
+	.align 2                       							
+__kernel_default_int_handler_entry_203:													
+#ifndef USE_BANKED_REG    									
+		 /*  必要最小限のレジスタをスタックに待避  */ 		
+	mov.l r7,@-r15 											
+	mov.l r6,@-r15											
+#endif /* USE_BANKED_REG */   								
+							/* cpu_support.S内の分岐先アドレス	*/ 	
+	mov.l _default_int_handler_entry_asm___kernel_default_int_handler_entry_203,r7 		
+	mov.l _inhno___kernel_default_int_handler_entry_203,r6				/* 割込み番号 */	
+	jmp	  @r7                        						
+	 nop						 	 						
+	.align 2						 						
+		/* cpu_support.S内の分岐先アドレス	*/ 	
+_default_int_handler_entry_asm___kernel_default_int_handler_entry_203:						
+	.long  __kernel_default_int_handler_entry				
+_inhno___kernel_default_int_handler_entry_203:                     /* 割込み番号 */ 		
+	.long  203 											
 
 	.align 2                       							
 __kernel_default_int_handler_entry_204:													
@@ -1281,6 +1718,63 @@ _inhno___kernel_default_int_handler_entry_208:                     /* 割込み番号
 	.long  208 											
 
 	.align 2                       							
+__kernel_default_int_handler_entry_209:													
+#ifndef USE_BANKED_REG    									
+		 /*  必要最小限のレジスタをスタックに待避  */ 		
+	mov.l r7,@-r15 											
+	mov.l r6,@-r15											
+#endif /* USE_BANKED_REG */   								
+							/* cpu_support.S内の分岐先アドレス	*/ 	
+	mov.l _default_int_handler_entry_asm___kernel_default_int_handler_entry_209,r7 		
+	mov.l _inhno___kernel_default_int_handler_entry_209,r6				/* 割込み番号 */	
+	jmp	  @r7                        						
+	 nop						 	 						
+	.align 2						 						
+		/* cpu_support.S内の分岐先アドレス	*/ 	
+_default_int_handler_entry_asm___kernel_default_int_handler_entry_209:						
+	.long  __kernel_default_int_handler_entry				
+_inhno___kernel_default_int_handler_entry_209:                     /* 割込み番号 */ 		
+	.long  209 											
+
+	.align 2                       							
+__kernel_default_int_handler_entry_210:													
+#ifndef USE_BANKED_REG    									
+		 /*  必要最小限のレジスタをスタックに待避  */ 		
+	mov.l r7,@-r15 											
+	mov.l r6,@-r15											
+#endif /* USE_BANKED_REG */   								
+							/* cpu_support.S内の分岐先アドレス	*/ 	
+	mov.l _default_int_handler_entry_asm___kernel_default_int_handler_entry_210,r7 		
+	mov.l _inhno___kernel_default_int_handler_entry_210,r6				/* 割込み番号 */	
+	jmp	  @r7                        						
+	 nop						 	 						
+	.align 2						 						
+		/* cpu_support.S内の分岐先アドレス	*/ 	
+_default_int_handler_entry_asm___kernel_default_int_handler_entry_210:						
+	.long  __kernel_default_int_handler_entry				
+_inhno___kernel_default_int_handler_entry_210:                     /* 割込み番号 */ 		
+	.long  210 											
+
+	.align 2                       							
+__kernel_default_int_handler_entry_211:													
+#ifndef USE_BANKED_REG    									
+		 /*  必要最小限のレジスタをスタックに待避  */ 		
+	mov.l r7,@-r15 											
+	mov.l r6,@-r15											
+#endif /* USE_BANKED_REG */   								
+							/* cpu_support.S内の分岐先アドレス	*/ 	
+	mov.l _default_int_handler_entry_asm___kernel_default_int_handler_entry_211,r7 		
+	mov.l _inhno___kernel_default_int_handler_entry_211,r6				/* 割込み番号 */	
+	jmp	  @r7                        						
+	 nop						 	 						
+	.align 2						 						
+		/* cpu_support.S内の分岐先アドレス	*/ 	
+_default_int_handler_entry_asm___kernel_default_int_handler_entry_211:						
+	.long  __kernel_default_int_handler_entry				
+_inhno___kernel_default_int_handler_entry_211:                     /* 割込み番号 */ 		
+	.long  211 											
+
+	.align 2                       							
 __kernel_default_int_handler_entry_212:													
 #ifndef USE_BANKED_REG    									
 		 /*  必要最小限のレジスタをスタックに待避  */ 		
@@ -1376,6 +1870,63 @@ _inhno___kernel_default_int_handler_entry_216:                     /* 割込み番号
 	.long  216 											
 
 	.align 2                       							
+__kernel_default_int_handler_entry_217:													
+#ifndef USE_BANKED_REG    									
+		 /*  必要最小限のレジスタをスタックに待避  */ 		
+	mov.l r7,@-r15 											
+	mov.l r6,@-r15											
+#endif /* USE_BANKED_REG */   								
+							/* cpu_support.S内の分岐先アドレス	*/ 	
+	mov.l _default_int_handler_entry_asm___kernel_default_int_handler_entry_217,r7 		
+	mov.l _inhno___kernel_default_int_handler_entry_217,r6				/* 割込み番号 */	
+	jmp	  @r7                        						
+	 nop						 	 						
+	.align 2						 						
+		/* cpu_support.S内の分岐先アドレス	*/ 	
+_default_int_handler_entry_asm___kernel_default_int_handler_entry_217:						
+	.long  __kernel_default_int_handler_entry				
+_inhno___kernel_default_int_handler_entry_217:                     /* 割込み番号 */ 		
+	.long  217 											
+
+	.align 2                       							
+__kernel_default_int_handler_entry_218:													
+#ifndef USE_BANKED_REG    									
+		 /*  必要最小限のレジスタをスタックに待避  */ 		
+	mov.l r7,@-r15 											
+	mov.l r6,@-r15											
+#endif /* USE_BANKED_REG */   								
+							/* cpu_support.S内の分岐先アドレス	*/ 	
+	mov.l _default_int_handler_entry_asm___kernel_default_int_handler_entry_218,r7 		
+	mov.l _inhno___kernel_default_int_handler_entry_218,r6				/* 割込み番号 */	
+	jmp	  @r7                        						
+	 nop						 	 						
+	.align 2						 						
+		/* cpu_support.S内の分岐先アドレス	*/ 	
+_default_int_handler_entry_asm___kernel_default_int_handler_entry_218:						
+	.long  __kernel_default_int_handler_entry				
+_inhno___kernel_default_int_handler_entry_218:                     /* 割込み番号 */ 		
+	.long  218 											
+
+	.align 2                       							
+__kernel_default_int_handler_entry_219:													
+#ifndef USE_BANKED_REG    									
+		 /*  必要最小限のレジスタをスタックに待避  */ 		
+	mov.l r7,@-r15 											
+	mov.l r6,@-r15											
+#endif /* USE_BANKED_REG */   								
+							/* cpu_support.S内の分岐先アドレス	*/ 	
+	mov.l _default_int_handler_entry_asm___kernel_default_int_handler_entry_219,r7 		
+	mov.l _inhno___kernel_default_int_handler_entry_219,r6				/* 割込み番号 */	
+	jmp	  @r7                        						
+	 nop						 	 						
+	.align 2						 						
+		/* cpu_support.S内の分岐先アドレス	*/ 	
+_default_int_handler_entry_asm___kernel_default_int_handler_entry_219:						
+	.long  __kernel_default_int_handler_entry				
+_inhno___kernel_default_int_handler_entry_219:                     /* 割込み番号 */ 		
+	.long  219 											
+
+	.align 2                       							
 __kernel_default_int_handler_entry_220:													
 #ifndef USE_BANKED_REG    									
 		 /*  必要最小限のレジスタをスタックに待避  */ 		
@@ -1433,6 +1984,25 @@ _inhno___kernel_default_int_handler_entry_222:                     /* 割込み番号
 	.long  222 											
 
 	.align 2                       							
+__kernel_default_int_handler_entry_223:													
+#ifndef USE_BANKED_REG    									
+		 /*  必要最小限のレジスタをスタックに待避  */ 		
+	mov.l r7,@-r15 											
+	mov.l r6,@-r15											
+#endif /* USE_BANKED_REG */   								
+							/* cpu_support.S内の分岐先アドレス	*/ 	
+	mov.l _default_int_handler_entry_asm___kernel_default_int_handler_entry_223,r7 		
+	mov.l _inhno___kernel_default_int_handler_entry_223,r6				/* 割込み番号 */	
+	jmp	  @r7                        						
+	 nop						 	 						
+	.align 2						 						
+		/* cpu_support.S内の分岐先アドレス	*/ 	
+_default_int_handler_entry_asm___kernel_default_int_handler_entry_223:						
+	.long  __kernel_default_int_handler_entry				
+_inhno___kernel_default_int_handler_entry_223:                     /* 割込み番号 */ 		
+	.long  223 											
+
+	.align 2                       							
 __kernel_default_int_handler_entry_224:													
 #ifndef USE_BANKED_REG    									
 		 /*  必要最小限のレジスタをスタックに待避  */ 		
@@ -1450,6 +2020,63 @@ _default_int_handler_entry_asm___kernel_default_int_handler_entry_224:
 	.long  __kernel_default_int_handler_entry				
 _inhno___kernel_default_int_handler_entry_224:                     /* 割込み番号 */ 		
 	.long  224 											
+
+	.align 2                       							
+__kernel_default_int_handler_entry_225:													
+#ifndef USE_BANKED_REG    									
+		 /*  必要最小限のレジスタをスタックに待避  */ 		
+	mov.l r7,@-r15 											
+	mov.l r6,@-r15											
+#endif /* USE_BANKED_REG */   								
+							/* cpu_support.S内の分岐先アドレス	*/ 	
+	mov.l _default_int_handler_entry_asm___kernel_default_int_handler_entry_225,r7 		
+	mov.l _inhno___kernel_default_int_handler_entry_225,r6				/* 割込み番号 */	
+	jmp	  @r7                        						
+	 nop						 	 						
+	.align 2						 						
+		/* cpu_support.S内の分岐先アドレス	*/ 	
+_default_int_handler_entry_asm___kernel_default_int_handler_entry_225:						
+	.long  __kernel_default_int_handler_entry				
+_inhno___kernel_default_int_handler_entry_225:                     /* 割込み番号 */ 		
+	.long  225 											
+
+	.align 2                       							
+__kernel_default_int_handler_entry_226:													
+#ifndef USE_BANKED_REG    									
+		 /*  必要最小限のレジスタをスタックに待避  */ 		
+	mov.l r7,@-r15 											
+	mov.l r6,@-r15											
+#endif /* USE_BANKED_REG */   								
+							/* cpu_support.S内の分岐先アドレス	*/ 	
+	mov.l _default_int_handler_entry_asm___kernel_default_int_handler_entry_226,r7 		
+	mov.l _inhno___kernel_default_int_handler_entry_226,r6				/* 割込み番号 */	
+	jmp	  @r7                        						
+	 nop						 	 						
+	.align 2						 						
+		/* cpu_support.S内の分岐先アドレス	*/ 	
+_default_int_handler_entry_asm___kernel_default_int_handler_entry_226:						
+	.long  __kernel_default_int_handler_entry				
+_inhno___kernel_default_int_handler_entry_226:                     /* 割込み番号 */ 		
+	.long  226 											
+
+	.align 2                       							
+__kernel_default_int_handler_entry_227:													
+#ifndef USE_BANKED_REG    									
+		 /*  必要最小限のレジスタをスタックに待避  */ 		
+	mov.l r7,@-r15 											
+	mov.l r6,@-r15											
+#endif /* USE_BANKED_REG */   								
+							/* cpu_support.S内の分岐先アドレス	*/ 	
+	mov.l _default_int_handler_entry_asm___kernel_default_int_handler_entry_227,r7 		
+	mov.l _inhno___kernel_default_int_handler_entry_227,r6				/* 割込み番号 */	
+	jmp	  @r7                        						
+	 nop						 	 						
+	.align 2						 						
+		/* cpu_support.S内の分岐先アドレス	*/ 	
+_default_int_handler_entry_asm___kernel_default_int_handler_entry_227:						
+	.long  __kernel_default_int_handler_entry				
+_inhno___kernel_default_int_handler_entry_227:                     /* 割込み番号 */ 		
+	.long  227 											
 
 	.align 2                       							
 __kernel_default_int_handler_entry_228:													
@@ -1545,6 +2172,169 @@ _default_int_handler_entry_asm___kernel_default_int_handler_entry_232:
 	.long  __kernel_default_int_handler_entry				
 _inhno___kernel_default_int_handler_entry_232:                     /* 割込み番号 */ 		
 	.long  232 											
+
+	.align 2                       							
+__kernel_default_int_handler_entry_233:													
+#ifndef USE_BANKED_REG    									
+		 /*  必要最小限のレジスタをスタックに待避  */ 		
+	mov.l r7,@-r15 											
+	mov.l r6,@-r15											
+#endif /* USE_BANKED_REG */   								
+							/* cpu_support.S内の分岐先アドレス	*/ 	
+	mov.l _default_int_handler_entry_asm___kernel_default_int_handler_entry_233,r7 		
+	mov.l _inhno___kernel_default_int_handler_entry_233,r6				/* 割込み番号 */	
+	jmp	  @r7                        						
+	 nop						 	 						
+	.align 2						 						
+		/* cpu_support.S内の分岐先アドレス	*/ 	
+_default_int_handler_entry_asm___kernel_default_int_handler_entry_233:						
+	.long  __kernel_default_int_handler_entry				
+_inhno___kernel_default_int_handler_entry_233:                     /* 割込み番号 */ 		
+	.long  233 											
+
+	.align 2                       							
+__kernel_default_int_handler_entry_234:													
+#ifndef USE_BANKED_REG    									
+		 /*  必要最小限のレジスタをスタックに待避  */ 		
+	mov.l r7,@-r15 											
+	mov.l r6,@-r15											
+#endif /* USE_BANKED_REG */   								
+							/* cpu_support.S内の分岐先アドレス	*/ 	
+	mov.l _default_int_handler_entry_asm___kernel_default_int_handler_entry_234,r7 		
+	mov.l _inhno___kernel_default_int_handler_entry_234,r6				/* 割込み番号 */	
+	jmp	  @r7                        						
+	 nop						 	 						
+	.align 2						 						
+		/* cpu_support.S内の分岐先アドレス	*/ 	
+_default_int_handler_entry_asm___kernel_default_int_handler_entry_234:						
+	.long  __kernel_default_int_handler_entry				
+_inhno___kernel_default_int_handler_entry_234:                     /* 割込み番号 */ 		
+	.long  234 											
+
+	.align 2                       							
+__kernel_default_int_handler_entry_235:													
+#ifndef USE_BANKED_REG    									
+		 /*  必要最小限のレジスタをスタックに待避  */ 		
+	mov.l r7,@-r15 											
+	mov.l r6,@-r15											
+#endif /* USE_BANKED_REG */   								
+							/* cpu_support.S内の分岐先アドレス	*/ 	
+	mov.l _default_int_handler_entry_asm___kernel_default_int_handler_entry_235,r7 		
+	mov.l _inhno___kernel_default_int_handler_entry_235,r6				/* 割込み番号 */	
+	jmp	  @r7                        						
+	 nop						 	 						
+	.align 2						 						
+		/* cpu_support.S内の分岐先アドレス	*/ 	
+_default_int_handler_entry_asm___kernel_default_int_handler_entry_235:						
+	.long  __kernel_default_int_handler_entry				
+_inhno___kernel_default_int_handler_entry_235:                     /* 割込み番号 */ 		
+	.long  235 											
+
+	.align 2                       							
+__kernel_default_int_handler_entry_236:													
+#ifndef USE_BANKED_REG    									
+		 /*  必要最小限のレジスタをスタックに待避  */ 		
+	mov.l r7,@-r15 											
+	mov.l r6,@-r15											
+#endif /* USE_BANKED_REG */   								
+							/* cpu_support.S内の分岐先アドレス	*/ 	
+	mov.l _default_int_handler_entry_asm___kernel_default_int_handler_entry_236,r7 		
+	mov.l _inhno___kernel_default_int_handler_entry_236,r6				/* 割込み番号 */	
+	jmp	  @r7                        						
+	 nop						 	 						
+	.align 2						 						
+		/* cpu_support.S内の分岐先アドレス	*/ 	
+_default_int_handler_entry_asm___kernel_default_int_handler_entry_236:						
+	.long  __kernel_default_int_handler_entry				
+_inhno___kernel_default_int_handler_entry_236:                     /* 割込み番号 */ 		
+	.long  236 											
+
+	.align 2                       							
+__kernel_default_int_handler_entry_237:													
+#ifndef USE_BANKED_REG    									
+		 /*  必要最小限のレジスタをスタックに待避  */ 		
+	mov.l r7,@-r15 											
+	mov.l r6,@-r15											
+#endif /* USE_BANKED_REG */   								
+							/* cpu_support.S内の分岐先アドレス	*/ 	
+	mov.l _default_int_handler_entry_asm___kernel_default_int_handler_entry_237,r7 		
+	mov.l _inhno___kernel_default_int_handler_entry_237,r6				/* 割込み番号 */	
+	jmp	  @r7                        						
+	 nop						 	 						
+	.align 2						 						
+		/* cpu_support.S内の分岐先アドレス	*/ 	
+_default_int_handler_entry_asm___kernel_default_int_handler_entry_237:						
+	.long  __kernel_default_int_handler_entry				
+_inhno___kernel_default_int_handler_entry_237:                     /* 割込み番号 */ 		
+	.long  237 											
+
+	.global __kernel__kernel_inthdr_238_238											
+	.align 2                       							
+__kernel__kernel_inthdr_238_238:													
+#ifndef USE_BANKED_REG    									
+		 /*  必要最小限のレジスタをスタックに待避  */ 		
+	mov.l r7,@-r15 											
+	mov.l r6,@-r15											
+	mov.l r5,@-r15											
+	mov.l r4,@-r15											
+#endif /* USE_BANKED_REG */   								
+	stc   sr,r7								/* SRの保存 */ 	
+	mov.l _iipm_disall___kernel__kernel_inthdr_238_238,r6							
+	ldc	  r6,sr								/* 全割込み禁止 */ 
+		 /* 共有割込み入口処理 */    	
+	mov.l _common_routine___kernel__kernel_inthdr_238_238,r4 						
+		 /* 割込みハンドラの先頭アドレス */ 
+	mov.l _c_routine___kernel__kernel_inthdr_238_238,r6     						
+	mov.l _inhno___kernel__kernel_inthdr_238_238,r5					/* 割込み番号 */ 
+	jmp	  @r4												
+	 nop													
+	.align 2												
+		 /* 割込み禁止用マスク */ 			
+_iipm_disall___kernel__kernel_inthdr_238_238:										
+		 /* ipm以外のビットはゼロで良い */ 	
+	.long  __kernel_iipm_disall								
+_c_routine___kernel__kernel_inthdr_238_238:/* 割込みハンドラの先頭アドレス */				
+	.long  __kernel_inthdr_238         					
+		 /* cpu_support.S内の分岐先アドレス */			
+_common_routine___kernel__kernel_inthdr_238_238: 									
+	.long  __kernel_interrupt_entry							
+_inhno___kernel__kernel_inthdr_238_238:							/* 割込み番号	*/	
+	.long  238 											
+
+
+	.global __kernel__kernel_inthdr_239_239											
+	.align 2                       							
+__kernel__kernel_inthdr_239_239:													
+#ifndef USE_BANKED_REG    									
+		 /*  必要最小限のレジスタをスタックに待避  */ 		
+	mov.l r7,@-r15 											
+	mov.l r6,@-r15											
+	mov.l r5,@-r15											
+	mov.l r4,@-r15											
+#endif /* USE_BANKED_REG */   								
+	stc   sr,r7								/* SRの保存 */ 	
+	mov.l _iipm_disall___kernel__kernel_inthdr_239_239,r6							
+	ldc	  r6,sr								/* 全割込み禁止 */ 
+		 /* 共有割込み入口処理 */    	
+	mov.l _common_routine___kernel__kernel_inthdr_239_239,r4 						
+		 /* 割込みハンドラの先頭アドレス */ 
+	mov.l _c_routine___kernel__kernel_inthdr_239_239,r6     						
+	mov.l _inhno___kernel__kernel_inthdr_239_239,r5					/* 割込み番号 */ 
+	jmp	  @r4												
+	 nop													
+	.align 2												
+		 /* 割込み禁止用マスク */ 			
+_iipm_disall___kernel__kernel_inthdr_239_239:										
+		 /* ipm以外のビットはゼロで良い */ 	
+	.long  __kernel_iipm_disall								
+_c_routine___kernel__kernel_inthdr_239_239:/* 割込みハンドラの先頭アドレス */				
+	.long  __kernel_inthdr_239         					
+		 /* cpu_support.S内の分岐先アドレス */			
+_common_routine___kernel__kernel_inthdr_239_239: 									
+	.long  __kernel_interrupt_entry							
+_inhno___kernel__kernel_inthdr_239_239:							/* 割込み番号	*/	
+	.long  239 											
+
 
 	.align 2                       							
 __kernel_default_int_handler_entry_240:													
@@ -1660,73 +2450,43 @@ _default_int_handler_entry_asm___kernel_default_int_handler_entry_245:
 _inhno___kernel_default_int_handler_entry_245:                     /* 割込み番号 */ 		
 	.long  245 											
 
-	.global __kernel__kernel_inthdr_246_246											
 	.align 2                       							
-__kernel__kernel_inthdr_246_246:													
+__kernel_default_int_handler_entry_246:													
 #ifndef USE_BANKED_REG    									
 		 /*  必要最小限のレジスタをスタックに待避  */ 		
 	mov.l r7,@-r15 											
 	mov.l r6,@-r15											
-	mov.l r5,@-r15											
-	mov.l r4,@-r15											
 #endif /* USE_BANKED_REG */   								
-	stc   sr,r7								/* SRの保存 */ 	
-	mov.l _iipm_disall___kernel__kernel_inthdr_246_246,r6							
-	ldc	  r6,sr								/* 全割込み禁止 */ 
-		 /* 共有割込み入口処理 */    	
-	mov.l _common_routine___kernel__kernel_inthdr_246_246,r4 						
-		 /* 割込みハンドラの先頭アドレス */ 
-	mov.l _c_routine___kernel__kernel_inthdr_246_246,r6     						
-	mov.l _inhno___kernel__kernel_inthdr_246_246,r5					/* 割込み番号 */ 
-	jmp	  @r4												
-	 nop													
-	.align 2												
-		 /* 割込み禁止用マスク */ 			
-_iipm_disall___kernel__kernel_inthdr_246_246:										
-		 /* ipm以外のビットはゼロで良い */ 	
-	.long  __kernel_iipm_disall								
-_c_routine___kernel__kernel_inthdr_246_246:/* 割込みハンドラの先頭アドレス */				
-	.long  __kernel_inthdr_246         					
-		 /* cpu_support.S内の分岐先アドレス */			
-_common_routine___kernel__kernel_inthdr_246_246: 									
-	.long  __kernel_interrupt_entry							
-_inhno___kernel__kernel_inthdr_246_246:							/* 割込み番号	*/	
+							/* cpu_support.S内の分岐先アドレス	*/ 	
+	mov.l _default_int_handler_entry_asm___kernel_default_int_handler_entry_246,r7 		
+	mov.l _inhno___kernel_default_int_handler_entry_246,r6				/* 割込み番号 */	
+	jmp	  @r7                        						
+	 nop						 	 						
+	.align 2						 						
+		/* cpu_support.S内の分岐先アドレス	*/ 	
+_default_int_handler_entry_asm___kernel_default_int_handler_entry_246:						
+	.long  __kernel_default_int_handler_entry				
+_inhno___kernel_default_int_handler_entry_246:                     /* 割込み番号 */ 		
 	.long  246 											
 
-
-	.global __kernel__kernel_inthdr_247_247											
 	.align 2                       							
-__kernel__kernel_inthdr_247_247:													
+__kernel_default_int_handler_entry_247:													
 #ifndef USE_BANKED_REG    									
 		 /*  必要最小限のレジスタをスタックに待避  */ 		
 	mov.l r7,@-r15 											
 	mov.l r6,@-r15											
-	mov.l r5,@-r15											
-	mov.l r4,@-r15											
 #endif /* USE_BANKED_REG */   								
-	stc   sr,r7								/* SRの保存 */ 	
-	mov.l _iipm_disall___kernel__kernel_inthdr_247_247,r6							
-	ldc	  r6,sr								/* 全割込み禁止 */ 
-		 /* 共有割込み入口処理 */    	
-	mov.l _common_routine___kernel__kernel_inthdr_247_247,r4 						
-		 /* 割込みハンドラの先頭アドレス */ 
-	mov.l _c_routine___kernel__kernel_inthdr_247_247,r6     						
-	mov.l _inhno___kernel__kernel_inthdr_247_247,r5					/* 割込み番号 */ 
-	jmp	  @r4												
-	 nop													
-	.align 2												
-		 /* 割込み禁止用マスク */ 			
-_iipm_disall___kernel__kernel_inthdr_247_247:										
-		 /* ipm以外のビットはゼロで良い */ 	
-	.long  __kernel_iipm_disall								
-_c_routine___kernel__kernel_inthdr_247_247:/* 割込みハンドラの先頭アドレス */				
-	.long  __kernel_inthdr_247         					
-		 /* cpu_support.S内の分岐先アドレス */			
-_common_routine___kernel__kernel_inthdr_247_247: 									
-	.long  __kernel_interrupt_entry							
-_inhno___kernel__kernel_inthdr_247_247:							/* 割込み番号	*/	
+							/* cpu_support.S内の分岐先アドレス	*/ 	
+	mov.l _default_int_handler_entry_asm___kernel_default_int_handler_entry_247,r7 		
+	mov.l _inhno___kernel_default_int_handler_entry_247,r6				/* 割込み番号 */	
+	jmp	  @r7                        						
+	 nop						 	 						
+	.align 2						 						
+		/* cpu_support.S内の分岐先アドレス	*/ 	
+_default_int_handler_entry_asm___kernel_default_int_handler_entry_247:						
+	.long  __kernel_default_int_handler_entry				
+_inhno___kernel_default_int_handler_entry_247:                     /* 割込み番号 */ 		
 	.long  247 											
-
 
 	.align 2                       							
 __kernel_default_int_handler_entry_248:													
@@ -1936,6 +2696,994 @@ _default_int_handler_entry_asm___kernel_default_int_handler_entry_258:
 	.long  __kernel_default_int_handler_entry				
 _inhno___kernel_default_int_handler_entry_258:                     /* 割込み番号 */ 		
 	.long  258 											
+
+	.align 2                       							
+__kernel_default_int_handler_entry_259:													
+#ifndef USE_BANKED_REG    									
+		 /*  必要最小限のレジスタをスタックに待避  */ 		
+	mov.l r7,@-r15 											
+	mov.l r6,@-r15											
+#endif /* USE_BANKED_REG */   								
+							/* cpu_support.S内の分岐先アドレス	*/ 	
+	mov.l _default_int_handler_entry_asm___kernel_default_int_handler_entry_259,r7 		
+	mov.l _inhno___kernel_default_int_handler_entry_259,r6				/* 割込み番号 */	
+	jmp	  @r7                        						
+	 nop						 	 						
+	.align 2						 						
+		/* cpu_support.S内の分岐先アドレス	*/ 	
+_default_int_handler_entry_asm___kernel_default_int_handler_entry_259:						
+	.long  __kernel_default_int_handler_entry				
+_inhno___kernel_default_int_handler_entry_259:                     /* 割込み番号 */ 		
+	.long  259 											
+
+	.align 2                       							
+__kernel_default_int_handler_entry_260:													
+#ifndef USE_BANKED_REG    									
+		 /*  必要最小限のレジスタをスタックに待避  */ 		
+	mov.l r7,@-r15 											
+	mov.l r6,@-r15											
+#endif /* USE_BANKED_REG */   								
+							/* cpu_support.S内の分岐先アドレス	*/ 	
+	mov.l _default_int_handler_entry_asm___kernel_default_int_handler_entry_260,r7 		
+	mov.l _inhno___kernel_default_int_handler_entry_260,r6				/* 割込み番号 */	
+	jmp	  @r7                        						
+	 nop						 	 						
+	.align 2						 						
+		/* cpu_support.S内の分岐先アドレス	*/ 	
+_default_int_handler_entry_asm___kernel_default_int_handler_entry_260:						
+	.long  __kernel_default_int_handler_entry				
+_inhno___kernel_default_int_handler_entry_260:                     /* 割込み番号 */ 		
+	.long  260 											
+
+	.align 2                       							
+__kernel_default_int_handler_entry_261:													
+#ifndef USE_BANKED_REG    									
+		 /*  必要最小限のレジスタをスタックに待避  */ 		
+	mov.l r7,@-r15 											
+	mov.l r6,@-r15											
+#endif /* USE_BANKED_REG */   								
+							/* cpu_support.S内の分岐先アドレス	*/ 	
+	mov.l _default_int_handler_entry_asm___kernel_default_int_handler_entry_261,r7 		
+	mov.l _inhno___kernel_default_int_handler_entry_261,r6				/* 割込み番号 */	
+	jmp	  @r7                        						
+	 nop						 	 						
+	.align 2						 						
+		/* cpu_support.S内の分岐先アドレス	*/ 	
+_default_int_handler_entry_asm___kernel_default_int_handler_entry_261:						
+	.long  __kernel_default_int_handler_entry				
+_inhno___kernel_default_int_handler_entry_261:                     /* 割込み番号 */ 		
+	.long  261 											
+
+	.align 2                       							
+__kernel_default_int_handler_entry_262:													
+#ifndef USE_BANKED_REG    									
+		 /*  必要最小限のレジスタをスタックに待避  */ 		
+	mov.l r7,@-r15 											
+	mov.l r6,@-r15											
+#endif /* USE_BANKED_REG */   								
+							/* cpu_support.S内の分岐先アドレス	*/ 	
+	mov.l _default_int_handler_entry_asm___kernel_default_int_handler_entry_262,r7 		
+	mov.l _inhno___kernel_default_int_handler_entry_262,r6				/* 割込み番号 */	
+	jmp	  @r7                        						
+	 nop						 	 						
+	.align 2						 						
+		/* cpu_support.S内の分岐先アドレス	*/ 	
+_default_int_handler_entry_asm___kernel_default_int_handler_entry_262:						
+	.long  __kernel_default_int_handler_entry				
+_inhno___kernel_default_int_handler_entry_262:                     /* 割込み番号 */ 		
+	.long  262 											
+
+	.align 2                       							
+__kernel_default_int_handler_entry_263:													
+#ifndef USE_BANKED_REG    									
+		 /*  必要最小限のレジスタをスタックに待避  */ 		
+	mov.l r7,@-r15 											
+	mov.l r6,@-r15											
+#endif /* USE_BANKED_REG */   								
+							/* cpu_support.S内の分岐先アドレス	*/ 	
+	mov.l _default_int_handler_entry_asm___kernel_default_int_handler_entry_263,r7 		
+	mov.l _inhno___kernel_default_int_handler_entry_263,r6				/* 割込み番号 */	
+	jmp	  @r7                        						
+	 nop						 	 						
+	.align 2						 						
+		/* cpu_support.S内の分岐先アドレス	*/ 	
+_default_int_handler_entry_asm___kernel_default_int_handler_entry_263:						
+	.long  __kernel_default_int_handler_entry				
+_inhno___kernel_default_int_handler_entry_263:                     /* 割込み番号 */ 		
+	.long  263 											
+
+	.align 2                       							
+__kernel_default_int_handler_entry_264:													
+#ifndef USE_BANKED_REG    									
+		 /*  必要最小限のレジスタをスタックに待避  */ 		
+	mov.l r7,@-r15 											
+	mov.l r6,@-r15											
+#endif /* USE_BANKED_REG */   								
+							/* cpu_support.S内の分岐先アドレス	*/ 	
+	mov.l _default_int_handler_entry_asm___kernel_default_int_handler_entry_264,r7 		
+	mov.l _inhno___kernel_default_int_handler_entry_264,r6				/* 割込み番号 */	
+	jmp	  @r7                        						
+	 nop						 	 						
+	.align 2						 						
+		/* cpu_support.S内の分岐先アドレス	*/ 	
+_default_int_handler_entry_asm___kernel_default_int_handler_entry_264:						
+	.long  __kernel_default_int_handler_entry				
+_inhno___kernel_default_int_handler_entry_264:                     /* 割込み番号 */ 		
+	.long  264 											
+
+	.align 2                       							
+__kernel_default_int_handler_entry_265:													
+#ifndef USE_BANKED_REG    									
+		 /*  必要最小限のレジスタをスタックに待避  */ 		
+	mov.l r7,@-r15 											
+	mov.l r6,@-r15											
+#endif /* USE_BANKED_REG */   								
+							/* cpu_support.S内の分岐先アドレス	*/ 	
+	mov.l _default_int_handler_entry_asm___kernel_default_int_handler_entry_265,r7 		
+	mov.l _inhno___kernel_default_int_handler_entry_265,r6				/* 割込み番号 */	
+	jmp	  @r7                        						
+	 nop						 	 						
+	.align 2						 						
+		/* cpu_support.S内の分岐先アドレス	*/ 	
+_default_int_handler_entry_asm___kernel_default_int_handler_entry_265:						
+	.long  __kernel_default_int_handler_entry				
+_inhno___kernel_default_int_handler_entry_265:                     /* 割込み番号 */ 		
+	.long  265 											
+
+	.align 2                       							
+__kernel_default_int_handler_entry_266:													
+#ifndef USE_BANKED_REG    									
+		 /*  必要最小限のレジスタをスタックに待避  */ 		
+	mov.l r7,@-r15 											
+	mov.l r6,@-r15											
+#endif /* USE_BANKED_REG */   								
+							/* cpu_support.S内の分岐先アドレス	*/ 	
+	mov.l _default_int_handler_entry_asm___kernel_default_int_handler_entry_266,r7 		
+	mov.l _inhno___kernel_default_int_handler_entry_266,r6				/* 割込み番号 */	
+	jmp	  @r7                        						
+	 nop						 	 						
+	.align 2						 						
+		/* cpu_support.S内の分岐先アドレス	*/ 	
+_default_int_handler_entry_asm___kernel_default_int_handler_entry_266:						
+	.long  __kernel_default_int_handler_entry				
+_inhno___kernel_default_int_handler_entry_266:                     /* 割込み番号 */ 		
+	.long  266 											
+
+	.align 2                       							
+__kernel_default_int_handler_entry_267:													
+#ifndef USE_BANKED_REG    									
+		 /*  必要最小限のレジスタをスタックに待避  */ 		
+	mov.l r7,@-r15 											
+	mov.l r6,@-r15											
+#endif /* USE_BANKED_REG */   								
+							/* cpu_support.S内の分岐先アドレス	*/ 	
+	mov.l _default_int_handler_entry_asm___kernel_default_int_handler_entry_267,r7 		
+	mov.l _inhno___kernel_default_int_handler_entry_267,r6				/* 割込み番号 */	
+	jmp	  @r7                        						
+	 nop						 	 						
+	.align 2						 						
+		/* cpu_support.S内の分岐先アドレス	*/ 	
+_default_int_handler_entry_asm___kernel_default_int_handler_entry_267:						
+	.long  __kernel_default_int_handler_entry				
+_inhno___kernel_default_int_handler_entry_267:                     /* 割込み番号 */ 		
+	.long  267 											
+
+	.align 2                       							
+__kernel_default_int_handler_entry_268:													
+#ifndef USE_BANKED_REG    									
+		 /*  必要最小限のレジスタをスタックに待避  */ 		
+	mov.l r7,@-r15 											
+	mov.l r6,@-r15											
+#endif /* USE_BANKED_REG */   								
+							/* cpu_support.S内の分岐先アドレス	*/ 	
+	mov.l _default_int_handler_entry_asm___kernel_default_int_handler_entry_268,r7 		
+	mov.l _inhno___kernel_default_int_handler_entry_268,r6				/* 割込み番号 */	
+	jmp	  @r7                        						
+	 nop						 	 						
+	.align 2						 						
+		/* cpu_support.S内の分岐先アドレス	*/ 	
+_default_int_handler_entry_asm___kernel_default_int_handler_entry_268:						
+	.long  __kernel_default_int_handler_entry				
+_inhno___kernel_default_int_handler_entry_268:                     /* 割込み番号 */ 		
+	.long  268 											
+
+	.align 2                       							
+__kernel_default_int_handler_entry_269:													
+#ifndef USE_BANKED_REG    									
+		 /*  必要最小限のレジスタをスタックに待避  */ 		
+	mov.l r7,@-r15 											
+	mov.l r6,@-r15											
+#endif /* USE_BANKED_REG */   								
+							/* cpu_support.S内の分岐先アドレス	*/ 	
+	mov.l _default_int_handler_entry_asm___kernel_default_int_handler_entry_269,r7 		
+	mov.l _inhno___kernel_default_int_handler_entry_269,r6				/* 割込み番号 */	
+	jmp	  @r7                        						
+	 nop						 	 						
+	.align 2						 						
+		/* cpu_support.S内の分岐先アドレス	*/ 	
+_default_int_handler_entry_asm___kernel_default_int_handler_entry_269:						
+	.long  __kernel_default_int_handler_entry				
+_inhno___kernel_default_int_handler_entry_269:                     /* 割込み番号 */ 		
+	.long  269 											
+
+	.align 2                       							
+__kernel_default_int_handler_entry_270:													
+#ifndef USE_BANKED_REG    									
+		 /*  必要最小限のレジスタをスタックに待避  */ 		
+	mov.l r7,@-r15 											
+	mov.l r6,@-r15											
+#endif /* USE_BANKED_REG */   								
+							/* cpu_support.S内の分岐先アドレス	*/ 	
+	mov.l _default_int_handler_entry_asm___kernel_default_int_handler_entry_270,r7 		
+	mov.l _inhno___kernel_default_int_handler_entry_270,r6				/* 割込み番号 */	
+	jmp	  @r7                        						
+	 nop						 	 						
+	.align 2						 						
+		/* cpu_support.S内の分岐先アドレス	*/ 	
+_default_int_handler_entry_asm___kernel_default_int_handler_entry_270:						
+	.long  __kernel_default_int_handler_entry				
+_inhno___kernel_default_int_handler_entry_270:                     /* 割込み番号 */ 		
+	.long  270 											
+
+	.align 2                       							
+__kernel_default_int_handler_entry_271:													
+#ifndef USE_BANKED_REG    									
+		 /*  必要最小限のレジスタをスタックに待避  */ 		
+	mov.l r7,@-r15 											
+	mov.l r6,@-r15											
+#endif /* USE_BANKED_REG */   								
+							/* cpu_support.S内の分岐先アドレス	*/ 	
+	mov.l _default_int_handler_entry_asm___kernel_default_int_handler_entry_271,r7 		
+	mov.l _inhno___kernel_default_int_handler_entry_271,r6				/* 割込み番号 */	
+	jmp	  @r7                        						
+	 nop						 	 						
+	.align 2						 						
+		/* cpu_support.S内の分岐先アドレス	*/ 	
+_default_int_handler_entry_asm___kernel_default_int_handler_entry_271:						
+	.long  __kernel_default_int_handler_entry				
+_inhno___kernel_default_int_handler_entry_271:                     /* 割込み番号 */ 		
+	.long  271 											
+
+	.align 2                       							
+__kernel_default_int_handler_entry_272:													
+#ifndef USE_BANKED_REG    									
+		 /*  必要最小限のレジスタをスタックに待避  */ 		
+	mov.l r7,@-r15 											
+	mov.l r6,@-r15											
+#endif /* USE_BANKED_REG */   								
+							/* cpu_support.S内の分岐先アドレス	*/ 	
+	mov.l _default_int_handler_entry_asm___kernel_default_int_handler_entry_272,r7 		
+	mov.l _inhno___kernel_default_int_handler_entry_272,r6				/* 割込み番号 */	
+	jmp	  @r7                        						
+	 nop						 	 						
+	.align 2						 						
+		/* cpu_support.S内の分岐先アドレス	*/ 	
+_default_int_handler_entry_asm___kernel_default_int_handler_entry_272:						
+	.long  __kernel_default_int_handler_entry				
+_inhno___kernel_default_int_handler_entry_272:                     /* 割込み番号 */ 		
+	.long  272 											
+
+	.align 2                       							
+__kernel_default_int_handler_entry_273:													
+#ifndef USE_BANKED_REG    									
+		 /*  必要最小限のレジスタをスタックに待避  */ 		
+	mov.l r7,@-r15 											
+	mov.l r6,@-r15											
+#endif /* USE_BANKED_REG */   								
+							/* cpu_support.S内の分岐先アドレス	*/ 	
+	mov.l _default_int_handler_entry_asm___kernel_default_int_handler_entry_273,r7 		
+	mov.l _inhno___kernel_default_int_handler_entry_273,r6				/* 割込み番号 */	
+	jmp	  @r7                        						
+	 nop						 	 						
+	.align 2						 						
+		/* cpu_support.S内の分岐先アドレス	*/ 	
+_default_int_handler_entry_asm___kernel_default_int_handler_entry_273:						
+	.long  __kernel_default_int_handler_entry				
+_inhno___kernel_default_int_handler_entry_273:                     /* 割込み番号 */ 		
+	.long  273 											
+
+	.align 2                       							
+__kernel_default_int_handler_entry_274:													
+#ifndef USE_BANKED_REG    									
+		 /*  必要最小限のレジスタをスタックに待避  */ 		
+	mov.l r7,@-r15 											
+	mov.l r6,@-r15											
+#endif /* USE_BANKED_REG */   								
+							/* cpu_support.S内の分岐先アドレス	*/ 	
+	mov.l _default_int_handler_entry_asm___kernel_default_int_handler_entry_274,r7 		
+	mov.l _inhno___kernel_default_int_handler_entry_274,r6				/* 割込み番号 */	
+	jmp	  @r7                        						
+	 nop						 	 						
+	.align 2						 						
+		/* cpu_support.S内の分岐先アドレス	*/ 	
+_default_int_handler_entry_asm___kernel_default_int_handler_entry_274:						
+	.long  __kernel_default_int_handler_entry				
+_inhno___kernel_default_int_handler_entry_274:                     /* 割込み番号 */ 		
+	.long  274 											
+
+	.align 2                       							
+__kernel_default_int_handler_entry_275:													
+#ifndef USE_BANKED_REG    									
+		 /*  必要最小限のレジスタをスタックに待避  */ 		
+	mov.l r7,@-r15 											
+	mov.l r6,@-r15											
+#endif /* USE_BANKED_REG */   								
+							/* cpu_support.S内の分岐先アドレス	*/ 	
+	mov.l _default_int_handler_entry_asm___kernel_default_int_handler_entry_275,r7 		
+	mov.l _inhno___kernel_default_int_handler_entry_275,r6				/* 割込み番号 */	
+	jmp	  @r7                        						
+	 nop						 	 						
+	.align 2						 						
+		/* cpu_support.S内の分岐先アドレス	*/ 	
+_default_int_handler_entry_asm___kernel_default_int_handler_entry_275:						
+	.long  __kernel_default_int_handler_entry				
+_inhno___kernel_default_int_handler_entry_275:                     /* 割込み番号 */ 		
+	.long  275 											
+
+	.align 2                       							
+__kernel_default_int_handler_entry_276:													
+#ifndef USE_BANKED_REG    									
+		 /*  必要最小限のレジスタをスタックに待避  */ 		
+	mov.l r7,@-r15 											
+	mov.l r6,@-r15											
+#endif /* USE_BANKED_REG */   								
+							/* cpu_support.S内の分岐先アドレス	*/ 	
+	mov.l _default_int_handler_entry_asm___kernel_default_int_handler_entry_276,r7 		
+	mov.l _inhno___kernel_default_int_handler_entry_276,r6				/* 割込み番号 */	
+	jmp	  @r7                        						
+	 nop						 	 						
+	.align 2						 						
+		/* cpu_support.S内の分岐先アドレス	*/ 	
+_default_int_handler_entry_asm___kernel_default_int_handler_entry_276:						
+	.long  __kernel_default_int_handler_entry				
+_inhno___kernel_default_int_handler_entry_276:                     /* 割込み番号 */ 		
+	.long  276 											
+
+	.align 2                       							
+__kernel_default_int_handler_entry_277:													
+#ifndef USE_BANKED_REG    									
+		 /*  必要最小限のレジスタをスタックに待避  */ 		
+	mov.l r7,@-r15 											
+	mov.l r6,@-r15											
+#endif /* USE_BANKED_REG */   								
+							/* cpu_support.S内の分岐先アドレス	*/ 	
+	mov.l _default_int_handler_entry_asm___kernel_default_int_handler_entry_277,r7 		
+	mov.l _inhno___kernel_default_int_handler_entry_277,r6				/* 割込み番号 */	
+	jmp	  @r7                        						
+	 nop						 	 						
+	.align 2						 						
+		/* cpu_support.S内の分岐先アドレス	*/ 	
+_default_int_handler_entry_asm___kernel_default_int_handler_entry_277:						
+	.long  __kernel_default_int_handler_entry				
+_inhno___kernel_default_int_handler_entry_277:                     /* 割込み番号 */ 		
+	.long  277 											
+
+	.align 2                       							
+__kernel_default_int_handler_entry_278:													
+#ifndef USE_BANKED_REG    									
+		 /*  必要最小限のレジスタをスタックに待避  */ 		
+	mov.l r7,@-r15 											
+	mov.l r6,@-r15											
+#endif /* USE_BANKED_REG */   								
+							/* cpu_support.S内の分岐先アドレス	*/ 	
+	mov.l _default_int_handler_entry_asm___kernel_default_int_handler_entry_278,r7 		
+	mov.l _inhno___kernel_default_int_handler_entry_278,r6				/* 割込み番号 */	
+	jmp	  @r7                        						
+	 nop						 	 						
+	.align 2						 						
+		/* cpu_support.S内の分岐先アドレス	*/ 	
+_default_int_handler_entry_asm___kernel_default_int_handler_entry_278:						
+	.long  __kernel_default_int_handler_entry				
+_inhno___kernel_default_int_handler_entry_278:                     /* 割込み番号 */ 		
+	.long  278 											
+
+	.align 2                       							
+__kernel_default_int_handler_entry_279:													
+#ifndef USE_BANKED_REG    									
+		 /*  必要最小限のレジスタをスタックに待避  */ 		
+	mov.l r7,@-r15 											
+	mov.l r6,@-r15											
+#endif /* USE_BANKED_REG */   								
+							/* cpu_support.S内の分岐先アドレス	*/ 	
+	mov.l _default_int_handler_entry_asm___kernel_default_int_handler_entry_279,r7 		
+	mov.l _inhno___kernel_default_int_handler_entry_279,r6				/* 割込み番号 */	
+	jmp	  @r7                        						
+	 nop						 	 						
+	.align 2						 						
+		/* cpu_support.S内の分岐先アドレス	*/ 	
+_default_int_handler_entry_asm___kernel_default_int_handler_entry_279:						
+	.long  __kernel_default_int_handler_entry				
+_inhno___kernel_default_int_handler_entry_279:                     /* 割込み番号 */ 		
+	.long  279 											
+
+	.align 2                       							
+__kernel_default_int_handler_entry_280:													
+#ifndef USE_BANKED_REG    									
+		 /*  必要最小限のレジスタをスタックに待避  */ 		
+	mov.l r7,@-r15 											
+	mov.l r6,@-r15											
+#endif /* USE_BANKED_REG */   								
+							/* cpu_support.S内の分岐先アドレス	*/ 	
+	mov.l _default_int_handler_entry_asm___kernel_default_int_handler_entry_280,r7 		
+	mov.l _inhno___kernel_default_int_handler_entry_280,r6				/* 割込み番号 */	
+	jmp	  @r7                        						
+	 nop						 	 						
+	.align 2						 						
+		/* cpu_support.S内の分岐先アドレス	*/ 	
+_default_int_handler_entry_asm___kernel_default_int_handler_entry_280:						
+	.long  __kernel_default_int_handler_entry				
+_inhno___kernel_default_int_handler_entry_280:                     /* 割込み番号 */ 		
+	.long  280 											
+
+	.align 2                       							
+__kernel_default_int_handler_entry_281:													
+#ifndef USE_BANKED_REG    									
+		 /*  必要最小限のレジスタをスタックに待避  */ 		
+	mov.l r7,@-r15 											
+	mov.l r6,@-r15											
+#endif /* USE_BANKED_REG */   								
+							/* cpu_support.S内の分岐先アドレス	*/ 	
+	mov.l _default_int_handler_entry_asm___kernel_default_int_handler_entry_281,r7 		
+	mov.l _inhno___kernel_default_int_handler_entry_281,r6				/* 割込み番号 */	
+	jmp	  @r7                        						
+	 nop						 	 						
+	.align 2						 						
+		/* cpu_support.S内の分岐先アドレス	*/ 	
+_default_int_handler_entry_asm___kernel_default_int_handler_entry_281:						
+	.long  __kernel_default_int_handler_entry				
+_inhno___kernel_default_int_handler_entry_281:                     /* 割込み番号 */ 		
+	.long  281 											
+
+	.align 2                       							
+__kernel_default_int_handler_entry_282:													
+#ifndef USE_BANKED_REG    									
+		 /*  必要最小限のレジスタをスタックに待避  */ 		
+	mov.l r7,@-r15 											
+	mov.l r6,@-r15											
+#endif /* USE_BANKED_REG */   								
+							/* cpu_support.S内の分岐先アドレス	*/ 	
+	mov.l _default_int_handler_entry_asm___kernel_default_int_handler_entry_282,r7 		
+	mov.l _inhno___kernel_default_int_handler_entry_282,r6				/* 割込み番号 */	
+	jmp	  @r7                        						
+	 nop						 	 						
+	.align 2						 						
+		/* cpu_support.S内の分岐先アドレス	*/ 	
+_default_int_handler_entry_asm___kernel_default_int_handler_entry_282:						
+	.long  __kernel_default_int_handler_entry				
+_inhno___kernel_default_int_handler_entry_282:                     /* 割込み番号 */ 		
+	.long  282 											
+
+	.align 2                       							
+__kernel_default_int_handler_entry_283:													
+#ifndef USE_BANKED_REG    									
+		 /*  必要最小限のレジスタをスタックに待避  */ 		
+	mov.l r7,@-r15 											
+	mov.l r6,@-r15											
+#endif /* USE_BANKED_REG */   								
+							/* cpu_support.S内の分岐先アドレス	*/ 	
+	mov.l _default_int_handler_entry_asm___kernel_default_int_handler_entry_283,r7 		
+	mov.l _inhno___kernel_default_int_handler_entry_283,r6				/* 割込み番号 */	
+	jmp	  @r7                        						
+	 nop						 	 						
+	.align 2						 						
+		/* cpu_support.S内の分岐先アドレス	*/ 	
+_default_int_handler_entry_asm___kernel_default_int_handler_entry_283:						
+	.long  __kernel_default_int_handler_entry				
+_inhno___kernel_default_int_handler_entry_283:                     /* 割込み番号 */ 		
+	.long  283 											
+
+	.align 2                       							
+__kernel_default_int_handler_entry_284:													
+#ifndef USE_BANKED_REG    									
+		 /*  必要最小限のレジスタをスタックに待避  */ 		
+	mov.l r7,@-r15 											
+	mov.l r6,@-r15											
+#endif /* USE_BANKED_REG */   								
+							/* cpu_support.S内の分岐先アドレス	*/ 	
+	mov.l _default_int_handler_entry_asm___kernel_default_int_handler_entry_284,r7 		
+	mov.l _inhno___kernel_default_int_handler_entry_284,r6				/* 割込み番号 */	
+	jmp	  @r7                        						
+	 nop						 	 						
+	.align 2						 						
+		/* cpu_support.S内の分岐先アドレス	*/ 	
+_default_int_handler_entry_asm___kernel_default_int_handler_entry_284:						
+	.long  __kernel_default_int_handler_entry				
+_inhno___kernel_default_int_handler_entry_284:                     /* 割込み番号 */ 		
+	.long  284 											
+
+	.align 2                       							
+__kernel_default_int_handler_entry_285:													
+#ifndef USE_BANKED_REG    									
+		 /*  必要最小限のレジスタをスタックに待避  */ 		
+	mov.l r7,@-r15 											
+	mov.l r6,@-r15											
+#endif /* USE_BANKED_REG */   								
+							/* cpu_support.S内の分岐先アドレス	*/ 	
+	mov.l _default_int_handler_entry_asm___kernel_default_int_handler_entry_285,r7 		
+	mov.l _inhno___kernel_default_int_handler_entry_285,r6				/* 割込み番号 */	
+	jmp	  @r7                        						
+	 nop						 	 						
+	.align 2						 						
+		/* cpu_support.S内の分岐先アドレス	*/ 	
+_default_int_handler_entry_asm___kernel_default_int_handler_entry_285:						
+	.long  __kernel_default_int_handler_entry				
+_inhno___kernel_default_int_handler_entry_285:                     /* 割込み番号 */ 		
+	.long  285 											
+
+	.align 2                       							
+__kernel_default_int_handler_entry_286:													
+#ifndef USE_BANKED_REG    									
+		 /*  必要最小限のレジスタをスタックに待避  */ 		
+	mov.l r7,@-r15 											
+	mov.l r6,@-r15											
+#endif /* USE_BANKED_REG */   								
+							/* cpu_support.S内の分岐先アドレス	*/ 	
+	mov.l _default_int_handler_entry_asm___kernel_default_int_handler_entry_286,r7 		
+	mov.l _inhno___kernel_default_int_handler_entry_286,r6				/* 割込み番号 */	
+	jmp	  @r7                        						
+	 nop						 	 						
+	.align 2						 						
+		/* cpu_support.S内の分岐先アドレス	*/ 	
+_default_int_handler_entry_asm___kernel_default_int_handler_entry_286:						
+	.long  __kernel_default_int_handler_entry				
+_inhno___kernel_default_int_handler_entry_286:                     /* 割込み番号 */ 		
+	.long  286 											
+
+	.align 2                       							
+__kernel_default_int_handler_entry_287:													
+#ifndef USE_BANKED_REG    									
+		 /*  必要最小限のレジスタをスタックに待避  */ 		
+	mov.l r7,@-r15 											
+	mov.l r6,@-r15											
+#endif /* USE_BANKED_REG */   								
+							/* cpu_support.S内の分岐先アドレス	*/ 	
+	mov.l _default_int_handler_entry_asm___kernel_default_int_handler_entry_287,r7 		
+	mov.l _inhno___kernel_default_int_handler_entry_287,r6				/* 割込み番号 */	
+	jmp	  @r7                        						
+	 nop						 	 						
+	.align 2						 						
+		/* cpu_support.S内の分岐先アドレス	*/ 	
+_default_int_handler_entry_asm___kernel_default_int_handler_entry_287:						
+	.long  __kernel_default_int_handler_entry				
+_inhno___kernel_default_int_handler_entry_287:                     /* 割込み番号 */ 		
+	.long  287 											
+
+	.align 2                       							
+__kernel_default_int_handler_entry_288:													
+#ifndef USE_BANKED_REG    									
+		 /*  必要最小限のレジスタをスタックに待避  */ 		
+	mov.l r7,@-r15 											
+	mov.l r6,@-r15											
+#endif /* USE_BANKED_REG */   								
+							/* cpu_support.S内の分岐先アドレス	*/ 	
+	mov.l _default_int_handler_entry_asm___kernel_default_int_handler_entry_288,r7 		
+	mov.l _inhno___kernel_default_int_handler_entry_288,r6				/* 割込み番号 */	
+	jmp	  @r7                        						
+	 nop						 	 						
+	.align 2						 						
+		/* cpu_support.S内の分岐先アドレス	*/ 	
+_default_int_handler_entry_asm___kernel_default_int_handler_entry_288:						
+	.long  __kernel_default_int_handler_entry				
+_inhno___kernel_default_int_handler_entry_288:                     /* 割込み番号 */ 		
+	.long  288 											
+
+	.align 2                       							
+__kernel_default_int_handler_entry_289:													
+#ifndef USE_BANKED_REG    									
+		 /*  必要最小限のレジスタをスタックに待避  */ 		
+	mov.l r7,@-r15 											
+	mov.l r6,@-r15											
+#endif /* USE_BANKED_REG */   								
+							/* cpu_support.S内の分岐先アドレス	*/ 	
+	mov.l _default_int_handler_entry_asm___kernel_default_int_handler_entry_289,r7 		
+	mov.l _inhno___kernel_default_int_handler_entry_289,r6				/* 割込み番号 */	
+	jmp	  @r7                        						
+	 nop						 	 						
+	.align 2						 						
+		/* cpu_support.S内の分岐先アドレス	*/ 	
+_default_int_handler_entry_asm___kernel_default_int_handler_entry_289:						
+	.long  __kernel_default_int_handler_entry				
+_inhno___kernel_default_int_handler_entry_289:                     /* 割込み番号 */ 		
+	.long  289 											
+
+	.align 2                       							
+__kernel_default_int_handler_entry_290:													
+#ifndef USE_BANKED_REG    									
+		 /*  必要最小限のレジスタをスタックに待避  */ 		
+	mov.l r7,@-r15 											
+	mov.l r6,@-r15											
+#endif /* USE_BANKED_REG */   								
+							/* cpu_support.S内の分岐先アドレス	*/ 	
+	mov.l _default_int_handler_entry_asm___kernel_default_int_handler_entry_290,r7 		
+	mov.l _inhno___kernel_default_int_handler_entry_290,r6				/* 割込み番号 */	
+	jmp	  @r7                        						
+	 nop						 	 						
+	.align 2						 						
+		/* cpu_support.S内の分岐先アドレス	*/ 	
+_default_int_handler_entry_asm___kernel_default_int_handler_entry_290:						
+	.long  __kernel_default_int_handler_entry				
+_inhno___kernel_default_int_handler_entry_290:                     /* 割込み番号 */ 		
+	.long  290 											
+
+	.align 2                       							
+__kernel_default_int_handler_entry_291:													
+#ifndef USE_BANKED_REG    									
+		 /*  必要最小限のレジスタをスタックに待避  */ 		
+	mov.l r7,@-r15 											
+	mov.l r6,@-r15											
+#endif /* USE_BANKED_REG */   								
+							/* cpu_support.S内の分岐先アドレス	*/ 	
+	mov.l _default_int_handler_entry_asm___kernel_default_int_handler_entry_291,r7 		
+	mov.l _inhno___kernel_default_int_handler_entry_291,r6				/* 割込み番号 */	
+	jmp	  @r7                        						
+	 nop						 	 						
+	.align 2						 						
+		/* cpu_support.S内の分岐先アドレス	*/ 	
+_default_int_handler_entry_asm___kernel_default_int_handler_entry_291:						
+	.long  __kernel_default_int_handler_entry				
+_inhno___kernel_default_int_handler_entry_291:                     /* 割込み番号 */ 		
+	.long  291 											
+
+	.align 2                       							
+__kernel_default_int_handler_entry_292:													
+#ifndef USE_BANKED_REG    									
+		 /*  必要最小限のレジスタをスタックに待避  */ 		
+	mov.l r7,@-r15 											
+	mov.l r6,@-r15											
+#endif /* USE_BANKED_REG */   								
+							/* cpu_support.S内の分岐先アドレス	*/ 	
+	mov.l _default_int_handler_entry_asm___kernel_default_int_handler_entry_292,r7 		
+	mov.l _inhno___kernel_default_int_handler_entry_292,r6				/* 割込み番号 */	
+	jmp	  @r7                        						
+	 nop						 	 						
+	.align 2						 						
+		/* cpu_support.S内の分岐先アドレス	*/ 	
+_default_int_handler_entry_asm___kernel_default_int_handler_entry_292:						
+	.long  __kernel_default_int_handler_entry				
+_inhno___kernel_default_int_handler_entry_292:                     /* 割込み番号 */ 		
+	.long  292 											
+
+	.align 2                       							
+__kernel_default_int_handler_entry_293:													
+#ifndef USE_BANKED_REG    									
+		 /*  必要最小限のレジスタをスタックに待避  */ 		
+	mov.l r7,@-r15 											
+	mov.l r6,@-r15											
+#endif /* USE_BANKED_REG */   								
+							/* cpu_support.S内の分岐先アドレス	*/ 	
+	mov.l _default_int_handler_entry_asm___kernel_default_int_handler_entry_293,r7 		
+	mov.l _inhno___kernel_default_int_handler_entry_293,r6				/* 割込み番号 */	
+	jmp	  @r7                        						
+	 nop						 	 						
+	.align 2						 						
+		/* cpu_support.S内の分岐先アドレス	*/ 	
+_default_int_handler_entry_asm___kernel_default_int_handler_entry_293:						
+	.long  __kernel_default_int_handler_entry				
+_inhno___kernel_default_int_handler_entry_293:                     /* 割込み番号 */ 		
+	.long  293 											
+
+	.align 2                       							
+__kernel_default_int_handler_entry_294:													
+#ifndef USE_BANKED_REG    									
+		 /*  必要最小限のレジスタをスタックに待避  */ 		
+	mov.l r7,@-r15 											
+	mov.l r6,@-r15											
+#endif /* USE_BANKED_REG */   								
+							/* cpu_support.S内の分岐先アドレス	*/ 	
+	mov.l _default_int_handler_entry_asm___kernel_default_int_handler_entry_294,r7 		
+	mov.l _inhno___kernel_default_int_handler_entry_294,r6				/* 割込み番号 */	
+	jmp	  @r7                        						
+	 nop						 	 						
+	.align 2						 						
+		/* cpu_support.S内の分岐先アドレス	*/ 	
+_default_int_handler_entry_asm___kernel_default_int_handler_entry_294:						
+	.long  __kernel_default_int_handler_entry				
+_inhno___kernel_default_int_handler_entry_294:                     /* 割込み番号 */ 		
+	.long  294 											
+
+	.align 2                       							
+__kernel_default_int_handler_entry_296:													
+#ifndef USE_BANKED_REG    									
+		 /*  必要最小限のレジスタをスタックに待避  */ 		
+	mov.l r7,@-r15 											
+	mov.l r6,@-r15											
+#endif /* USE_BANKED_REG */   								
+							/* cpu_support.S内の分岐先アドレス	*/ 	
+	mov.l _default_int_handler_entry_asm___kernel_default_int_handler_entry_296,r7 		
+	mov.l _inhno___kernel_default_int_handler_entry_296,r6				/* 割込み番号 */	
+	jmp	  @r7                        						
+	 nop						 	 						
+	.align 2						 						
+		/* cpu_support.S内の分岐先アドレス	*/ 	
+_default_int_handler_entry_asm___kernel_default_int_handler_entry_296:						
+	.long  __kernel_default_int_handler_entry				
+_inhno___kernel_default_int_handler_entry_296:                     /* 割込み番号 */ 		
+	.long  296 											
+
+	.align 2                       							
+__kernel_default_int_handler_entry_297:													
+#ifndef USE_BANKED_REG    									
+		 /*  必要最小限のレジスタをスタックに待避  */ 		
+	mov.l r7,@-r15 											
+	mov.l r6,@-r15											
+#endif /* USE_BANKED_REG */   								
+							/* cpu_support.S内の分岐先アドレス	*/ 	
+	mov.l _default_int_handler_entry_asm___kernel_default_int_handler_entry_297,r7 		
+	mov.l _inhno___kernel_default_int_handler_entry_297,r6				/* 割込み番号 */	
+	jmp	  @r7                        						
+	 nop						 	 						
+	.align 2						 						
+		/* cpu_support.S内の分岐先アドレス	*/ 	
+_default_int_handler_entry_asm___kernel_default_int_handler_entry_297:						
+	.long  __kernel_default_int_handler_entry				
+_inhno___kernel_default_int_handler_entry_297:                     /* 割込み番号 */ 		
+	.long  297 											
+
+	.align 2                       							
+__kernel_default_int_handler_entry_298:													
+#ifndef USE_BANKED_REG    									
+		 /*  必要最小限のレジスタをスタックに待避  */ 		
+	mov.l r7,@-r15 											
+	mov.l r6,@-r15											
+#endif /* USE_BANKED_REG */   								
+							/* cpu_support.S内の分岐先アドレス	*/ 	
+	mov.l _default_int_handler_entry_asm___kernel_default_int_handler_entry_298,r7 		
+	mov.l _inhno___kernel_default_int_handler_entry_298,r6				/* 割込み番号 */	
+	jmp	  @r7                        						
+	 nop						 	 						
+	.align 2						 						
+		/* cpu_support.S内の分岐先アドレス	*/ 	
+_default_int_handler_entry_asm___kernel_default_int_handler_entry_298:						
+	.long  __kernel_default_int_handler_entry				
+_inhno___kernel_default_int_handler_entry_298:                     /* 割込み番号 */ 		
+	.long  298 											
+
+	.align 2                       							
+__kernel_default_int_handler_entry_299:													
+#ifndef USE_BANKED_REG    									
+		 /*  必要最小限のレジスタをスタックに待避  */ 		
+	mov.l r7,@-r15 											
+	mov.l r6,@-r15											
+#endif /* USE_BANKED_REG */   								
+							/* cpu_support.S内の分岐先アドレス	*/ 	
+	mov.l _default_int_handler_entry_asm___kernel_default_int_handler_entry_299,r7 		
+	mov.l _inhno___kernel_default_int_handler_entry_299,r6				/* 割込み番号 */	
+	jmp	  @r7                        						
+	 nop						 	 						
+	.align 2						 						
+		/* cpu_support.S内の分岐先アドレス	*/ 	
+_default_int_handler_entry_asm___kernel_default_int_handler_entry_299:						
+	.long  __kernel_default_int_handler_entry				
+_inhno___kernel_default_int_handler_entry_299:                     /* 割込み番号 */ 		
+	.long  299 											
+
+	.align 2                       							
+__kernel_default_int_handler_entry_300:													
+#ifndef USE_BANKED_REG    									
+		 /*  必要最小限のレジスタをスタックに待避  */ 		
+	mov.l r7,@-r15 											
+	mov.l r6,@-r15											
+#endif /* USE_BANKED_REG */   								
+							/* cpu_support.S内の分岐先アドレス	*/ 	
+	mov.l _default_int_handler_entry_asm___kernel_default_int_handler_entry_300,r7 		
+	mov.l _inhno___kernel_default_int_handler_entry_300,r6				/* 割込み番号 */	
+	jmp	  @r7                        						
+	 nop						 	 						
+	.align 2						 						
+		/* cpu_support.S内の分岐先アドレス	*/ 	
+_default_int_handler_entry_asm___kernel_default_int_handler_entry_300:						
+	.long  __kernel_default_int_handler_entry				
+_inhno___kernel_default_int_handler_entry_300:                     /* 割込み番号 */ 		
+	.long  300 											
+
+	.align 2                       							
+__kernel_default_int_handler_entry_301:													
+#ifndef USE_BANKED_REG    									
+		 /*  必要最小限のレジスタをスタックに待避  */ 		
+	mov.l r7,@-r15 											
+	mov.l r6,@-r15											
+#endif /* USE_BANKED_REG */   								
+							/* cpu_support.S内の分岐先アドレス	*/ 	
+	mov.l _default_int_handler_entry_asm___kernel_default_int_handler_entry_301,r7 		
+	mov.l _inhno___kernel_default_int_handler_entry_301,r6				/* 割込み番号 */	
+	jmp	  @r7                        						
+	 nop						 	 						
+	.align 2						 						
+		/* cpu_support.S内の分岐先アドレス	*/ 	
+_default_int_handler_entry_asm___kernel_default_int_handler_entry_301:						
+	.long  __kernel_default_int_handler_entry				
+_inhno___kernel_default_int_handler_entry_301:                     /* 割込み番号 */ 		
+	.long  301 											
+
+	.align 2                       							
+__kernel_default_int_handler_entry_302:													
+#ifndef USE_BANKED_REG    									
+		 /*  必要最小限のレジスタをスタックに待避  */ 		
+	mov.l r7,@-r15 											
+	mov.l r6,@-r15											
+#endif /* USE_BANKED_REG */   								
+							/* cpu_support.S内の分岐先アドレス	*/ 	
+	mov.l _default_int_handler_entry_asm___kernel_default_int_handler_entry_302,r7 		
+	mov.l _inhno___kernel_default_int_handler_entry_302,r6				/* 割込み番号 */	
+	jmp	  @r7                        						
+	 nop						 	 						
+	.align 2						 						
+		/* cpu_support.S内の分岐先アドレス	*/ 	
+_default_int_handler_entry_asm___kernel_default_int_handler_entry_302:						
+	.long  __kernel_default_int_handler_entry				
+_inhno___kernel_default_int_handler_entry_302:                     /* 割込み番号 */ 		
+	.long  302 											
+
+	.align 2                       							
+__kernel_default_int_handler_entry_303:													
+#ifndef USE_BANKED_REG    									
+		 /*  必要最小限のレジスタをスタックに待避  */ 		
+	mov.l r7,@-r15 											
+	mov.l r6,@-r15											
+#endif /* USE_BANKED_REG */   								
+							/* cpu_support.S内の分岐先アドレス	*/ 	
+	mov.l _default_int_handler_entry_asm___kernel_default_int_handler_entry_303,r7 		
+	mov.l _inhno___kernel_default_int_handler_entry_303,r6				/* 割込み番号 */	
+	jmp	  @r7                        						
+	 nop						 	 						
+	.align 2						 						
+		/* cpu_support.S内の分岐先アドレス	*/ 	
+_default_int_handler_entry_asm___kernel_default_int_handler_entry_303:						
+	.long  __kernel_default_int_handler_entry				
+_inhno___kernel_default_int_handler_entry_303:                     /* 割込み番号 */ 		
+	.long  303 											
+
+	.align 2                       							
+__kernel_default_int_handler_entry_304:													
+#ifndef USE_BANKED_REG    									
+		 /*  必要最小限のレジスタをスタックに待避  */ 		
+	mov.l r7,@-r15 											
+	mov.l r6,@-r15											
+#endif /* USE_BANKED_REG */   								
+							/* cpu_support.S内の分岐先アドレス	*/ 	
+	mov.l _default_int_handler_entry_asm___kernel_default_int_handler_entry_304,r7 		
+	mov.l _inhno___kernel_default_int_handler_entry_304,r6				/* 割込み番号 */	
+	jmp	  @r7                        						
+	 nop						 	 						
+	.align 2						 						
+		/* cpu_support.S内の分岐先アドレス	*/ 	
+_default_int_handler_entry_asm___kernel_default_int_handler_entry_304:						
+	.long  __kernel_default_int_handler_entry				
+_inhno___kernel_default_int_handler_entry_304:                     /* 割込み番号 */ 		
+	.long  304 											
+
+	.align 2                       							
+__kernel_default_int_handler_entry_305:													
+#ifndef USE_BANKED_REG    									
+		 /*  必要最小限のレジスタをスタックに待避  */ 		
+	mov.l r7,@-r15 											
+	mov.l r6,@-r15											
+#endif /* USE_BANKED_REG */   								
+							/* cpu_support.S内の分岐先アドレス	*/ 	
+	mov.l _default_int_handler_entry_asm___kernel_default_int_handler_entry_305,r7 		
+	mov.l _inhno___kernel_default_int_handler_entry_305,r6				/* 割込み番号 */	
+	jmp	  @r7                        						
+	 nop						 	 						
+	.align 2						 						
+		/* cpu_support.S内の分岐先アドレス	*/ 	
+_default_int_handler_entry_asm___kernel_default_int_handler_entry_305:						
+	.long  __kernel_default_int_handler_entry				
+_inhno___kernel_default_int_handler_entry_305:                     /* 割込み番号 */ 		
+	.long  305 											
+
+	.align 2                       							
+__kernel_default_int_handler_entry_306:													
+#ifndef USE_BANKED_REG    									
+		 /*  必要最小限のレジスタをスタックに待避  */ 		
+	mov.l r7,@-r15 											
+	mov.l r6,@-r15											
+#endif /* USE_BANKED_REG */   								
+							/* cpu_support.S内の分岐先アドレス	*/ 	
+	mov.l _default_int_handler_entry_asm___kernel_default_int_handler_entry_306,r7 		
+	mov.l _inhno___kernel_default_int_handler_entry_306,r6				/* 割込み番号 */	
+	jmp	  @r7                        						
+	 nop						 	 						
+	.align 2						 						
+		/* cpu_support.S内の分岐先アドレス	*/ 	
+_default_int_handler_entry_asm___kernel_default_int_handler_entry_306:						
+	.long  __kernel_default_int_handler_entry				
+_inhno___kernel_default_int_handler_entry_306:                     /* 割込み番号 */ 		
+	.long  306 											
+
+	.align 2                       							
+__kernel_default_int_handler_entry_307:													
+#ifndef USE_BANKED_REG    									
+		 /*  必要最小限のレジスタをスタックに待避  */ 		
+	mov.l r7,@-r15 											
+	mov.l r6,@-r15											
+#endif /* USE_BANKED_REG */   								
+							/* cpu_support.S内の分岐先アドレス	*/ 	
+	mov.l _default_int_handler_entry_asm___kernel_default_int_handler_entry_307,r7 		
+	mov.l _inhno___kernel_default_int_handler_entry_307,r6				/* 割込み番号 */	
+	jmp	  @r7                        						
+	 nop						 	 						
+	.align 2						 						
+		/* cpu_support.S内の分岐先アドレス	*/ 	
+_default_int_handler_entry_asm___kernel_default_int_handler_entry_307:						
+	.long  __kernel_default_int_handler_entry				
+_inhno___kernel_default_int_handler_entry_307:                     /* 割込み番号 */ 		
+	.long  307 											
+
+	.align 2                       							
+__kernel_default_int_handler_entry_308:													
+#ifndef USE_BANKED_REG    									
+		 /*  必要最小限のレジスタをスタックに待避  */ 		
+	mov.l r7,@-r15 											
+	mov.l r6,@-r15											
+#endif /* USE_BANKED_REG */   								
+							/* cpu_support.S内の分岐先アドレス	*/ 	
+	mov.l _default_int_handler_entry_asm___kernel_default_int_handler_entry_308,r7 		
+	mov.l _inhno___kernel_default_int_handler_entry_308,r6				/* 割込み番号 */	
+	jmp	  @r7                        						
+	 nop						 	 						
+	.align 2						 						
+		/* cpu_support.S内の分岐先アドレス	*/ 	
+_default_int_handler_entry_asm___kernel_default_int_handler_entry_308:						
+	.long  __kernel_default_int_handler_entry				
+_inhno___kernel_default_int_handler_entry_308:                     /* 割込み番号 */ 		
+	.long  308 											
+
+	.align 2                       							
+__kernel_default_int_handler_entry_310:													
+#ifndef USE_BANKED_REG    									
+		 /*  必要最小限のレジスタをスタックに待避  */ 		
+	mov.l r7,@-r15 											
+	mov.l r6,@-r15											
+#endif /* USE_BANKED_REG */   								
+							/* cpu_support.S内の分岐先アドレス	*/ 	
+	mov.l _default_int_handler_entry_asm___kernel_default_int_handler_entry_310,r7 		
+	mov.l _inhno___kernel_default_int_handler_entry_310,r6				/* 割込み番号 */	
+	jmp	  @r7                        						
+	 nop						 	 						
+	.align 2						 						
+		/* cpu_support.S内の分岐先アドレス	*/ 	
+_default_int_handler_entry_asm___kernel_default_int_handler_entry_310:						
+	.long  __kernel_default_int_handler_entry				
+_inhno___kernel_default_int_handler_entry_310:                     /* 割込み番号 */ 		
+	.long  310 											
+
+	.align 2                       							
+__kernel_default_int_handler_entry_311:													
+#ifndef USE_BANKED_REG    									
+		 /*  必要最小限のレジスタをスタックに待避  */ 		
+	mov.l r7,@-r15 											
+	mov.l r6,@-r15											
+#endif /* USE_BANKED_REG */   								
+							/* cpu_support.S内の分岐先アドレス	*/ 	
+	mov.l _default_int_handler_entry_asm___kernel_default_int_handler_entry_311,r7 		
+	mov.l _inhno___kernel_default_int_handler_entry_311,r6				/* 割込み番号 */	
+	jmp	  @r7                        						
+	 nop						 	 						
+	.align 2						 						
+		/* cpu_support.S内の分岐先アドレス	*/ 	
+_default_int_handler_entry_asm___kernel_default_int_handler_entry_311:						
+	.long  __kernel_default_int_handler_entry				
+_inhno___kernel_default_int_handler_entry_311:                     /* 割込み番号 */ 		
+	.long  311 											
+
+	.align 2                       							
+__kernel_default_int_handler_entry_312:													
+#ifndef USE_BANKED_REG    									
+		 /*  必要最小限のレジスタをスタックに待避  */ 		
+	mov.l r7,@-r15 											
+	mov.l r6,@-r15											
+#endif /* USE_BANKED_REG */   								
+							/* cpu_support.S内の分岐先アドレス	*/ 	
+	mov.l _default_int_handler_entry_asm___kernel_default_int_handler_entry_312,r7 		
+	mov.l _inhno___kernel_default_int_handler_entry_312,r6				/* 割込み番号 */	
+	jmp	  @r7                        						
+	 nop						 	 						
+	.align 2						 						
+		/* cpu_support.S内の分岐先アドレス	*/ 	
+_default_int_handler_entry_asm___kernel_default_int_handler_entry_312:						
+	.long  __kernel_default_int_handler_entry				
+_inhno___kernel_default_int_handler_entry_312:                     /* 割込み番号 */ 		
+	.long  312 											
 /*															
  *  CPU例外ハンドラの出入口処理								
  */															
@@ -2721,19 +4469,19 @@ __kernel_vectors:
 	.long _ext_ker /* 77 */
 	.long _ext_ker /* 78 */
 	.long _ext_ker /* 79 */
-	.long _ext_ker /* 80 */
-	.long _ext_ker /* 81 */
-	.long _ext_ker /* 82 */
-	.long _ext_ker /* 83 */
-	.long _ext_ker /* 84 */
-	.long _ext_ker /* 85 */
-	.long _ext_ker /* 86 */
-	.long _ext_ker /* 87 */
+	.long __kernel_default_int_handler_entry_80 /* 80 */
+	.long __kernel_default_int_handler_entry_81 /* 81 */
+	.long __kernel_default_int_handler_entry_82 /* 82 */
+	.long __kernel_default_int_handler_entry_83 /* 83 */
+	.long __kernel_default_int_handler_entry_84 /* 84 */
+	.long __kernel_default_int_handler_entry_85 /* 85 */
+	.long __kernel_default_int_handler_entry_86 /* 86 */
+	.long __kernel_default_int_handler_entry_87 /* 87 */
 	.long _ext_ker /* 88 */
 	.long _ext_ker /* 89 */
 	.long _ext_ker /* 90 */
 	.long _ext_ker /* 91 */
-	.long __kernel_default_int_handler_entry_92 /* 92 */
+	.long _ext_ker /* 92 */
 	.long _ext_ker /* 93 */
 	.long _ext_ker /* 94 */
 	.long _ext_ker /* 95 */
@@ -2781,29 +4529,29 @@ __kernel_vectors:
 	.long __kernel_default_int_handler_entry_137 /* 137 */
 	.long _ext_ker /* 138 */
 	.long _ext_ker /* 139 */
-	.long __kernel_target_timer_handler_INHNO_TIMER /* 140 */
-	.long _ext_ker /* 141 */
+	.long __kernel_default_int_handler_entry_140 /* 140 */
+	.long __kernel_default_int_handler_entry_141 /* 141 */
 	.long _ext_ker /* 142 */
 	.long _ext_ker /* 143 */
 	.long __kernel_default_int_handler_entry_144 /* 144 */
-	.long _ext_ker /* 145 */
+	.long __kernel_default_int_handler_entry_145 /* 145 */
 	.long _ext_ker /* 146 */
 	.long _ext_ker /* 147 */
 	.long __kernel_default_int_handler_entry_148 /* 148 */
-	.long _ext_ker /* 149 */
+	.long __kernel_default_int_handler_entry_149 /* 149 */
 	.long _ext_ker /* 150 */
 	.long _ext_ker /* 151 */
 	.long __kernel_default_int_handler_entry_152 /* 152 */
-	.long _ext_ker /* 153 */
+	.long __kernel_default_int_handler_entry_153 /* 153 */
 	.long _ext_ker /* 154 */
 	.long _ext_ker /* 155 */
 	.long __kernel_default_int_handler_entry_156 /* 156 */
 	.long __kernel_default_int_handler_entry_157 /* 157 */
-	.long __kernel_default_int_handler_entry_158 /* 158 */
-	.long __kernel_default_int_handler_entry_159 /* 159 */
+	.long _ext_ker /* 158 */
+	.long _ext_ker /* 159 */
 	.long __kernel_default_int_handler_entry_160 /* 160 */
 	.long __kernel_default_int_handler_entry_161 /* 161 */
-	.long __kernel_default_int_handler_entry_162 /* 162 */
+	.long _ext_ker /* 162 */
 	.long _ext_ker /* 163 */
 	.long __kernel_default_int_handler_entry_164 /* 164 */
 	.long __kernel_default_int_handler_entry_165 /* 165 */
@@ -2811,84 +4559,84 @@ __kernel_vectors:
 	.long _ext_ker /* 167 */
 	.long __kernel_default_int_handler_entry_168 /* 168 */
 	.long __kernel_default_int_handler_entry_169 /* 169 */
-	.long _ext_ker /* 170 */
-	.long _ext_ker /* 171 */
+	.long __kernel_default_int_handler_entry_170 /* 170 */
+	.long __kernel_default_int_handler_entry_171 /* 171 */
 	.long __kernel_default_int_handler_entry_172 /* 172 */
 	.long __kernel_default_int_handler_entry_173 /* 173 */
-	.long _ext_ker /* 174 */
-	.long _ext_ker /* 175 */
+	.long __kernel_default_int_handler_entry_174 /* 174 */
+	.long __kernel_target_timer_handler_INHNO_TIMER /* 175 */
 	.long __kernel_default_int_handler_entry_176 /* 176 */
 	.long __kernel_default_int_handler_entry_177 /* 177 */
-	.long _ext_ker /* 178 */
-	.long _ext_ker /* 179 */
+	.long __kernel_default_int_handler_entry_178 /* 178 */
+	.long __kernel_default_int_handler_entry_179 /* 179 */
 	.long __kernel_default_int_handler_entry_180 /* 180 */
 	.long __kernel_default_int_handler_entry_181 /* 181 */
 	.long __kernel_default_int_handler_entry_182 /* 182 */
 	.long __kernel_default_int_handler_entry_183 /* 183 */
 	.long __kernel_default_int_handler_entry_184 /* 184 */
-	.long _ext_ker /* 185 */
-	.long _ext_ker /* 186 */
-	.long _ext_ker /* 187 */
+	.long __kernel_default_int_handler_entry_185 /* 185 */
+	.long __kernel_default_int_handler_entry_186 /* 186 */
+	.long __kernel_default_int_handler_entry_187 /* 187 */
 	.long __kernel_default_int_handler_entry_188 /* 188 */
 	.long __kernel_default_int_handler_entry_189 /* 189 */
 	.long __kernel_default_int_handler_entry_190 /* 190 */
 	.long __kernel_default_int_handler_entry_191 /* 191 */
 	.long __kernel_default_int_handler_entry_192 /* 192 */
-	.long _ext_ker /* 193 */
-	.long _ext_ker /* 194 */
-	.long _ext_ker /* 195 */
+	.long __kernel_default_int_handler_entry_193 /* 193 */
+	.long __kernel_default_int_handler_entry_194 /* 194 */
+	.long __kernel_default_int_handler_entry_195 /* 195 */
 	.long __kernel_default_int_handler_entry_196 /* 196 */
 	.long __kernel_default_int_handler_entry_197 /* 197 */
 	.long __kernel_default_int_handler_entry_198 /* 198 */
-	.long _ext_ker /* 199 */
+	.long __kernel_default_int_handler_entry_199 /* 199 */
 	.long __kernel_default_int_handler_entry_200 /* 200 */
 	.long __kernel_default_int_handler_entry_201 /* 201 */
-	.long _ext_ker /* 202 */
-	.long _ext_ker /* 203 */
+	.long __kernel_default_int_handler_entry_202 /* 202 */
+	.long __kernel_default_int_handler_entry_203 /* 203 */
 	.long __kernel_default_int_handler_entry_204 /* 204 */
 	.long __kernel_default_int_handler_entry_205 /* 205 */
 	.long __kernel_default_int_handler_entry_206 /* 206 */
 	.long __kernel_default_int_handler_entry_207 /* 207 */
 	.long __kernel_default_int_handler_entry_208 /* 208 */
-	.long _ext_ker /* 209 */
-	.long _ext_ker /* 210 */
-	.long _ext_ker /* 211 */
+	.long __kernel_default_int_handler_entry_209 /* 209 */
+	.long __kernel_default_int_handler_entry_210 /* 210 */
+	.long __kernel_default_int_handler_entry_211 /* 211 */
 	.long __kernel_default_int_handler_entry_212 /* 212 */
 	.long __kernel_default_int_handler_entry_213 /* 213 */
 	.long __kernel_default_int_handler_entry_214 /* 214 */
 	.long __kernel_default_int_handler_entry_215 /* 215 */
 	.long __kernel_default_int_handler_entry_216 /* 216 */
-	.long _ext_ker /* 217 */
-	.long _ext_ker /* 218 */
-	.long _ext_ker /* 219 */
+	.long __kernel_default_int_handler_entry_217 /* 217 */
+	.long __kernel_default_int_handler_entry_218 /* 218 */
+	.long __kernel_default_int_handler_entry_219 /* 219 */
 	.long __kernel_default_int_handler_entry_220 /* 220 */
 	.long __kernel_default_int_handler_entry_221 /* 221 */
 	.long __kernel_default_int_handler_entry_222 /* 222 */
-	.long _ext_ker /* 223 */
+	.long __kernel_default_int_handler_entry_223 /* 223 */
 	.long __kernel_default_int_handler_entry_224 /* 224 */
-	.long _ext_ker /* 225 */
-	.long _ext_ker /* 226 */
-	.long _ext_ker /* 227 */
+	.long __kernel_default_int_handler_entry_225 /* 225 */
+	.long __kernel_default_int_handler_entry_226 /* 226 */
+	.long __kernel_default_int_handler_entry_227 /* 227 */
 	.long __kernel_default_int_handler_entry_228 /* 228 */
 	.long __kernel_default_int_handler_entry_229 /* 229 */
 	.long __kernel_default_int_handler_entry_230 /* 230 */
 	.long __kernel_default_int_handler_entry_231 /* 231 */
 	.long __kernel_default_int_handler_entry_232 /* 232 */
-	.long _ext_ker /* 233 */
-	.long _ext_ker /* 234 */
-	.long _ext_ker /* 235 */
-	.long _ext_ker /* 236 */
-	.long _ext_ker /* 237 */
-	.long _ext_ker /* 238 */
-	.long _ext_ker /* 239 */
+	.long __kernel_default_int_handler_entry_233 /* 233 */
+	.long __kernel_default_int_handler_entry_234 /* 234 */
+	.long __kernel_default_int_handler_entry_235 /* 235 */
+	.long __kernel_default_int_handler_entry_236 /* 236 */
+	.long __kernel_default_int_handler_entry_237 /* 237 */
+	.long __kernel__kernel_inthdr_238_238 /* 238 */
+	.long __kernel__kernel_inthdr_239_239 /* 239 */
 	.long __kernel_default_int_handler_entry_240 /* 240 */
 	.long __kernel_default_int_handler_entry_241 /* 241 */
 	.long __kernel_default_int_handler_entry_242 /* 242 */
 	.long __kernel_default_int_handler_entry_243 /* 243 */
 	.long __kernel_default_int_handler_entry_244 /* 244 */
 	.long __kernel_default_int_handler_entry_245 /* 245 */
-	.long __kernel__kernel_inthdr_246_246 /* 246 */
-	.long __kernel__kernel_inthdr_247_247 /* 247 */
+	.long __kernel_default_int_handler_entry_246 /* 246 */
+	.long __kernel_default_int_handler_entry_247 /* 247 */
 	.long __kernel_default_int_handler_entry_248 /* 248 */
 	.long __kernel_default_int_handler_entry_249 /* 249 */
 	.long __kernel_default_int_handler_entry_250 /* 250 */
@@ -2900,4 +4648,58 @@ __kernel_vectors:
 	.long __kernel_default_int_handler_entry_256 /* 256 */
 	.long __kernel_default_int_handler_entry_257 /* 257 */
 	.long __kernel_default_int_handler_entry_258 /* 258 */
+	.long __kernel_default_int_handler_entry_259 /* 259 */
+	.long __kernel_default_int_handler_entry_260 /* 260 */
+	.long __kernel_default_int_handler_entry_261 /* 261 */
+	.long __kernel_default_int_handler_entry_262 /* 262 */
+	.long __kernel_default_int_handler_entry_263 /* 263 */
+	.long __kernel_default_int_handler_entry_264 /* 264 */
+	.long __kernel_default_int_handler_entry_265 /* 265 */
+	.long __kernel_default_int_handler_entry_266 /* 266 */
+	.long __kernel_default_int_handler_entry_267 /* 267 */
+	.long __kernel_default_int_handler_entry_268 /* 268 */
+	.long __kernel_default_int_handler_entry_269 /* 269 */
+	.long __kernel_default_int_handler_entry_270 /* 270 */
+	.long __kernel_default_int_handler_entry_271 /* 271 */
+	.long __kernel_default_int_handler_entry_272 /* 272 */
+	.long __kernel_default_int_handler_entry_273 /* 273 */
+	.long __kernel_default_int_handler_entry_274 /* 274 */
+	.long __kernel_default_int_handler_entry_275 /* 275 */
+	.long __kernel_default_int_handler_entry_276 /* 276 */
+	.long __kernel_default_int_handler_entry_277 /* 277 */
+	.long __kernel_default_int_handler_entry_278 /* 278 */
+	.long __kernel_default_int_handler_entry_279 /* 279 */
+	.long __kernel_default_int_handler_entry_280 /* 280 */
+	.long __kernel_default_int_handler_entry_281 /* 281 */
+	.long __kernel_default_int_handler_entry_282 /* 282 */
+	.long __kernel_default_int_handler_entry_283 /* 283 */
+	.long __kernel_default_int_handler_entry_284 /* 284 */
+	.long __kernel_default_int_handler_entry_285 /* 285 */
+	.long __kernel_default_int_handler_entry_286 /* 286 */
+	.long __kernel_default_int_handler_entry_287 /* 287 */
+	.long __kernel_default_int_handler_entry_288 /* 288 */
+	.long __kernel_default_int_handler_entry_289 /* 289 */
+	.long __kernel_default_int_handler_entry_290 /* 290 */
+	.long __kernel_default_int_handler_entry_291 /* 291 */
+	.long __kernel_default_int_handler_entry_292 /* 292 */
+	.long __kernel_default_int_handler_entry_293 /* 293 */
+	.long __kernel_default_int_handler_entry_294 /* 294 */
+	.long _ext_ker /* 295 */
+	.long __kernel_default_int_handler_entry_296 /* 296 */
+	.long __kernel_default_int_handler_entry_297 /* 297 */
+	.long __kernel_default_int_handler_entry_298 /* 298 */
+	.long __kernel_default_int_handler_entry_299 /* 299 */
+	.long __kernel_default_int_handler_entry_300 /* 300 */
+	.long __kernel_default_int_handler_entry_301 /* 301 */
+	.long __kernel_default_int_handler_entry_302 /* 302 */
+	.long __kernel_default_int_handler_entry_303 /* 303 */
+	.long __kernel_default_int_handler_entry_304 /* 304 */
+	.long __kernel_default_int_handler_entry_305 /* 305 */
+	.long __kernel_default_int_handler_entry_306 /* 306 */
+	.long __kernel_default_int_handler_entry_307 /* 307 */
+	.long __kernel_default_int_handler_entry_308 /* 308 */
+	.long _ext_ker /* 309 */
+	.long __kernel_default_int_handler_entry_310 /* 310 */
+	.long __kernel_default_int_handler_entry_311 /* 311 */
+	.long __kernel_default_int_handler_entry_312 /* 312 */
 
