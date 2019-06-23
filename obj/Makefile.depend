@@ -1,227 +1,227 @@
-cfg1_out.c: sample1.cfg ../arch/sh12a_gcc/prc_cmt.cfg ../syssvc/banner.cfg ../syssvc/logtask.cfg ../syssvc/serial.cfg ../syssvc/syslog.cfg ../target/apsh2a_gcc/target_serial.cfg ../target/apsh2a_gcc/target_timer.cfg 
-cfg1_out.o: ../target/apsh2a_gcc/target_serial.h \
+cfg1_out.c: sample1.cfg ../arch/sh12a_gcc/prc_cmt.cfg ../syssvc/banner.cfg ../syssvc/logtask.cfg ../syssvc/serial.cfg ../syssvc/syslog.cfg ../target/frksh2a_gcc/target_serial.cfg ../target/frksh2a_gcc/target_timer.cfg 
+cfg1_out.o: ../target/frksh2a_gcc/target_serial.h \
 	../arch/sh12a_gcc/prc_kernel.h ../syssvc/logtask.cfg \
 	../kernel/task.h ../arch/sh12a_gcc/prc_syssvc.h \
-	../target/apsh2a_gcc/target_test.h ../kernel/pridataq.h \
+	../target/frksh2a_gcc/target_test.h ../kernel/pridataq.h \
 	../include/kernel.h ../include/sil.h \
-	../target/apsh2a_gcc/target_sil.h ../kernel/time_event.h \
+	../target/frksh2a_gcc/target_sil.h ../kernel/time_event.h \
 	../include/queue.h ../arch/sh12a_gcc/prc_rename.h \
-	../kernel/allfunc.h ../target/apsh2a_gcc/target_syssvc.h \
-	../target/apsh2a_gcc/apsh2a.h ../kernel/exception.h \
+	../kernel/allfunc.h ../target/frksh2a_gcc/target_syssvc.h \
+	../target/frksh2a_gcc/frksh2a.h ../kernel/exception.h \
 	../kernel/cyclic.h ../syssvc/serial.cfg ../syssvc/serial.h \
 	../include/t_stddef.h ../kernel/mailbox.h sample1.cfg \
-	../kernel/mempfix.h ../target/apsh2a_gcc/target_cfg1_out.h \
+	../kernel/mempfix.h ../target/frksh2a_gcc/target_cfg1_out.h \
 	../arch/sh12a_gcc/prc_config.h cfg1_out.c \
-	../arch/sh12a_gcc/sh7211_config.h ../kernel/eventflag.h \
+	../arch/sh12a_gcc/sh7262_config.h ../kernel/eventflag.h \
 	/usr/local/sh-tools/lib/gcc/sh-elf/3.4.5/include/limits.h \
-	../target/apsh2a_gcc/target_config.h ../kernel/kernel_impl.h \
-	../kernel/kernel_rename.h ../arch/sh12a_gcc/sh7211.h \
+	../target/frksh2a_gcc/target_config.h ../kernel/kernel_impl.h \
+	../kernel/kernel_rename.h ../arch/sh12a_gcc/sh7262.h \
 	../arch/sh12a_gcc/prc_insn.h ../syssvc/syslog.h \
 	../arch/sh12a_gcc/prc_sil.h \
 	/usr/local/sh-tools/lib/gcc/sh-elf/3.4.5/include/stddef.h \
-	../target/apsh2a_gcc/target_kernel.h \
+	../target/frksh2a_gcc/target_kernel.h \
 	../kernel/kernel_unrename.h ../include/t_syslog.h \
 	../arch/sh12a_gcc/prc_cmt.cfg sample1.h ../syssvc/logtask.h \
 	../kernel/dataqueue.h ../syssvc/syslog.cfg \
-	../target/apsh2a_gcc/target_timer.h \
+	../target/frksh2a_gcc/target_timer.h \
 	../arch/sh12a_gcc/prc_cfg1_out.h ../kernel/interrupt.h \
 	../arch/sh12a_gcc/sh2a_config.h \
-	../target/apsh2a_gcc/target_serial.cfg \
+	../target/frksh2a_gcc/target_serial.cfg \
 	../arch/sh12a_gcc/prc_unrename.h \
-	../target/apsh2a_gcc/target_stddef.h ../kernel/alarm.h \
+	../target/frksh2a_gcc/target_stddef.h ../kernel/alarm.h \
 	../arch/sh12a_gcc/prc_stddef.h ../syssvc/banner.h \
 	../kernel/kernel_int.h ../pdic/sh/sh_scif.h \
 	../syssvc/banner.cfg ../kernel/semaphore.h \
-	../target/apsh2a_gcc/target_unrename.h \
-	../target/apsh2a_gcc/target_rename.h \
+	../target/frksh2a_gcc/target_unrename.h \
+	../target/frksh2a_gcc/target_rename.h \
 	../arch/gcc/tool_stddef.h ../arch/sh12a_gcc/prc_cmt.h 
-target_support.o: ../target/apsh2a_gcc/target_sil.h \
+target_support.o: ../target/frksh2a_gcc/target_sil.h \
 	../arch/sh12a_gcc/prc_stddef.h ../include/sil.h \
 	../arch/sh12a_gcc/sh2a_config.h \
-	../target/apsh2a_gcc/target_support.S ../include/t_syslog.h \
-	../target/apsh2a_gcc/target_rename.h ../include/kernel.h \
-	../arch/sh12a_gcc/sh7211.h ../arch/gcc/tool_stddef.h \
-	../kernel/kernel_impl.h ../target/apsh2a_gcc/target_config.h \
-	../arch/sh12a_gcc/sh7211_config.h \
-	../target/apsh2a_gcc/target_kernel.h \
+	../target/frksh2a_gcc/target_support.S ../include/t_syslog.h \
+	../target/frksh2a_gcc/target_rename.h ../include/kernel.h \
+	../arch/sh12a_gcc/sh7262.h ../arch/gcc/tool_stddef.h \
+	../kernel/kernel_impl.h ../target/frksh2a_gcc/target_config.h \
+	../arch/sh12a_gcc/sh7262_config.h \
+	../target/frksh2a_gcc/target_kernel.h \
 	../arch/sh12a_gcc/prc_sil.h ../arch/sh12a_gcc/prc_config.h \
-	../target/apsh2a_gcc/apsh2a.h ../include/t_stddef.h \
+	../target/frksh2a_gcc/frksh2a.h ../include/t_stddef.h \
 	../kernel/allfunc.h ../kernel/kernel_rename.h \
-	../target/apsh2a_gcc/target_stddef.h \
+	../target/frksh2a_gcc/target_stddef.h \
 	../arch/sh12a_gcc/prc_kernel.h \
 	../arch/sh12a_gcc/prc_rename.h 
 prc_support.o: ../kernel/kernel_rename.h \
 	../arch/sh12a_gcc/sh2a_config.h ./offset.h \
-	../arch/gcc/tool_stddef.h ../target/apsh2a_gcc/target_sil.h \
+	../arch/gcc/tool_stddef.h ../target/frksh2a_gcc/target_sil.h \
 	../arch/sh12a_gcc/prc_kernel.h \
-	../target/apsh2a_gcc/target_kernel.h \
+	../target/frksh2a_gcc/target_kernel.h \
 	../arch/sh12a_gcc/prc_rename.h \
-	../target/apsh2a_gcc/target_rename.h ../include/kernel.h \
-	../arch/sh12a_gcc/sh7211_config.h ../kernel/allfunc.h \
-	../arch/sh12a_gcc/prc_stddef.h ../target/apsh2a_gcc/apsh2a.h \
+	../target/frksh2a_gcc/target_rename.h ../include/kernel.h \
+	../arch/sh12a_gcc/sh7262_config.h ../kernel/allfunc.h \
+	../arch/sh12a_gcc/prc_stddef.h ../target/frksh2a_gcc/frksh2a.h \
 	../kernel/kernel_impl.h ../arch/sh12a_gcc/prc_support.S \
-	../include/t_stddef.h ../target/apsh2a_gcc/target_config.h \
-	../target/apsh2a_gcc/target_stddef.h \
-	../arch/sh12a_gcc/sh7211.h ../arch/sh12a_gcc/prc_config.h \
+	../include/t_stddef.h ../target/frksh2a_gcc/target_config.h \
+	../target/frksh2a_gcc/target_stddef.h \
+	../arch/sh12a_gcc/sh7262.h ../arch/sh12a_gcc/prc_config.h \
 	../include/t_syslog.h ../arch/sh12a_gcc/prc_sil.h \
 	../include/sil.h 
-target_config.o: ../target/apsh2a_gcc/target_kernel.h \
-	../arch/sh12a_gcc/sh7211.h ../include/kernel.h \
-	../arch/sh12a_gcc/sh7211_config.h \
+target_config.o: ../target/frksh2a_gcc/target_kernel.h \
+	../arch/sh12a_gcc/sh7262.h ../include/kernel.h \
+	../arch/sh12a_gcc/sh7262_config.h \
 	../arch/sh12a_gcc/prc_rename.h ../kernel/kernel_impl.h \
-	../target/apsh2a_gcc/target_sil.h ../include/t_stddef.h \
+	../target/frksh2a_gcc/target_sil.h ../include/t_stddef.h \
 	/usr/local/sh-tools/lib/gcc/sh-elf/3.4.5/include/limits.h \
 	../arch/sh12a_gcc/prc_config.h \
-	../target/apsh2a_gcc/target_config.c \
+	../target/frksh2a_gcc/target_config.c \
 	/usr/local/sh-tools/lib/gcc/sh-elf/3.4.5/include/stddef.h \
 	../arch/sh12a_gcc/prc_kernel.h ../arch/gcc/tool_stddef.h \
-	../target/apsh2a_gcc/target_rename.h \
-	../target/apsh2a_gcc/target_config.h \
+	../target/frksh2a_gcc/target_rename.h \
+	../target/frksh2a_gcc/target_config.h \
 	../arch/sh12a_gcc/prc_insn.h ../arch/sh12a_gcc/prc_stddef.h \
-	../target/apsh2a_gcc/apsh2a.h ../kernel/allfunc.h \
-	../target/apsh2a_gcc/target_stddef.h ../include/sil.h \
+	../target/frksh2a_gcc/frksh2a.h ../kernel/allfunc.h \
+	../target/frksh2a_gcc/target_stddef.h ../include/sil.h \
 	../pdic/sh/sh_scif.h ../arch/sh12a_gcc/prc_sil.h \
 	../arch/sh12a_gcc/sh2a_config.h ../kernel/kernel_rename.h \
 	../include/t_syslog.h 
 prc_cmt.o: ../arch/sh12a_gcc/prc_kernel.h ../kernel/allfunc.h \
 	../include/kernel.h ../arch/sh12a_gcc/prc_insn.h \
-	../target/apsh2a_gcc/target_sil.h \
+	../target/frksh2a_gcc/target_sil.h \
 	/usr/local/sh-tools/lib/gcc/sh-elf/3.4.5/include/stddef.h \
-	../kernel/kernel_impl.h ../arch/sh12a_gcc/sh7211.h \
+	../kernel/kernel_impl.h ../arch/sh12a_gcc/sh7262.h \
 	../kernel/time_event.h ../arch/sh12a_gcc/prc_cmt.h \
 	../arch/gcc/tool_stddef.h ../include/t_stddef.h \
-	../target/apsh2a_gcc/target_config.h \
-	../arch/sh12a_gcc/sh7211_config.h \
+	../target/frksh2a_gcc/target_config.h \
+	../arch/sh12a_gcc/sh7262_config.h \
 	../arch/sh12a_gcc/prc_stddef.h \
-	../target/apsh2a_gcc/target_timer.h \
+	../target/frksh2a_gcc/target_timer.h \
 	../arch/sh12a_gcc/prc_cmt.c ../include/sil.h \
 	../include/t_syslog.h ../kernel/kernel_rename.h \
-	../target/apsh2a_gcc/apsh2a.h \
-	../target/apsh2a_gcc/target_stddef.h \
+	../target/frksh2a_gcc/frksh2a.h \
+	../target/frksh2a_gcc/target_stddef.h \
 	../arch/sh12a_gcc/prc_config.h \
 	/usr/local/sh-tools/lib/gcc/sh-elf/3.4.5/include/limits.h \
 	../arch/sh12a_gcc/prc_sil.h ../arch/sh12a_gcc/prc_rename.h \
-	../target/apsh2a_gcc/target_rename.h \
-	../target/apsh2a_gcc/target_kernel.h \
+	../target/frksh2a_gcc/target_rename.h \
+	../target/frksh2a_gcc/target_kernel.h \
 	../arch/sh12a_gcc/sh2a_config.h 
-prc_config.o: ../target/apsh2a_gcc/target_stddef.h \
+prc_config.o: ../target/frksh2a_gcc/target_stddef.h \
 	../include/kernel.h ../include/sil.h \
-	../arch/sh12a_gcc/sh7211_config.h ../arch/sh12a_gcc/sh7211.h \
-	../arch/sh12a_gcc/prc_rename.h ../target/apsh2a_gcc/apsh2a.h \
+	../arch/sh12a_gcc/sh7262_config.h ../arch/sh12a_gcc/sh7262.h \
+	../arch/sh12a_gcc/prc_rename.h ../target/frksh2a_gcc/frksh2a.h \
 	../arch/sh12a_gcc/prc_config.c ../arch/sh12a_gcc/prc_insn.h \
 	/usr/local/sh-tools/lib/gcc/sh-elf/3.4.5/include/limits.h \
-	../target/apsh2a_gcc/target_config.h ../kernel/task.h \
+	../target/frksh2a_gcc/target_config.h ../kernel/task.h \
 	../arch/sh12a_gcc/prc_sil.h ../kernel/allfunc.h \
 	../arch/sh12a_gcc/prc_config.h ../kernel/check.h \
-	../target/apsh2a_gcc/target_kernel.h \
+	../target/frksh2a_gcc/target_kernel.h \
 	../arch/sh12a_gcc/prc_stddef.h ../arch/gcc/tool_stddef.h \
 	../arch/sh12a_gcc/sh2a_config.h ../include/t_stddef.h \
 	../kernel/kernel_impl.h \
 	/usr/local/sh-tools/lib/gcc/sh-elf/3.4.5/include/stddef.h \
-	../target/apsh2a_gcc/target_sil.h \
-	../target/apsh2a_gcc/target_rename.h \
+	../target/frksh2a_gcc/target_sil.h \
+	../target/frksh2a_gcc/target_rename.h \
 	../kernel/kernel_rename.h ../include/t_syslog.h \
 	../arch/sh12a_gcc/prc_kernel.h ../kernel/time_event.h \
 	../include/queue.h 
-startup.o: ../include/sil.h ../target/apsh2a_gcc/target_sil.h \
+startup.o: ../include/sil.h ../target/frksh2a_gcc/target_sil.h \
 	../kernel/startup.c ../arch/sh12a_gcc/prc_config.h \
 	../kernel/time_event.h ../arch/sh12a_gcc/prc_insn.h \
 	../include/t_syslog.h \
 	/usr/local/sh-tools/lib/gcc/sh-elf/3.4.5/include/limits.h \
 	../include/t_stddef.h ../arch/sh12a_gcc/prc_kernel.h \
 	../arch/sh12a_gcc/prc_sil.h \
-	../arch/sh12a_gcc/sh7211_config.h ../arch/sh12a_gcc/sh7211.h \
+	../arch/sh12a_gcc/sh7262_config.h ../arch/sh12a_gcc/sh7262.h \
 	../arch/gcc/tool_stddef.h ../kernel/kernel_rename.h \
 	../include/kernel.h \
 	/usr/local/sh-tools/lib/gcc/sh-elf/3.4.5/include/stddef.h \
-	../target/apsh2a_gcc/apsh2a.h \
-	../target/apsh2a_gcc/target_config.h \
-	../target/apsh2a_gcc/target_kernel.h \
+	../target/frksh2a_gcc/frksh2a.h \
+	../target/frksh2a_gcc/target_config.h \
+	../target/frksh2a_gcc/target_kernel.h \
 	../arch/sh12a_gcc/prc_rename.h \
-	../target/apsh2a_gcc/target_rename.h \
+	../target/frksh2a_gcc/target_rename.h \
 	../arch/sh12a_gcc/sh2a_config.h ../kernel/kernel_impl.h \
 	../arch/sh12a_gcc/prc_stddef.h \
-	../target/apsh2a_gcc/target_stddef.h ../kernel/allfunc.h 
+	../target/frksh2a_gcc/target_stddef.h ../kernel/allfunc.h 
 task.o: ../kernel/task.h ../kernel/allfunc.h \
 	../arch/sh12a_gcc/sh2a_config.h \
-	../target/apsh2a_gcc/target_rename.h ../kernel/task.c \
-	../target/apsh2a_gcc/target_config.h \
-	../target/apsh2a_gcc/target_stddef.h ../kernel/wait.h \
-	../arch/sh12a_gcc/prc_config.h ../arch/sh12a_gcc/sh7211.h \
+	../target/frksh2a_gcc/target_rename.h ../kernel/task.c \
+	../target/frksh2a_gcc/target_config.h \
+	../target/frksh2a_gcc/target_stddef.h ../kernel/wait.h \
+	../arch/sh12a_gcc/prc_config.h ../arch/sh12a_gcc/sh7262.h \
 	../arch/sh12a_gcc/prc_insn.h ../include/sil.h \
 	../include/queue.h ../kernel/kernel_impl.h \
-	../include/t_syslog.h ../target/apsh2a_gcc/apsh2a.h \
+	../include/t_syslog.h ../target/frksh2a_gcc/frksh2a.h \
 	../include/kernel.h ../arch/sh12a_gcc/prc_kernel.h \
-	../target/apsh2a_gcc/target_kernel.h \
+	../target/frksh2a_gcc/target_kernel.h \
 	../arch/sh12a_gcc/prc_stddef.h ../kernel/kernel_rename.h \
 	../include/t_stddef.h ../arch/gcc/tool_stddef.h \
-	../arch/sh12a_gcc/sh7211_config.h \
+	../arch/sh12a_gcc/sh7262_config.h \
 	/usr/local/sh-tools/lib/gcc/sh-elf/3.4.5/include/stddef.h \
 	../kernel/time_event.h ../arch/sh12a_gcc/prc_sil.h \
-	../target/apsh2a_gcc/target_sil.h \
+	../target/frksh2a_gcc/target_sil.h \
 	../arch/sh12a_gcc/prc_rename.h \
 	/usr/local/sh-tools/lib/gcc/sh-elf/3.4.5/include/limits.h 
-wait.o: ../kernel/kernel_rename.h ../target/apsh2a_gcc/target_sil.h \
-	../target/apsh2a_gcc/target_stddef.h ../kernel/task.h \
-	../arch/sh12a_gcc/sh7211_config.h \
+wait.o: ../kernel/kernel_rename.h ../target/frksh2a_gcc/target_sil.h \
+	../target/frksh2a_gcc/target_stddef.h ../kernel/task.h \
+	../arch/sh12a_gcc/sh7262_config.h \
 	../arch/sh12a_gcc/sh2a_config.h ../include/t_stddef.h \
 	/usr/local/sh-tools/lib/gcc/sh-elf/3.4.5/include/limits.h \
 	../kernel/time_event.h ../arch/sh12a_gcc/prc_kernel.h \
-	../target/apsh2a_gcc/target_kernel.h \
+	../target/frksh2a_gcc/target_kernel.h \
 	../arch/sh12a_gcc/prc_sil.h ../include/sil.h \
-	../include/queue.h ../arch/sh12a_gcc/sh7211.h \
+	../include/queue.h ../arch/sh12a_gcc/sh7262.h \
 	../arch/sh12a_gcc/prc_stddef.h ../kernel/wait.h \
 	../kernel/wait.c ../kernel/kernel_impl.h ../kernel/allfunc.h \
-	../arch/sh12a_gcc/prc_config.h ../target/apsh2a_gcc/apsh2a.h \
-	../target/apsh2a_gcc/target_rename.h ../include/kernel.h \
-	../target/apsh2a_gcc/target_config.h \
+	../arch/sh12a_gcc/prc_config.h ../target/frksh2a_gcc/frksh2a.h \
+	../target/frksh2a_gcc/target_rename.h ../include/kernel.h \
+	../target/frksh2a_gcc/target_config.h \
 	../arch/sh12a_gcc/prc_rename.h ../arch/gcc/tool_stddef.h \
 	../arch/sh12a_gcc/prc_insn.h ../include/t_syslog.h \
 	/usr/local/sh-tools/lib/gcc/sh-elf/3.4.5/include/stddef.h 
 time_event.o: \
 	/usr/local/sh-tools/lib/gcc/sh-elf/3.4.5/include/limits.h \
 	../kernel/time_event.h ../arch/sh12a_gcc/prc_sil.h \
-	../target/apsh2a_gcc/target_config.h \
+	../target/frksh2a_gcc/target_config.h \
 	../kernel/kernel_rename.h ../include/kernel.h \
 	../arch/sh12a_gcc/prc_rename.h ../include/sil.h \
 	../kernel/time_event.c ../arch/sh12a_gcc/sh2a_config.h \
 	/usr/local/sh-tools/lib/gcc/sh-elf/3.4.5/include/stddef.h \
-	../arch/sh12a_gcc/sh7211_config.h ../include/t_syslog.h \
-	../target/apsh2a_gcc/target_rename.h ../kernel/kernel_impl.h \
+	../arch/sh12a_gcc/sh7262_config.h ../include/t_syslog.h \
+	../target/frksh2a_gcc/target_rename.h ../kernel/kernel_impl.h \
 	../include/t_stddef.h ../arch/sh12a_gcc/prc_kernel.h \
-	../target/apsh2a_gcc/target_kernel.h \
-	../arch/sh12a_gcc/prc_insn.h ../arch/sh12a_gcc/sh7211.h \
+	../target/frksh2a_gcc/target_kernel.h \
+	../arch/sh12a_gcc/prc_insn.h ../arch/sh12a_gcc/sh7262.h \
 	../arch/sh12a_gcc/prc_stddef.h \
-	../target/apsh2a_gcc/target_sil.h ../kernel/allfunc.h \
+	../target/frksh2a_gcc/target_sil.h ../kernel/allfunc.h \
 	../arch/gcc/tool_stddef.h \
-	../target/apsh2a_gcc/target_stddef.h \
-	../target/apsh2a_gcc/apsh2a.h ../arch/sh12a_gcc/prc_config.h \
+	../target/frksh2a_gcc/target_stddef.h \
+	../target/frksh2a_gcc/frksh2a.h ../arch/sh12a_gcc/prc_config.h \
 	../kernel/check.h 
 task_manage.o: ../kernel/task_manage.c ../include/sil.h \
-	../target/apsh2a_gcc/target_rename.h ../kernel/check.h \
+	../target/frksh2a_gcc/target_rename.h ../kernel/check.h \
 	../include/kernel.h ../arch/sh12a_gcc/prc_kernel.h \
 	../kernel/kernel_rename.h ../arch/sh12a_gcc/sh2a_config.h \
 	../include/t_stddef.h ../kernel/allfunc.h \
 	../kernel/kernel_impl.h ../kernel/task.h \
 	../include/t_syslog.h ../kernel/time_event.h \
 	../arch/sh12a_gcc/prc_sil.h \
-	../target/apsh2a_gcc/target_kernel.h \
-	../arch/sh12a_gcc/sh7211.h ../arch/gcc/tool_stddef.h \
-	../include/queue.h ../target/apsh2a_gcc/target_sil.h \
+	../target/frksh2a_gcc/target_kernel.h \
+	../arch/sh12a_gcc/sh7262.h ../arch/gcc/tool_stddef.h \
+	../include/queue.h ../target/frksh2a_gcc/target_sil.h \
 	../arch/sh12a_gcc/prc_config.h \
 	/usr/local/sh-tools/lib/gcc/sh-elf/3.4.5/include/stddef.h \
-	../target/apsh2a_gcc/target_stddef.h \
-	../arch/sh12a_gcc/sh7211_config.h \
+	../target/frksh2a_gcc/target_stddef.h \
+	../arch/sh12a_gcc/sh7262_config.h \
 	../arch/sh12a_gcc/prc_rename.h ../kernel/wait.h \
-	../arch/sh12a_gcc/prc_insn.h ../target/apsh2a_gcc/apsh2a.h \
-	../target/apsh2a_gcc/target_config.h \
+	../arch/sh12a_gcc/prc_insn.h ../target/frksh2a_gcc/frksh2a.h \
+	../target/frksh2a_gcc/target_config.h \
 	../arch/sh12a_gcc/prc_stddef.h \
 	/usr/local/sh-tools/lib/gcc/sh-elf/3.4.5/include/limits.h 
 task_refer.o: ../arch/sh12a_gcc/prc_config.h \
-	../target/apsh2a_gcc/apsh2a.h ../kernel/mempfix.h \
-	../kernel/allfunc.h ../target/apsh2a_gcc/target_rename.h \
+	../target/frksh2a_gcc/frksh2a.h ../kernel/mempfix.h \
+	../kernel/allfunc.h ../target/frksh2a_gcc/target_rename.h \
 	../arch/sh12a_gcc/prc_rename.h \
-	../target/apsh2a_gcc/target_stddef.h \
+	../target/frksh2a_gcc/target_stddef.h \
 	../arch/gcc/tool_stddef.h ../kernel/eventflag.h \
 	/usr/local/sh-tools/lib/gcc/sh-elf/3.4.5/include/stddef.h \
 	../arch/sh12a_gcc/prc_sil.h ../kernel/wait.h \
@@ -229,264 +229,264 @@ task_refer.o: ../arch/sh12a_gcc/prc_config.h \
 	/usr/local/sh-tools/lib/gcc/sh-elf/3.4.5/include/limits.h \
 	../kernel/task.h ../arch/sh12a_gcc/prc_stddef.h \
 	../kernel/kernel_rename.h ../kernel/time_event.h \
-	../include/t_syslog.h ../target/apsh2a_gcc/target_config.h \
-	../target/apsh2a_gcc/target_sil.h ../kernel/kernel_impl.h \
-	../arch/sh12a_gcc/sh7211_config.h ../kernel/semaphore.h \
+	../include/t_syslog.h ../target/frksh2a_gcc/target_config.h \
+	../target/frksh2a_gcc/target_sil.h ../kernel/kernel_impl.h \
+	../arch/sh12a_gcc/sh7262_config.h ../kernel/semaphore.h \
 	../kernel/check.h ../kernel/pridataq.h ../include/kernel.h \
 	../kernel/mailbox.h ../include/queue.h ../include/t_stddef.h \
 	../include/sil.h ../arch/sh12a_gcc/sh2a_config.h \
 	../kernel/task_refer.c ../arch/sh12a_gcc/prc_insn.h \
-	../arch/sh12a_gcc/sh7211.h ../arch/sh12a_gcc/prc_kernel.h \
-	../target/apsh2a_gcc/target_kernel.h 
+	../arch/sh12a_gcc/sh7262.h ../arch/sh12a_gcc/prc_kernel.h \
+	../target/frksh2a_gcc/target_kernel.h 
 task_sync.o: ../kernel/task.h ../include/t_stddef.h \
-	../target/apsh2a_gcc/apsh2a.h \
-	../target/apsh2a_gcc/target_kernel.h ../kernel/time_event.h \
-	../include/kernel.h ../target/apsh2a_gcc/target_rename.h \
+	../target/frksh2a_gcc/frksh2a.h \
+	../target/frksh2a_gcc/target_kernel.h ../kernel/time_event.h \
+	../include/kernel.h ../target/frksh2a_gcc/target_rename.h \
 	../kernel/task_sync.c ../arch/sh12a_gcc/prc_sil.h \
-	../kernel/kernel_rename.h ../arch/sh12a_gcc/sh7211.h \
+	../kernel/kernel_rename.h ../arch/sh12a_gcc/sh7262.h \
 	../arch/sh12a_gcc/prc_config.h \
 	../arch/sh12a_gcc/prc_stddef.h ../kernel/kernel_impl.h \
 	/usr/local/sh-tools/lib/gcc/sh-elf/3.4.5/include/stddef.h \
-	../kernel/wait.h ../target/apsh2a_gcc/target_stddef.h \
+	../kernel/wait.h ../target/frksh2a_gcc/target_stddef.h \
 	../include/queue.h ../arch/sh12a_gcc/prc_insn.h \
-	../include/t_syslog.h ../target/apsh2a_gcc/target_config.h \
+	../include/t_syslog.h ../target/frksh2a_gcc/target_config.h \
 	../arch/sh12a_gcc/prc_rename.h \
 	../arch/sh12a_gcc/prc_kernel.h \
 	/usr/local/sh-tools/lib/gcc/sh-elf/3.4.5/include/limits.h \
-	../arch/sh12a_gcc/sh7211_config.h ../include/sil.h \
+	../arch/sh12a_gcc/sh7262_config.h ../include/sil.h \
 	../arch/sh12a_gcc/sh2a_config.h ../arch/gcc/tool_stddef.h \
 	../kernel/allfunc.h ../kernel/check.h \
-	../target/apsh2a_gcc/target_sil.h 
+	../target/frksh2a_gcc/target_sil.h 
 task_except.o: ../arch/sh12a_gcc/prc_sil.h \
-	../target/apsh2a_gcc/target_stddef.h \
+	../target/frksh2a_gcc/target_stddef.h \
 	../arch/sh12a_gcc/prc_stddef.h ../kernel/time_event.h \
-	../kernel/allfunc.h ../arch/sh12a_gcc/sh7211_config.h \
+	../kernel/allfunc.h ../arch/sh12a_gcc/sh7262_config.h \
 	../include/t_stddef.h ../kernel/kernel_impl.h \
 	../arch/sh12a_gcc/prc_insn.h ../include/kernel.h \
-	../target/apsh2a_gcc/target_sil.h ../include/t_syslog.h \
+	../target/frksh2a_gcc/target_sil.h ../include/t_syslog.h \
 	../arch/gcc/tool_stddef.h ../arch/sh12a_gcc/prc_kernel.h \
 	/usr/local/sh-tools/lib/gcc/sh-elf/3.4.5/include/stddef.h \
-	../kernel/task.h ../arch/sh12a_gcc/sh7211.h \
+	../kernel/task.h ../arch/sh12a_gcc/sh7262.h \
 	../kernel/kernel_rename.h ../arch/sh12a_gcc/sh2a_config.h \
 	/usr/local/sh-tools/lib/gcc/sh-elf/3.4.5/include/limits.h \
-	../target/apsh2a_gcc/target_config.h \
-	../target/apsh2a_gcc/apsh2a.h \
-	../target/apsh2a_gcc/target_rename.h ../kernel/check.h \
+	../target/frksh2a_gcc/target_config.h \
+	../target/frksh2a_gcc/frksh2a.h \
+	../target/frksh2a_gcc/target_rename.h ../kernel/check.h \
 	../kernel/task_except.c ../arch/sh12a_gcc/prc_config.h \
 	../include/queue.h ../include/sil.h \
 	../arch/sh12a_gcc/prc_rename.h \
-	../target/apsh2a_gcc/target_kernel.h 
+	../target/frksh2a_gcc/target_kernel.h 
 semaphore.o: ../kernel/task.h ../include/sil.h \
-	../arch/sh12a_gcc/sh7211.h ../target/apsh2a_gcc/target_sil.h \
+	../arch/sh12a_gcc/sh7262.h ../target/frksh2a_gcc/target_sil.h \
 	../include/t_stddef.h ../arch/sh12a_gcc/prc_rename.h \
-	../target/apsh2a_gcc/target_stddef.h \
+	../target/frksh2a_gcc/target_stddef.h \
 	../arch/sh12a_gcc/prc_insn.h ../kernel/semaphore.h \
 	/usr/local/sh-tools/lib/gcc/sh-elf/3.4.5/include/limits.h \
 	../include/kernel.h ../kernel/time_event.h \
-	../include/queue.h ../target/apsh2a_gcc/target_rename.h \
+	../include/queue.h ../target/frksh2a_gcc/target_rename.h \
 	../arch/sh12a_gcc/prc_kernel.h \
 	../arch/sh12a_gcc/sh2a_config.h ../kernel/kernel_rename.h \
-	../arch/gcc/tool_stddef.h ../target/apsh2a_gcc/apsh2a.h \
-	../arch/sh12a_gcc/sh7211_config.h \
+	../arch/gcc/tool_stddef.h ../target/frksh2a_gcc/frksh2a.h \
+	../arch/sh12a_gcc/sh7262_config.h \
 	../arch/sh12a_gcc/prc_sil.h ../kernel/kernel_impl.h \
 	/usr/local/sh-tools/lib/gcc/sh-elf/3.4.5/include/stddef.h \
-	../target/apsh2a_gcc/target_config.h ../kernel/semaphore.c \
+	../target/frksh2a_gcc/target_config.h ../kernel/semaphore.c \
 	../kernel/wait.h ../kernel/check.h \
 	../arch/sh12a_gcc/prc_stddef.h ../kernel/allfunc.h \
 	../arch/sh12a_gcc/prc_config.h \
-	../target/apsh2a_gcc/target_kernel.h ../include/t_syslog.h 
-eventflag.o: ../include/queue.h ../target/apsh2a_gcc/target_config.h \
+	../target/frksh2a_gcc/target_kernel.h ../include/t_syslog.h 
+eventflag.o: ../include/queue.h ../target/frksh2a_gcc/target_config.h \
 	../kernel/kernel_rename.h ../arch/sh12a_gcc/prc_kernel.h \
-	../include/sil.h ../target/apsh2a_gcc/target_kernel.h \
-	../target/apsh2a_gcc/target_rename.h ../kernel/task.h \
-	../target/apsh2a_gcc/apsh2a.h ../include/t_stddef.h \
-	../arch/sh12a_gcc/sh7211.h ../target/apsh2a_gcc/target_sil.h \
-	../target/apsh2a_gcc/target_stddef.h ../kernel/check.h \
+	../include/sil.h ../target/frksh2a_gcc/target_kernel.h \
+	../target/frksh2a_gcc/target_rename.h ../kernel/task.h \
+	../target/frksh2a_gcc/frksh2a.h ../include/t_stddef.h \
+	../arch/sh12a_gcc/sh7262.h ../target/frksh2a_gcc/target_sil.h \
+	../target/frksh2a_gcc/target_stddef.h ../kernel/check.h \
 	../arch/sh12a_gcc/prc_stddef.h ../kernel/eventflag.c \
 	../arch/sh12a_gcc/prc_sil.h ../kernel/eventflag.h \
 	../include/t_syslog.h ../arch/sh12a_gcc/prc_insn.h \
 	/usr/local/sh-tools/lib/gcc/sh-elf/3.4.5/include/limits.h \
 	../include/kernel.h ../arch/sh12a_gcc/sh2a_config.h \
-	../arch/sh12a_gcc/sh7211_config.h \
+	../arch/sh12a_gcc/sh7262_config.h \
 	/usr/local/sh-tools/lib/gcc/sh-elf/3.4.5/include/stddef.h \
 	../kernel/kernel_impl.h ../kernel/wait.h \
 	../arch/sh12a_gcc/prc_rename.h ../kernel/allfunc.h \
 	../arch/gcc/tool_stddef.h ../arch/sh12a_gcc/prc_config.h \
 	../kernel/time_event.h 
 dataqueue.o: ../include/kernel.h ../include/t_syslog.h \
-	../include/sil.h ../target/apsh2a_gcc/target_stddef.h \
+	../include/sil.h ../target/frksh2a_gcc/target_stddef.h \
 	../arch/sh12a_gcc/prc_kernel.h \
-	../target/apsh2a_gcc/target_kernel.h \
+	../target/frksh2a_gcc/target_kernel.h \
 	/usr/local/sh-tools/lib/gcc/sh-elf/3.4.5/include/stddef.h \
 	../kernel/time_event.h ../kernel/check.h \
 	../arch/gcc/tool_stddef.h ../arch/sh12a_gcc/prc_insn.h \
-	../arch/sh12a_gcc/sh7211.h ../arch/sh12a_gcc/prc_stddef.h \
-	../target/apsh2a_gcc/target_rename.h \
-	../arch/sh12a_gcc/sh7211_config.h ../kernel/dataqueue.h \
-	../target/apsh2a_gcc/apsh2a.h ../include/queue.h \
+	../arch/sh12a_gcc/sh7262.h ../arch/sh12a_gcc/prc_stddef.h \
+	../target/frksh2a_gcc/target_rename.h \
+	../arch/sh12a_gcc/sh7262_config.h ../kernel/dataqueue.h \
+	../target/frksh2a_gcc/frksh2a.h ../include/queue.h \
 	../arch/sh12a_gcc/prc_config.h \
 	/usr/local/sh-tools/lib/gcc/sh-elf/3.4.5/include/limits.h \
 	../kernel/dataqueue.c ../kernel/allfunc.h \
 	../arch/sh12a_gcc/prc_rename.h \
 	../arch/sh12a_gcc/sh2a_config.h \
-	../target/apsh2a_gcc/target_config.h ../kernel/kernel_impl.h \
-	../kernel/task.h ../target/apsh2a_gcc/target_sil.h \
+	../target/frksh2a_gcc/target_config.h ../kernel/kernel_impl.h \
+	../kernel/task.h ../target/frksh2a_gcc/target_sil.h \
 	../kernel/wait.h ../kernel/kernel_rename.h \
 	../arch/sh12a_gcc/prc_sil.h ../include/t_stddef.h 
 pridataq.o: ../include/kernel.h ../arch/sh12a_gcc/prc_config.h \
-	../arch/sh12a_gcc/sh7211_config.h \
-	../target/apsh2a_gcc/apsh2a.h ../kernel/pridataq.c \
+	../arch/sh12a_gcc/sh7262_config.h \
+	../target/frksh2a_gcc/frksh2a.h ../kernel/pridataq.c \
 	../include/queue.h ../kernel/task.h \
-	../target/apsh2a_gcc/target_sil.h \
-	../target/apsh2a_gcc/target_stddef.h ../kernel/wait.h \
+	../target/frksh2a_gcc/target_sil.h \
+	../target/frksh2a_gcc/target_stddef.h ../kernel/wait.h \
 	../include/t_syslog.h \
 	/usr/local/sh-tools/lib/gcc/sh-elf/3.4.5/include/stddef.h \
 	../arch/sh12a_gcc/prc_stddef.h \
-	../target/apsh2a_gcc/target_config.h ../kernel/pridataq.h \
+	../target/frksh2a_gcc/target_config.h ../kernel/pridataq.h \
 	../arch/sh12a_gcc/prc_sil.h ../kernel/allfunc.h \
-	../include/t_stddef.h ../arch/sh12a_gcc/sh7211.h \
+	../include/t_stddef.h ../arch/sh12a_gcc/sh7262.h \
 	../kernel/time_event.h ../arch/gcc/tool_stddef.h \
 	../kernel/kernel_rename.h \
-	../target/apsh2a_gcc/target_kernel.h \
+	../target/frksh2a_gcc/target_kernel.h \
 	/usr/local/sh-tools/lib/gcc/sh-elf/3.4.5/include/limits.h \
 	../arch/sh12a_gcc/prc_kernel.h ../kernel/check.h \
 	../arch/sh12a_gcc/prc_rename.h ../kernel/kernel_impl.h \
-	../include/sil.h ../target/apsh2a_gcc/target_rename.h \
+	../include/sil.h ../target/frksh2a_gcc/target_rename.h \
 	../arch/sh12a_gcc/prc_insn.h ../arch/sh12a_gcc/sh2a_config.h 
 mailbox.o: /usr/local/sh-tools/lib/gcc/sh-elf/3.4.5/include/limits.h \
 	../arch/sh12a_gcc/prc_stddef.h \
-	../target/apsh2a_gcc/target_stddef.h ../include/t_syslog.h \
-	../target/apsh2a_gcc/target_config.h \
+	../target/frksh2a_gcc/target_stddef.h ../include/t_syslog.h \
+	../target/frksh2a_gcc/target_config.h \
 	../arch/sh12a_gcc/prc_rename.h \
 	../arch/sh12a_gcc/sh2a_config.h ../kernel/mailbox.c \
 	../kernel/time_event.h ../kernel/wait.h \
 	../kernel/kernel_impl.h ../arch/sh12a_gcc/prc_insn.h \
-	../target/apsh2a_gcc/target_kernel.h \
-	../arch/sh12a_gcc/sh7211.h ../include/kernel.h \
+	../target/frksh2a_gcc/target_kernel.h \
+	../arch/sh12a_gcc/sh7262.h ../include/kernel.h \
 	../kernel/allfunc.h ../arch/sh12a_gcc/prc_sil.h \
-	../include/queue.h ../target/apsh2a_gcc/target_sil.h \
+	../include/queue.h ../target/frksh2a_gcc/target_sil.h \
 	../kernel/kernel_rename.h ../kernel/task.h ../include/sil.h \
-	../target/apsh2a_gcc/target_rename.h ../include/t_stddef.h \
+	../target/frksh2a_gcc/target_rename.h ../include/t_stddef.h \
 	../arch/sh12a_gcc/prc_config.h ../arch/gcc/tool_stddef.h \
-	../target/apsh2a_gcc/apsh2a.h \
+	../target/frksh2a_gcc/frksh2a.h \
 	/usr/local/sh-tools/lib/gcc/sh-elf/3.4.5/include/stddef.h \
-	../arch/sh12a_gcc/sh7211_config.h \
+	../arch/sh12a_gcc/sh7262_config.h \
 	../arch/sh12a_gcc/prc_kernel.h ../kernel/check.h \
 	../kernel/mailbox.h 
 mempfix.o: ../arch/sh12a_gcc/sh2a_config.h ../kernel/kernel_impl.h \
 	../kernel/mempfix.h ../kernel/check.h ../kernel/task.h \
 	/usr/local/sh-tools/lib/gcc/sh-elf/3.4.5/include/limits.h \
 	../kernel/wait.h ../kernel/allfunc.h \
-	../target/apsh2a_gcc/apsh2a.h ../include/t_stddef.h \
-	../target/apsh2a_gcc/target_kernel.h \
-	../target/apsh2a_gcc/target_sil.h \
+	../target/frksh2a_gcc/frksh2a.h ../include/t_stddef.h \
+	../target/frksh2a_gcc/target_kernel.h \
+	../target/frksh2a_gcc/target_sil.h \
 	../arch/sh12a_gcc/prc_rename.h ../include/sil.h \
 	../include/t_syslog.h ../arch/gcc/tool_stddef.h \
 	../kernel/time_event.h ../include/queue.h \
-	../arch/sh12a_gcc/sh7211.h ../arch/sh12a_gcc/prc_sil.h \
+	../arch/sh12a_gcc/sh7262.h ../arch/sh12a_gcc/prc_sil.h \
 	../arch/sh12a_gcc/prc_stddef.h \
-	../target/apsh2a_gcc/target_config.h \
-	../target/apsh2a_gcc/target_rename.h ../include/kernel.h \
-	../arch/sh12a_gcc/sh7211_config.h \
+	../target/frksh2a_gcc/target_config.h \
+	../target/frksh2a_gcc/target_rename.h ../include/kernel.h \
+	../arch/sh12a_gcc/sh7262_config.h \
 	../arch/sh12a_gcc/prc_config.h ../kernel/mempfix.c \
-	../target/apsh2a_gcc/target_stddef.h \
+	../target/frksh2a_gcc/target_stddef.h \
 	../arch/sh12a_gcc/prc_insn.h ../kernel/kernel_rename.h \
 	../arch/sh12a_gcc/prc_kernel.h \
 	/usr/local/sh-tools/lib/gcc/sh-elf/3.4.5/include/stddef.h 
 time_manage.o: ../arch/sh12a_gcc/prc_cmt.h \
-	../target/apsh2a_gcc/target_rename.h ../kernel/check.h \
-	../target/apsh2a_gcc/apsh2a.h ../kernel/allfunc.h \
+	../target/frksh2a_gcc/target_rename.h ../kernel/check.h \
+	../target/frksh2a_gcc/frksh2a.h ../kernel/allfunc.h \
 	../arch/sh12a_gcc/prc_kernel.h \
 	/usr/local/sh-tools/lib/gcc/sh-elf/3.4.5/include/limits.h \
 	../arch/sh12a_gcc/prc_rename.h \
 	../arch/sh12a_gcc/sh2a_config.h ../arch/sh12a_gcc/prc_sil.h \
-	../target/apsh2a_gcc/target_stddef.h \
+	../target/frksh2a_gcc/target_stddef.h \
 	../arch/gcc/tool_stddef.h ../arch/sh12a_gcc/prc_stddef.h \
-	../include/t_syslog.h ../target/apsh2a_gcc/target_sil.h \
-	../arch/sh12a_gcc/sh7211_config.h ../kernel/time_manage.c \
+	../include/t_syslog.h ../target/frksh2a_gcc/target_sil.h \
+	../arch/sh12a_gcc/sh7262_config.h ../kernel/time_manage.c \
 	../kernel/kernel_impl.h ../include/t_stddef.h \
-	../target/apsh2a_gcc/target_config.h ../include/sil.h \
-	../arch/sh12a_gcc/sh7211.h ../kernel/kernel_rename.h \
-	../target/apsh2a_gcc/target_timer.h \
-	../target/apsh2a_gcc/target_kernel.h ../include/kernel.h \
+	../target/frksh2a_gcc/target_config.h ../include/sil.h \
+	../arch/sh12a_gcc/sh7262.h ../kernel/kernel_rename.h \
+	../target/frksh2a_gcc/target_timer.h \
+	../target/frksh2a_gcc/target_kernel.h ../include/kernel.h \
 	../kernel/time_event.h \
 	/usr/local/sh-tools/lib/gcc/sh-elf/3.4.5/include/stddef.h \
 	../arch/sh12a_gcc/prc_insn.h ../arch/sh12a_gcc/prc_config.h 
-cyclic.o: ../arch/sh12a_gcc/sh7211_config.h \
+cyclic.o: ../arch/sh12a_gcc/sh7262_config.h \
 	/usr/local/sh-tools/lib/gcc/sh-elf/3.4.5/include/stddef.h \
 	../kernel/cyclic.h ../arch/sh12a_gcc/prc_stddef.h \
 	../arch/sh12a_gcc/prc_rename.h ../kernel/kernel_rename.h \
-	../target/apsh2a_gcc/target_config.h ../kernel/kernel_impl.h \
+	../target/frksh2a_gcc/target_config.h ../kernel/kernel_impl.h \
 	../kernel/allfunc.h ../arch/sh12a_gcc/prc_config.h \
 	../include/t_syslog.h ../arch/sh12a_gcc/prc_kernel.h \
-	../include/sil.h ../target/apsh2a_gcc/target_sil.h \
+	../include/sil.h ../target/frksh2a_gcc/target_sil.h \
 	/usr/local/sh-tools/lib/gcc/sh-elf/3.4.5/include/limits.h \
-	../arch/sh12a_gcc/sh7211.h ../include/kernel.h \
+	../arch/sh12a_gcc/sh7262.h ../include/kernel.h \
 	../kernel/time_event.h ../kernel/check.h \
 	../arch/gcc/tool_stddef.h ../include/t_stddef.h \
 	../arch/sh12a_gcc/prc_sil.h ../arch/sh12a_gcc/prc_insn.h \
-	../target/apsh2a_gcc/target_stddef.h \
-	../target/apsh2a_gcc/target_rename.h \
-	../target/apsh2a_gcc/apsh2a.h ../kernel/cyclic.c \
-	../target/apsh2a_gcc/target_kernel.h \
+	../target/frksh2a_gcc/target_stddef.h \
+	../target/frksh2a_gcc/target_rename.h \
+	../target/frksh2a_gcc/frksh2a.h ../kernel/cyclic.c \
+	../target/frksh2a_gcc/target_kernel.h \
 	../arch/sh12a_gcc/sh2a_config.h 
-alarm.o: ../arch/sh12a_gcc/sh7211_config.h ../include/kernel.h \
-	../include/t_syslog.h ../target/apsh2a_gcc/apsh2a.h \
+alarm.o: ../arch/sh12a_gcc/sh7262_config.h ../include/kernel.h \
+	../include/t_syslog.h ../target/frksh2a_gcc/frksh2a.h \
 	/usr/local/sh-tools/lib/gcc/sh-elf/3.4.5/include/stddef.h \
-	../kernel/check.h ../arch/sh12a_gcc/sh7211.h \
-	../include/sil.h ../target/apsh2a_gcc/target_rename.h \
+	../kernel/check.h ../arch/sh12a_gcc/sh7262.h \
+	../include/sil.h ../target/frksh2a_gcc/target_rename.h \
 	../arch/sh12a_gcc/prc_insn.h ../kernel/kernel_impl.h \
 	/usr/local/sh-tools/lib/gcc/sh-elf/3.4.5/include/limits.h \
-	../target/apsh2a_gcc/target_stddef.h \
+	../target/frksh2a_gcc/target_stddef.h \
 	../arch/gcc/tool_stddef.h ../kernel/time_event.h \
 	../kernel/allfunc.h ../arch/sh12a_gcc/prc_sil.h \
 	../arch/sh12a_gcc/prc_rename.h \
-	../target/apsh2a_gcc/target_kernel.h ../include/t_stddef.h \
+	../target/frksh2a_gcc/target_kernel.h ../include/t_stddef.h \
 	../arch/sh12a_gcc/prc_kernel.h ../kernel/alarm.c \
 	../kernel/kernel_rename.h ../arch/sh12a_gcc/prc_config.h \
 	../arch/sh12a_gcc/prc_stddef.h ../kernel/alarm.h \
 	../arch/sh12a_gcc/sh2a_config.h \
-	../target/apsh2a_gcc/target_config.h \
-	../target/apsh2a_gcc/target_sil.h 
+	../target/frksh2a_gcc/target_config.h \
+	../target/frksh2a_gcc/target_sil.h 
 sys_manage.o: ../arch/sh12a_gcc/sh2a_config.h \
-	../target/apsh2a_gcc/target_kernel.h \
-	../arch/sh12a_gcc/sh7211_config.h \
-	../arch/sh12a_gcc/prc_stddef.h ../arch/sh12a_gcc/sh7211.h \
+	../target/frksh2a_gcc/target_kernel.h \
+	../arch/sh12a_gcc/sh7262_config.h \
+	../arch/sh12a_gcc/prc_stddef.h ../arch/sh12a_gcc/sh7262.h \
 	../include/kernel.h ../kernel/sys_manage.c ../kernel/check.h \
 	../arch/sh12a_gcc/prc_sil.h ../kernel/time_event.h \
 	../include/sil.h ../include/t_stddef.h ../include/queue.h \
 	../arch/sh12a_gcc/prc_config.h ../include/t_syslog.h \
-	../target/apsh2a_gcc/target_sil.h \
+	../target/frksh2a_gcc/target_sil.h \
 	../arch/sh12a_gcc/prc_kernel.h ../arch/gcc/tool_stddef.h \
 	../kernel/kernel_rename.h ../kernel/task.h \
-	../target/apsh2a_gcc/apsh2a.h \
+	../target/frksh2a_gcc/frksh2a.h \
 	/usr/local/sh-tools/lib/gcc/sh-elf/3.4.5/include/limits.h \
 	../arch/sh12a_gcc/prc_rename.h \
-	../target/apsh2a_gcc/target_stddef.h \
-	../target/apsh2a_gcc/target_rename.h \
+	../target/frksh2a_gcc/target_stddef.h \
+	../target/frksh2a_gcc/target_rename.h \
 	../arch/sh12a_gcc/prc_insn.h ../kernel/allfunc.h \
-	../kernel/kernel_impl.h ../target/apsh2a_gcc/target_config.h \
+	../kernel/kernel_impl.h ../target/frksh2a_gcc/target_config.h \
 	/usr/local/sh-tools/lib/gcc/sh-elf/3.4.5/include/stddef.h 
 interrupt.o: \
 	/usr/local/sh-tools/lib/gcc/sh-elf/3.4.5/include/stddef.h \
 	../kernel/kernel_rename.h ../arch/sh12a_gcc/prc_sil.h \
 	../include/t_syslog.h ../kernel/allfunc.h ../kernel/check.h \
-	../target/apsh2a_gcc/target_config.h \
+	../target/frksh2a_gcc/target_config.h \
 	../arch/sh12a_gcc/prc_kernel.h \
-	../target/apsh2a_gcc/target_kernel.h \
-	../target/apsh2a_gcc/target_rename.h \
+	../target/frksh2a_gcc/target_kernel.h \
+	../target/frksh2a_gcc/target_rename.h \
 	../arch/gcc/tool_stddef.h ../arch/sh12a_gcc/sh2a_config.h \
 	../include/t_stddef.h \
 	/usr/local/sh-tools/lib/gcc/sh-elf/3.4.5/include/limits.h \
-	../arch/sh12a_gcc/sh7211.h ../kernel/interrupt.h \
-	../include/queue.h ../target/apsh2a_gcc/target_sil.h \
+	../arch/sh12a_gcc/sh7262.h ../kernel/interrupt.h \
+	../include/queue.h ../target/frksh2a_gcc/target_sil.h \
 	../arch/sh12a_gcc/prc_insn.h ../kernel/time_event.h \
 	../kernel/task.h ../arch/sh12a_gcc/prc_config.h \
-	../arch/sh12a_gcc/sh7211_config.h \
+	../arch/sh12a_gcc/sh7262_config.h \
 	../arch/sh12a_gcc/prc_stddef.h ../kernel/kernel_impl.h \
 	../include/sil.h ../include/kernel.h \
-	../target/apsh2a_gcc/apsh2a.h ../kernel/interrupt.c \
-	../target/apsh2a_gcc/target_stddef.h \
+	../target/frksh2a_gcc/frksh2a.h ../kernel/interrupt.c \
+	../target/frksh2a_gcc/target_stddef.h \
 	../arch/sh12a_gcc/prc_rename.h 
 exception.o: ../kernel/kernel_rename.h ../kernel/exception.h \
 	../include/t_stddef.h ../arch/sh12a_gcc/prc_stddef.h \
@@ -494,114 +494,114 @@ exception.o: ../kernel/kernel_rename.h ../kernel/exception.h \
 	../arch/sh12a_gcc/prc_kernel.h \
 	../arch/sh12a_gcc/prc_config.h ../kernel/task.h \
 	../include/sil.h ../kernel/allfunc.h \
-	../arch/sh12a_gcc/sh7211.h ../arch/sh12a_gcc/sh2a_config.h \
+	../arch/sh12a_gcc/sh7262.h ../arch/sh12a_gcc/sh2a_config.h \
 	/usr/local/sh-tools/lib/gcc/sh-elf/3.4.5/include/limits.h \
 	../include/kernel.h ../arch/gcc/tool_stddef.h \
-	../include/t_syslog.h ../target/apsh2a_gcc/target_rename.h \
+	../include/t_syslog.h ../target/frksh2a_gcc/target_rename.h \
 	/usr/local/sh-tools/lib/gcc/sh-elf/3.4.5/include/stddef.h \
-	../arch/sh12a_gcc/sh7211_config.h \
-	../arch/sh12a_gcc/prc_insn.h ../target/apsh2a_gcc/apsh2a.h \
-	../target/apsh2a_gcc/target_sil.h \
-	../target/apsh2a_gcc/target_stddef.h ../kernel/kernel_impl.h \
-	../target/apsh2a_gcc/target_config.h \
-	../target/apsh2a_gcc/target_kernel.h \
+	../arch/sh12a_gcc/sh7262_config.h \
+	../arch/sh12a_gcc/prc_insn.h ../target/frksh2a_gcc/frksh2a.h \
+	../target/frksh2a_gcc/target_sil.h \
+	../target/frksh2a_gcc/target_stddef.h ../kernel/kernel_impl.h \
+	../target/frksh2a_gcc/target_config.h \
+	../target/frksh2a_gcc/target_kernel.h \
 	../arch/sh12a_gcc/prc_rename.h ../kernel/time_event.h \
 	../kernel/exception.c 
 sample1.o: ../syssvc/serial.h sample1.h \
-	../target/apsh2a_gcc/target_stddef.h sample1.c \
+	../target/frksh2a_gcc/target_stddef.h sample1.c \
 	../include/t_syslog.h ../arch/gcc/tool_stddef.h \
 	../syssvc/syslog.h \
 	/usr/local/sh-tools/lib/gcc/sh-elf/3.4.5/include/stddef.h \
 	../arch/sh12a_gcc/prc_stddef.h \
-	../target/apsh2a_gcc/target_kernel.h \
-	../target/apsh2a_gcc/target_test.h kernel_cfg.h \
+	../target/frksh2a_gcc/target_kernel.h \
+	../target/frksh2a_gcc/target_test.h kernel_cfg.h \
 	../arch/sh12a_gcc/prc_kernel.h ../include/kernel.h \
 	../include/t_stddef.h ../include/t_stdlib.h \
 	/usr/local/sh-tools/lib/gcc/sh-elf/3.4.5/include/limits.h 
 kernel_cfg_asm.o: kernel_cfg_asm.S 
-target_serial.o: ../target/apsh2a_gcc/target_serial.c \
-	../arch/sh12a_gcc/sh7211.h ../arch/gcc/tool_stddef.h \
-	../target/apsh2a_gcc/target_stddef.h \
+target_serial.o: ../target/frksh2a_gcc/target_serial.c \
+	../arch/sh12a_gcc/sh7262.h ../arch/gcc/tool_stddef.h \
+	../target/frksh2a_gcc/target_stddef.h \
 	../arch/sh12a_gcc/prc_kernel.h ../include/t_stddef.h \
-	../target/apsh2a_gcc/target_kernel.h \
-	../target/apsh2a_gcc/target_sil.h \
+	../target/frksh2a_gcc/target_kernel.h \
+	../target/frksh2a_gcc/target_sil.h \
 	/usr/local/sh-tools/lib/gcc/sh-elf/3.4.5/include/limits.h \
 	../arch/sh12a_gcc/prc_stddef.h ../include/sil.h \
-	../target/apsh2a_gcc/target_syssvc.h ../include/kernel.h \
+	../target/frksh2a_gcc/target_syssvc.h ../include/kernel.h \
 	../include/t_syslog.h \
 	/usr/local/sh-tools/lib/gcc/sh-elf/3.4.5/include/stddef.h \
-	../target/apsh2a_gcc/target_serial.h ../pdic/sh/sh_scif.h \
-	../arch/sh12a_gcc/prc_syssvc.h ../target/apsh2a_gcc/apsh2a.h \
+	../target/frksh2a_gcc/target_serial.h ../pdic/sh/sh_scif.h \
+	../arch/sh12a_gcc/prc_syssvc.h ../target/frksh2a_gcc/frksh2a.h \
 	../arch/sh12a_gcc/prc_sil.h 
 sh_scif.o: ../pdic/sh/sh_scif.h ../include/t_stddef.h \
-	../include/kernel.h ../target/apsh2a_gcc/target_sil.h \
+	../include/kernel.h ../target/frksh2a_gcc/target_sil.h \
 	../arch/gcc/tool_stddef.h \
 	/usr/local/sh-tools/lib/gcc/sh-elf/3.4.5/include/stddef.h \
-	../target/apsh2a_gcc/target_kernel.h \
-	../target/apsh2a_gcc/target_syssvc.h \
+	../target/frksh2a_gcc/target_kernel.h \
+	../target/frksh2a_gcc/target_syssvc.h \
 	../arch/sh12a_gcc/prc_stddef.h ../arch/sh12a_gcc/prc_sil.h \
-	../arch/sh12a_gcc/sh7211.h ../include/sil.h \
+	../arch/sh12a_gcc/sh7262.h ../include/sil.h \
 	/usr/local/sh-tools/lib/gcc/sh-elf/3.4.5/include/limits.h \
-	../target/apsh2a_gcc/apsh2a.h ../arch/sh12a_gcc/prc_kernel.h \
-	../target/apsh2a_gcc/target_stddef.h ../pdic/sh/sh_scif.c \
+	../target/frksh2a_gcc/frksh2a.h ../arch/sh12a_gcc/prc_kernel.h \
+	../target/frksh2a_gcc/target_stddef.h ../pdic/sh/sh_scif.c \
 	../arch/sh12a_gcc/prc_syssvc.h 
 banner.o: ../arch/sh12a_gcc/prc_syssvc.h \
-	../target/apsh2a_gcc/apsh2a.h ../include/kernel.h \
+	../target/frksh2a_gcc/frksh2a.h ../include/kernel.h \
 	../arch/sh12a_gcc/prc_sil.h \
-	../target/apsh2a_gcc/target_sil.h \
+	../target/frksh2a_gcc/target_sil.h \
 	../arch/sh12a_gcc/prc_kernel.h ../include/t_syslog.h \
 	../arch/gcc/tool_stddef.h \
-	../target/apsh2a_gcc/target_kernel.h \
-	../arch/sh12a_gcc/sh7211.h \
+	../target/frksh2a_gcc/target_kernel.h \
+	../arch/sh12a_gcc/sh7262.h \
 	/usr/local/sh-tools/lib/gcc/sh-elf/3.4.5/include/stddef.h \
 	../syssvc/banner.c ../arch/sh12a_gcc/prc_stddef.h \
-	../target/apsh2a_gcc/target_stddef.h ../include/t_stddef.h \
-	../target/apsh2a_gcc/target_syssvc.h \
+	../target/frksh2a_gcc/target_stddef.h ../include/t_stddef.h \
+	../target/frksh2a_gcc/target_syssvc.h \
 	/usr/local/sh-tools/lib/gcc/sh-elf/3.4.5/include/limits.h \
 	../include/sil.h 
 syslog.o: /usr/local/sh-tools/lib/gcc/sh-elf/3.4.5/include/stddef.h \
 	/usr/local/sh-tools/lib/gcc/sh-elf/3.4.5/include/limits.h \
 	../arch/sh12a_gcc/prc_sil.h ../syssvc/syslog.c \
-	../arch/gcc/tool_stddef.h ../target/apsh2a_gcc/target_sil.h \
-	../target/apsh2a_gcc/target_syssvc.h \
-	../arch/sh12a_gcc/sh7211.h ../arch/sh12a_gcc/prc_stddef.h \
+	../arch/gcc/tool_stddef.h ../target/frksh2a_gcc/target_sil.h \
+	../target/frksh2a_gcc/target_syssvc.h \
+	../arch/sh12a_gcc/sh7262.h ../arch/sh12a_gcc/prc_stddef.h \
 	../include/t_stddef.h ../syssvc/syslog.h \
-	../include/log_output.h ../target/apsh2a_gcc/target_stddef.h \
-	../arch/sh12a_gcc/prc_syssvc.h ../target/apsh2a_gcc/apsh2a.h \
+	../include/log_output.h ../target/frksh2a_gcc/target_stddef.h \
+	../arch/sh12a_gcc/prc_syssvc.h ../target/frksh2a_gcc/frksh2a.h \
 	../include/t_syslog.h ../include/sil.h 
 serial.o: /usr/local/sh-tools/lib/gcc/sh-elf/3.4.5/include/limits.h \
-	../target/apsh2a_gcc/target_kernel.h ./kernel_cfg.h \
-	../target/apsh2a_gcc/target_syssvc.h ../syssvc/serial.h \
-	../arch/sh12a_gcc/sh7211.h \
-	../target/apsh2a_gcc/target_serial.h \
-	../target/apsh2a_gcc/target_sil.h \
-	../target/apsh2a_gcc/target_stddef.h ../include/t_syslog.h \
+	../target/frksh2a_gcc/target_kernel.h ./kernel_cfg.h \
+	../target/frksh2a_gcc/target_syssvc.h ../syssvc/serial.h \
+	../arch/sh12a_gcc/sh7262.h \
+	../target/frksh2a_gcc/target_serial.h \
+	../target/frksh2a_gcc/target_sil.h \
+	../target/frksh2a_gcc/target_stddef.h ../include/t_syslog.h \
 	../arch/sh12a_gcc/prc_stddef.h \
 	../arch/sh12a_gcc/prc_kernel.h ../pdic/sh/sh_scif.h \
 	../arch/sh12a_gcc/prc_sil.h \
 	/usr/local/sh-tools/lib/gcc/sh-elf/3.4.5/include/stddef.h \
 	../include/sil.h ../syssvc/serial.c \
 	../arch/gcc/tool_stddef.h ../include/t_stddef.h \
-	../include/kernel.h ../target/apsh2a_gcc/apsh2a.h \
+	../include/kernel.h ../target/frksh2a_gcc/frksh2a.h \
 	../arch/sh12a_gcc/prc_syssvc.h 
 logtask.o: ../syssvc/serial.h ../syssvc/syslog.h \
-	../arch/sh12a_gcc/sh7211.h ../arch/sh12a_gcc/prc_sil.h \
-	../include/t_stddef.h ../target/apsh2a_gcc/target_sil.h \
+	../arch/sh12a_gcc/sh7262.h ../arch/sh12a_gcc/prc_sil.h \
+	../include/t_stddef.h ../target/frksh2a_gcc/target_sil.h \
 	../include/log_output.h ../syssvc/logtask.c \
-	../include/kernel.h ../target/apsh2a_gcc/apsh2a.h \
-	../include/t_syslog.h ../target/apsh2a_gcc/target_kernel.h \
+	../include/kernel.h ../target/frksh2a_gcc/frksh2a.h \
+	../include/t_syslog.h ../target/frksh2a_gcc/target_kernel.h \
 	../syssvc/logtask.h ../arch/sh12a_gcc/prc_stddef.h \
 	/usr/local/sh-tools/lib/gcc/sh-elf/3.4.5/include/limits.h \
 	../arch/gcc/tool_stddef.h ../include/sil.h \
-	../target/apsh2a_gcc/target_stddef.h \
-	../target/apsh2a_gcc/target_syssvc.h \
+	../target/frksh2a_gcc/target_stddef.h \
+	../target/frksh2a_gcc/target_syssvc.h \
 	/usr/local/sh-tools/lib/gcc/sh-elf/3.4.5/include/stddef.h \
 	../arch/sh12a_gcc/prc_syssvc.h \
 	../arch/sh12a_gcc/prc_kernel.h 
 log_output.o: \
 	/usr/local/sh-tools/lib/gcc/sh-elf/3.4.5/include/stddef.h \
 	../include/t_syslog.h ../library/log_output.c \
-	../target/apsh2a_gcc/target_stddef.h \
+	../target/frksh2a_gcc/target_stddef.h \
 	../arch/sh12a_gcc/prc_stddef.h ../arch/gcc/tool_stddef.h \
 	../include/t_stddef.h \
 	/usr/local/sh-tools/lib/gcc/sh-elf/3.4.5/include/limits.h 
@@ -612,10 +612,10 @@ vasyslog.o: \
 	../include/t_syslog.h ../arch/sh12a_gcc/prc_stddef.h \
 	../syssvc/vasyslog.c ../include/t_stddef.h \
 	/usr/local/sh-tools/lib/gcc/sh-elf/3.4.5/include/stdarg.h \
-	../target/apsh2a_gcc/target_stddef.h 
+	../target/frksh2a_gcc/target_stddef.h 
 t_perror.o: \
 	/usr/local/sh-tools/lib/gcc/sh-elf/3.4.5/include/stddef.h \
-	../target/apsh2a_gcc/target_stddef.h \
+	../target/frksh2a_gcc/target_stddef.h \
 	../arch/gcc/tool_stddef.h ../library/t_perror.c \
 	../include/t_stdlib.h ../arch/sh12a_gcc/prc_stddef.h \
 	../include/t_syslog.h \
@@ -625,52 +625,52 @@ strerror.o: ../arch/gcc/tool_stddef.h ../library/strerror.c \
 	/usr/local/sh-tools/lib/gcc/sh-elf/3.4.5/include/limits.h \
 	../include/t_stdlib.h ../arch/sh12a_gcc/prc_stddef.h \
 	/usr/local/sh-tools/lib/gcc/sh-elf/3.4.5/include/stddef.h \
-	../target/apsh2a_gcc/target_stddef.h ../include/t_stddef.h 
+	../target/frksh2a_gcc/target_stddef.h ../include/t_stddef.h 
 kernel_cfg.o: ../include/sil.h ../arch/sh12a_gcc/prc_rename.h \
 	../include/kernel.h ../kernel/mailbox.h \
 	../arch/sh12a_gcc/prc_unrename.h \
-	../arch/sh12a_gcc/sh7211_config.h \
-	../target/apsh2a_gcc/target_rename.h ../kernel/kernel_int.h \
-	../target/apsh2a_gcc/target_syssvc.h \
-	../target/apsh2a_gcc/apsh2a.h ../kernel/semaphore.h \
+	../arch/sh12a_gcc/sh7262_config.h \
+	../target/frksh2a_gcc/target_rename.h ../kernel/kernel_int.h \
+	../target/frksh2a_gcc/target_syssvc.h \
+	../target/frksh2a_gcc/frksh2a.h ../kernel/semaphore.h \
 	../kernel/task.h ../kernel/dataqueue.h \
-	../target/apsh2a_gcc/target_stddef.h \
+	../target/frksh2a_gcc/target_stddef.h \
 	/usr/local/sh-tools/lib/gcc/sh-elf/3.4.5/include/limits.h \
 	../include/t_syslog.h ../arch/sh12a_gcc/prc_stddef.h \
-	../target/apsh2a_gcc/target_serial.h ../kernel/cyclic.h \
+	../target/frksh2a_gcc/target_serial.h ../kernel/cyclic.h \
 	../arch/gcc/tool_stddef.h ../arch/sh12a_gcc/prc_insn.h \
 	../kernel/time_event.h ../arch/sh12a_gcc/prc_kernel.h \
 	../arch/sh12a_gcc/prc_syssvc.h ../kernel/exception.h \
 	kernel_cfg.c ../pdic/sh/sh_scif.h \
 	../arch/sh12a_gcc/prc_config.h ../syssvc/serial.h \
 	../kernel/eventflag.h ../syssvc/banner.h \
-	../target/apsh2a_gcc/target_sil.h sample1.h \
+	../target/frksh2a_gcc/target_sil.h sample1.h \
 	../arch/sh12a_gcc/sh2a_config.h kernel_cfg.h \
 	../kernel/allfunc.h ../kernel/interrupt.h \
-	../kernel/pridataq.h ../target/apsh2a_gcc/target_config.h \
-	../target/apsh2a_gcc/target_timer.h \
+	../kernel/pridataq.h ../target/frksh2a_gcc/target_config.h \
+	../target/frksh2a_gcc/target_timer.h \
 	../kernel/kernel_rename.h \
-	../target/apsh2a_gcc/target_unrename.h \
+	../target/frksh2a_gcc/target_unrename.h \
 	../arch/sh12a_gcc/prc_sil.h \
-	../target/apsh2a_gcc/target_kernel.h ../kernel/mempfix.h \
-	../include/t_stddef.h ../arch/sh12a_gcc/sh7211.h \
-	../target/apsh2a_gcc/target_test.h \
+	../target/frksh2a_gcc/target_kernel.h ../kernel/mempfix.h \
+	../include/t_stddef.h ../arch/sh12a_gcc/sh7262.h \
+	../target/frksh2a_gcc/target_test.h \
 	../kernel/kernel_unrename.h \
 	/usr/local/sh-tools/lib/gcc/sh-elf/3.4.5/include/stddef.h \
 	../arch/sh12a_gcc/prc_cmt.h ../syssvc/syslog.h \
 	../kernel/kernel_impl.h ../include/queue.h ../kernel/alarm.h \
 	../syssvc/logtask.h 
-start.o: ../target/apsh2a_gcc/target_config.h \
+start.o: ../target/frksh2a_gcc/target_config.h \
 	../arch/sh12a_gcc/prc_stddef.h \
-	../target/apsh2a_gcc/target_rename.h ../include/t_stddef.h \
+	../target/frksh2a_gcc/target_rename.h ../include/t_stddef.h \
 	../arch/gcc/tool_stddef.h ../arch/sh12a_gcc/prc_kernel.h \
-	../arch/sh12a_gcc/sh7211.h ../arch/sh12a_gcc/start.S \
-	../target/apsh2a_gcc/target_sil.h \
+	../arch/sh12a_gcc/sh7262.h ../arch/sh12a_gcc/start.S \
+	../target/frksh2a_gcc/target_sil.h \
 	../arch/sh12a_gcc/prc_sil.h ../kernel/kernel_rename.h \
 	../arch/sh12a_gcc/prc_config.h \
 	../arch/sh12a_gcc/sh2a_config.h \
-	../target/apsh2a_gcc/apsh2a.h ../include/kernel.h \
-	../include/t_syslog.h ../target/apsh2a_gcc/target_stddef.h \
+	../target/frksh2a_gcc/frksh2a.h ../include/kernel.h \
+	../include/t_syslog.h ../target/frksh2a_gcc/target_stddef.h \
 	../arch/sh12a_gcc/prc_rename.h ../kernel/allfunc.h \
-	../arch/sh12a_gcc/sh7211_config.h ../include/sil.h \
-	../target/apsh2a_gcc/target_kernel.h ../kernel/kernel_impl.h 
+	../arch/sh12a_gcc/sh7262_config.h ../include/sil.h \
+	../target/frksh2a_gcc/target_kernel.h ../kernel/kernel_impl.h 

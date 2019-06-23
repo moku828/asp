@@ -48,7 +48,7 @@ all:
 #
 #  ターゲット略称の定義
 #
-TARGET = apsh2a_gcc
+TARGET = frksh2a_gcc
 
 #
 #  プログラミング言語の定義
