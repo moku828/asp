@@ -299,7 +299,10 @@
  */
 #define ICR0_h	UINT_C(0xfffe0800)
 #define ICR1_h	UINT_C(0xfffe0802)
+#define ICR2_h	UINT_C(0xfffe0804)
 #define IRQRR_h	UINT_C(0xfffe0806)
+#define PINTER_h	UINT_C(0xfffe0808)
+#define PIRR_h	UINT_C(0xfffe080a)
 #define IBCR_h	UINT_C(0xfffe080c)
 #define IBNR_h	UINT_C(0xfffe080e)
  #define IBNR_BE0	 UINT_C(0x4000)
@@ -318,6 +321,13 @@
 #define IPR13_h	UINT_C(0xfffe0c0e)
 #define IPR14_h	UINT_C(0xfffe0c10)
 #define IPR15_h	UINT_C(0xfffe0c12)
+#define IPR16_h	UINT_C(0xfffe0c14)
+#define IPR17_h	UINT_C(0xfffe0c16)
+#define IPR18_h	UINT_C(0xfffe0c18)
+#define IPR19_h	UINT_C(0xfffe0c1a)
+#define IPR20_h	UINT_C(0xfffe0c1c)
+#define IPR21_h	UINT_C(0xfffe0c1e)
+#define IPR22_h	UINT_C(0xfffe0c20)
 
 #define IRQ_POSEDGE   UINT_C(0x02)
 #define IRQ_NEGEDGE   UINT_C(0x01)
@@ -348,33 +358,11 @@
 #define SH_SCIF0_BASE	UINT_C(0xFFFE8000)	/*	ベースアドレス	*/
 #define SH_SCIF1_BASE	UINT_C(0xFFFE8800)
 #define SH_SCIF2_BASE	UINT_C(0xFFFE9000)
-
-/*
- *	ピンファンクションコントローラ（PFC）
- */
-#define PAIORH_h	UINT_C(0xFFFE3804)
-#define PAIORL_h	UINT_C(0xFFFE3806)
-#define PACRH3_h	UINT_C(0xFFFE380A)
-
-#define PACRL1_h	UINT_C(0xfffe3816)
-#define PACRL2_h	UINT_C(0xfffe3814)
-#define PACRL3_h	UINT_C(0xfffe3812)
-#define PACRL4_h	UINT_C(0xfffe3810)
-
-#define PBIORH_h	UINT_C(0xfffe3884)
-#define PBIORL_h	UINT_C(0xfffe3886)
-#define PBCRH1_h	UINT_C(0xfffe388e)
-#define PBCRL1_h	UINT_C(0xfffe3896)
-#define PBCRL2_h	UINT_C(0xfffe3894)
-#define PBCRL3_h	UINT_C(0xfffe3892)
-
-#define PDIOR_h		UINT_C(0xfffe3986)
-#define PDCRL1_h	UINT_C(0xfffe3996)
-#define PDCRL2_h	UINT_C(0xfffe3994)
-#define PDCRL3_h	UINT_C(0xfffe3992)
-#define PDCRL4_h	UINT_C(0xfffe3990)
-
-#define PFC_BASE	PAIORH_h	/*	ベースアドレス	*/
+#define SH_SCIF3_BASE	UINT_C(0xFFFE9800)
+#define SH_SCIF4_BASE	UINT_C(0xFFFEA000)
+#define SH_SCIF5_BASE	UINT_C(0xFFFEA800)
+#define SH_SCIF6_BASE	UINT_C(0xFFFEB000)
+#define SH_SCIF7_BASE	UINT_C(0xFFFEB800)
 
 /*
  *	クロックパルス発振器（CPG）
@@ -405,36 +393,31 @@
  #define STBCR4_SCIF3	UINT_C(0x10)
  #define STBCR4_CMT		UINT_C(0x04)
  #define STBCR4_WAVEIF	UINT_C(0x02)
+#define STBCR5_b		UINT_C(0xfffe0410)
+#define STBCR6_b		UINT_C(0xfffe0414)
+#define STBCR7_b		UINT_C(0xfffe0418)
+#define STBCR8_b		UINT_C(0xfffe041c)
 
-#define SYSCR1_b		UINT_C(0xfffe0402)
+#define SYSCR1_b		UINT_C(0xfffe0400)
 #define SYSCR2_b		UINT_C(0xfffe0404)
+#define SYSCR3_b		UINT_C(0xfffe0420)
+#define SYSCR4_b		UINT_C(0xfffe0424)
+#define SYSCR5_b		UINT_C(0xfffe0428)
 
 #define PDM_BASE	STBCR_b		/*	ベースアドレス	*/
 #define PDM_BASE2	SYSCR1_b	/*	ベースアドレス	*/
 
 /*
- *	バスステートコントローラ（BSC）
- */
-#define CMNCR_w		UINT_C(0xfffc0000)
-#define CS3BCR_w	UINT_C(0xfffc0010)
-#define CS3WCR_w	UINT_C(0xfffc0034)
-#define SDCR_w		UINT_C(0xfffc004c)
-#define RTCSR_w		UINT_C(0xfffc0050)
-#define RTCOR_w		UINT_C(0xfffc0058)
-
-#define BSC_BASE	CMNCR_w	/*	ベースアドレス	*/
-
-/*
  *	内蔵RAM
  */
-#define INNER_RAM_PAGE1_START		UINT_C(0xfff80000)
-#define INNER_RAM_PAGE2_START		UINT_C(0xfff82000)
-#define INNER_RAM_PAGE3_START		UINT_C(0xfff84000)
-#define INNER_RAM_PAGE4_START		UINT_C(0xfff86000)
+#define INNER_RAM_PAGE0_START		UINT_C(0xfff80000)
+#define INNER_RAM_PAGE1_START		UINT_C(0xfff84000)
+#define INNER_RAM_PAGE2_START		UINT_C(0xfff88000)
+#define INNER_RAM_PAGE3_START		UINT_C(0xfff8c000)
 
-#define INNER_RAM_PAGE_SIZE			UINT_C(0x00002000)
+#define INNER_RAM_PAGE_SIZE			UINT_C(0x00004000)
 
-#define INNER_RAM_PAGE4_END		(INNER_RAM_PAGE4_START + INNER_RAM_PAGE_SIZE)
+#define INNER_RAM_PAGE3_END		(INNER_RAM_PAGE3_START + INNER_RAM_PAGE_SIZE)
 /*  ページ4以外は次のページの先頭アドレスを使えばよい。  */
 
 
