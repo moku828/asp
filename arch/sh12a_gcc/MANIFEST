@@ -27,11 +27,11 @@ prc_design.txt
 Makefile.sh2a
 sh2a.tf
 sh2a_config.h
-sh7211.tf
-sh7211.h
-sh7211_config.h
+sh7262.tf
+sh7262.h
+sh7262_config.h
 shelf.ld
 start.S
 
-INCLUDE ../../target/apsh2a_gcc/MANIFEST
+INCLUDE ../../target/frksh2a_gcc/MANIFEST
 INCLUDE ../../pdic/sh/MANIFEST

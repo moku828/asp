@@ -5,8 +5,6 @@
  *	
  *	Copyright (C) 2007 by Embedded and Real-Time Systems Laboratory
  *				Graduate School of Information Science, Nagoya Univ., JAPAN
- *	Copyright (C) 2011 by Industrial Technology Institute,
- *								Miyagi Prefectural Government, JAPAN
  *	
  *	上記著作権者は，以下の(1)〜(4)の条件を満たす場合に限り，本ソフトウェ
  *	ア（本ソフトウェアを改変したものを含む．以下同じ）を使用・複製・改
@@ -37,62 +35,33 @@
  *	アの利用により直接的または間接的に生じたいかなる損害に関しても，そ
  *	の責任を負わない．
  *	
- *	$Id: target_test.h 2212 2011-08-04 07:10:22Z mit-kimai $
+ *	$Id: target_timer.h 1830 2010-07-05 06:29:14Z mit-kimai $
  */
 
 /*
- *		テストプログラムのターゲット依存定義（APSH2A用）
+ *	タイマドライバ（FRK-SH2A用）
  */
 
-#ifndef TOPPERS_TARGET_TEST_H
-#define TOPPERS_TARGET_TEST_H
-
-#define CPUEXC1				9		/* アドレスエラー例外 */
+#ifndef TOPPERS_TARGET_TIMER_H
+#define TOPPERS_TARGET_TIMER_H
 
 /*
- *	アドレスエラー例外発生関数
- *	　
- *	　例外発生時にスタックに退避されるPCの値は「最後に実行した命令」
- *	　の次命令の先頭アドレスを指している。
- *	　この「最後に実行した命令」とは実際にアドレスエラー例外を発生
- *	　した命令ではなく、例外発生時にパイプライン上で実行されている
- *	　後続の命令である。
- *	　（例外を発生した命令がメモリアクセスステージで、後続の命令が
- *	　　既に実行ステージにある場合）
- *	　
- *	　また、後続の命令に分岐命令が含まれる場合は、退避すべきPCの値が
- *	　書き換えられているケースがある。
- *	　
- *	　「最後に実行した命令」が例外発生箇所から何命令離れているか
- *	　一概には求められないため、ここではnop命令を挿入している。
+ *	タイマ値の内部表現と msec 単位との変換
+ *	FRK-SH2Aでは、Pクロックが40MHz
+ *	分周比 /8,/32,/128,/512 のいずれかを選択
+ *	/8	 :	5MHz tick 5000
  */
-Inline void 
-toppers_raise_cpu_exception(void)
-{
-	uint32_t tmp;
-	uint32_t adr = 0xfffffec1U;		/*  奇数番地  */
-	
-	Asm(" mov.l @%1, %0 \n"			/*  アドレスエラー例外を発生  */
-	    " nop           \n"			/*  ←スタックに退避されるアドレス  */
-	    " nop           \n"
-	    " nop           \n"
-	    " nop           " : "=r"(tmp): "r"(adr));
-}
 
-#define RAISE_CPU_EXCEPTION	toppers_raise_cpu_exception()
+#define CMCSR_CKS  0x0000U
 
 /*
- *	タスクで使用するシリアルポートID
+ *	タイマ値の内部表現とミリ秒単位との変換
  */
-#define TASK_PORTID 2
+#define TIMER_CLOCK ((PCLOCK/8) / 1000)
 
-/*  TASK_LOOPを定義すれば、実行速度の計測は行わない  */
-#ifdef TOPPERS_HEW_SIMULATOR
+/*
+ * プロセッサ依存部で定義する
+ */
+#include "sh12a_gcc/prc_cmt.h"
 
-#define TASK_LOOP	(500000)			/* タスクのループ回数 */
-
-#define LOOP_REF	(1000000/500)		/* 速度計測用のループ回数 */
-#endif /* TOPPERS_HEW_SIMULATOR */
-
-
-#endif /* TOPPERS_TARGET_TEST_H */
+#endif /* TOPPERS_TARGET_TIMER_H */

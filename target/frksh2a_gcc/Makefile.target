@@ -3,14 +3,14 @@
 #
 
 #
-#		Makefile のターゲット依存部（APSH2A用）
+#		Makefile のターゲット依存部（FRK-SH2A用）
 #
 
 #
 #  ボード名，チップ名，アーキテクチャ名，開発環境名の定義
 #
-BOARD = apsh2a
-CHIP  = sh7211
+BOARD = frksh2a
+CHIP  = sh7262
 PRC   = sh12a
 TOOL  = gcc
 

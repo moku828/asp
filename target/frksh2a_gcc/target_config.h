@@ -41,7 +41,7 @@
  */
 
 /*
- *	ターゲット依存モジュール（APSH2A用）
+ *	ターゲット依存モジュール（FRK-SH2A用）
  *
  *	カーネルのターゲット依存部のインクルードファイル．kernel_impl.hのター
  *	ゲット依存部の位置付けとなる．
@@ -53,7 +53,7 @@
 /*
  *	ターゲットシステムのハードウェア資源の定義
  */
-#include "apsh2a.h"
+#include "frksh2a.h"
 
 /*
  *	トレースログに関する設定
@@ -195,8 +195,8 @@ extern void target_exit(void) NoReturn;
 #endif	/*  ROM_BOOT  */
 
 /*
- *	プロセッサ依存モジュール（SH7211用）
+ *	プロセッサ依存モジュール（SH7262用）
  */
-#include "sh12a_gcc/sh7211_config.h"
+#include "sh12a_gcc/sh7262_config.h"
 
 #endif	/* TOPPERS_TARGET_CONFIG_H */

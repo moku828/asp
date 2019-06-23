@@ -1,10 +1,12 @@
 /*
  *	TOPPERS/ASP Kernel
  *		Toyohashi Open Platform for Embedded Real-Time Systems/
- *		Advanced Standard Profile Kernel
+ *		Advanced Standard Profile Kernel  
  *	
+ *	Copyright (C) 2000-2003 by Embedded and Real-Time Systems Laboratory
+ *								Toyohashi Univ. of Technology, JAPAN
  *	Copyright (C) 2007 by Embedded and Real-Time Systems Laboratory
- *				Graduate School of Information Science, Nagoya Univ., JAPAN
+ *				Graduate School of Information Science, Nagoya Univ., JAPAN  
  *	
  *	上記著作権者は，以下の(1)〜(4)の条件を満たす場合に限り，本ソフトウェ
  *	ア（本ソフトウェアを改変したものを含む．以下同じ）を使用・複製・改
@@ -35,53 +37,37 @@
  *	アの利用により直接的または間接的に生じたいかなる損害に関しても，そ
  *	の責任を負わない．
  *	
- *	$Id: target_kernel.h 2156 2011-07-19 06:03:20Z mit-kimai $
+ *	$Id: apsh2a.h 1824 2010-07-02 06:50:03Z mit-kimai $
  */
 
 /*
- *	kernel.hのターゲット依存部（APSH2A用）
- *
- *	このインクルードファイルは，kernel.hでインクルードされる．他のファ
- *	イルから直接インクルードすることはない．このファイルをインクルード
- *	する前に，t_stddef.hがインクルードされるので，それらに依存してもよ
- *	い．
+ *	FRK-SH2A CPUボードののハードウェア資源の定義
  */
 
-#ifndef TOPPERS_TARGET_KERNEL_H
-#define TOPPERS_TARGET_KERNEL_H
+#ifndef TOPPERS_FRKSH2A_H
+#define TOPPERS_FRKSH2A_H
+
+#include <sil.h>
 
 /*
- *	サポートする機能の定義
+ *	プロセッサのハードウェア資源の定義のインクルード
  */
-#define TOPPERS_TARGET_SUPPORT_GET_UTM		/* get_utmをサポートする */
+#include "sh12a_gcc/sh7262.h"
 
 /*
- *	タイムティックの定義
+ *	内蔵周辺クロック P = 40MHz
  */
-#define TIC_NUME   1U			 /* タイムティックの周期の分子 */
-#define TIC_DENO   1U			 /* タイムティックの周期の分母 */
+#define	PCLOCK			40000000
+
+#ifndef TOPPERS_MACRO_ONLY
 
 /*
- *	カーネル管理の割込み優先度の範囲
- *
- *	TMIN_INTPRIの定義を変更することで，どのレベルよりも高い割込み優先度
- *	を持つものをカーネル管理外の割込みとするかを変更できる．
- *
- *	TMIN_INTPRIに設定できる値は，-15〜-1の範囲である．例えばTMIN_INTPRI
- *	を-14に設定すると，NMIに加えてレベル15の割込みがカーネル管理外とな
- *	る．TMIN_INTPRIを-15に設定すると，NMI以外にカーネル管理外の割込みを
- *	設けないことになる．
- *
- *	カーネル管理外の割込みを使用する場合は、下記のコメントアウトを外して
- *	適切な値を定義する。
+ *	開発環境依存の処理
  */
-#if 0
-#define TMIN_INTPRI		(-14)		/* 割込み優先度の最小値（最高値）*/
-#endif
-
-/*
- *	プロセッサで共通な定義
- */
-#include "sh12a_gcc/prc_kernel.h"
-
-#endif /* TOPPERS_TARGET_KERNEL_H */
+Inline void
+frksh2a_exit(void)
+{
+	while(1);
+}
+#endif /* TOPPERS_MACRO_ONLY */
+#endif /* TOPPERS_FRKSH2A_H */

@@ -43,7 +43,7 @@
  */
 
 /*
- *	ターゲット依存モジュール アセンブリ言語部（APSH2A）
+ *	ターゲット依存モジュール アセンブリ言語部（FRK-SH2A）
  */
 
 #define  TOPPERS_MACRO_ONLY

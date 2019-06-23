@@ -3,10 +3,10 @@
  *		Toyohashi Open Platform for Embedded Real-Time Systems/
  *		Advanced Standard Profile Kernel
  *	
- *	Copyright (C) 2000-2003 by Embedded and Real-Time Systems Laboratory
- *								Toyohashi Univ. of Technology, JAPAN
  *	Copyright (C) 2007 by Embedded and Real-Time Systems Laboratory
  *				Graduate School of Information Science, Nagoya Univ., JAPAN
+ *	Copyright (C) 2011 by Industrial Technology Institute,
+ *								Miyagi Prefectural Government, JAPAN
  *	
  *	上記著作権者は，以下の(1)〜(4)の条件を満たす場合に限り，本ソフトウェ
  *	ア（本ソフトウェアを改変したものを含む．以下同じ）を使用・複製・改
@@ -37,87 +37,62 @@
  *	アの利用により直接的または間接的に生じたいかなる損害に関しても，そ
  *	の責任を負わない．
  *	
- *	$Id: target_syssvc.h 2125 2011-06-24 07:42:00Z mit-kimai $
+ *	$Id: target_test.h 2212 2011-08-04 07:10:22Z mit-kimai $
  */
 
 /*
- *	システムサービスのターゲット依存部（APSH2A用）
- *
- *	システムサービスのターゲット依存部のインクルードファイル．このファ
- *	イルの内容は，コンポーネント記述ファイルに記述され，このファイルは
- *	無くなる見込み．
+ *		テストプログラムのターゲット依存定義（FRK-SH2A用）
  */
 
-#ifndef TOPPERS_TARGET_SYSSVC_H
-#define TOPPERS_TARGET_SYSSVC_H
+#ifndef TOPPERS_TARGET_TEST_H
+#define TOPPERS_TARGET_TEST_H
+
+#define CPUEXC1				9		/* アドレスエラー例外 */
 
 /*
- *	ターゲットシステムのハードウェア資源の定義
+ *	アドレスエラー例外発生関数
+ *	　
+ *	　例外発生時にスタックに退避されるPCの値は「最後に実行した命令」
+ *	　の次命令の先頭アドレスを指している。
+ *	　この「最後に実行した命令」とは実際にアドレスエラー例外を発生
+ *	　した命令ではなく、例外発生時にパイプライン上で実行されている
+ *	　後続の命令である。
+ *	　（例外を発生した命令がメモリアクセスステージで、後続の命令が
+ *	　　既に実行ステージにある場合）
+ *	　
+ *	　また、後続の命令に分岐命令が含まれる場合は、退避すべきPCの値が
+ *	　書き換えられているケースがある。
+ *	　
+ *	　「最後に実行した命令」が例外発生箇所から何命令離れているか
+ *	　一概には求められないため、ここではnop命令を挿入している。
  */
-#include "apsh2a.h"
+Inline void 
+toppers_raise_cpu_exception(void)
+{
+	uint32_t tmp;
+	uint32_t adr = 0xfffffec1U;		/*  奇数番地  */
+	
+	Asm(" mov.l @%1, %0 \n"			/*  アドレスエラー例外を発生  */
+	    " nop           \n"			/*  ←スタックに退避されるアドレス  */
+	    " nop           \n"
+	    " nop           \n"
+	    " nop           " : "=r"(tmp): "r"(adr));
+}
+
+#define RAISE_CPU_EXCEPTION	toppers_raise_cpu_exception()
 
 /*
- *	プロセッサ依存の定義
+ *	タスクで使用するシリアルポートID
  */
-#include "sh12a_gcc/prc_syssvc.h"
+#define TASK_PORTID 2
 
-/*
- *	トレースログに関する設定
- */
-#ifdef TOPPERS_TRACE_ENABLE
-#include "logtrace/trace_config.h"
-#endif /* TOPPERS_TRACE_ENABLE */
+/*  TASK_LOOPを定義すれば、実行速度の計測は行わない  */
+#ifdef TOPPERS_HEW_SIMULATOR
 
-/*
- *	起動メッセージのターゲットシステム名
- */
-#define TARGET_NAME    "APSH2A(SH7211)"
+#define TASK_LOOP	(500000)			/* タスクのループ回数 */
 
-/*
- *	起動メッセージにターゲット依存部の著作権表示を
- *	追加するためのマクロ．
- */
-#ifdef PRC_COPYRIGHT
-#define TARGET_COPYRIGHT	PRC_COPYRIGHT
-#endif /* PRC_COPYRIGHT */
-
-/*
- *	システムログの低レベル出力のための文字出力
- *
- *	ターゲット依存の方法で，文字cを表示/出力/保存する．
- */
-extern void	target_fput_log(char_t c);
-
-/*
- *	シリアルポート数の定義
- */
-#define TNUM_PORT		 2		  /* サポートするシリアルポートの数 */
-#define TNUM_SIOP		 2
-
-/*
- *	使用するシリアルポートID
- */
-#define SIO_PORTID	 2
-
-#define LOGTASK_PORTID	 SIO_PORTID
-
-/*
- *	ボーレート
- */
-#define BPS_SETTING 38400
-#define SCIF0_BPS_SETTING  (((PCLOCK / 32) / BPS_SETTING) - 1)
-#define SCIF1_BPS_SETTING  (((PCLOCK / 32) / BPS_SETTING) - 1)
-
-/*
- * 起動時の待ち時間(1ビット分)
- */ 
-#define SIO_INIT_DLY 1000000
+#define LOOP_REF	(1000000/500)		/* 速度計測用のループ回数 */
+#endif /* TOPPERS_HEW_SIMULATOR */
 
 
-/*
- *	システムログタスク関連の定数の定義
- *
- *	デフォルト値の通り．
- */
-
-#endif /* TOPPERS_TARGET_SYSSVC_H */
+#endif /* TOPPERS_TARGET_TEST_H */

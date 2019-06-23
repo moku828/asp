@@ -37,98 +37,130 @@
  *	アの利用により直接的または間接的に生じたいかなる損害に関しても，そ
  *	の責任を負わない．
  *	
- *	$Id: target_serial.h 1824 2010-07-02 06:50:03Z mit-kimai $
+ *	$Id: target_config.c 2142 2011-06-27 07:24:40Z mit-kimai $
  */
 
 /*
- *	シリアルI/Oデバイス（SIO）ドライバ（APSH2A用）
+ *	ターゲット依存モジュール（FRK-SH2A用）
  */
 
-#ifndef TOPPERS_TARGET_SERIAL_H
-#define TOPPERS_TARGET_SERIAL_H
-
-#include "apsh2a.h"
+#include "kernel_impl.h"
+#include <sil.h>
 #include "pdic/sh/sh_scif.h"
+#include "frksh2a.h"
 
 /*
- *	SIOの割込みハンドラのベクタ番号
- *	　注意：target_syssvc.h内にも同様の定義が必要。
+ *	ターゲット依存の初期化
  */
-#define INHNO_SIO_TX	 SCIF1_TXI_VECTOR /* 割込みハンドラ番号 */
-#define INTNO_SIO_TX	 SCIF1_TXI_VECTOR /* 割込み番号 */
-#define INHNO_SIO_RX	 SCIF1_RXI_VECTOR /* 割込みハンドラ番号 */
-#define INTNO_SIO_RX	 SCIF1_RXI_VECTOR /* 割込み番号 */
-#define INTPRI_SIO		 (-4)			  /* 割込み優先度 */
-#define INTATR_SIO		 0U 			  /* 割込み属性 */
+void
+target_initialize(void)
+{
+	/*
+	 *	プロセッサ依存の初期化
+	 */
+	prc_initialize();
 
-#ifndef TOPPERS_MACRO_ONLY
+	/*
+	 *	LED接続ポートの初期化
+	 */
+	sil_wrh_mem((uint16_t *)PAIORH_h, 0x0280U);
+	sil_wrh_mem((uint16_t *)PAIORL_h, 0x0000U);
+	
+	/*
+	 *	SCIF1のI/Oポートの設定
+	 */
+	sil_wrh_mem((uint16_t *)PACRH3_h, 0x55U);
+	
+	/*
+	 * バーナー出力用のシリアルコントローラの初期化
+	 */
+	sh_scif_init(TARGET_PUTC_PORTID);
+}
 
 /*
- *	SIOドライバの初期化
+ *	ターゲット依存の終了処理
  */
-extern void sio_initialize(intptr_t exinf);
+void
+target_exit(void)
+{
+	/*
+	 *	プロセッサ依存の終了処理
+	 */
+	prc_exit();
+
+	/*
+	 *	開発環境依存の終了処理
+	 */
+	frksh2a_exit();
+
+	/*
+	 * ここには来ない
+	 */
+	while(1);
+}
+
 
 /*
- *	シリアルI/Oポートのオープン
- */
-extern SIOPCB *sio_opn_por(ID siopid, intptr_t exinf);
-
-/*
- *	シリアルI/Oポートのクローズ
- */
-extern void sio_cls_por(SIOPCB *p_siopcb);
-
-/*
- *	SIOの割込みハンドラ
- */
-extern void sio_tx_isr(intptr_t exinf);
-extern void sio_rx_isr(intptr_t exinf);
-
-/*
- *	シリアルI/Oポートへの文字送信
+ *   システム文字出力先の指定
  */
 #ifndef TOPPERS_HEW_SIMULATOR
-extern bool_t sio_snd_chr(SIOPCB *siopcb, char_t c);
 
-#else /* TOPPERS_HEW_SIMULATOR */
+#define TARGET_PUT_CHAR(c)	sh_scif_pol_putc(c, TARGET_PUTC_PORTID)
+
+#else	/* TOPPERS_HEW_SIMULATOR */
+
+extern void hew_io_sim_putc(char_t c);
+#define TARGET_PUT_CHAR(c)	hew_io_sim_putc(c)
+
+/*  機能コード  */
+#define GETC	0x01210000
+#define PUTC	0x01220000
+
+/*
+ *   HEWのI/Oシミュレーション機能呼び出し
+ */
+void hew_io_sim(uint32_t code, void *adr);
+
+void hew_io_sim_putc(char_t c)
+{
+	uint8_t buf = (uint8_t)c;		/*  バッファ  */
+	uint8_t *parmblk = &buf;		/*  パラメータブロック  */
+	uint8_t **p = &parmblk;			/*  　　・その先頭アドレス  */
+	uint32_t code = PUTC;			/*  機能コード  */
+	
+	hew_io_sim(code, p);
+}
 
 extern bool_t hew_io_sim_snd_chr(char_t c);
-#define sio_snd_chr(siopcb, c) hew_io_sim_snd_chr(c)
 
-#endif /* TOPPERS_HEW_SIMULATOR */
-
-/*
- *	シリアルI/Oポートからの文字受信
- */
-#ifndef TOPPERS_HEW_SIMULATOR
-extern int_t sio_rcv_chr(SIOPCB *siopcb);
-
-#else /* TOPPERS_HEW_SIMULATOR */
+bool_t hew_io_sim_snd_chr(char_t c)
+{
+	hew_io_sim_putc(c);
+	return true;
+}
 
 extern int_t hew_io_sim_rcv_chr(void);
-#define sio_rcv_chr(siopcb) hew_io_sim_rcv_chr( )
+
+int_t hew_io_sim_rcv_chr(void) {
+	uint8_t buf;					/*  バッファ  */
+	uint8_t *parmblk = &buf;		/*  パラメータブロック  */
+	uint8_t **p = &parmblk;			/*  　　・その先頭アドレス  */
+	uint32_t code = GETC;			/*  機能コード  */
+	
+	hew_io_sim(code, p);
+	return(buf);
+}
 
 #endif /* TOPPERS_HEW_SIMULATOR */
 
 /*
- *	シリアルI/Oポートからのコールバックの許可
+ *	システムログの低レベル出力のための文字出力
  */
-extern void sio_ena_cbr(SIOPCB *siopcb, uint_t cbrtn);
-
-/*
- *	シリアルI/Oポートからのコールバックの禁止
- */
-extern void sio_dis_cbr(SIOPCB *siopcb, uint_t cbrtn);
-
-/*
- *	シリアルI/Oポートからの送信可能コールバック
- */
-extern void sio_irdy_snd(intptr_t exinf);
-
-/*
- *	シリアルI/Oポートからの受信通知コールバック
- */
-extern void sio_irdy_rcv(intptr_t exinf);
-
-#endif /* TOPPERS_MACRO_ONLY */
-#endif /* TOPPERS_TARGET_SERIAL_H */
+void
+target_fput_log(char_t c)
+{
+	if (c == '\n') {
+		TARGET_PUT_CHAR('\r');
+	}
+	TARGET_PUT_CHAR(c);
+}

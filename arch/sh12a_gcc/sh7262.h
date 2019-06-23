@@ -41,11 +41,11 @@
  */
 
 /*
- *	SH7211のハードウェア資源の定義
+ *	SH7262のハードウェア資源の定義
  */
 
-#ifndef TOPPERS_SH7211_H
-#define TOPPERS_SH7211_H
+#ifndef TOPPERS_SH7262_H
+#define TOPPERS_SH7262_H
 
 /*
  *	例外ベクタ

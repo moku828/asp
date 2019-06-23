@@ -3,6 +3,8 @@
  *		Toyohashi Open Platform for Embedded Real-Time Systems/
  *		Advanced Standard Profile Kernel
  *	
+ *	Copyright (C) 2000-2003 by Embedded and Real-Time Systems Laboratory
+ *								Toyohashi Univ. of Technology, JAPAN
  *	Copyright (C) 2007 by Embedded and Real-Time Systems Laboratory
  *				Graduate School of Information Science, Nagoya Univ., JAPAN
  *	
@@ -35,33 +37,87 @@
  *	アの利用により直接的または間接的に生じたいかなる損害に関しても，そ
  *	の責任を負わない．
  *	
- *	$Id: target_timer.h 1830 2010-07-05 06:29:14Z mit-kimai $
+ *	$Id: target_syssvc.h 2125 2011-06-24 07:42:00Z mit-kimai $
  */
 
 /*
- *	タイマドライバ（APSH2A用）
+ *	システムサービスのターゲット依存部（FRK-SH2A用）
+ *
+ *	システムサービスのターゲット依存部のインクルードファイル．このファ
+ *	イルの内容は，コンポーネント記述ファイルに記述され，このファイルは
+ *	無くなる見込み．
  */
 
-#ifndef TOPPERS_TARGET_TIMER_H
-#define TOPPERS_TARGET_TIMER_H
+#ifndef TOPPERS_TARGET_SYSSVC_H
+#define TOPPERS_TARGET_SYSSVC_H
 
 /*
- *	タイマ値の内部表現と msec 単位との変換
- *	APSH2Aでは、Pクロックが40MHz
- *	分周比 /8,/32,/128,/512 のいずれかを選択
- *	/8	 :	5MHz tick 5000
+ *	ターゲットシステムのハードウェア資源の定義
  */
-
-#define CMCSR_CKS  0x0000U
+#include "frksh2a.h"
 
 /*
- *	タイマ値の内部表現とミリ秒単位との変換
+ *	プロセッサ依存の定義
  */
-#define TIMER_CLOCK ((PCLOCK/8) / 1000)
+#include "sh12a_gcc/prc_syssvc.h"
 
 /*
- * プロセッサ依存部で定義する
+ *	トレースログに関する設定
  */
-#include "sh12a_gcc/prc_cmt.h"
+#ifdef TOPPERS_TRACE_ENABLE
+#include "logtrace/trace_config.h"
+#endif /* TOPPERS_TRACE_ENABLE */
 
-#endif /* TOPPERS_TARGET_TIMER_H */
+/*
+ *	起動メッセージのターゲットシステム名
+ */
+#define TARGET_NAME    "FRK-SH2A(SH7262)"
+
+/*
+ *	起動メッセージにターゲット依存部の著作権表示を
+ *	追加するためのマクロ．
+ */
+#ifdef PRC_COPYRIGHT
+#define TARGET_COPYRIGHT	PRC_COPYRIGHT
+#endif /* PRC_COPYRIGHT */
+
+/*
+ *	システムログの低レベル出力のための文字出力
+ *
+ *	ターゲット依存の方法で，文字cを表示/出力/保存する．
+ */
+extern void	target_fput_log(char_t c);
+
+/*
+ *	シリアルポート数の定義
+ */
+#define TNUM_PORT		 2		  /* サポートするシリアルポートの数 */
+#define TNUM_SIOP		 2
+
+/*
+ *	使用するシリアルポートID
+ */
+#define SIO_PORTID	 2
+
+#define LOGTASK_PORTID	 SIO_PORTID
+
+/*
+ *	ボーレート
+ */
+#define BPS_SETTING 38400
+#define SCIF0_BPS_SETTING  (((PCLOCK / 32) / BPS_SETTING) - 1)
+#define SCIF1_BPS_SETTING  (((PCLOCK / 32) / BPS_SETTING) - 1)
+
+/*
+ * 起動時の待ち時間(1ビット分)
+ */ 
+#define SIO_INIT_DLY 1000000
+
+
+/*
+ *	システムログタスク関連の定数の定義
+ *
+ *	デフォルト値の通り．
+ */
+
+#endif /* TOPPERS_TARGET_SYSSVC_H */

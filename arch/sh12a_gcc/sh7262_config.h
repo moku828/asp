@@ -41,15 +41,15 @@
  */
 
 /*
- *		プロセッサ依存モジュール（SH7211用）
+ *		プロセッサ依存モジュール（SH7262用）
  *
  *	このインクルードファイルは，target_config.h（または，そこからインク
  *	ルードされるファイル）のみからインクルードされる．他のファイルから
  *	直接インクルードしてはならない．
  */
 
-#ifndef TOPPERS_SH7211_CONFIG_H
-#define TOPPERS_SH7211_CONFIG_H
+#ifndef TOPPERS_SH7262_CONFIG_H
+#define TOPPERS_SH7262_CONFIG_H
 
 #ifndef TOPPERS_TARGET_CONFIG_H
 #error  target_config.h is not included!
@@ -372,4 +372,4 @@ init_ipr(void)
  */
 #include "sh12a_gcc/sh2a_config.h"
 
-#endif /* TOPPERS_SH7211_CONFIG_H */
+#endif /* TOPPERS_SH7262_CONFIG_H */

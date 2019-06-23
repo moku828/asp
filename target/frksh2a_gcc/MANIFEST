@@ -3,7 +3,7 @@ PACKAGE asp_arch_sh12a_gcc
 E_PACKAGE
 MANIFEST
 Makefile.target
-apsh2a.h
+frksh2a.h
 target.tf
 target_cfg1_out.h
 target_check.tf
