@@ -516,6 +516,7 @@
  *  ¥Ý¡¼¥ÈF
  */
 #define PFCR1_h		0xfffe38acU
+#define PFCR0_h		0xfffe38aeU
 
 
 #endif /* TOPPERS_SH7711_H */

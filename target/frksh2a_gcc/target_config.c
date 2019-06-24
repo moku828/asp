@@ -69,6 +69,7 @@ target_initialize(void)
 	 *	SCIF3のI/Oポートの設定
 	 */
 	sil_wrh_mem((uint16_t *)PFCR1_h, (sil_reh_mem((uint16_t *)PFCR1_h) & ~0x0007) | 0x0004);
+	sil_wrh_mem((uint16_t *)PFCR0_h, (sil_reh_mem((uint16_t *)PFCR0_h) & ~0x7000) | 0x4000);
 	
 	/*
 	 * バーナー出力用のシリアルコントローラの初期化
