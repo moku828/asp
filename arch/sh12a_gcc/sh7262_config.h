@@ -234,7 +234,7 @@
 	{IPR11_h, 12U}, /* 177 CMI */ \
 	{IPR11_h,  8U}, /* 178 ITI */ \
 	{IPR11_h,  4U}, /* 179 MTU0 TGI0A */ \
-	{IPR11_h,  4U}, /* 189 MTU0 TGI0B */ \
+	{IPR11_h,  4U}, /* 180 MTU0 TGI0B */ \
 	{IPR11_h,  4U}, /* 181 MTU0 TGI0C */ \
 	{IPR11_h,  4U}, /* 182 MTU0 TGI0D */ \
 	{IPR11_h,  0U}, /* 183 MTU0 TGI0V */ \
