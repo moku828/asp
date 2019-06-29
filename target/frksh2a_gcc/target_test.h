@@ -84,7 +84,7 @@ toppers_raise_cpu_exception(void)
 /*
  *	タスクで使用するシリアルポートID
  */
-#define TASK_PORTID 2
+#define TASK_PORTID 4
 
 /*  TASK_LOOPを定義すれば、実行速度の計測は行わない  */
 #ifdef TOPPERS_HEW_SIMULATOR
