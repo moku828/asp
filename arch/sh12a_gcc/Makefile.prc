@@ -13,7 +13,7 @@
 COPTS := $(COPTS)
 LDFLAGS := -nostdlib $(LDFLAGS)
 CDEFS := $(CDEFS) -DTOPPERS_LABEL_ASM
-LIBS := $(LIBS)  -lgcc
+LIBS := $(LIBS)  -lgcc -lc
 
 #
 #  システムサービスに関する定義

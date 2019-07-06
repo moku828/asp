@@ -108,6 +108,7 @@
 #include "syssvc/syslog.h"
 #include "kernel_cfg.h"
 #include "sample1.h"
+#include "pdic/sh/sdmmc.h"
 
 /*
  *  サービスコールのエラーのログ出力
@@ -309,6 +310,8 @@ void main_task(intptr_t exinf)
 	}
 	SVC_PERROR(serial_ctl_por(TASK_PORTID,
 							(IOCTL_CRLF | IOCTL_FCSND | IOCTL_FCRCV)));
+
+	sdmmc_open(1);
 
 	/*
  	 *  ループ回数の設定
