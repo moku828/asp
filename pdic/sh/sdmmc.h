@@ -103,7 +103,11 @@
 /*
  *  SD/MMC コマンドリスト
  */
+#if 1
+#define MCI_CMD0			(0x0000|CMD_SHORTRESP)					/* GO_IDLE_STATE(SPI) */
+#else
 #define MCI_CMD0			(0x0000)								/* GO_IDLE_STATE(MMC) or RESET(SD) */
+#endif
 #define MCI_CMD1			(0x0001|CMD_SHORTRESP|CMD_IGNOREIRES)	/* SEND_OP_COND(MMC) or CMD1(SD) */
 #define MCI_CMD2			(0x0002|CMD_SLONGRESP|CMD_IGNOREIRES)	/* ALL SEND_CID */
 #define MCI_CMD3			(0x0003|CMD_SHORTRESP)					/* SET_RELATE_ADDR */
@@ -122,6 +126,9 @@
 #define MCI_CMD33			(0x0021|CMD_SHORTRESP)					/* ERASE_GRP_END */
 #define MCI_CMD38			(0x0026|CMD_SHORTRESP)					/* ERASE */
 #define MCI_CMD55			(0x0037|CMD_SHORTRESP)					/* APP_CMD, the following will a ACMD */
+#if 1
+#define MCI_CMD58			(0x003A|CMD_SHORTRESP)					/* READ_OCR */
+#endif
 
 #define MCI_ACMD6			(0x0006|CMD_SHORTRESP)					/* ACMD6 for SD card BUSWIDTH */
 #define MCI_ACMD13			(0x000D|CMD_SHORTRESP)					/* ACMD23 for SD card status */
@@ -227,11 +234,13 @@ typedef struct
 	uint32_t                BusWide;	/* 指定バス幅 */
 	uint32_t                RetryCount;	/* リトライ回数 */
 	uint32_t                cardtype;	/* カードタイプ */
+	uint32_t                OCR;		/* OCR値 */
 	uint32_t                RCA;		/* RCA値 */
 	uint32_t                CSD[4];		/* CSD値 */
 	uint32_t                CID[4];		/* CID値 */
 	volatile uint32_t       status;		/* 転送状態 */
 	volatile uint32_t       SdCmd;		/* 転送指定コマンド */
+	uint8_t                 R1;			/* R1レスポンス */
 #if 0
 	DMA_Handle_t            *hdmarx;	/* 受信用DMAハンドラ */
 	DMA_Handle_t            *hdmatx;	/* 送信用DMAハンドラ */

@@ -178,10 +178,12 @@
 #define SDMMC_CMD0TIMEOUT               (5000*1000)
 
 
-#if 0
-static ER sdmmc_sendcommand(SDMMC_Handle_t *hsd, uint32_t cmd, uint32_t arg, ER (*func)(SDMMC_Handle_t *, uint32_t));
+/*static*/ ER sdmmc_sendcommand(SDMMC_Handle_t *hsd, uint32_t cmd, uint32_t arg, ER (*func)(SDMMC_Handle_t *, uint32_t));
 
 static ER sdmmc_checkrep1(SDMMC_Handle_t *hsd, uint32_t Cmd);
+static ER sdmmc_checkrep7(SDMMC_Handle_t *hsd, uint32_t Cmd);
+static ER sdmmc_checkrep3_spi(SDMMC_Handle_t *hsd, uint32_t Cmd);
+#if 0
 static ER sdmmc_checkrep2(SDMMC_Handle_t *hsd, uint32_t Cmd);
 static ER sdmmc_checkrep3(SDMMC_Handle_t *hsd, uint32_t Cmd);
 static ER sdmmc_checkrep6(SDMMC_Handle_t *hsd, uint32_t Cmd);
@@ -193,7 +195,7 @@ static ER sdmmc_getSCR(SDMMC_Handle_t *hsd, uint32_t *pSCR);
 static ER sdmmc_getpstate(SDMMC_Handle_t *hsd, uint8_t *pStatus);
 #endif
 
-//static SDMMC_Handle_t SdHandle;
+static SDMMC_Handle_t SdHandle;
 
 uint8_t spi_trans(uint8_t tx)
 {
@@ -421,12 +423,10 @@ SDMMC_Handle_t*
 sdmmc_open(int id)
 {
 #if 1
-	//SDMMC_Handle_t *hsd = &SdHandle;
-	uint8_t resp[5];
+	SDMMC_Handle_t *hsd = &SdHandle;
 	uint8_t data[512];
 	ER ret;
-	uint8_t sdsc;
-	volatile uint32_t i;
+	volatile uint8_t sdsc;
 
 	/*  1MSの待ち */
 	dly_tsk(1);
@@ -435,73 +435,75 @@ sdmmc_open(int id)
 	spi_speed_lowspeed(1);
 
 	/*
-	 *  CMD0: GO IDLE STATE
+	 *  CMD0: GO_IDLE_STATE
 	 */
-	{
-		uint8_t cmd0[6] = {0x40, 0x00, 0x00, 0x00, 0x00, 0x95};
-		ret = sd_trans_cmd(cmd0, 1, resp, 1);
-		if ((ret != 0) || (resp[0] != 0x01)) while (1) ;
-	}
+	ret = sdmmc_sendcommand(hsd, MCI_CMD0, 0, sdmmc_checkrep1);
+	if (ret != E_OK) while (1) ;
+	if (hsd->R1 != 0x01) while (1);
 
 	/*
-	 *  CMD8: SEND IF COND
+	 *  CMD8: SEND_IF_COND
 	 */
-	{
-		uint8_t cmd8[6] = {0x48, 0x00, 0x00, 0x01, 0xAA, 0x87};
-		ret = sd_trans_cmd(cmd8, 5, resp, 1);
-		if (ret != 0) while (1) ;
-		if ((resp[0] & 0x04) == 0x04) sdsc = 1;
-		else
-		{
-			sdsc = 0;
-			if (((resp[3] & 0x0F) != 0x01) || (resp[4] != 0xAA)) while (1) ;
-		}
-	}
+	ret = sdmmc_sendcommand(hsd, MCI_CMD8, 0x000001AA, sdmmc_checkrep7);
+	if (ret != E_OK) while (1) ;
+	if (hsd->cardtype == SD_CARD_V11) sdsc = 1;
+	else sdsc = 0;
 	if (sdsc)
 	{
 		while (1)
 		{
-			uint8_t cmd55[6] = {0x77, 0x00, 0x00, 0x00, 0x00, 0x01};
-			uint8_t cmd41[6] = {0x69, 0x00, 0x00, 0x00, 0x00, 0x01};
-			ret = sd_trans_cmd(cmd55, 1, resp, 1);
-			if (ret != 0) while (1) ;
-			ret = sd_trans_cmd(cmd41, 1, resp, 1);
-			if (ret != 0) while (1) ;
-			if (resp[0] == 0x00) break;
-			for (i = 0; i < 0x40000; i++) ;
+			/*
+			 *  ACMD41: SD_SEND_OP_COND
+			 */
+			ret = sdmmc_sendcommand(hsd, MCI_CMD55, 0, sdmmc_checkrep1);
+			if (ret != E_OK) while (1) ;
+			ret = sdmmc_sendcommand(hsd, MCI_ACMD41, 0, sdmmc_checkrep1);
+			if (ret != E_OK) while (1) ;
+			if (hsd->R1 == 0x00) break;
+			dly_tsk(25);
 		}
 	}
 	else
 	{
 		while (1)
 		{
-			uint8_t cmd55[6] = {0x77, 0x00, 0x00, 0x00, 0x00, 0x01};
-			uint8_t cmd41[6] = {0x69, 0x40, 0x00, 0x00, 0x00, 0x01};
-			ret = sd_trans_cmd(cmd55, 1, resp, 1);
-			if (ret != 0) while (1) ;
-			ret = sd_trans_cmd(cmd41, 1, resp, 1);
-			if (ret != 0) while (1) ;
-			if (resp[0] == 0x00) break;
-			sd_trans_dmyclk();
+			/*
+			 *  ACMD41: SD_SEND_OP_COND
+			 */
+			ret = sdmmc_sendcommand(hsd, MCI_CMD55, 0, sdmmc_checkrep1);
+			if (ret != E_OK) while (1) ;
+			ret = sdmmc_sendcommand(hsd, MCI_ACMD41, 0x40000000, sdmmc_checkrep1);
+			if (ret != E_OK) while (1) ;
+			if (hsd->R1 == 0x00) break;
+			dly_tsk(25);
 		}
 		{
-			uint8_t cmd58[6] = {0x7A, 0x00, 0x00, 0x00, 0x00, 0x01};
-			ret = sd_trans_cmd(cmd58, 5, resp, 1);
-			if ((ret != 0) || (resp[0] != 0x00)) while (1) ;
-			if ((resp[1] & 0x40) == 0x40) sdsc = 1;
+			/*
+			 *  CMD58: READ_OCR
+			 */
+			ret = sdmmc_sendcommand(hsd, MCI_CMD58, 0, sdmmc_checkrep3_spi);
+			if (ret != E_OK) while (1) ;
+			if (hsd->R1 != 0x00) while (1);
+			if ((hsd->OCR & 0x40000000) == 0x00000000) sdsc = 1;
 			else sdsc = 0;
 		}
 	}
 	spi_speed_lowspeed(0);
 	{
-		uint8_t cmd16[6] = {0x50, 0x00, 0x00, 0x02, 0x00, 0x01};
-		ret = sd_trans_cmd(cmd16, 1, resp, 1);
-		if ((ret != 0) || (resp[0] != 0x00)) while (1) ;
+		/*
+		 *  CMD16: SET_BLOCKLEN
+		 */
+		ret = sdmmc_sendcommand(hsd, MCI_CMD16, 0x00000200, sdmmc_checkrep1);
+		if (ret != E_OK) while (1) ;
+		if (hsd->R1 != 0x00) while (1);
 	}
 	{
-		uint8_t cmd17[6] = {0x51, 0x00, 0x00, 0x00, 0x00, 0x01};
-		ret = sd_trans_cmd(cmd17, 1, resp, 1);
-		if ((ret != 0) || (resp[0] != 0x00)) while (1) ;
+		/*
+		 *  CMD17: SET_BLOCKLEN
+		 */
+		ret = sdmmc_sendcommand(hsd, MCI_CMD17, 0, sdmmc_checkrep1);
+		if (ret != E_OK) while (1) ;
+		if (hsd->R1 != 0x00) while (1);
 	}
 	{
 		ret = sd_trans_data_rx(512, data, 1);
@@ -509,7 +511,7 @@ sdmmc_open(int id)
 	}
 	//while (1) ;
 
-	return E_OK;
+	return hsd;
 #else
 	static DMA_Handle_t dma_rx_handle;
 	static DMA_Handle_t dma_tx_handle;
@@ -1627,14 +1629,31 @@ void sdmmc_handler(void)
 }
 
 
-#if 0
 /*
  * SDMMCコマンド送信
  */
-static ER
+/*static*/ ER
 sdmmc_sendcommand(SDMMC_Handle_t *hsd, uint32_t cmd, uint32_t arg, ER (*func)(SDMMC_Handle_t *, uint32_t))
 {
 #if 1
+	ER ret = E_OK;
+	volatile uint32_t i;
+
+	spi_cs_assert(1);
+	spi_trans(0xFF);
+
+	spi_trans((uint8_t)cmd);
+	for (i = 0; i < 4; i++)
+		spi_trans((uint8_t)(arg >> (8 * (3 - i))));
+	spi_trans((cmd == MCI_CMD0) ? 0x95 : ((cmd == MCI_CMD8) ? 0x87 : 0x01));
+	if(func != NULL){
+		ret = func(hsd, cmd);
+	}
+
+	spi_cs_assert(0);
+	spi_trans(0xFF);
+
+	return ret;
 #else
 	uint32_t addr = hsd->base;
 
@@ -1663,7 +1682,27 @@ static ER
 sdmmc_checkrep1(SDMMC_Handle_t *hsd, uint32_t Cmd)
 {
 #if 1
-	return E_OK;
+	ER ret = E_OK;
+	volatile uint32_t i, j;
+	uint32_t resp_len;
+	uint8_t resp[5];
+
+	resp_len = 1;
+
+	for (j = 0; j < 8; j++)
+	{
+		resp[0] = spi_trans(0xFF);
+		if ((resp[0] & 0x80) == 0x80) continue;
+		for (i = 1; i < resp_len; i++)
+			resp[i] = spi_trans(0xFF);
+		break;
+	}
+	if (j == 8)
+		return E_SYS;
+
+	hsd->R1 = resp[0];
+
+	return ret;
 #else
 	uint32_t respValue;
 
@@ -1695,6 +1734,76 @@ sdmmc_checkrep1(SDMMC_Handle_t *hsd, uint32_t Cmd)
 #endif
 }
 
+/*
+ *  R7レスポンス
+ */
+static ER
+sdmmc_checkrep7(SDMMC_Handle_t *hsd, uint32_t Cmd)
+{
+	ER ret = E_OK;
+	volatile uint32_t i, j;
+	uint32_t resp_len;
+	uint8_t resp[5];
+
+	resp_len = 5;
+
+	for (j = 0; j < 8; j++)
+	{
+		resp[0] = spi_trans(0xFF);
+		if ((resp[0] & 0x80) == 0x80) continue;
+		for (i = 1; i < resp_len; i++)
+			resp[i] = spi_trans(0xFF);
+		break;
+	}
+	if (j == 8)
+		return E_SYS;
+
+	if ((resp[0] & 0x04) == 0x04)
+	{
+		hsd->cardtype = SD_CARD_V11;
+	}
+	else
+	{
+		hsd->cardtype = SD_CARD_V20;
+		if (((resp[3] & 0x0F) != 0x01) || (resp[4] != 0xAA)) while (1) ;
+	}
+
+	hsd->R1 = resp[0];
+
+	return ret;
+}
+
+/*
+ *  R3レスポンス(SPI)
+ */
+static ER
+sdmmc_checkrep3_spi(SDMMC_Handle_t *hsd, uint32_t Cmd)
+{
+	ER ret = E_OK;
+	volatile uint32_t i, j;
+	uint32_t resp_len;
+	uint8_t resp[5];
+
+	resp_len = 5;
+
+	for (j = 0; j < 8; j++)
+	{
+		resp[0] = spi_trans(0xFF);
+		if ((resp[0] & 0x80) == 0x80) continue;
+		for (i = 1; i < resp_len; i++)
+			resp[i] = spi_trans(0xFF);
+		break;
+	}
+	if (j == 8)
+		return E_SYS;
+
+	hsd->R1 = resp[0];
+	hsd->OCR = ((resp[1] << 24) | (resp[2] << 16) | (resp[3] << 8) | resp[4]);
+
+	return ret;
+}
+
+#if 0
 /*
  *  R2レスポンス
  */
