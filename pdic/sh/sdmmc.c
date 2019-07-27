@@ -80,6 +80,13 @@
 #define	SPCMD_00	((uint16_t *)0xFFFF8010)
 #define	SPBFCR_0	((uint8_t  *)0xFFFF8020)
 #define	SPBFDR_0	((uint16_t *)0xFFFF8022)
+#define	STBCR2		((uint8_t  *)0xFFFE0018)
+#define	SAR_0		((uint32_t *)0xFFFE1000)
+#define	DAR_0		((uint32_t *)0xFFFE1004)
+#define	DMATCR_0	((uint32_t *)0xFFFE1008)
+#define	CHCR_0		((uint32_t *)0xFFFE100C)
+#define	DMAOR		((uint16_t *)0xFFFE1200)
+#define	DMARS0		((uint16_t *)0xFFFE1300)
 #else
 #ifdef TOPPERS_STM32F769_DISCOVERY
 #define TADR_SDMMC_BASE         TADR_SDMMC2_BASE
@@ -292,10 +299,17 @@ ER sd_trans_data_rx(uint32_t data_len, uint8_t *data, uint32_t spi_mode)
 		if (rx == 0xFE) break;
 		for (i = 0; i < 0x40000; i++) ;
 	}
-	for (i = 0; i < data_len; i++)
+	sil_wrw_mem(SAR_0, (uint32_t)SPDR_0);
+	sil_wrw_mem(DAR_0, (uint32_t)data);
+	sil_wrw_mem(DMATCR_0, data_len);
+	sil_wrb_mem(SPDCR_0, 0xA0);
+	sil_orw_mem(CHCR_0, 0x00000001);
+	while (1)
 	{
-		data[i] = spi_trans(0xFF);
+		if (sil_rew_mem(CHCR_0) & 0x00000002) break;
 	}
+	sil_andw_mem(CHCR_0, 0x00000002);
+	sil_wrb_mem(SPDCR_0, 0x20);
 	spi_trans(0xFF);
 	spi_trans(0xFF);
 
@@ -349,9 +363,15 @@ sdmmc_init(intptr_t exinf)
 	sil_orb_mem(SPBFCR_0, 0xC0);
 	sil_modb_mem(SPBFCR_0, 0x37, 0x00);
 	sil_andb_mem(SPBFCR_0, 0xC0);
-	sil_orb_mem(SPCR_0, 0x40);
+	sil_orb_mem(SPCR_0, 0xC0);
 	sil_modh_mem(PFCR3, 0x0007, 0x0003);
 	sil_modh_mem(PFCR2, 0x7070, 0x3030);
+	sil_andb_mem(STBCR2, 0x20);
+	sil_andh_mem(DMAOR, 0x0001);
+	sil_andw_mem(CHCR_0, 0x00000001);
+	sil_modw_mem(CHCR_0, 0xB014FF3C, 0x00004800);
+	sil_modh_mem(DMARS0, 0x00FF, 0x0052);
+	sil_orh_mem(DMAOR, 0x0007);
 #else
 	GPIO_Init_t GPIO_Init_Data;
 	volatile unsigned long tmp;
