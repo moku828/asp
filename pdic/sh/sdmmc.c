@@ -515,7 +515,7 @@ sdmmc_open(int id)
 	}
 	{
 		/*
-		 *  CMD17: SET_BLOCKLEN
+		 *  CMD17: READ_SINGLE_BLOCK
 		 */
 		ret = sdmmc_sendcommand(hsd, MCI_CMD17, 0, sdmmc_checkrep1);
 		if (ret != E_OK) while (1) ;
