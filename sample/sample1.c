@@ -292,6 +292,8 @@ void main_task(intptr_t exinf)
 #ifdef TOPPERS_SUPPORT_GET_UTM
 	SYSUTM	utime1, utime2;
 #endif /* TOPPERS_SUPPORT_GET_UTM */
+	SDMMC_Handle_t* hsd;
+	uint8_t data[512];
 
 	SVC_PERROR(syslog_msk_log(LOG_UPTO(LOG_INFO), LOG_UPTO(LOG_EMERG)));
 	syslog(LOG_NOTICE, "Sample program starts (exinf = %d).", (int_t) exinf);
@@ -311,7 +313,8 @@ void main_task(intptr_t exinf)
 	SVC_PERROR(serial_ctl_por(TASK_PORTID,
 							(IOCTL_CRLF | IOCTL_FCSND | IOCTL_FCRCV)));
 
-	sdmmc_open(1);
+	hsd = sdmmc_open(1);
+	sdmmc_blockread(hsd, (uint32_t*)&data[0], 0, 512, 1);
 
 	/*
  	 *  ループ回数の設定

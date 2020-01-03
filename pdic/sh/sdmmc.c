@@ -440,7 +440,6 @@ sdmmc_open(int id)
 {
 #if 1
 	SDMMC_Handle_t *hsd = &SdHandle;
-	uint8_t data[512];
 	ER ret;
 	volatile uint8_t sdsc;
 
@@ -505,26 +504,6 @@ sdmmc_open(int id)
 		}
 	}
 	spi_speed_lowspeed(0);
-	{
-		/*
-		 *  CMD16: SET_BLOCKLEN
-		 */
-		ret = sdmmc_sendcommand(hsd, MCI_CMD16, 0x00000200, sdmmc_checkrep1);
-		if (ret != E_OK) while (1) ;
-		if (hsd->R1 != 0x00) while (1);
-	}
-	{
-		/*
-		 *  CMD17: READ_SINGLE_BLOCK
-		 */
-		ret = sdmmc_sendcommand(hsd, MCI_CMD17, 0, sdmmc_checkrep1);
-		if (ret != E_OK) while (1) ;
-		if (hsd->R1 != 0x00) while (1);
-	}
-	{
-		ret = sd_trans_data_rx(512, data, 1);
-		if (ret != 0) while (1) ;
-	}
 	//while (1) ;
 
 	return hsd;
@@ -802,6 +781,27 @@ ER
 sdmmc_blockread(SDMMC_Handle_t *hsd, uint32_t *pbuf, uint64_t ReadAddr, uint32_t blocksize, uint32_t num)
 {
 #if 1
+	ER ret;
+	{
+		/*
+		 *  CMD16: SET_BLOCKLEN
+		 */
+		ret = sdmmc_sendcommand(hsd, MCI_CMD16, blocksize, sdmmc_checkrep1);
+		if (ret != E_OK) while (1) ;
+		if (hsd->R1 != 0x00) while (1);
+	}
+	{
+		/*
+		 *  CMD17: READ_SINGLE_BLOCK
+		 */
+		ret = sdmmc_sendcommand(hsd, MCI_CMD17, 0, sdmmc_checkrep1);
+		if (ret != E_OK) while (1) ;
+		if (hsd->R1 != 0x00) while (1);
+	}
+	{
+		ret = sd_trans_data_rx(blocksize, (uint8_t*)pbuf, 1);
+		if (ret != 0) while (1) ;
+	}
 	return E_OK;
 #else
 	ER ercd = E_OK;
