@@ -315,6 +315,7 @@ void main_task(intptr_t exinf)
 
 	hsd = sdmmc_open(1);
 	sdmmc_blockread(hsd, (uint32_t*)&data[0], 0, 512, 1);
+	sdmmc_wait_transfar(hsd, 1000);
 
 	/*
  	 *  ループ回数の設定

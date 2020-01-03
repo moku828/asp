@@ -283,7 +283,7 @@ ER sd_trans_cmd(uint8_t *cmd, uint32_t resp_len, uint8_t *resp, bool_t spi_mode)
 	return ret;
 }
 
-ER sd_trans_data_rx(uint32_t data_len, uint8_t *data, uint32_t spi_mode)
+ER sd_trans_data_rx_dma_start(uint32_t data_len, uint8_t *data, uint32_t spi_mode)
 {
 	ER ret = E_OK;
 	volatile uint32_t i;
@@ -304,7 +304,14 @@ ER sd_trans_data_rx(uint32_t data_len, uint8_t *data, uint32_t spi_mode)
 	sil_wrw_mem(DMATCR_0, data_len);
 	sil_wrb_mem(SPDCR_0, 0xA0);
 	sil_orw_mem(CHCR_0, 0x00000005);
-	wai_sem(SDMMC_SEM);
+
+	return ret;
+}
+
+ER sd_trans_data_rx_dma_end()
+{
+	ER ret = E_OK;
+
 	sil_wrb_mem(SPDCR_0, 0x20);
 	spi_trans(0xFF);
 	spi_trans(0xFF);
@@ -799,7 +806,7 @@ sdmmc_blockread(SDMMC_Handle_t *hsd, uint32_t *pbuf, uint64_t ReadAddr, uint32_t
 		if (hsd->R1 != 0x00) while (1);
 	}
 	{
-		ret = sd_trans_data_rx(blocksize, (uint8_t*)pbuf, 1);
+		ret = sd_trans_data_rx_dma_start(blocksize, (uint8_t*)pbuf, 1);
 		if (ret != 0) while (1) ;
 	}
 	return E_OK;
@@ -994,6 +1001,8 @@ ER
 sdmmc_wait_transfar(SDMMC_Handle_t *hsd, uint32_t Timeout)
 {
 #if 1
+	wai_sem(SDMMC_SEM);
+	sd_trans_data_rx_dma_end();
 	return E_OK;
 #else
 	DMA_Handle_t *hdma = hsd->hdmarx;
