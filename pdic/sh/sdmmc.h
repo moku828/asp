@@ -52,6 +52,11 @@
  *  SDカード設定
  */
 #if 1
+#define INHNO_DMARX     DMAC0_DEI0_VECTOR	/* 割込みハンドラ番号 */
+#define INTNO_DMARX     DMAC0_DEI0_VECTOR	/* 割込み番号 */
+#define INTPRI_DMARX    -6          /* 割込み優先度 */
+#define INTATR_DMARX    0           /* 割込み属性 */
+#define DMARX_SID       0
 #else
 #ifdef TOPPERS_STM32F769_DISCOVERY
 #define INHNO_SDMMC     IRQ_VECTOR_SDMMC2	/* 割込みハンドラ番号 */
@@ -294,6 +299,8 @@ extern ER sdmmc_select_card(SDMMC_Handle_t *hsd, uint64_t addr);
 extern ER sdmmc_configuration(SDMMC_Handle_t *hsd);
 extern ER sdmmc_set_widebus(SDMMC_Handle_t *hsd);
 extern uint32_t sdmmc_getstatus(SDMMC_Handle_t *hsd);
+
+extern void stream_dma_isr(intptr_t exinf);
 
 
 #ifdef __cplusplus

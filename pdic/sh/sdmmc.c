@@ -303,12 +303,8 @@ ER sd_trans_data_rx(uint32_t data_len, uint8_t *data, uint32_t spi_mode)
 	sil_wrw_mem(DAR_0, (uint32_t)data);
 	sil_wrw_mem(DMATCR_0, data_len);
 	sil_wrb_mem(SPDCR_0, 0xA0);
-	sil_orw_mem(CHCR_0, 0x00000001);
-	while (1)
-	{
-		if (sil_rew_mem(CHCR_0) & 0x00000002) break;
-	}
-	sil_andw_mem(CHCR_0, 0x00000002);
+	sil_orw_mem(CHCR_0, 0x00000005);
+	wai_sem(SDMMC_SEM);
 	sil_wrb_mem(SPDCR_0, 0x20);
 	spi_trans(0xFF);
 	spi_trans(0xFF);
@@ -1919,5 +1915,15 @@ sdmmc_command_wait(SDMMC_Handle_t *hsd)
 #endif
 }
 #endif
+
+/*
+ *  STREAM DMA 割込みサービスルーチン
+ */
+void
+stream_dma_isr(intptr_t exinf)
+{
+	sil_andw_mem(CHCR_0, 0x00000002);
+	isig_sem(SDMMC_SEM);
+}
 
 
