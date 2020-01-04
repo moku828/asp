@@ -240,6 +240,25 @@ void spi_speed_lowspeed(uint32_t lowspeed)
 	}
 }
 
+ER dma_start(uint8_t *dst, uint8_t *src, uint32_t len)
+{
+	ER ret = E_OK;
+
+	sil_wrw_mem(SAR_0, (uint32_t)src);
+	sil_wrw_mem(DAR_0, (uint32_t)dst);
+	sil_wrw_mem(DMATCR_0, len);
+	sil_orw_mem(CHCR_0, 0x00000005);
+
+	return ret;
+}
+
+ER dma_end()
+{
+	ER ret = E_OK;
+
+	return ret;
+}
+
 void sd_trans_dmyclk()
 {
 	volatile uint8_t rx;
@@ -300,10 +319,8 @@ ER sd_trans_data_rx_dma_start(uint32_t data_len, uint8_t *data, uint32_t spi_mod
 		for (i = 0; i < 0x40000; i++) ;
 	}
 	sil_wrb_mem(SPDCR_0, 0xA0);
-	sil_wrw_mem(SAR_0, (uint32_t)SPDR_0);
-	sil_wrw_mem(DAR_0, (uint32_t)data);
-	sil_wrw_mem(DMATCR_0, data_len);
-	sil_orw_mem(CHCR_0, 0x00000005);
+
+	dma_start(data, SPDR_0, data_len);
 
 	return ret;
 }
@@ -311,6 +328,8 @@ ER sd_trans_data_rx_dma_start(uint32_t data_len, uint8_t *data, uint32_t spi_mod
 ER sd_trans_data_rx_dma_end()
 {
 	ER ret = E_OK;
+
+	dma_end();
 
 	sil_wrb_mem(SPDCR_0, 0x20);
 	spi_trans(0xFF);
