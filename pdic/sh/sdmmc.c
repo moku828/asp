@@ -1981,7 +1981,7 @@ sdmmc_command_wait(SDMMC_Handle_t *hsd)
 void
 stream_dma_isr(intptr_t exinf)
 {
-	sil_andw_mem(CHCR_0, 0x00000002);
+	sil_andw_mem(CHCR_0, 0x00000007);
 	isig_sem(SDMMC_SEM);
 }
 
