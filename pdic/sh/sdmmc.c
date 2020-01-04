@@ -230,6 +230,14 @@ void spi_init()
 	sil_modh_mem(PFCR2, 0x7070, 0x3030);
 }
 
+void gpio_cs_assert(uint8_t assert)
+{
+	if (assert)
+		sil_andh_mem(PCDR0, 0x0080);
+	else
+		sil_orh_mem(PCDR0, 0x0080);
+}
+
 uint8_t spi_trans(uint8_t tx)
 {
 	uint8_t rx;
@@ -240,14 +248,6 @@ uint8_t spi_trans(uint8_t tx)
 	rx = sil_reb_mem(SPDR_0);
 
 	return rx;
-}
-
-void spi_cs_assert(uint8_t assert)
-{
-	if (assert)
-		sil_andh_mem(PCDR0, 0x0080);
-	else
-		sil_orh_mem(PCDR0, 0x0080);
 }
 
 void spi_speed_lowspeed(uint32_t lowspeed)
@@ -331,7 +331,7 @@ ER sd_trans_cmd(uint8_t *cmd, uint32_t resp_len, uint8_t *resp, bool_t spi_mode)
 	ER ret = E_OK;
 	volatile uint32_t i, j;
 
-	spi_cs_assert(spi_mode ? 1 : 0);
+	gpio_cs_assert(spi_mode ? 1 : 0);
 	spi_trans(0xFF);
 
 	for (i = 0; i < 6; i++)
@@ -348,7 +348,7 @@ ER sd_trans_cmd(uint8_t *cmd, uint32_t resp_len, uint8_t *resp, bool_t spi_mode)
 	if (j == 8)
 		ret = E_SYS;
 
-	spi_cs_assert(0);
+	gpio_cs_assert(0);
 	spi_trans(0xFF);
 
 	return ret;
@@ -360,7 +360,7 @@ ER sd_trans_data_rx_dma_start(uint32_t data_len, uint8_t *data, uint32_t spi_mod
 	volatile uint32_t i;
 	volatile uint8_t rx;
 
-	spi_cs_assert(spi_mode ? 1 : 0);
+	gpio_cs_assert(spi_mode ? 1 : 0);
 	spi_trans(0xFF);
 
 	while (1)
@@ -387,7 +387,7 @@ ER sd_trans_data_rx_dma_end()
 	spi_trans(0xFF);
 	spi_trans(0xFF);
 
-	spi_cs_assert(0);
+	gpio_cs_assert(0);
 	spi_trans(0xFF);
 
 	return ret;
@@ -1714,7 +1714,7 @@ sdmmc_sendcommand(SDMMC_Handle_t *hsd, uint32_t cmd, uint32_t arg, ER (*func)(SD
 	ER ret = E_OK;
 	volatile uint32_t i;
 
-	spi_cs_assert(1);
+	gpio_cs_assert(1);
 	spi_trans(0xFF);
 
 	spi_trans((uint8_t)cmd);
@@ -1725,7 +1725,7 @@ sdmmc_sendcommand(SDMMC_Handle_t *hsd, uint32_t cmd, uint32_t arg, ER (*func)(SD
 		ret = func(hsd, cmd);
 	}
 
-	spi_cs_assert(0);
+	gpio_cs_assert(0);
 	spi_trans(0xFF);
 
 	return ret;
