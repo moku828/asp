@@ -240,6 +240,18 @@ void spi_speed_lowspeed(uint32_t lowspeed)
 	}
 }
 
+void spi_data_dmytx(uint32_t enable)
+{
+	if (enable)
+	{
+		sil_wrb_mem(SPDCR_0, 0xA0);
+	}
+	else
+	{
+		sil_wrb_mem(SPDCR_0, 0x20);
+	}
+}
+
 ER dma_start(uint8_t *dst, uint8_t *src, uint32_t len)
 {
 	ER ret = E_OK;
@@ -318,7 +330,7 @@ ER sd_trans_data_rx_dma_start(uint32_t data_len, uint8_t *data, uint32_t spi_mod
 		if (rx == 0xFE) break;
 		for (i = 0; i < 0x40000; i++) ;
 	}
-	sil_wrb_mem(SPDCR_0, 0xA0);
+	spi_data_dmytx(1);
 
 	dma_start(data, SPDR_0, data_len);
 
@@ -331,7 +343,7 @@ ER sd_trans_data_rx_dma_end()
 
 	dma_end();
 
-	sil_wrb_mem(SPDCR_0, 0x20);
+	spi_data_dmytx(0);
 	spi_trans(0xFF);
 	spi_trans(0xFF);
 
