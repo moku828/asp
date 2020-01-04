@@ -313,9 +313,12 @@ void main_task(intptr_t exinf)
 	SVC_PERROR(serial_ctl_por(TASK_PORTID,
 							(IOCTL_CRLF | IOCTL_FCSND | IOCTL_FCRCV)));
 
-	hsd = sdmmc_open(1);
-	sdmmc_blockread(hsd, (uint32_t*)&data[0], 0, 512, 1);
-	sdmmc_wait_transfar(hsd, 1000);
+	if (sdmmc_sense(1))
+	{
+		hsd = sdmmc_open(1);
+		sdmmc_blockread(hsd, (uint32_t*)&data[0], 0, 512, 1);
+		sdmmc_wait_transfar(hsd, 1000);
+	}
 
 	/*
  	 *  ループ回数の設定

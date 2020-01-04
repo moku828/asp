@@ -219,6 +219,11 @@ void gpio_cs_assert(uint8_t assert)
 		sil_orh_mem(PCDR0, 0x0080);
 }
 
+bool_t gpio_cd_isasserted()
+{
+	return ((sil_reh_mem(PCDR0) & 0x0040) == 0x0000);
+}
+
 void spi_init()
 {
 	sil_andb_mem(STBCR5, 0x02);
@@ -481,12 +486,16 @@ sdmmc_init(intptr_t exinf)
 bool_t
 sdmmc_sense(int id)
 {
+#if 1
+	return gpio_cd_isasserted();
+#else
 /*
 	if((sil_rew_mem((uint32_t *)(SD_DETECT_PORT+TOFF_GPIO_IDR)) & (1<<SD_DETECT_PIN)) != 0)
 		return false;
 	else
 */
 		return true;
+#endif
 }
 
 /*
