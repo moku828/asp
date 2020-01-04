@@ -165,6 +165,12 @@ ifdef APPLDIR
 endif
 
 #
+#  ミドルウェア Makefile のインクルード
+#
+include $(SRCDIR)/files/ff/Makefile.config
+include $(SRCDIR)/files/Makefile.config
+
+#
 #  システムサービスに関する定義
 #
 SYSSVC_DIR := $(SYSSVC_DIR) $(SRCDIR)/syssvc $(SRCDIR)/library

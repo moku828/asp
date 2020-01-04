@@ -286,8 +286,8 @@ extern bool_t sdmmc_sense(int id);
 extern SDMMC_Handle_t *sdmmc_open(int id);
 extern ER sdmmc_close(SDMMC_Handle_t *hsd);
 extern ER sdmmc_erase(SDMMC_Handle_t *hsd, uint64_t startaddr, uint64_t endaddr);
-extern ER sdmmc_blockread(SDMMC_Handle_t *hsd, uint32_t *pbuf, uint64_t ReadAddr, uint32_t blocksize, uint32_t num);
-extern ER sdmmc_blockwrite(SDMMC_Handle_t *hsd, uint32_t *pbuf, uint64_t WriteAddr, uint32_t blocksize, uint32_t num);
+extern ER sdmmc_blockread(SDMMC_Handle_t *hsd, uint8_t *pbuf, uint64_t ReadAddr, uint32_t blocksize, uint32_t num);
+extern ER sdmmc_blockwrite(SDMMC_Handle_t *hsd, uint8_t *pbuf, uint64_t WriteAddr, uint32_t blocksize, uint32_t num);
 extern ER sdmmc_wait_transfar(SDMMC_Handle_t *hsd, uint32_t Timeout);
 extern void sdmmc_checkint(SDMMC_Handle_t *hsd);
 

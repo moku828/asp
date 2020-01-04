@@ -844,7 +844,7 @@ sdmmc_erase(SDMMC_Handle_t *hsd, uint64_t startaddr, uint64_t endaddr)
  *  return      ERコード
  */
 ER
-sdmmc_blockread(SDMMC_Handle_t *hsd, uint32_t *pbuf, uint64_t ReadAddr, uint32_t blocksize, uint32_t num)
+sdmmc_blockread(SDMMC_Handle_t *hsd, uint8_t *pbuf, uint64_t ReadAddr, uint32_t blocksize, uint32_t num)
 {
 #if 1
 	ER ret;
@@ -865,7 +865,7 @@ sdmmc_blockread(SDMMC_Handle_t *hsd, uint32_t *pbuf, uint64_t ReadAddr, uint32_t
 		if (hsd->R1 != 0x00) while (1);
 	}
 	{
-		ret = sd_trans_data_rx_dma_start(blocksize, (uint8_t*)pbuf, 1);
+		ret = sd_trans_data_rx_dma_start(blocksize, pbuf, 1);
 		if (ret != 0) while (1) ;
 	}
 	return E_OK;
@@ -961,7 +961,7 @@ sdmmc_blockread(SDMMC_Handle_t *hsd, uint32_t *pbuf, uint64_t ReadAddr, uint32_t
  *  return      ERコード
  */
 ER
-sdmmc_blockwrite(SDMMC_Handle_t *hsd, uint32_t *pbuf, uint64_t WriteAddr, uint32_t blocksize, uint32_t num)
+sdmmc_blockwrite(SDMMC_Handle_t *hsd, uint8_t *pbuf, uint64_t WriteAddr, uint32_t blocksize, uint32_t num)
 {
 #if 1
 	return E_OK;
@@ -1995,3 +1995,7 @@ stream_dma_isr(intptr_t exinf)
 }
 
 
+int main()
+{
+	return 0;
+}

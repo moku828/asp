@@ -109,6 +109,7 @@
 #include "kernel_cfg.h"
 #include "sample1.h"
 #include "pdic/sh/sdmmc.h"
+#include "diskio.h"
 
 /*
  *  サービスコールのエラーのログ出力
@@ -144,8 +145,29 @@ void task(intptr_t exinf)
 	int_t		tskno = (int_t) exinf;
 	const char	*graph[] = { "|", "  +", "    *" };
 	char_t		c;
+	BYTE res, buf[512];
 
 	SVC_PERROR(ena_tex());
+	while(1)
+	{
+		while(1)
+		{
+			if ((disk_status(0) & STA_NODISK) == 0)
+				break;
+			dly_tsk(1000);
+		}
+		if (disk_initialize(0) & STA_NOINIT)
+		{
+			dly_tsk(1000);
+			continue;
+		}
+		res = disk_read(0, buf, 0, 1);
+		while(1)
+		{
+			dly_tsk(1000);
+		}
+	}
+
 	while (1) {
 		syslog(LOG_NOTICE, "task%d is running (%03d).   %s",
 										tskno, ++n, graph[tskno-1]);
@@ -292,8 +314,10 @@ void main_task(intptr_t exinf)
 #ifdef TOPPERS_SUPPORT_GET_UTM
 	SYSUTM	utime1, utime2;
 #endif /* TOPPERS_SUPPORT_GET_UTM */
+	/*
 	SDMMC_Handle_t* hsd;
 	uint8_t data[512];
+	*/
 
 	SVC_PERROR(syslog_msk_log(LOG_UPTO(LOG_INFO), LOG_UPTO(LOG_EMERG)));
 	syslog(LOG_NOTICE, "Sample program starts (exinf = %d).", (int_t) exinf);
@@ -313,12 +337,14 @@ void main_task(intptr_t exinf)
 	SVC_PERROR(serial_ctl_por(TASK_PORTID,
 							(IOCTL_CRLF | IOCTL_FCSND | IOCTL_FCRCV)));
 
+	/*
 	if (sdmmc_sense(1))
 	{
 		hsd = sdmmc_open(1);
-		sdmmc_blockread(hsd, (uint32_t*)&data[0], 0, 512, 1);
+		sdmmc_blockread(hsd, &data[0], 0, 512, 1);
 		sdmmc_wait_transfar(hsd, 1000);
 	}
+	*/
 
 	/*
  	 *  ループ回数の設定
@@ -353,8 +379,8 @@ void main_task(intptr_t exinf)
  	 *  タスクの起動
 	 */
 	SVC_PERROR(act_tsk(TASK1));
-	SVC_PERROR(act_tsk(TASK2));
-	SVC_PERROR(act_tsk(TASK3));
+	//SVC_PERROR(act_tsk(TASK2));
+	//SVC_PERROR(act_tsk(TASK3));
 
 	/*
  	 *  メインループ
