@@ -204,11 +204,15 @@ static ER sdmmc_getpstate(SDMMC_Handle_t *hsd, uint8_t *pStatus);
 
 static SDMMC_Handle_t SdHandle;
 
-void spi_init()
+void gpio_init()
 {
 	sil_andh_mem(PCCR1, 0x3330);
 	sil_modh_mem(PCIOR0, 0x00E0, 0x0080);
 	sil_orh_mem(PCDR0, 0x0080);
+}
+
+void spi_init()
+{
 	sil_andb_mem(STBCR5, 0x02);
 	sil_wrb_mem(SPCR_0, 0x08);
 	sil_wrb_mem(SPPCR_0, 0x00);
@@ -418,6 +422,7 @@ void
 sdmmc_init(intptr_t exinf)
 {
 #if 1
+	gpio_init();
 	spi_init();
 	dma_init();
 #else
