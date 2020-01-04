@@ -204,6 +204,28 @@ static ER sdmmc_getpstate(SDMMC_Handle_t *hsd, uint8_t *pStatus);
 
 static SDMMC_Handle_t SdHandle;
 
+void spi_init()
+{
+	sil_andh_mem(PCCR1, 0x3330);
+	sil_modh_mem(PCIOR0, 0x00E0, 0x0080);
+	sil_orh_mem(PCDR0, 0x0080);
+	sil_andb_mem(STBCR5, 0x02);
+	sil_wrb_mem(SPCR_0, 0x08);
+	sil_wrb_mem(SPPCR_0, 0x00);
+	sil_wrb_mem(SPSCR_0, 0x00);
+	sil_wrb_mem(SPBR_0, 0x05);
+	sil_wrb_mem(SPDCR_0, 0x20);
+	sil_wrb_mem(SPCKD_0, 0x00);
+	sil_wrb_mem(SPND_0, 0x00);
+	sil_wrh_mem(SPCMD_00, 0xA78B);
+	sil_orb_mem(SPBFCR_0, 0xC0);
+	sil_modb_mem(SPBFCR_0, 0x37, 0x00);
+	sil_andb_mem(SPBFCR_0, 0xC0);
+	sil_orb_mem(SPCR_0, 0xC0);
+	sil_modh_mem(PFCR3, 0x0007, 0x0003);
+	sil_modh_mem(PFCR2, 0x7070, 0x3030);
+}
+
 uint8_t spi_trans(uint8_t tx)
 {
 	uint8_t rx;
@@ -250,6 +272,20 @@ void spi_data_dmytx(uint32_t enable)
 	{
 		sil_wrb_mem(SPDCR_0, 0x20);
 	}
+}
+
+ER dma_init()
+{
+	ER ret = E_OK;
+
+	sil_andb_mem(STBCR2, 0x20);
+	sil_andh_mem(DMAOR, 0x0001);
+	sil_andw_mem(CHCR_0, 0x00000001);
+	sil_modw_mem(CHCR_0, 0xB014FF3C, 0x00004800);
+	sil_modh_mem(DMARS0, 0x00FF, 0x0052);
+	sil_orh_mem(DMAOR, 0x0007);
+
+	return ret;
 }
 
 ER dma_start(uint8_t *dst, uint8_t *src, uint32_t len)
@@ -382,30 +418,8 @@ void
 sdmmc_init(intptr_t exinf)
 {
 #if 1
-	sil_andh_mem(PCCR1, 0x3330);
-	sil_modh_mem(PCIOR0, 0x00E0, 0x0080);
-	sil_orh_mem(PCDR0, 0x0080);
-	sil_andb_mem(STBCR5, 0x02);
-	sil_wrb_mem(SPCR_0, 0x08);
-	sil_wrb_mem(SPPCR_0, 0x00);
-	sil_wrb_mem(SPSCR_0, 0x00);
-	sil_wrb_mem(SPBR_0, 0x05);
-	sil_wrb_mem(SPDCR_0, 0x20);
-	sil_wrb_mem(SPCKD_0, 0x00);
-	sil_wrb_mem(SPND_0, 0x00);
-	sil_wrh_mem(SPCMD_00, 0xA78B);
-	sil_orb_mem(SPBFCR_0, 0xC0);
-	sil_modb_mem(SPBFCR_0, 0x37, 0x00);
-	sil_andb_mem(SPBFCR_0, 0xC0);
-	sil_orb_mem(SPCR_0, 0xC0);
-	sil_modh_mem(PFCR3, 0x0007, 0x0003);
-	sil_modh_mem(PFCR2, 0x7070, 0x3030);
-	sil_andb_mem(STBCR2, 0x20);
-	sil_andh_mem(DMAOR, 0x0001);
-	sil_andw_mem(CHCR_0, 0x00000001);
-	sil_modw_mem(CHCR_0, 0xB014FF3C, 0x00004800);
-	sil_modh_mem(DMARS0, 0x00FF, 0x0052);
-	sil_orh_mem(DMAOR, 0x0007);
+	spi_init();
+	dma_init();
 #else
 	GPIO_Init_t GPIO_Init_Data;
 	volatile unsigned long tmp;
