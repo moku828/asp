@@ -211,6 +211,14 @@ void gpio_init()
 	sil_orh_mem(PCDR0, 0x0080);
 }
 
+void gpio_cs_assert(uint8_t assert)
+{
+	if (assert)
+		sil_andh_mem(PCDR0, 0x0080);
+	else
+		sil_orh_mem(PCDR0, 0x0080);
+}
+
 void spi_init()
 {
 	sil_andb_mem(STBCR5, 0x02);
@@ -228,14 +236,6 @@ void spi_init()
 	sil_orb_mem(SPCR_0, 0xC0);
 	sil_modh_mem(PFCR3, 0x0007, 0x0003);
 	sil_modh_mem(PFCR2, 0x7070, 0x3030);
-}
-
-void gpio_cs_assert(uint8_t assert)
-{
-	if (assert)
-		sil_andh_mem(PCDR0, 0x0080);
-	else
-		sil_orh_mem(PCDR0, 0x0080);
 }
 
 uint8_t spi_trans(uint8_t tx)
