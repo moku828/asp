@@ -299,10 +299,10 @@ ER sd_trans_data_rx_dma_start(uint32_t data_len, uint8_t *data, uint32_t spi_mod
 		if (rx == 0xFE) break;
 		for (i = 0; i < 0x40000; i++) ;
 	}
+	sil_wrb_mem(SPDCR_0, 0xA0);
 	sil_wrw_mem(SAR_0, (uint32_t)SPDR_0);
 	sil_wrw_mem(DAR_0, (uint32_t)data);
 	sil_wrw_mem(DMATCR_0, data_len);
-	sil_wrb_mem(SPDCR_0, 0xA0);
 	sil_orw_mem(CHCR_0, 0x00000005);
 
 	return ret;
