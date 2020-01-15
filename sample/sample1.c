@@ -109,6 +109,51 @@
 #include "kernel_cfg.h"
 #include "sample1.h"
 
+/* Integer types used for FatFs API */
+
+#if defined(_WIN32)	/* Main development platform */
+#define FF_INTDEF 2
+#include <windows.h>
+typedef unsigned __int64 QWORD;
+#elif (defined(__STDC_VERSION__) && __STDC_VERSION__ >= 199901L) || defined(__cplusplus)	/* C99 or later */
+#define FF_INTDEF 2
+#include <stdint.h>
+typedef unsigned int	UINT;	/* int must be 16-bit or 32-bit */
+typedef unsigned char	BYTE;	/* char must be 8-bit */
+typedef uint16_t		WORD;	/* 16-bit unsigned integer */
+typedef uint32_t		DWORD;	/* 32-bit unsigned integer */
+typedef uint64_t		QWORD;	/* 64-bit unsigned integer */
+typedef WORD			WCHAR;	/* UTF-16 character type */
+#else  	/* Earlier than C99 */
+#define FF_INTDEF 1
+typedef unsigned int	UINT;	/* int must be 16-bit or 32-bit */
+typedef unsigned char	BYTE;	/* char must be 8-bit */
+typedef unsigned short	WORD;	/* 16-bit unsigned integer */
+typedef unsigned long	DWORD;	/* 32-bit unsigned integer */
+typedef WORD			WCHAR;	/* UTF-16 character type */
+#endif
+
+/*---------------------------------------------------------*/
+/* User Provided Timer Function for FatFs module           */
+/*---------------------------------------------------------*/
+/* This is a real time clock service to be called from     */
+/* FatFs module. Any valid time must be returned even if   */
+/* the system does not support a real time clock.          */
+/* This is not required in read-only configuration.        */
+
+#if !FF_FS_NORTC
+DWORD get_fattime (void)
+{
+	/* Return a fixed value 2010/4/26 0:00:00 */
+	return	  ((DWORD)(2010 - 1980) << 25)	/* Y */
+			| ((DWORD)4  << 21)				/* M */
+			| ((DWORD)26 << 16)				/* D */
+			| ((DWORD)0  << 11)				/* H */
+			| ((DWORD)0  << 5)				/* M */
+			| ((DWORD)0  >> 1);				/* S */
+}
+#endif
+
 /*
  *  サービスコールのエラーのログ出力
  */
