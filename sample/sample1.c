@@ -104,34 +104,34 @@
 #include <kernel.h>
 #include <t_syslog.h>
 #include <t_stdlib.h>
+#include <string.h>
 #include "syssvc/serial.h"
 #include "syssvc/syslog.h"
+#include "pdic/sh/xprintf.h"
+#include "pdic/sh/ff.h"
 #include "kernel_cfg.h"
 #include "sample1.h"
 
-/* Integer types used for FatFs API */
 
-#if defined(_WIN32)	/* Main development platform */
-#define FF_INTDEF 2
-#include <windows.h>
-typedef unsigned __int64 QWORD;
-#elif (defined(__STDC_VERSION__) && __STDC_VERSION__ >= 199901L) || defined(__cplusplus)	/* C99 or later */
-#define FF_INTDEF 2
-#include <stdint.h>
-typedef unsigned int	UINT;	/* int must be 16-bit or 32-bit */
-typedef unsigned char	BYTE;	/* char must be 8-bit */
-typedef uint16_t		WORD;	/* 16-bit unsigned integer */
-typedef uint32_t		DWORD;	/* 32-bit unsigned integer */
-typedef uint64_t		QWORD;	/* 64-bit unsigned integer */
-typedef WORD			WCHAR;	/* UTF-16 character type */
-#else  	/* Earlier than C99 */
-#define FF_INTDEF 1
-typedef unsigned int	UINT;	/* int must be 16-bit or 32-bit */
-typedef unsigned char	BYTE;	/* char must be 8-bit */
-typedef unsigned short	WORD;	/* 16-bit unsigned integer */
-typedef unsigned long	DWORD;	/* 32-bit unsigned integer */
-typedef WORD			WCHAR;	/* UTF-16 character type */
-#endif
+/*---------------------------------------------------------*/
+/* Work Area                                               */
+/*---------------------------------------------------------*/
+
+FATFS FatFs[FF_VOLUMES];	/* File system object */
+FIL File[2];				/* File objects */
+DIR Dir;					/* Directory object */
+
+DWORD AccSize;				/* Working variables (fs command) */
+WORD AccFiles, AccDirs;
+
+FILINFO Finfo;				/* Working variables (fs/fl command) */
+
+char Line[256];				/* Console input buffer */
+BYTE Buff[32768];			/* Disk I/O working buffer */
+
+volatile UINT Timer;		/* Performance timer (1kHz) */
+
+
 
 /*---------------------------------------------------------*/
 /* User Provided Timer Function for FatFs module           */
@@ -153,6 +153,105 @@ DWORD get_fattime (void)
 			| ((DWORD)0  >> 1);				/* S */
 }
 #endif
+
+
+
+/*--------------------------------------------------------------------------*/
+/* Monitor                                                                  */
+/*--------------------------------------------------------------------------*/
+
+
+static
+FRESULT scan_files (	/* Scan directory in recursive */
+	char* path			/* Pointer to the path name working buffer */
+)
+{
+	DIR dirs;
+	FRESULT res;
+	int i;
+
+
+	res = f_opendir(&dirs, path);	/* Open the directory */
+	if (res == FR_OK) {
+		i = strlen(path);
+		while (((res = f_readdir(&dirs, &Finfo)) == FR_OK) && Finfo.fname[0]) {	/* Get an entry from the dir */
+			if (Finfo.fattrib & AM_DIR) {	/* It is a directory */
+				AccDirs++;
+				path[i] = '/'; strcpy(path+i+1, Finfo.fname);	/* Scan the directory */
+				res = scan_files(path);
+				path[i] = '\0';
+				if (res != FR_OK) break;
+			} else {						/* It is a file  */
+				AccFiles++;
+				AccSize += Finfo.fsize;				/* Accumulate the file size in unit of byte */
+			}
+		}
+	}
+
+	return res;
+}
+
+
+
+static
+void put_rc (		/* Put FatFs result code with defined symbol */
+	FRESULT rc
+)
+{
+	const char *str =
+		"OK\0" "DISK_ERR\0" "INT_ERR\0" "NOT_READY\0" "NO_FILE\0" "NO_PATH\0"
+		"INVALID_NAME\0" "DENIED\0" "EXIST\0" "INVALID_OBJECT\0" "WRITE_PROTECTED\0"
+		"INVALID_DRIVE\0" "NOT_ENABLED\0" "NO_FILE_SYSTEM\0" "MKFS_ABORTED\0" "TIMEOUT\0"
+		"LOCKED\0" "NOT_ENOUGH_CORE\0" "TOO_MANY_OPEN_FILES\0" "INVALID_NAME\0";
+	FRESULT i;
+
+	for (i = FR_OK; i != rc && *str; i++) {
+		while (*str++) ;
+	}
+	xprintf("rc=%u FR_%s\n", (UINT)rc, str);
+}
+
+
+
+static
+const char HelpMsg[] =
+	"[Disk contorls]\n"
+	" di <pd#> - Initialize disk\n"
+	" dd [<pd#> <lba>] - Dump a secrtor\n"
+	" ds <pd#> - Show disk status\n"
+	"[Buffer controls]\n"
+	" bd <ofs> - Dump working buffer\n"
+	" be <ofs> [<data>] ... - Edit working buffer\n"
+	" br <pd#> <lba> [<count>] - Read disk into working buffer\n"
+	" bw <pd#> <lba> [<count>] - Write working buffer into disk\n"
+	" bf <val> - Fill working buffer\n"
+	"[File system controls]\n"
+	" fi - Force initialized the volume\n"
+	" fs [<path>] - Show volume status\n"
+	" fl [<path>] - Show a directory\n"
+	" fo <mode> <file> - Open a file\n"
+	" fc - Close the file\n"
+	" fe <ofs> - Move fp in normal seek\n"
+	" fd <len> - Read and dump the file\n"
+	" fr <len> - Read the file\n"
+	" fw <len> <val> - Write to the file\n"
+	" fn <org.name> <new.name> - Rename an object\n"
+	" fu <name> - Unlink an object\n"
+	" fv - Truncate the file at current fp\n"
+	" fk <name> - Create a directory\n"
+	" fa <atrr> <mask> <object name> - Change attribute of an object\n"
+	" ft <year> <month> <day> <hour> <min> <sec> <name> - Change timestamp of an object\n"
+	" fx <src.file> <dst.file> - Copy a file\n"
+	" fg <path> - Change current directory\n"
+	" fq - Show current directory\n"
+	" fb <name> - Set volume label\n"
+	" fm [<fs type> [<au size> [<align> [<n_fats> [<n_root>]]]]] - Create filesystem\n"
+	" fz [<len>] - Change/Show R/W length for fr/fw/fx command\n"
+	"[Misc commands]\n"
+	" md[b|h|w] <addr> [<count>] - Dump memory\n"
+	" mf <addr> <value> <count> - Fill memory\n"
+	" me[b|h|w] <addr> [<value> ...] - Edit memory\n"
+	"\n";
 
 /*
  *  サービスコールのエラーのログ出力
