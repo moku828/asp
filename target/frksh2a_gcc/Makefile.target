@@ -79,7 +79,7 @@ KERNEL_COBJS := $(KERNEL_COBJS) target_config.o
 #  システムサービスに関する定義
 #
 SYSSVC_DIR := $(SYSSVC_DIR) $(SRCDIR)/pdic/sh
-SYSSVC_COBJS := $(SYSSVC_COBJS) target_serial.o sh_scif.o
+SYSSVC_COBJS := $(SYSSVC_COBJS) target_serial.o sh_scif.o mmc_rspi.o
 
 #
 #  トレースログに関する設定
