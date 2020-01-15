@@ -176,11 +176,11 @@ extern void target_exit(void) NoReturn;
 	 *	’IIC32反曩鞅
 	 *	’CAN0反曩鞅
 	 *	’CAN1反曩鞅
-	 *	’RSPI0反曩鞅
+	 *	’RSPI0反が綜
 	 *	’RSPI1反曩鞅
 	 */
 #define STBCR5_VALUE	 (STBCR5_IIC30 | STBCR5_IIC31 | STBCR5_IIC32 \
-						  | STBCR5_CAN0 | STBCR5_CAN1 | STBCR5_RSPI0 | STBCR5_RSPI1)
+						  | STBCR5_CAN0 | STBCR5_CAN1 | STBCR5_RSPI1)
 
 
 	/*
