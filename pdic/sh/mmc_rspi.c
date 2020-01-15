@@ -504,7 +504,7 @@ DRESULT disk_ioctl (
 	DRESULT res;
 	BYTE n, csd[16], *ptr = buff;
 	WORD csize;
-	DWORD d, st, ed;
+	DWORD st, ed;
 	LBA_t *dp;
 
 
