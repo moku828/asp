@@ -267,6 +267,21 @@ svc_perror(const char *file, int_t line, const char *expr, ER ercd)
 
 #define	SVC_PERROR(expr)	svc_perror(__FILE__, __LINE__, #expr, (expr))
 
+void initcommseq_task(intptr_t exinf)
+{
+	syslog(LOG_NOTICE, "initcommseq_task");
+}
+
+void lyricslstload_task(intptr_t exinf)
+{
+	syslog(LOG_NOTICE, "lyricslstload_task");
+}
+
+void lyricsfontfileload_task(intptr_t exinf)
+{
+	syslog(LOG_NOTICE, "lyricsfontfileload_task");
+}
+
 /*
  *  CPU例外ハンドラ
  */
@@ -379,6 +394,10 @@ void main_task(intptr_t exinf)
 
 	xputs("\nFatFs module test monitor for FRK-RN62N evaluation board\n");
 	xprintf("LFN=%s, CP=%u\n", FF_USE_LFN ? "Enabled" : "Disabled", FF_CODE_PAGE);
+
+	SVC_PERROR(act_tsk(TASK1));
+	SVC_PERROR(act_tsk(TASK2));
+	SVC_PERROR(act_tsk(TASK3));
 
 	for (;;) {
 		xputc('>');
