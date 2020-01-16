@@ -81,7 +81,6 @@
  */
 #ifndef TOPPERS_MACRO_ONLY
 
-extern void	task(intptr_t exinf);
 extern void	main_task(intptr_t exinf);
 extern void	tex_routine(TEXPTN texptn, intptr_t exinf);
 #ifdef CPUEXC1
