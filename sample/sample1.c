@@ -270,11 +270,13 @@ svc_perror(const char *file, int_t line, const char *expr, ER ercd)
 void initcommseq_task(intptr_t exinf)
 {
 	syslog(LOG_NOTICE, "initcommseq_task");
+	SVC_PERROR(set_flg(FLAG1, 0x1));
 }
 
 void lyricslstload_task(intptr_t exinf)
 {
 	syslog(LOG_NOTICE, "lyricslstload_task");
+	SVC_PERROR(set_flg(FLAG1, 0x2));
 }
 
 void lyricsfontfileload_task(intptr_t exinf)
@@ -370,6 +372,7 @@ void main_task(intptr_t exinf)
 	DWORD ofs = 0, sect = 0;
 	FATFS *fs;
 	static const BYTE ft[] = {0,12,16,32};
+	FLGPTN flgptn;
 
 	SVC_PERROR(syslog_msk_log(LOG_UPTO(LOG_INFO), LOG_UPTO(LOG_EMERG)));
 	syslog(LOG_NOTICE, "Sample program starts (exinf = %d).", (int_t) exinf);
@@ -397,6 +400,7 @@ void main_task(intptr_t exinf)
 
 	SVC_PERROR(act_tsk(TASK1));
 	SVC_PERROR(act_tsk(TASK2));
+	SVC_PERROR(wai_flg(FLAG1, 0x3, TWF_ANDW, &flgptn));
 	SVC_PERROR(act_tsk(TASK3));
 
 	for (;;) {
