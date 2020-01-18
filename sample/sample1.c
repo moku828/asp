@@ -233,7 +233,7 @@ void lyricslstload_task(intptr_t exinf)
 void lyricsfontfileload_task(intptr_t exinf)
 {
 	UINT s2;
-	int i, n, l;
+	int i, j, n, l;
 	syslog(LOG_NOTICE, "lyricsfontfileload_task");
 	assert(lyricsno < lyricscnt);
 	assert(lyricslst[lyricsno].filename[0] != 0);
@@ -290,6 +290,34 @@ void lyricsfontfileload_task(intptr_t exinf)
 	if (n > 0)
 	{
 		lyricsln = n - 1;
+	}
+	assert(FR_OK == f_chdir("/fonts"));
+	for (i = 0; i < lyricsln; i++)
+	{
+		j = 0;
+		while (1)
+		{
+			char fontfilename[9];
+			if (lyrics[i].str[j] == 0x0000) break;
+			fontfilename[0] = (lyrics[i].str[j] >> 12) & 0x0F;
+			fontfilename[1] = (lyrics[i].str[j] >> 8) & 0x0F;
+			fontfilename[2] = (lyrics[i].str[j] >> 4) & 0x0F;
+			fontfilename[3] = (lyrics[i].str[j] >> 0) & 0x0F;
+			fontfilename[0] = (fontfilename[0] > 9) ? (fontfilename[0] - 10 + 0x41) : (fontfilename[0] + 0x30);
+			fontfilename[1] = (fontfilename[1] > 9) ? (fontfilename[1] - 10 + 0x41) : (fontfilename[1] + 0x30);
+			fontfilename[2] = (fontfilename[2] > 9) ? (fontfilename[2] - 10 + 0x41) : (fontfilename[2] + 0x30);
+			fontfilename[3] = (fontfilename[3] > 9) ? (fontfilename[3] - 10 + 0x41) : (fontfilename[3] + 0x30);
+			fontfilename[4] = 0x2E;
+			fontfilename[5] = 0x62;
+			fontfilename[6] = 0x6D;
+			fontfilename[7] = 0x70;
+			fontfilename[8] = 0;
+			assert(FR_OK == f_open(&File[0], fontfilename, 1));
+			memset(Buff, 0, 32768);
+			assert(FR_OK == f_read(&File[0], Buff, 32768, &s2));
+			assert(FR_OK == f_close(&File[0]));
+			j++;
+		}
 	}
 	SVC_PERROR(set_flg(FLAG1, 0x4));
 }
