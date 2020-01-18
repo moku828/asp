@@ -176,6 +176,8 @@ typedef struct {
 } LYRICSTBL;
 LYRICSTBL lyricslst[64];
 int lyricscnt;
+int lyricsno;
+unsigned short lyrics[16384];
 
 void initcommseq_task(intptr_t exinf)
 {
@@ -215,7 +217,22 @@ void lyricslstload_task(intptr_t exinf)
 
 void lyricsfontfileload_task(intptr_t exinf)
 {
+	UINT s2;
+	int i;
 	syslog(LOG_NOTICE, "lyricsfontfileload_task");
+	assert(lyricsno < lyricscnt);
+	assert(lyricslst[lyricsno].filename[0] != 0);
+	assert(FR_OK == f_chdir("/lyrics"));
+	assert(FR_OK == f_open(&File[0], lyricslst[lyricsno].filename, 1));
+	memset(Buff, 0, 32768);
+	assert(FR_OK == f_read(&File[0], Buff, 32768, &s2));
+	assert(FR_OK == f_close(&File[0]));
+	for (i = 0; i < 32768; i += 2)
+	{
+		lyrics[i >> 1] = (Buff[i] << 0) + (Buff[i + 1] << 8);
+		if (lyrics[i >> 1] == 0x0000) break;
+	}
+	SVC_PERROR(set_flg(FLAG1, 0x4));
 }
 
 /*
@@ -287,7 +304,7 @@ void main_task(intptr_t exinf)
 {
 	ER_UINT	ercd;
 	FLGPTN flgptn;
-	int i;
+	int i, j;
 
 	SVC_PERROR(syslog_msk_log(LOG_UPTO(LOG_INFO), LOG_UPTO(LOG_EMERG)));
 	syslog(LOG_NOTICE, "Sample program starts (exinf = %d).", (int_t) exinf);
@@ -311,11 +328,27 @@ void main_task(intptr_t exinf)
 	SVC_PERROR(act_tsk(TASK1));
 	SVC_PERROR(act_tsk(TASK2));
 	SVC_PERROR(wai_flg(FLAG1, 0x3, TWF_ANDW, &flgptn));
-	SVC_PERROR(act_tsk(TASK3));
 
 	for (i = 0; i < lyricscnt; i++)
 	{
 		syslog(LOG_NOTICE, "%s:%s", lyricslst[i].filename, lyricslst[i].title);
+	}
+
+	for (i = 0; i < lyricscnt; i++)
+	{
+		syslog(LOG_NOTICE, "%s:%s", lyricslst[i].filename, lyricslst[i].title);
+		lyricsno = i;
+		SVC_PERROR(act_tsk(TASK3));
+		SVC_PERROR(wai_flg(FLAG1, 0x4, TWF_ANDW, &flgptn));
+
+		for (j = 0; j < 16384; j++)
+		{
+			if (j < 16) syslog(LOG_NOTICE, "%d:%04x", j, lyrics[j]);
+			if (lyrics[j] == 0x0000) break;
+		}
+		syslog(LOG_NOTICE, "...");
+		syslog(LOG_NOTICE, "%d:%04x", j, lyrics[j]);
+		dly_tsk(3000);
 	}
 
 	while (1)
