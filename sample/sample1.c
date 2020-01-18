@@ -170,7 +170,11 @@ svc_perror(const char *file, int_t line, const char *expr, ER ercd)
 
 #define	SVC_PERROR(expr)	svc_perror(__FILE__, __LINE__, #expr, (expr))
 
-BYTE lyricslst[32768];
+typedef struct {
+	char filename[9];
+	char title[100];
+} LYRICSTBL;
+LYRICSTBL lyricslst[64];
 
 void initcommseq_task(intptr_t exinf)
 {
@@ -181,12 +185,28 @@ void initcommseq_task(intptr_t exinf)
 void lyricslstload_task(intptr_t exinf)
 {
 	UINT s2;
+	char* p;
+	int i, titlelen;
 	syslog(LOG_NOTICE, "lyricslstload_task");
 	assert(FR_OK == f_chdir("lyrics"));
 	assert(FR_OK == f_open(&File[0], "list.txt", 1));
 	assert(FR_OK == f_read(&File[0], Buff, 32768, &s2));
 	assert(FR_OK == f_close(&File[0]));
-	strcpy(lyricslst, Buff);
+	p = Buff;
+	lyricslst[0].filename[0] = 0;
+	for (i = 0; i < sizeof(lyricslst) / sizeof(lyricslst[0]); i++)
+	{
+		if (lyricslst[i].filename[0] != 0) continue;
+		memcpy(lyricslst[i].filename, p, 8);
+		lyricslst[i].filename[8] = 0;
+		p += 9;
+		titlelen = ((*p - 0x30) * 10) + (*(p + 1) - 0x30);
+		p += 3;
+		memcpy(lyricslst[i].title, p, titlelen);
+		lyricslst[i].title[titlelen] = 0;
+		p += titlelen + 1;
+		if (*p == 0) break;
+	}
 	SVC_PERROR(set_flg(FLAG1, 0x2));
 }
 
@@ -264,6 +284,7 @@ void main_task(intptr_t exinf)
 {
 	ER_UINT	ercd;
 	FLGPTN flgptn;
+	int i;
 
 	SVC_PERROR(syslog_msk_log(LOG_UPTO(LOG_INFO), LOG_UPTO(LOG_EMERG)));
 	syslog(LOG_NOTICE, "Sample program starts (exinf = %d).", (int_t) exinf);
@@ -289,7 +310,11 @@ void main_task(intptr_t exinf)
 	SVC_PERROR(wai_flg(FLAG1, 0x3, TWF_ANDW, &flgptn));
 	SVC_PERROR(act_tsk(TASK3));
 
-	syslog(LOG_NOTICE, "%s", lyricslst);
+	for (i = 0; i < sizeof(lyricslst) / sizeof(lyricslst[0]); i++)
+	{
+		if (lyricslst[i].filename[0] == 0) break;
+		syslog(LOG_NOTICE, "%s:%s", lyricslst[i].filename, lyricslst[i].title);
+	}
 
 	while (1)
 	{
