@@ -188,7 +188,7 @@ void lyricslstload_task(intptr_t exinf)
 	char* p;
 	int i, titlelen;
 	syslog(LOG_NOTICE, "lyricslstload_task");
-	assert(FR_OK == f_chdir("lyrics"));
+	assert(FR_OK == f_chdir("/lyrics"));
 	assert(FR_OK == f_open(&File[0], "list.txt", 1));
 	assert(FR_OK == f_read(&File[0], Buff, 32768, &s2));
 	assert(FR_OK == f_close(&File[0]));
