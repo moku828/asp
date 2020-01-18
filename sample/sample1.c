@@ -175,6 +175,7 @@ typedef struct {
 	char title[100];
 } LYRICSTBL;
 LYRICSTBL lyricslst[64];
+int lyricscnt;
 
 void initcommseq_task(intptr_t exinf)
 {
@@ -207,6 +208,7 @@ void lyricslstload_task(intptr_t exinf)
 		p += titlelen + 1;
 		if (*p == 0) break;
 	}
+	lyricscnt = i;
 	SVC_PERROR(set_flg(FLAG1, 0x2));
 }
 
@@ -310,9 +312,8 @@ void main_task(intptr_t exinf)
 	SVC_PERROR(wai_flg(FLAG1, 0x3, TWF_ANDW, &flgptn));
 	SVC_PERROR(act_tsk(TASK3));
 
-	for (i = 0; i < sizeof(lyricslst) / sizeof(lyricslst[0]); i++)
+	for (i = 0; i < lyricscnt; i++)
 	{
-		if (lyricslst[i].filename[0] == 0) break;
 		syslog(LOG_NOTICE, "%s:%s", lyricslst[i].filename, lyricslst[i].title);
 	}
 
