@@ -234,7 +234,9 @@ void lyricsfontfileload_task(intptr_t exinf)
 {
 	UINT s2;
 	int i, j, n, l;
+	SYSTIM start, end;
 	syslog(LOG_NOTICE, "lyricsfontfileload_task");
+	SVC_PERROR(get_tim(&start));
 	assert(lyricsno < lyricscnt);
 	assert(lyricslst[lyricsno].filename[0] != 0);
 	assert(FR_OK == f_chdir("/lyrics"));
@@ -319,6 +321,8 @@ void lyricsfontfileload_task(intptr_t exinf)
 			j++;
 		}
 	}
+	SVC_PERROR(get_tim(&end));
+	syslog(LOG_NOTICE, "start:%d,end:%d,diff:%d", start, end, end - start);
 	SVC_PERROR(set_flg(FLAG1, 0x4));
 }
 
