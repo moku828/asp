@@ -183,7 +183,7 @@ typedef struct {
 } LYRICS;
 LYRICS lyrics[256];
 int lyricsln;
-#define B2S(p, i) ((*(p + i * 2 + 0) << 0) + (*(p + i * 2 + 1) << 8))
+#define B2S(p, i) (((unsigned short)*((unsigned char*)p + i * 2 + 0) << 0) + ((unsigned short)*((unsigned char*)p + i * 2 + 1) << 8))
 #define IS_NUL(c) (0x0000 == c)
 #define IS_LF(c) (0x000A == c)
 #define IS_DOT(c) (0x002E == c)
