@@ -177,7 +177,22 @@ typedef struct {
 LYRICSTBL lyricslst[64];
 int lyricscnt;
 int lyricsno;
-unsigned short lyrics[16384];
+typedef struct {
+	unsigned long time;
+	unsigned short str[62];
+} LYRICS;
+LYRICS lyrics[256];
+int lyricsln;
+#define B2S(p, i) ((*(p + i * 2 + 0) << 0) + (*(p + i * 2 + 1) << 8))
+#define IS_NUL(c) (0x0000 == c)
+#define IS_LF(c) (0x000A == c)
+#define IS_DOT(c) (0x002E == c)
+#define IS_NUM(c) ((0x0030 <= c) && (0x0039 >= c))
+#define IS_COL(c) (0x003A == c)
+#define IS_AT(c) (0x0040 == c)
+#define IS_LTBR(c) (0x005B == c)
+#define IS_RTBR(c) (0x005D == c)
+#define IS_BOM(c) (0xFEFF == c)
 
 void initcommseq_task(intptr_t exinf)
 {
@@ -218,7 +233,7 @@ void lyricslstload_task(intptr_t exinf)
 void lyricsfontfileload_task(intptr_t exinf)
 {
 	UINT s2;
-	int i;
+	int i, n, l;
 	syslog(LOG_NOTICE, "lyricsfontfileload_task");
 	assert(lyricsno < lyricscnt);
 	assert(lyricslst[lyricsno].filename[0] != 0);
@@ -227,10 +242,54 @@ void lyricsfontfileload_task(intptr_t exinf)
 	memset(Buff, 0, 32768);
 	assert(FR_OK == f_read(&File[0], Buff, 32768, &s2));
 	assert(FR_OK == f_close(&File[0]));
-	for (i = 0; i < 32768; i += 2)
+	memset(lyrics, 0, sizeof(lyrics));
+	lyricsln = 0;
+	assert(IS_BOM(B2S(Buff, 0)));
+	for (i = 2, n = 0, l = 0; i < 32768; i += 2)
 	{
-		lyrics[i >> 1] = (Buff[i] << 0) + (Buff[i + 1] << 8);
-		if (lyrics[i >> 1] == 0x0000) break;
+		char* p;
+		p = Buff + i;
+		if (IS_NUL(B2S(p, 0))) break;
+		if (
+			IS_LTBR(B2S(p, 0))
+			&& IS_AT(B2S(p, 1))
+			&& IS_NUM(B2S(p, 2)) && IS_NUM(B2S(p, 3))
+			&& IS_COL(B2S(p, 4))
+			&& IS_NUM(B2S(p, 5)) && IS_NUM(B2S(p, 6))
+			&& IS_DOT(B2S(p, 7))
+			&& IS_NUM(B2S(p, 8)) && IS_NUM(B2S(p, 9)) && IS_NUM(B2S(p, 10))
+			&& IS_RTBR(B2S(p, 11))
+		)
+		{
+			if (n > 0)
+			{
+				lyrics[n - 1].str[l] = 0x0000;
+			}
+			l = 0;
+			lyrics[n].time =
+				(B2S(p, 2) - 0x0030) * 10 * 60 * 10
+				+ (B2S(p, 3) - 0x0030) * 60 * 10
+				+ (B2S(p, 5) - 0x0030) * 10 * 10
+				+ (B2S(p, 6) - 0x0030) * 10
+				+ (B2S(p, 8) - 0x0030);
+			n++;
+			i += 22;
+		}
+		else
+		{
+			if (
+				(n > 0)
+				&& !IS_LF(B2S(p, 0))
+			)
+			{
+				lyrics[n - 1].str[l] = B2S(p, 0);
+				l++;
+			}
+		}
+	}
+	if (n > 0)
+	{
+		lyricsln = n - 1;
 	}
 	SVC_PERROR(set_flg(FLAG1, 0x4));
 }
@@ -341,13 +400,11 @@ void main_task(intptr_t exinf)
 		SVC_PERROR(act_tsk(TASK3));
 		SVC_PERROR(wai_flg(FLAG1, 0x4, TWF_ANDW, &flgptn));
 
-		for (j = 0; j < 16384; j++)
+		for (j = 0; j < lyricsln; j++)
 		{
-			if (j < 16) syslog(LOG_NOTICE, "%d:%04x", j, lyrics[j]);
-			if (lyrics[j] == 0x0000) break;
+			syslog(LOG_NOTICE, "[%d]%d,%04x...", j, lyrics[j].time, lyrics[j].str[0]);
+			dly_tsk(10);
 		}
-		syslog(LOG_NOTICE, "...");
-		syslog(LOG_NOTICE, "%d:%04x", j, lyrics[j]);
 		dly_tsk(3000);
 	}
 
