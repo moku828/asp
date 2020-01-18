@@ -170,6 +170,8 @@ svc_perror(const char *file, int_t line, const char *expr, ER ercd)
 
 #define	SVC_PERROR(expr)	svc_perror(__FILE__, __LINE__, #expr, (expr))
 
+BYTE lyricslst[32768];
+
 void initcommseq_task(intptr_t exinf)
 {
 	syslog(LOG_NOTICE, "initcommseq_task");
@@ -178,7 +180,13 @@ void initcommseq_task(intptr_t exinf)
 
 void lyricslstload_task(intptr_t exinf)
 {
+	UINT s2;
 	syslog(LOG_NOTICE, "lyricslstload_task");
+	assert(FR_OK == f_chdir("lyrics"));
+	assert(FR_OK == f_open(&File[0], "list.txt", 1));
+	assert(FR_OK == f_read(&File[0], Buff, 32768, &s2));
+	assert(FR_OK == f_close(&File[0]));
+	strcpy(lyricslst, Buff);
 	SVC_PERROR(set_flg(FLAG1, 0x2));
 }
 
@@ -275,10 +283,13 @@ void main_task(intptr_t exinf)
 	SVC_PERROR(serial_ctl_por(TASK_PORTID,
 							(IOCTL_CRLF | IOCTL_FCSND | IOCTL_FCRCV)));
 
+	f_mount(&FatFs[0], "", 0);
 	SVC_PERROR(act_tsk(TASK1));
 	SVC_PERROR(act_tsk(TASK2));
 	SVC_PERROR(wai_flg(FLAG1, 0x3, TWF_ANDW, &flgptn));
 	SVC_PERROR(act_tsk(TASK3));
+
+	syslog(LOG_NOTICE, "%s", lyricslst);
 
 	while (1)
 	{
