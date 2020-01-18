@@ -304,7 +304,7 @@ void main_task(intptr_t exinf)
 	SVC_PERROR(serial_ctl_por(TASK_PORTID,
 							(IOCTL_CRLF | IOCTL_FCSND | IOCTL_FCRCV)));
 
-	f_mount(&FatFs[0], "", 0);
+	assert(FR_OK == f_mount(&FatFs[0], "", 0));
 	SVC_PERROR(act_tsk(TASK1));
 	SVC_PERROR(act_tsk(TASK2));
 	SVC_PERROR(wai_flg(FLAG1, 0x3, TWF_ANDW, &flgptn));
