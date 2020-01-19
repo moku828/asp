@@ -226,7 +226,7 @@ void lyricslstload_task(intptr_t exinf)
 		p += titlelen + 1;
 		if (*p == 0) break;
 	}
-	lyricscnt = i;
+	lyricscnt = i + 1;
 	SVC_PERROR(set_flg(FLAG1, 0x2));
 }
 
