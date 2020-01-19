@@ -193,6 +193,7 @@ int lyricsln;
 #define IS_LTBR(c) (0x005B == c)
 #define IS_RTBR(c) (0x005D == c)
 #define IS_BOM(c) (0xFEFF == c)
+SYSTIM offset;
 
 void initcommseq_task(intptr_t exinf)
 {
@@ -395,7 +396,8 @@ void main_task(intptr_t exinf)
 {
 	ER_UINT	ercd;
 	FLGPTN flgptn;
-	int i, j;
+	int i;
+	SYSTIM tmptime;
 
 	SVC_PERROR(syslog_msk_log(LOG_UPTO(LOG_INFO), LOG_UPTO(LOG_EMERG)));
 	syslog(LOG_NOTICE, "Sample program starts (exinf = %d).", (int_t) exinf);
@@ -420,28 +422,55 @@ void main_task(intptr_t exinf)
 	SVC_PERROR(act_tsk(TASK2));
 	SVC_PERROR(wai_flg(FLAG1, 0x3, TWF_ANDW, &flgptn));
 
-	for (i = 0; i < lyricscnt; i++)
-	{
-		syslog(LOG_NOTICE, "%s:%s", lyricslst[i].filename, lyricslst[i].title);
-	}
-
-	for (i = 0; i < lyricscnt; i++)
-	{
-		syslog(LOG_NOTICE, "%s:%s", lyricslst[i].filename, lyricslst[i].title);
-		lyricsno = i;
-		SVC_PERROR(act_tsk(TASK3));
-		SVC_PERROR(wai_flg(FLAG1, 0x4, TWF_ANDW, &flgptn));
-
-		for (j = 0; j < lyricsln; j++)
-		{
-			syslog(LOG_NOTICE, "[%d]%d,%04x...", j, lyrics[j].time, lyrics[j].str[0]);
-			dly_tsk(10);
-		}
-		dly_tsk(3000);
-	}
-
 	while (1)
 	{
+		char_t	c;
+		char title[100];
+		int l;
+		serial_rea_dat(TASK_PORTID, &c, 1);
+		switch (c)
+		{
+		case 't':
+			syslog(LOG_NOTICE, "title set command");
+			dly_tsk(1);
+			l = 0;
+			while (1)
+			{
+				serial_rea_dat(TASK_PORTID, &c, 1);
+				if (c == 0x0D) break;
+				title[l] = c;
+				l++;
+			}
+			title[l] = 0;
+			syslog(LOG_NOTICE, "title:[%s]", title);
+			for (i = 0; i < lyricscnt; i++)
+			{
+				if (strcmp(title, lyricslst[i].title) != 0) continue;
+				syslog(LOG_NOTICE, "%s:%s", lyricslst[i].filename, lyricslst[i].title);
+				lyricsno = i;
+				SVC_PERROR(act_tsk(TASK3));
+				break;
+			}
+			if (i == lyricscnt)
+			{
+				syslog(LOG_NOTICE, "title missing in lyrics list");
+			}
+			break;
+		case 'z':
+			syslog(LOG_NOTICE, "set current system time to offset command");
+			SVC_PERROR(get_tim(&offset));
+			syslog(LOG_NOTICE, "offset:[%d]", offset);
+			break;
+		case 'c':
+			syslog(LOG_NOTICE, "show current time from offset command");
+			SVC_PERROR(get_tim(&tmptime));
+			syslog(LOG_NOTICE, "current:[%d]", tmptime - offset);
+			break;
+		case 0x0D:
+			break;
+		default:
+			syslog(LOG_NOTICE, "unknown command:[%c]", c);
+		}
 		dly_tsk(100);
 	}
 }
