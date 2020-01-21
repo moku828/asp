@@ -327,6 +327,18 @@ void lyricsfontfileload_task(intptr_t exinf)
 	SVC_PERROR(set_flg(FLAG1, 0x4));
 }
 
+void cyclic_task(intptr_t exinf)
+{
+	FLGPTN flgptn;
+	unsigned char c;
+	c = '.';
+	while (1)
+	{
+		SVC_PERROR(wai_flg(FLAG2, 0x1, TWF_ANDW, &flgptn));
+		serial_wri_dat(TASK_PORTID, &c, 1);
+	}
+}
+
 /*
  *  CPU例外ハンドラ
  */
@@ -368,6 +380,7 @@ cpuexc_handler(void *p_excinf)
  */
 void cyclic_handler(intptr_t exinf)
 {
+	SVC_PERROR(iset_flg(FLAG2, 0x1));
 }
 
 /*
@@ -386,6 +399,7 @@ void main_task(intptr_t exinf)
 	FLGPTN flgptn;
 	int i;
 	SYSTIM tmptime;
+	int startstop = 0;
 
 	SVC_PERROR(syslog_msk_log(LOG_UPTO(LOG_INFO), LOG_UPTO(LOG_EMERG)));
 	syslog(LOG_NOTICE, "Sample program starts (exinf = %d).", (int_t) exinf);
@@ -409,6 +423,7 @@ void main_task(intptr_t exinf)
 	SVC_PERROR(act_tsk(TASK1));
 	SVC_PERROR(act_tsk(TASK2));
 	SVC_PERROR(wai_flg(FLAG1, 0x3, TWF_ANDW, &flgptn));
+	SVC_PERROR(act_tsk(TASK4));
 
 	while (1)
 	{
@@ -453,6 +468,19 @@ void main_task(intptr_t exinf)
 			syslog(LOG_NOTICE, "show current time from offset command");
 			SVC_PERROR(get_tim(&tmptime));
 			syslog(LOG_NOTICE, "current:[%d]", tmptime - offset);
+			break;
+		case 's':
+			syslog(LOG_NOTICE, "start/stop command");
+			if (startstop)
+			{
+				startstop = 0;
+				SVC_PERROR(stp_cyc(CYCHDR1));
+			}
+			else
+			{
+				startstop = 1;
+				SVC_PERROR(sta_cyc(CYCHDR1));
+			}
 			break;
 		case 0x0D:
 			break;

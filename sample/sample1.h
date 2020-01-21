@@ -84,6 +84,7 @@
 extern void	initcommseq_task(intptr_t exinf);
 extern void	lyricslstload_task(intptr_t exinf);
 extern void	lyricsfontfileload_task(intptr_t exinf);
+extern void	cyclic_task(intptr_t exinf);
 extern void	main_task(intptr_t exinf);
 extern void	tex_routine(TEXPTN texptn, intptr_t exinf);
 #ifdef CPUEXC1
