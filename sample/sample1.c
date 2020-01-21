@@ -365,28 +365,16 @@ cpuexc_handler(void *p_excinf)
 
 /*
  *  周期ハンドラ
- *
- *  HIGH_PRIORITY，MID_PRIORITY，LOW_PRIORITY の各優先度のレディキュー
- *  を回転させる．
  */
 void cyclic_handler(intptr_t exinf)
 {
-	SVC_PERROR(irot_rdq(HIGH_PRIORITY));
-	SVC_PERROR(irot_rdq(MID_PRIORITY));
-	SVC_PERROR(irot_rdq(LOW_PRIORITY));
 }
 
 /*
  *  アラームハンドラ
- *
- *  HIGH_PRIORITY，MID_PRIORITY，LOW_PRIORITY の各優先度のレディキュー
- *  を回転させる．
  */
 void alarm_handler(intptr_t exinf)
 {
-	SVC_PERROR(irot_rdq(HIGH_PRIORITY));
-	SVC_PERROR(irot_rdq(MID_PRIORITY));
-	SVC_PERROR(irot_rdq(LOW_PRIORITY));
 }
 
 /*
