@@ -331,11 +331,18 @@ void cyclic_task(intptr_t exinf)
 {
 	FLGPTN flgptn;
 	SYSTIM now;
+	int i;
 	while (1)
 	{
 		SVC_PERROR(wai_flg(FLAG2, 0x1, TWF_ANDW, &flgptn));
 		SVC_PERROR(get_tim(&now));
 		syslog(LOG_NOTICE, "offset:%d,now:%d,diff:%d", offset, now, now - offset);
+		for (i = 0; i < lyricsln; i++)
+		{
+			if (lyrics[i].time > (now - offset)) break;
+		}
+		if (i == lyricsln) continue;
+		syslog(LOG_NOTICE, "str:%04x...", lyrics[i - 1].str[0]);
 	}
 }
 
