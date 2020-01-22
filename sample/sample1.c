@@ -320,6 +320,7 @@ void lyricsfontfileload_task(intptr_t exinf)
 			memset(Buff, 0, 32768);
 			assert(FR_OK == f_read(&File[0], Buff, 32768, &s2));
 			assert(FR_OK == f_close(&File[0]));
+			sh_vdc3_drawbmp(24, 48, 24, 24, Buff + 1078);
 			j++;
 		}
 	}

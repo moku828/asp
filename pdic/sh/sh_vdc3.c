@@ -66,3 +66,25 @@ void sh_vdc3_fill()
 		}
 	}
 }
+
+#define B8B5(b8) (b8 >> 3)
+#define B8B6(b8) (b8 >> 2)
+#define GRAY2RGB565(gray) ((B8B5(gray) << 11) | (B8B6(gray) << 5) | B8B5(gray))
+void sh_vdc3_drawbmp(int x1, int y1, int w1, int h1, unsigned char* bmp)
+{
+	volatile unsigned long x, y;
+	volatile unsigned short *p;
+	p = (unsigned short *)0x1C03C000;
+	p += y1 * 400;
+	for (y = 0; y < h1; y++)
+	{
+		p += x1;
+		for (x = 0; x < w1; x++)
+		{
+			*p = GRAY2RGB565(*bmp);
+			p++;
+			bmp++;
+		}
+		p += (400 - (x1 + w1));
+	}
+}
