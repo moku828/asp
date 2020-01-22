@@ -330,12 +330,12 @@ void lyricsfontfileload_task(intptr_t exinf)
 void cyclic_task(intptr_t exinf)
 {
 	FLGPTN flgptn;
-	unsigned char c;
-	c = '.';
+	SYSTIM now;
 	while (1)
 	{
 		SVC_PERROR(wai_flg(FLAG2, 0x1, TWF_ANDW, &flgptn));
-		serial_wri_dat(TASK_PORTID, &c, 1);
+		SVC_PERROR(get_tim(&now));
+		syslog(LOG_NOTICE, "offset:%d,now:%d,diff:%d", offset, now, now - offset);
 	}
 }
 
