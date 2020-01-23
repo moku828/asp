@@ -320,6 +320,7 @@ void cyclic_task(intptr_t exinf)
 		if (i == last) continue;
 		last = i;
 		syslog(LOG_NOTICE, "str:%04x...", lyrics[i - 1].str[0]);
+		sh_vdc3_fill();
 		assert(FR_OK == f_chdir("/fonts"));
 		j = 0;
 		while (1)
