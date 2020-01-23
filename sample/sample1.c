@@ -306,6 +306,7 @@ void cyclic_task(intptr_t exinf)
 	SYSTIM now;
 	UINT s2;
 	int i, j;
+	int last = -1;
 	while (1)
 	{
 		SVC_PERROR(wai_flg(FLAG2, 0x1, TWF_ANDW, &flgptn));
@@ -316,6 +317,8 @@ void cyclic_task(intptr_t exinf)
 			if (lyrics[i].time > (now - offset)) break;
 		}
 		if (i == lyricsln) continue;
+		if (i == last) continue;
+		last = i;
 		syslog(LOG_NOTICE, "str:%04x...", lyrics[i - 1].str[0]);
 		assert(FR_OK == f_chdir("/fonts"));
 		j = 0;
