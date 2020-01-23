@@ -221,7 +221,7 @@ void lyricslstload_task(intptr_t exinf)
 		memcpy(lyricslst[i].filename, p, 8);
 		lyricslst[i].filename[8] = 0;
 		p += 9;
-		titlelen = ((*p - 0x30) * 10) + (*(p + 1) - 0x30);
+		titlelen = (((*p == 0x20) ? 0 : (*p - 0x30)) * 10) + (*(p + 1) - 0x30);
 		p += 3;
 		memcpy(lyricslst[i].title, p, titlelen);
 		lyricslst[i].title[titlelen] = 0;
