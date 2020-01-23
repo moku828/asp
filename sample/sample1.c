@@ -343,6 +343,12 @@ void cyclic_task(intptr_t exinf)
 			memset(Buff, 0, 32768);
 			assert(FR_OK == f_read(&File[0], Buff, 32768, &s2));
 			assert(FR_OK == f_close(&File[0]));
+			if (j < 16)
+				sh_vdc3_drawbmp(j * 24 + 4, 4, 24, 24, Buff + 1078);
+			else if (j < 32)
+				sh_vdc3_drawbmp((j - 16) * 24 + 4, (24 + 4) * 1 + 4, 24, 24, Buff + 1078);
+			else if (j < 48)
+				sh_vdc3_drawbmp((j - 32) * 24 + 4, (24 + 4) * 2 + 4, 24, 24, Buff + 1078);
 			j++;
 		}
 	}
