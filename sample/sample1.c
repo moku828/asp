@@ -232,12 +232,12 @@ void lyricslstload_task(intptr_t exinf)
 	SVC_PERROR(set_flg(FLAG1, 0x2));
 }
 
-void lyricsfontfileload_task(intptr_t exinf)
+void lyricsfileload_task(intptr_t exinf)
 {
 	UINT s2;
-	int i, j, n, l;
+	int i, n, l;
 	SYSTIM start, end;
-	syslog(LOG_NOTICE, "lyricsfontfileload_task");
+	syslog(LOG_NOTICE, "lyricsfileload_task");
 	SVC_PERROR(get_tim(&start));
 	assert(lyricsno < lyricscnt);
 	assert(lyricslst[lyricsno].filename[0] != 0);
