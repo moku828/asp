@@ -295,18 +295,38 @@ void lyricsfileload_task(intptr_t exinf)
 	{
 		lyricsln = n - 1;
 	}
-	assert(FR_OK == f_chdir("/fonts"));
-	for (i = 0; i < lyricsln; i++)
+	SVC_PERROR(get_tim(&end));
+	syslog(LOG_NOTICE, "start:%d,end:%d,diff:%d", start, end, end - start);
+	SVC_PERROR(set_flg(FLAG1, 0x4));
+}
+
+void cyclic_task(intptr_t exinf)
+{
+	FLGPTN flgptn;
+	SYSTIM now;
+	UINT s2;
+	int i, j;
+	while (1)
 	{
+		SVC_PERROR(wai_flg(FLAG2, 0x1, TWF_ANDW, &flgptn));
+		SVC_PERROR(get_tim(&now));
+		syslog(LOG_NOTICE, "offset:%d,now:%d,diff:%d", offset, now, now - offset);
+		for (i = 0; i < lyricsln; i++)
+		{
+			if (lyrics[i].time > (now - offset)) break;
+		}
+		if (i == lyricsln) continue;
+		syslog(LOG_NOTICE, "str:%04x...", lyrics[i - 1].str[0]);
+		assert(FR_OK == f_chdir("/fonts"));
 		j = 0;
 		while (1)
 		{
 			char fontfilename[9];
-			if (lyrics[i].str[j] == 0x0000) break;
-			fontfilename[0] = (lyrics[i].str[j] >> 12) & 0x0F;
-			fontfilename[1] = (lyrics[i].str[j] >> 8) & 0x0F;
-			fontfilename[2] = (lyrics[i].str[j] >> 4) & 0x0F;
-			fontfilename[3] = (lyrics[i].str[j] >> 0) & 0x0F;
+			if (lyrics[i - 1].str[j] == 0x0000) break;
+			fontfilename[0] = (lyrics[i - 1].str[j] >> 12) & 0x0F;
+			fontfilename[1] = (lyrics[i - 1].str[j] >> 8) & 0x0F;
+			fontfilename[2] = (lyrics[i - 1].str[j] >> 4) & 0x0F;
+			fontfilename[3] = (lyrics[i - 1].str[j] >> 0) & 0x0F;
 			fontfilename[0] = (fontfilename[0] > 9) ? (fontfilename[0] - 10 + 0x41) : (fontfilename[0] + 0x30);
 			fontfilename[1] = (fontfilename[1] > 9) ? (fontfilename[1] - 10 + 0x41) : (fontfilename[1] + 0x30);
 			fontfilename[2] = (fontfilename[2] > 9) ? (fontfilename[2] - 10 + 0x41) : (fontfilename[2] + 0x30);
@@ -320,31 +340,8 @@ void lyricsfileload_task(intptr_t exinf)
 			memset(Buff, 0, 32768);
 			assert(FR_OK == f_read(&File[0], Buff, 32768, &s2));
 			assert(FR_OK == f_close(&File[0]));
-			sh_vdc3_drawbmp(24, 48, 24, 24, Buff + 1078);
 			j++;
 		}
-	}
-	SVC_PERROR(get_tim(&end));
-	syslog(LOG_NOTICE, "start:%d,end:%d,diff:%d", start, end, end - start);
-	SVC_PERROR(set_flg(FLAG1, 0x4));
-}
-
-void cyclic_task(intptr_t exinf)
-{
-	FLGPTN flgptn;
-	SYSTIM now;
-	int i;
-	while (1)
-	{
-		SVC_PERROR(wai_flg(FLAG2, 0x1, TWF_ANDW, &flgptn));
-		SVC_PERROR(get_tim(&now));
-		syslog(LOG_NOTICE, "offset:%d,now:%d,diff:%d", offset, now, now - offset);
-		for (i = 0; i < lyricsln; i++)
-		{
-			if (lyrics[i].time > (now - offset)) break;
-		}
-		if (i == lyricsln) continue;
-		syslog(LOG_NOTICE, "str:%04x...", lyrics[i - 1].str[0]);
 	}
 }
 
