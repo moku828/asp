@@ -61,7 +61,7 @@ void sh_vdc3_fill()
 	{
 		for (x = 0; x < 400; x++)
 		{
-			*p = 0xF800;
+			*p = 0x0000;
 			p++;
 		}
 	}
