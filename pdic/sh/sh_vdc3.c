@@ -23,6 +23,8 @@
 #define	GROPSOFST2		*((volatile long  *)0xFFFF3310)
 #define	GROPDPHV2		*((volatile long  *)0xFFFF3314)
 
+int plane;
+
 void sh_vdc3_initialize()
 {
 	PGCR7 = (PGCR7 & ~0x0007) | 0x0001;
@@ -51,6 +53,7 @@ void sh_vdc3_initialize()
 	GROPSWH2 = 0x00600190;
 	GROPSOFST2 = 0x00000320;
 	GROPDPHV2 = 0x000E005B;
+	plane = 0;
 	GRCMEN2 |= 0x80000000;
 }
 
@@ -59,11 +62,42 @@ void sh_vdc3_clear_int_line()
 	SGINTCNT &= ~0x00000001;
 }
 
+void sh_vdc3_swap()
+{
+	volatile unsigned long x, y;
+	volatile unsigned short *fg;
+	volatile unsigned short *bg;
+	if (plane)
+	{
+		fg = (unsigned short *)0x1C03C000;
+		bg = (unsigned short *)0x1C050000;
+		plane = 0;
+	}
+	else
+	{
+		fg = (unsigned short *)0x1C050000;
+		bg = (unsigned short *)0x1C03C000;
+		plane = 1;
+	}
+	GROPSADR2 = (long)fg;
+	GRCMEN2 |= 0x80000000;
+	for (y = 0; y < 96; y++)
+	{
+		for (x = 0; x < 400; x++)
+		{
+			*bg = *fg;
+			bg++;
+			fg++;
+		}
+	}
+}
+
 void sh_vdc3_fill()
 {
 	volatile unsigned long x, y;
 	volatile unsigned short *p;
-	p = (unsigned short *)0x1C03C000;
+	if (plane)	p = (unsigned short *)0x1C03C000;
+	else		p = (unsigned short *)0x1C050000;
 	for (y = 0; y < 96; y++)
 	{
 		for (x = 0; x < 400; x++)
@@ -82,7 +116,8 @@ void sh_vdc3_drawbmp(int x1, int y1, int w1, int h1, unsigned char* bmp1)
 	volatile unsigned long x, y;
 	volatile unsigned short *p;
 	volatile unsigned char *bmp;
-	p = (unsigned short *)0x1C03C000;
+	if (plane)	p = (unsigned short *)0x1C03C000;
+	else		p = (unsigned short *)0x1C050000;
 	p += y1 * 400;
 	bmp = bmp1;
 	bmp += w1 * (h1 - 1);

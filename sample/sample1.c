@@ -352,6 +352,7 @@ void cyclic_task(intptr_t exinf)
 				sh_vdc3_drawbmp((j - 32) * 24 + 4, (24 + 4) * 2 + 4, 24, 24, Buff + 1078);
 			j++;
 		}
+		sh_vdc3_swap();
 	}
 }
 
