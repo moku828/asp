@@ -9,6 +9,7 @@
 #define	PGDR1			*((volatile short *)0xFFFE38D4)
 #define	STBCR7			*((volatile char  *)0xFFFE0418)
 #define	SGMODE			*((volatile long  *)0xFFFF3800)
+#define	SGINTCNT		*((volatile long  *)0xFFFF3804)
 #define	SYNCNT			*((volatile long  *)0xFFFF3808)
 #define	PANEL_CLKSEL	*((volatile long  *)0xFFFF380C)
 #define	SYN_SIZE		*((volatile long  *)0xFFFF3900)
@@ -35,6 +36,7 @@ void sh_vdc3_initialize()
 	PGDR1 &= ~0x0014;
 	STBCR7 &= ~0x10;
 	SGMODE = 0x00000001;
+	SGINTCNT = 0x06010000;
 	SYNCNT = (SYNCNT & ~0x010C000C) | 0x0000000C;
 	PANEL_CLKSEL &= ~0x00001000;
 	PANEL_CLKSEL = (PANEL_CLKSEL & ~0x0000203F) | 0x00002008;
@@ -50,6 +52,11 @@ void sh_vdc3_initialize()
 	GROPSOFST2 = 0x00000320;
 	GROPDPHV2 = 0x000E005B;
 	GRCMEN2 |= 0x80000000;
+}
+
+void sh_vdc3_clear_int_line()
+{
+	SGINTCNT &= ~0x00000001;
 }
 
 void sh_vdc3_fill()
