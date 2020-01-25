@@ -450,8 +450,6 @@ void main_task(intptr_t exinf)
 	while (1)
 	{
 		char_t	c;
-		//char title[100];
-		//int l;
 		unsigned char sz, md, cmd[2], param[253], chksum;
 		unsigned short sum;
 		sum = 0;
@@ -482,6 +480,33 @@ void main_task(intptr_t exinf)
 		SVC_PERROR(serial_rea_dat(IPODRX_PORTID, &c, 1));
 		chksum = c;
 		if (chksum != (0x100 - (sum & 0x0FF))) continue;
+		switch (md)
+		{
+		case 4:
+			if (cmd[0] != 0x00) break;
+			switch (cmd[1])
+			{
+			case 0x21:
+				syslog(LOG_NOTICE, "title returned as a null terminated string");
+				syslog(LOG_NOTICE, "%s", param);
+				for (i = 0; i < lyricscnt; i++)
+				{
+					if (strcmp(param, lyricslst[i].title) != 0) continue;
+					syslog(LOG_NOTICE, "%s:%s", lyricslst[i].filename, lyricslst[i].title);
+					lyricsno = i;
+					SVC_PERROR(act_tsk(TASK3));
+					break;
+				}
+				if (i == lyricscnt)
+				{
+					syslog(LOG_NOTICE, "title missing in lyrics list");
+				}
+				break;
+			}
+			break;
+		default:
+			syslog(LOG_NOTICE, "not supported mode");
+		}
 		/*
 		switch (c)
 		{
