@@ -195,6 +195,8 @@ int lyricsln;
 #define IS_LTBR(c) (0x005B == c)
 #define IS_RTBR(c) (0x005D == c)
 #define IS_BOM(c) (0xFEFF == c)
+#define IS_AAPHDR1(c) (0xFF == c)
+#define IS_AAPHDR2(c) (0x55 == c)
 SYSTIM offset;
 
 void initcommseq_task(intptr_t exinf)
@@ -415,7 +417,7 @@ void main_task(intptr_t exinf)
 {
 	ER_UINT	ercd;
 	FLGPTN flgptn;
-	//int i;
+	int i;
 	//SYSTIM tmptime;
 	//int startstop = 0;
 
@@ -450,7 +452,36 @@ void main_task(intptr_t exinf)
 		char_t	c;
 		//char title[100];
 		//int l;
-		serial_rea_dat(IPODRX_PORTID, &c, 1);
+		unsigned char sz, md, cmd[2], param[253], chksum;
+		unsigned short sum;
+		sum = 0;
+		SVC_PERROR(serial_rea_dat(IPODRX_PORTID, &c, 1));
+		if (!IS_AAPHDR1(c)) continue;
+		SVC_PERROR(serial_rea_dat(IPODRX_PORTID, &c, 1));
+		if (!IS_AAPHDR2(c)) continue;
+		SVC_PERROR(serial_rea_dat(IPODRX_PORTID, &c, 1));
+		sz = c;
+		sum += sz;
+		if (sz < 4) continue;
+		SVC_PERROR(serial_rea_dat(IPODRX_PORTID, &c, 1));
+		md = c;
+		sum += md;
+		if (md > 4) continue;
+		SVC_PERROR(serial_rea_dat(IPODRX_PORTID, &c, 1));
+		cmd[0] = c;
+		sum += cmd[0];
+		SVC_PERROR(serial_rea_dat(IPODRX_PORTID, &c, 1));
+		cmd[1] = c;
+		sum += cmd[1];
+		for (i = 0; i < sz - 3; i++)
+		{
+			SVC_PERROR(serial_rea_dat(IPODRX_PORTID, &c, 1));
+			param[i] = c;
+			sum += param[i];
+		}
+		SVC_PERROR(serial_rea_dat(IPODRX_PORTID, &c, 1));
+		chksum = c;
+		if (chksum != (0x100 - (sum & 0x0FF))) continue;
 		/*
 		switch (c)
 		{
