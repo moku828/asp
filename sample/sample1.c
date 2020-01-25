@@ -418,8 +418,6 @@ void main_task(intptr_t exinf)
 	ER_UINT	ercd;
 	FLGPTN flgptn;
 	int i;
-	//SYSTIM tmptime;
-	//int startstop = 0;
 
 	SVC_PERROR(syslog_msk_log(LOG_UPTO(LOG_INFO), LOG_UPTO(LOG_EMERG)));
 	syslog(LOG_NOTICE, "Sample program starts (exinf = %d).", (int_t) exinf);
@@ -486,6 +484,19 @@ void main_task(intptr_t exinf)
 			if (cmd[0] != 0x00) break;
 			switch (cmd[1])
 			{
+			case 0x1D:
+				syslog(LOG_NOTICE, "Track length in milliseconds, elapsed time in milliseconds, status=0x0 stop, 0x01 playing, 0x02 paused");
+				if (param[8] != 0x01)
+				{
+					syslog(LOG_NOTICE, "%s", (param[8] == 0x00) ? "0x0 stop" : "0x02 paused");
+					SVC_PERROR(stp_cyc(CYCHDR1));
+				}
+				else
+				{
+					syslog(LOG_NOTICE, "0x01 playing");
+					SVC_PERROR(sta_cyc(CYCHDR1));
+				}
+				break;
 			case 0x21:
 				syslog(LOG_NOTICE, "title returned as a null terminated string");
 				syslog(LOG_NOTICE, "%s", param);
@@ -522,28 +533,6 @@ void main_task(intptr_t exinf)
 		default:
 			syslog(LOG_NOTICE, "not supported mode");
 		}
-		/*
-		switch (c)
-		{
-		case 's':
-			syslog(LOG_NOTICE, "start/stop command");
-			if (startstop)
-			{
-				startstop = 0;
-				SVC_PERROR(stp_cyc(CYCHDR1));
-			}
-			else
-			{
-				startstop = 1;
-				SVC_PERROR(sta_cyc(CYCHDR1));
-			}
-			break;
-		case 0x0D:
-			break;
-		default:
-			syslog(LOG_NOTICE, "unknown command:[%c]", c);
-		}
-		*/
 		dly_tsk(100);
 	}
 }
