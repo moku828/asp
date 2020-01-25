@@ -159,14 +159,14 @@ extern void target_exit(void) NoReturn;
 	/*
 	 *	’SCFI0反曩鞅
 	 *	’SCFI1反曩鞅
-	 *	’SCFI2反曩鞅
+	 *	’SCFI2反が綜
 	 *	’SCFI3反が綜
 	 *	’SCFI4反曩鞅
 	 *	’SCFI5反曩鞅
 	 *	’SCFI6反曩鞅
 	 *	’SCFI7反曩鞅
 	 */
-#define STBCR4_VALUE	 (STBCR4_SCIF0 | STBCR4_SCIF1 | STBCR4_SCIF2 \
+#define STBCR4_VALUE	 (STBCR4_SCIF0 | STBCR4_SCIF1 \
 						  | STBCR4_SCIF4 | STBCR4_SCIF5 | STBCR4_SCIF6 | STBCR4_SCIF7)
 
 

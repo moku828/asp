@@ -98,16 +98,19 @@ extern void	target_fput_log(char_t c);
  *	使用するシリアルポートID
  */
 #define SIO_PORTID	 4
+#define SIO_PORTID2	 3
 
 #define LOGTASK_PORTID	 SIO_PORTID
+#define IPODRX_PORTID	 SIO_PORTID2
 
 /*
  *	ボーレート
  */
 #define BPS_SETTING 19200
+#define BPS_SETTING2 9600
 #define SCIF0_BPS_SETTING  (((PCLOCK / 32) / BPS_SETTING) - 1)
 #define SCIF1_BPS_SETTING  (((PCLOCK / 32) / BPS_SETTING) - 1)
-#define SCIF2_BPS_SETTING  (((PCLOCK / 32) / BPS_SETTING) - 1)
+#define SCIF2_BPS_SETTING  (((PCLOCK / 32) / BPS_SETTING2) - 1)
 #define SCIF3_BPS_SETTING  (((PCLOCK / 32) / BPS_SETTING) - 1)
 #define SCIF4_BPS_SETTING  (((PCLOCK / 32) / BPS_SETTING) - 1)
 #define SCIF5_BPS_SETTING  (((PCLOCK / 32) / BPS_SETTING) - 1)

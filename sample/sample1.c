@@ -112,6 +112,7 @@
 #include "pdic/sh/diskio.h"
 #include "pdic/sh/sh_vdc3.h"
 #include "kernel_cfg.h"
+#include "target_syssvc.h"
 #include "sample1.h"
 
 
@@ -414,9 +415,9 @@ void main_task(intptr_t exinf)
 {
 	ER_UINT	ercd;
 	FLGPTN flgptn;
-	int i;
-	SYSTIM tmptime;
-	int startstop = 0;
+	//int i;
+	//SYSTIM tmptime;
+	//int startstop = 0;
 
 	SVC_PERROR(syslog_msk_log(LOG_UPTO(LOG_INFO), LOG_UPTO(LOG_EMERG)));
 	syslog(LOG_NOTICE, "Sample program starts (exinf = %d).", (int_t) exinf);
@@ -435,6 +436,8 @@ void main_task(intptr_t exinf)
 	}
 	SVC_PERROR(serial_ctl_por(TASK_PORTID,
 							(IOCTL_CRLF | IOCTL_FCSND | IOCTL_FCRCV)));
+	SVC_PERROR(serial_opn_por(IPODRX_PORTID));
+	SVC_PERROR(serial_ctl_por(IPODRX_PORTID, 0));
 
 	assert(FR_OK == f_mount(&FatFs[0], "", 0));
 	SVC_PERROR(act_tsk(TASK1));
@@ -445,9 +448,10 @@ void main_task(intptr_t exinf)
 	while (1)
 	{
 		char_t	c;
-		char title[100];
-		int l;
-		serial_rea_dat(TASK_PORTID, &c, 1);
+		//char title[100];
+		//int l;
+		serial_rea_dat(IPODRX_PORTID, &c, 1);
+		/*
 		switch (c)
 		{
 		case 't':
@@ -504,6 +508,7 @@ void main_task(intptr_t exinf)
 		default:
 			syslog(LOG_NOTICE, "unknown command:[%c]", c);
 		}
+		*/
 		dly_tsk(100);
 	}
 }

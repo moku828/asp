@@ -72,6 +72,11 @@ target_initialize(void)
 	sil_wrh_mem((uint16_t *)PFCR0_h, (sil_reh_mem((uint16_t *)PFCR0_h) & ~0x7000) | 0x4000);
 	
 	/*
+	 *	SCIF2のI/Oポートの設定
+	 */
+	sil_wrh_mem((uint16_t *)PFCR0_h, (sil_reh_mem((uint16_t *)PFCR0_h) & ~0x0770) | 0x0440);
+	
+	/*
 	 * バーナー出力用のシリアルコントローラの初期化
 	 */
 	sh_scif_init(TARGET_PUTC_PORTID);
