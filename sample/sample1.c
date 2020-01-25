@@ -510,32 +510,6 @@ void main_task(intptr_t exinf)
 		/*
 		switch (c)
 		{
-		case 't':
-			syslog(LOG_NOTICE, "title set command");
-			dly_tsk(1);
-			l = 0;
-			while (1)
-			{
-				serial_rea_dat(TASK_PORTID, &c, 1);
-				if (c == 0x0D) break;
-				title[l] = c;
-				l++;
-			}
-			title[l] = 0;
-			syslog(LOG_NOTICE, "title:[%s]", title);
-			for (i = 0; i < lyricscnt; i++)
-			{
-				if (strcmp(title, lyricslst[i].title) != 0) continue;
-				syslog(LOG_NOTICE, "%s:%s", lyricslst[i].filename, lyricslst[i].title);
-				lyricsno = i;
-				SVC_PERROR(act_tsk(TASK3));
-				break;
-			}
-			if (i == lyricscnt)
-			{
-				syslog(LOG_NOTICE, "title missing in lyrics list");
-			}
-			break;
 		case 'z':
 			syslog(LOG_NOTICE, "set current system time to offset command");
 			SVC_PERROR(get_tim(&offset));
