@@ -502,6 +502,21 @@ void main_task(intptr_t exinf)
 					syslog(LOG_NOTICE, "title missing in lyrics list");
 				}
 				break;
+			case 0x27:
+				syslog(LOG_NOTICE, "time elapsed on current song");
+				if (param[0] != 4) break;
+				{
+					int elapsedtime = 0;
+					elapsedtime += param[1] << 24;
+					elapsedtime += param[2] << 16;
+					elapsedtime += param[3] << 8;
+					elapsedtime += param[4] << 0;
+					syslog(LOG_NOTICE, "%d.%d(sec)", (elapsedtime / 1000), (elapsedtime % 1000));
+					SVC_PERROR(get_tim(&offset));
+					offset -= elapsedtime;
+					syslog(LOG_NOTICE, "offset:[%d]", offset);
+				}
+				break;
 			}
 			break;
 		default:
@@ -510,16 +525,6 @@ void main_task(intptr_t exinf)
 		/*
 		switch (c)
 		{
-		case 'z':
-			syslog(LOG_NOTICE, "set current system time to offset command");
-			SVC_PERROR(get_tim(&offset));
-			syslog(LOG_NOTICE, "offset:[%d]", offset);
-			break;
-		case 'c':
-			syslog(LOG_NOTICE, "show current time from offset command");
-			SVC_PERROR(get_tim(&tmptime));
-			syslog(LOG_NOTICE, "current:[%d]", tmptime - offset);
-			break;
 		case 's':
 			syslog(LOG_NOTICE, "start/stop command");
 			if (startstop)
