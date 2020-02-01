@@ -296,7 +296,7 @@ void lyricsfileload_task(intptr_t exinf)
 	}
 	if (n > 0)
 	{
-		lyricsln = n - 1;
+		lyricsln = n;
 	}
 	SVC_PERROR(get_tim(&end));
 	syslog(LOG_NOTICE, "start:%d,end:%d,diff:%d", start, end, end - start);
