@@ -319,7 +319,6 @@ void cyclic_task(intptr_t exinf)
 		{
 			if (lyrics[i].time > (now - offset)) break;
 		}
-		if (i == lyricsln) continue;
 		if (i == last) continue;
 		last = i;
 		syslog(LOG_NOTICE, "str:%04x...", lyrics[i - 1].str[0]);
