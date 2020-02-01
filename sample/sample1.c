@@ -517,20 +517,15 @@ void main_task(intptr_t exinf)
 				syslog(LOG_NOTICE, "time elapsed on current song");
 				if (param[0] != 4) break;
 				{
-					SYSTIM tmpoffset;
 					int elapsedtime = 0;
 					elapsedtime += param[1] << 24;
 					elapsedtime += param[2] << 16;
 					elapsedtime += param[3] << 8;
 					elapsedtime += param[4] << 0;
 					syslog(LOG_NOTICE, "%d.%d(sec)", (elapsedtime / 1000), (elapsedtime % 1000));
-					SVC_PERROR(get_tim(&tmpoffset));
-					tmpoffset -= elapsedtime;
-					syslog(LOG_NOTICE, "offset:[%d], tmpoffset:[%d]", offset, tmpoffset);
-					if (tmpoffset > (offset + 300))
-					{
-						offset = tmpoffset;
-					}
+					SVC_PERROR(get_tim(&offset));
+					offset -= elapsedtime;
+					syslog(LOG_NOTICE, "offset:[%d]", offset);
 				}
 				break;
 			}
