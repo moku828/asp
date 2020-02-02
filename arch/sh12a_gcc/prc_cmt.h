@@ -58,6 +58,8 @@
  */
 #define INHNO_TIMER 	CMI0_VECTOR   /* 割込みハンドラ番号 */
 #define INTNO_TIMER 	CMI0_VECTOR   /* 割込み番号 */
+#define INHNO_TIMER2 	CMI1_VECTOR   /* 割込みハンドラ番号 */
+#define INTNO_TIMER2 	CMI1_VECTOR   /* 割込み番号 */
 #define INTPRI_TIMER	(-6)		  /* 割込み優先度 */
 #define INTATR_TIMER	0U			  /* 割込み属性 */
 
@@ -102,6 +104,11 @@ target_timer_get_current(void)
 {
 	return(sil_reh_mem((uint16_t *)CMCNT_0_h));
 }
+Inline CLOCK
+target_timer2_get_current(void)
+{
+	return(sil_reh_mem((uint16_t *)CMCNT_1_h));
+}
 
 /*
  *	タイマ割込み要求のチェック
@@ -111,11 +118,17 @@ target_timer_probe_int(void)
 {
 	return((sil_reh_mem((uint16_t *)CMCSR_0_h) & CMCSR_CMF) != 0);
 }
+Inline bool_t
+target_timer2_probe_int(void)
+{
+	return((sil_reh_mem((uint16_t *)CMCSR_1_h) & CMCSR_CMF) != 0);
+}
 
 /*
  *	タイマ割込みハンドラ
  */
 extern void target_timer_handler(void);
+extern void target_timer2_isr(intptr_t exinf);
 
 #endif /* TOPPERS_MACRO_ONLY */
 #endif /* TOPPERS_PRC_TIMER_H */

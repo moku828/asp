@@ -43,7 +43,7 @@
 /*
  *	タイマドライバ（SH12A用）
  *	
- *	CMT0を使用
+ *	CMT0,1を使用
  */
 
 #include "kernel_impl.h"
@@ -60,6 +60,12 @@ target_timer_start(void)
 	/* CMT0スタート */
 	sil_orh_reg((uint16_t *)CMSTR_h, CMSTR_STR0);
 }
+Inline void
+target_timer2_start(void)
+{
+	/* CMT1スタート */
+	sil_orh_reg((uint16_t *)CMSTR_h, CMSTR_STR1);
+}
 
 /*
  *  タイマ停止
@@ -70,6 +76,12 @@ target_timer_stop(void)
 	/* CMT0停止 */
 	sil_anh_reg((uint16_t *)CMSTR_h, ~CMSTR_STR0);
 }
+Inline void
+target_timer2_stop(void)
+{
+	/* CMT1停止 */
+	sil_anh_reg((uint16_t *)CMSTR_h, ~CMSTR_STR1);
+}
 
 /*
  *  タイマ割込み要求をクリア
@@ -79,6 +91,11 @@ target_timer_clear_int(void)
 {
 	sil_anh_reg((uint16_t *)CMCSR_0_h, ~CMCSR_CMF);
 }
+Inline void
+target_timer2_clear_int(void)
+{
+	sil_anh_reg((uint16_t *)CMCSR_1_h, ~CMCSR_CMF);
+}
 
 /*
  *	タイマの起動処理
@@ -87,22 +104,29 @@ void
 target_timer_initialize(intptr_t exinf)
 {
 	CLOCK	 cyc = TO_CLOCK(TIC_NUME, TIC_DENO);
+	CLOCK	 cyc2 = TO_CLOCK((280 / (32 / 8)), 1000);
 
 	/*
 	 *	タイマ周期を設定し，タイマの動作を開始する．
 	 */
 	target_timer_stop();		/* タイマ停止 */
+	target_timer2_stop();		/* タイマ停止 */
 
 	assert(cyc <= MAX_CLOCK);	/* タイマ上限値のチェック */
+	assert(cyc2 <= MAX_CLOCK);	/* タイマ上限値のチェック */
 
 	/* 分周比設定(PCLOCK/8)、割込み許可 */
 	sil_wrh_mem((uint16_t *)CMCSR_0_h, (CMCSR_CKS | CMCSR_CMIE));
+	sil_wrh_mem((uint16_t *)CMCSR_1_h, (CMCSR_CKS | CMCSR_CMIE));
 
 	/*constantレジスタをセット */
 	sil_wrh_mem((uint16_t *)CMCOR_0_h, cyc);
+	sil_wrh_mem((uint16_t *)CMCOR_1_h, cyc2);
 
 	target_timer_clear_int();	/* 割込み要求をクリア */
+	target_timer2_clear_int();	/* 割込み要求をクリア */
 	target_timer_start();		/* タイマスタート */
+	target_timer2_start();		/* タイマスタート */
 }
 
 /*
@@ -112,7 +136,9 @@ void
 target_timer_terminate(intptr_t exinf)
 {
 	target_timer_stop();		/* タイマ停止 */
+	target_timer2_stop();		/* タイマ停止 */
 	target_timer_clear_int();	/* 割込み要求をクリア */
+	target_timer2_clear_int();	/* 割込み要求をクリア */
 }
 
 /*
@@ -126,4 +152,9 @@ target_timer_handler(void)
 	i_begin_int(INTNO_TIMER);
 	signal_time();				/* タイムティックの供給 */
 	i_end_int(INTNO_TIMER);
+}
+void
+target_timer2_isr(intptr_t exinf)
+{
+	target_timer2_clear_int();	/* 割込み要求をクリア */
 }
