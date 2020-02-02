@@ -51,6 +51,7 @@
 #include <sil.h>
 #include "target_timer.h"
 
+extern void cyclic_280us_initialize(void);
 extern void cyclic_280us_handler(void);
 
 /*
@@ -125,6 +126,8 @@ target_timer_initialize(intptr_t exinf)
 	/*constantレジスタをセット */
 	sil_wrh_mem((uint16_t *)CMCOR_0_h, cyc);
 	sil_wrh_mem((uint16_t *)CMCOR_1_h, cyc2);
+
+	cyclic_280us_initialize();
 
 	target_timer_clear_int();	/* 割込み要求をクリア */
 	target_timer2_clear_int();	/* 割込み要求をクリア */
