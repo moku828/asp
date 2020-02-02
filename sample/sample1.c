@@ -415,7 +415,7 @@ void main_task(intptr_t exinf)
 				};
 				for (i = 0; i < sizeof(power)/sizeof(power[0]); i++)
 				{
-					if (count[i+1] != power[i])
+					if ((count[i+1] < (power[i] - 1)) || (count[i+1] > (power[i] + 1)))
 					{
 						break;
 					}
