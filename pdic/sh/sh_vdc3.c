@@ -62,6 +62,20 @@ void sh_vdc3_clear_int_line()
 	SGINTCNT &= ~0x00000001;
 }
 
+void sh_vdc3_visible(int visible)
+{
+	if (visible)
+	{
+		GRCMEN2 |= 0x00000002;
+		GRCMEN2 |= 0x80000000;
+	}
+	else
+	{
+		GRCMEN2 &= ~0x00000002;
+		GRCMEN2 |= 0x80000000;
+	}
+}
+
 void sh_vdc3_swap()
 {
 	volatile unsigned long x, y;

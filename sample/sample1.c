@@ -491,6 +491,8 @@ void alarm_handler(intptr_t exinf)
 void irrcv_task(intptr_t exinf)
 {
 	volatile unsigned long i;
+	int visiblle = 1;
+
 	FLGPTN flgptn;
 	PCCR2 &= ~0x0003;
 	PCIOR0 |= 0x0100;
@@ -520,12 +522,16 @@ void irrcv_task(intptr_t exinf)
 				}
 				if (i == (sizeof(power)/sizeof(power[0])))
 				{
-					if (PCDR0 & 0x0100)
+					if (!visiblle)
 					{
+						visiblle = 1;
+						sh_vdc3_visible(1);
 						PCDR0 &= ~0x0100;
 					}
 					else
 					{
+						visiblle = 0;
+						sh_vdc3_visible(0);
 						PCDR0 |= 0x0100;
 					}
 				}
