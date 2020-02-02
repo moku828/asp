@@ -51,6 +51,8 @@
 #include <sil.h>
 #include "target_timer.h"
 
+extern void cyclic_280us_handler(void);
+
 /*
  *  タイマスタート
  */
@@ -157,4 +159,6 @@ void
 target_timer2_isr(intptr_t exinf)
 {
 	target_timer2_clear_int();	/* 割込み要求をクリア */
+	
+	cyclic_280us_handler();
 }

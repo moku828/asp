@@ -260,6 +260,9 @@ void cyclic_handler(intptr_t exinf)
 	SVC_PERROR(irot_rdq(MID_PRIORITY));
 	SVC_PERROR(irot_rdq(LOW_PRIORITY));
 }
+void cyclic_280us_handler(void)
+{
+}
 
 /*
  *  アラームハンドラ

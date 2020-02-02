@@ -88,6 +88,7 @@ extern void	tex_routine(TEXPTN texptn, intptr_t exinf);
 extern void	cpuexc_handler(void *p_excinf);
 #endif /* CPUEXC1 */
 extern void	cyclic_handler(intptr_t exinf);
+extern void cyclic_280us_handler(void);
 extern void	alarm_handler(intptr_t exinf);
 
 #endif /* TOPPERS_MACRO_ONLY */
