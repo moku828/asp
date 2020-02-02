@@ -119,7 +119,8 @@ target_timer_initialize(intptr_t exinf)
 
 	/* 分周比設定(PCLOCK/8)、割込み許可 */
 	sil_wrh_mem((uint16_t *)CMCSR_0_h, (CMCSR_CKS | CMCSR_CMIE));
-	sil_wrh_mem((uint16_t *)CMCSR_1_h, (CMCSR_CKS | CMCSR_CMIE));
+	/* 分周比設定(PCLOCK/32)、割込み許可 */
+	sil_wrh_mem((uint16_t *)CMCSR_1_h, (CMCSR_CKS | CMCSR_CMIE | 0x0001));
 
 	/*constantレジスタをセット */
 	sil_wrh_mem((uint16_t *)CMCOR_0_h, cyc);
