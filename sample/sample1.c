@@ -394,6 +394,9 @@ void main_task(intptr_t exinf)
 	SVC_PERROR(serial_ctl_por(TASK_PORTID,
 							(IOCTL_CRLF | IOCTL_FCSND | IOCTL_FCRCV)));
 
+	PCCR2 &= ~0x0003;
+	PCIOR0 |= 0x0100;
+
 	/*
  	 *  メインループ
 	 */
