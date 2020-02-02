@@ -402,11 +402,141 @@ void cyclic_handler(intptr_t exinf)
 	SVC_PERROR(iset_flg(FLAG2, 0x1));
 }
 
+#define	PFCR1	*((volatile short *)0xFFFE38AC)
+#define	PFIOR0	*((volatile short *)0xFFFE38B2)
+#define	PFDR0	*((volatile short *)0xFFFE38B6)
+
+unsigned char count[128];
+unsigned char idx;
+unsigned char len;
+
+void cyclic_280us_initialize(void)
+{
+	volatile unsigned long i;
+	idx = 0;
+	len = 0;
+	for (i = 0; i < sizeof(count)/sizeof(count[0]); i++)
+	{
+		count[i] = 0;
+	}
+	PFCR1 &= ~0x0700;
+	PFIOR0 &= ~0x0040;
+}
+
+void cyclic_280us_handler(void)
+{
+	if (len != 0)
+	{
+		return;
+	}
+	
+	if (PFDR0 & 0x0040)
+	{
+		if (idx == 0)
+		{
+			count[0] = 0x80;
+		}
+		else
+		{
+			if ((count[idx] & 0x80) == 0x00)
+			{
+				idx++;
+				count[idx] = 0x81;
+			}
+			else
+			{
+				count[idx]++;
+				if ((count[idx] & ~0x80) > 32)
+				{
+					len = idx;
+					idx = 0;
+					SVC_PERROR(iset_flg(FLAG3, 0x1));
+				}
+			}
+		}
+	}
+	else
+	{
+		if (idx == 0)
+		{
+			idx++;
+			count[idx] = 0x01;
+		}
+		else
+		{
+			if ((count[idx] & 0x80) == 0x80)
+			{
+				idx++;
+				count[idx] = 0x01;
+			}
+			else
+			{
+				count[idx]++;
+			}
+		}
+	}
+}
+
 /*
  *  アラームハンドラ
  */
 void alarm_handler(intptr_t exinf)
 {
+}
+
+#define	PCCR2	*((volatile short *)0xFFFE384A)
+#define	PCIOR0	*((volatile short *)0xFFFE3852)
+#define	PCDR0	*((volatile short *)0xFFFE3856)
+
+void irrcv_task(intptr_t exinf)
+{
+	volatile unsigned long i;
+	FLGPTN flgptn;
+	PCCR2 &= ~0x0003;
+	PCIOR0 |= 0x0100;
+
+	while (1)
+	{
+		SVC_PERROR(wai_flg(FLAG3, 0x1, TWF_ANDW, &flgptn));
+		syslog(LOG_NOTICE, "irrcv");
+		if (len != 0)
+		{
+			if (len == 2+(32*2)+1+1)
+			{
+				unsigned char power[2+(32*2)+1+1] = {
+					0x20, 0x90,
+					0x02, 0x82, 0x02, 0x82, 0x02, 0x82, 0x02, 0x82, 0x02, 0x82, 0x02, 0x82, 0x02, 0x82, 0x02, 0x82,
+					0x02, 0x86, 0x02, 0x86, 0x02, 0x86, 0x02, 0x86, 0x02, 0x86, 0x02, 0x86, 0x02, 0x86, 0x02, 0x86,
+					0x02, 0x82, 0x02, 0x86, 0x02, 0x86, 0x02, 0x82, 0x02, 0x82, 0x02, 0x82, 0x02, 0x86, 0x02, 0x82,
+					0x02, 0x86, 0x02, 0x82, 0x02, 0x82, 0x02, 0x86, 0x02, 0x86, 0x02, 0x86, 0x02, 0x82, 0x02, 0x86,
+					0x02, 0xA1,
+				};
+				for (i = 0; i < sizeof(power)/sizeof(power[0]); i++)
+				{
+					if ((count[i+1] < (power[i] - 1)) || (count[i+1] > (power[i] + 1)))
+					{
+						break;
+					}
+				}
+				if (i == (sizeof(power)/sizeof(power[0])))
+				{
+					if (PCDR0 & 0x0100)
+					{
+						PCDR0 &= ~0x0100;
+					}
+					else
+					{
+						PCDR0 |= 0x0100;
+					}
+				}
+				else
+				{
+					i = 0;
+				}
+			}
+			len = 0;
+		}
+	}
 }
 
 /*
@@ -443,6 +573,7 @@ void main_task(intptr_t exinf)
 	SVC_PERROR(act_tsk(TASK2));
 	SVC_PERROR(wai_flg(FLAG1, 0x3, TWF_ANDW, &flgptn));
 	SVC_PERROR(act_tsk(TASK4));
+	SVC_PERROR(act_tsk(TASK5));
 
 	while (1)
 	{

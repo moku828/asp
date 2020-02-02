@@ -85,12 +85,15 @@ extern void	initcommseq_task(intptr_t exinf);
 extern void	lyricslstload_task(intptr_t exinf);
 extern void	lyricsfileload_task(intptr_t exinf);
 extern void	cyclic_task(intptr_t exinf);
+extern void	irrcv_task(intptr_t exinf);
 extern void	main_task(intptr_t exinf);
 extern void	tex_routine(TEXPTN texptn, intptr_t exinf);
 #ifdef CPUEXC1
 extern void	cpuexc_handler(void *p_excinf);
 #endif /* CPUEXC1 */
 extern void	cyclic_handler(intptr_t exinf);
+extern void cyclic_280us_initialize(void);
+extern void cyclic_280us_handler(void);
 extern void	alarm_handler(intptr_t exinf);
 
 #endif /* TOPPERS_MACRO_ONLY */
