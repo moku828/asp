@@ -310,29 +310,38 @@ void cyclic_task(intptr_t exinf)
 	UINT s2;
 	int i, j;
 	int last = -1;
+	sh_vdc3_fill();
 	while (1)
 	{
 		SVC_PERROR(wai_flg(FLAG2, 0x1, TWF_ANDW, &flgptn));
 		SVC_PERROR(get_tim(&now));
 		syslog(LOG_NOTICE, "offset:%d,now:%d,diff:%d", offset, now, now - offset);
-		for (i = 0; i < lyricsln; i++)
+		if (lyrics[0].time > (now - offset))
 		{
-			if (lyrics[i].time > (now - offset)) break;
+			i = 0;
+		}
+		else
+		{
+			for (i = 1; i < lyricsln; i++)
+			{
+				if ((lyrics[i].time > (now - offset)) && (lyrics[i - 1].time <= (now - offset))) break;
+			}
 		}
 		if (i == last) continue;
 		last = i;
-		syslog(LOG_NOTICE, "str:%04x...", lyrics[i - 1].str[0]);
+		syslog(LOG_NOTICE, "str:%04x...", lyrics[i].str[0]);
+		sh_vdc3_swap();
 		sh_vdc3_fill();
 		assert(FR_OK == f_chdir("/fonts"));
 		j = 0;
 		while (1)
 		{
 			char fontfilename[9];
-			if (lyrics[i - 1].str[j] == 0x0000) break;
-			fontfilename[0] = (lyrics[i - 1].str[j] >> 12) & 0x0F;
-			fontfilename[1] = (lyrics[i - 1].str[j] >> 8) & 0x0F;
-			fontfilename[2] = (lyrics[i - 1].str[j] >> 4) & 0x0F;
-			fontfilename[3] = (lyrics[i - 1].str[j] >> 0) & 0x0F;
+			if (lyrics[i].str[j] == 0x0000) break;
+			fontfilename[0] = (lyrics[i].str[j] >> 12) & 0x0F;
+			fontfilename[1] = (lyrics[i].str[j] >> 8) & 0x0F;
+			fontfilename[2] = (lyrics[i].str[j] >> 4) & 0x0F;
+			fontfilename[3] = (lyrics[i].str[j] >> 0) & 0x0F;
 			fontfilename[0] = (fontfilename[0] > 9) ? (fontfilename[0] - 10 + 0x41) : (fontfilename[0] + 0x30);
 			fontfilename[1] = (fontfilename[1] > 9) ? (fontfilename[1] - 10 + 0x41) : (fontfilename[1] + 0x30);
 			fontfilename[2] = (fontfilename[2] > 9) ? (fontfilename[2] - 10 + 0x41) : (fontfilename[2] + 0x30);
@@ -354,7 +363,6 @@ void cyclic_task(intptr_t exinf)
 				sh_vdc3_drawbmp((j - 32) * 24 + 4, (24 + 4) * 2 + 4, 24, 24, Buff + 1078);
 			j++;
 		}
-		sh_vdc3_swap();
 	}
 }
 
