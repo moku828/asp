@@ -305,7 +305,6 @@ void lyricsfileload_task(intptr_t exinf)
 	}
 	SVC_PERROR(get_tim(&end));
 	syslog(LOG_NOTICE, "start:%d,end:%d,diff:%d", start, end, end - start);
-	SVC_PERROR(set_flg(FLAG1, 0x4));
 }
 
 void cyclic_task(intptr_t exinf)
