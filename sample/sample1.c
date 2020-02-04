@@ -241,6 +241,11 @@ void lyricsfileload_task(intptr_t exinf)
 	int i, n, l;
 	SYSTIM start, end;
 	syslog(LOG_NOTICE, "lyricsfileload_task");
+	if (lyricsno == -1)
+	{
+		lyricsln = 0;
+		return;
+	}
 	SVC_PERROR(get_tim(&start));
 	assert(lyricsno < lyricscnt);
 	assert(lyricslst[lyricsno].filename[0] != 0);
@@ -316,6 +321,12 @@ void cyclic_task(intptr_t exinf)
 		SVC_PERROR(wai_flg(FLAG2, 0x1, TWF_ANDW, &flgptn));
 		SVC_PERROR(get_tim(&now));
 		syslog(LOG_NOTICE, "offset:%d,now:%d,diff:%d", offset, now, now - offset);
+		if (lyricsln == 0)
+		{
+			sh_vdc3_fill();
+			sh_vdc3_swap();
+			continue;
+		}
 		if (lyrics[0].time > (now - offset))
 		{
 			i = 0;
@@ -649,13 +660,14 @@ void main_task(intptr_t exinf)
 					if (strcmp(param, lyricslst[i].title) != 0) continue;
 					syslog(LOG_NOTICE, "%s:%s", lyricslst[i].filename, lyricslst[i].title);
 					lyricsno = i;
-					SVC_PERROR(act_tsk(TASK3));
 					break;
 				}
 				if (i == lyricscnt)
 				{
 					syslog(LOG_NOTICE, "title missing in lyrics list");
+					lyricsno = -1;
 				}
+				SVC_PERROR(act_tsk(TASK3));
 				break;
 			case 0x27:
 				syslog(LOG_NOTICE, "time elapsed on current song");
