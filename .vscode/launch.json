@@ -5,10 +5,10 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "(gdb) 起動",
+            "name": "Debug with qemu within Docker",
             "type": "cppdbg",
             "request": "launch",
-            "program": "/workspace/bootrom.elf",
+            "program": "/workspace/obj/asp",
             "args": [],
             "stopAtEntry": true,
             "cwd": "/workspace",
@@ -18,7 +18,7 @@
                 "pipeCwd": "/workspace",
                 "pipeProgram": "docker.exe",
                 "pipeArgs": ["exec","-i","debug_sh","sh","-c"],
-                "debuggerPath": "/usr/local/sh-tools/bin/sh-elf-gdb -x gdb.cmd bootrom.elf"
+                "debuggerPath": "/usr/local/sh-tools/bin/sh-elf-gdb -x gdb.cmd obj/asp"
             },
             "MIMode": "gdb",
             //"miDebuggerPath": "/path/to/gdb",
@@ -31,6 +31,9 @@
             ],
             "preLaunchTask": "prelaunch gdb",
             "postDebugTask": "postdebug gdb",
+            "sourceFileMap": {
+                "/asp": "${workspaceFolder:asp}"
+            }
         }
     ]
 }

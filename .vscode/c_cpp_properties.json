@@ -5,8 +5,8 @@
             "includePath": [
                 "${workspaceFolder}/target/frksh2a_gcc",
                 "${workspaceFolder}/**",
-                "C:\\test\\sh-tools_make\\sh-elf\\include",
-                "C:\\test\\sh-tools_make\\lib\\gcc\\sh-elf\\3.4.5\\include"
+                "${workspaceFolder:sh-tools_make}/sh-elf/include",
+                "${workspaceFolder:sh-tools_make}/lib/gcc/sh-elf/3.4.5/include"
             ],
             "defines": [
                 "_DEBUG",
