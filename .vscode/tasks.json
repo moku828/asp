@@ -7,43 +7,43 @@
             "label": "configure",
             "type": "shell",
             "command": "docker",
-            "args": ["run", "--rm", "-it", "-v${workspaceFolder:asp}:/asp", "sh-tools/toppers_sample", "../configure", "-T", "frksh2a_gcc"]
+            "args": ["run", "--rm", "-it", "-v${workspaceFolder:asp}:/asp", "sh-tools/toppers_sample:gcc-3.4.5", "../configure", "-T", "frksh2a_gcc"]
         },
         {
             "label": "make depend",
             "type": "shell",
             "command": "docker",
-            "args": ["run", "--rm", "-it", "-v${workspaceFolder:asp}:/asp", "sh-tools/toppers_sample", "make", "depend"]
+            "args": ["run", "--rm", "-it", "-v${workspaceFolder:asp}:/asp", "sh-tools/toppers_sample:gcc-3.4.5", "make", "depend"]
         },
         {
             "label": "make",
             "type": "shell",
             "command": "docker",
-            "args": ["run", "--rm", "-it", "-v${workspaceFolder:asp}:/asp", "sh-tools/toppers_sample", "make"]
+            "args": ["run", "--rm", "-it", "-v${workspaceFolder:asp}:/asp", "sh-tools/toppers_sample:gcc-3.4.5", "make"]
         },
         {
             "label": "make asp.bin",
             "type": "shell",
             "command": "docker",
-            "args": ["run", "--rm", "-it", "-v${workspaceFolder:asp}:/asp", "sh-tools/toppers_sample", "make", "asp.bin"]
+            "args": ["run", "--rm", "-it", "-v${workspaceFolder:asp}:/asp", "sh-tools/toppers_sample:gcc-3.4.5", "make", "asp.bin"]
         },
         {
             "label": "make clean",
             "type": "shell",
             "command": "docker",
-            "args": ["run", "--rm", "-it", "-v${workspaceFolder:asp}:/asp", "sh-tools/toppers_sample", "make", "clean"]
+            "args": ["run", "--rm", "-it", "-v${workspaceFolder:asp}:/asp", "sh-tools/toppers_sample:gcc-3.4.5", "make", "clean"]
         },
         {
             "label": "make cleandep",
             "type": "shell",
             "command": "docker",
-            "args": ["run", "--rm", "-it", "-v${workspaceFolder:asp}:/asp", "sh-tools/toppers_sample", "make", "cleandep"]
+            "args": ["run", "--rm", "-it", "-v${workspaceFolder:asp}:/asp", "sh-tools/toppers_sample:gcc-3.4.5", "make", "cleandep"]
         },
         {
             "label": "make realclean",
             "type": "shell",
             "command": "docker",
-            "args": ["run", "--rm", "-it", "-v${workspaceFolder:asp}:/asp", "sh-tools/toppers_sample", "make", "realclean"]
+            "args": ["run", "--rm", "-it", "-v${workspaceFolder:asp}:/asp", "sh-tools/toppers_sample:gcc-3.4.5", "make", "realclean"]
         },
         {
             "label": "prelaunch gdb",
