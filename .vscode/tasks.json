@@ -1,0 +1,59 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "configure",
+            "type": "shell",
+            "command": "docker",
+            "args": ["run", "--rm", "-it", "-v${workspaceFolder:asp}:/asp", "sh-tools/toppers_sample:gcc-3.4.5", "../configure", "-T", "frksh2a_gcc"]
+        },
+        {
+            "label": "make depend",
+            "type": "shell",
+            "command": "docker",
+            "args": ["run", "--rm", "-it", "-v${workspaceFolder:asp}:/asp", "sh-tools/toppers_sample:gcc-3.4.5", "make", "depend"]
+        },
+        {
+            "label": "make",
+            "type": "shell",
+            "command": "docker",
+            "args": ["run", "--rm", "-it", "-v${workspaceFolder:asp}:/asp", "sh-tools/toppers_sample:gcc-3.4.5", "make"]
+        },
+        {
+            "label": "make asp.bin",
+            "type": "shell",
+            "command": "docker",
+            "args": ["run", "--rm", "-it", "-v${workspaceFolder:asp}:/asp", "sh-tools/toppers_sample:gcc-3.4.5", "make", "asp.bin"]
+        },
+        {
+            "label": "make clean",
+            "type": "shell",
+            "command": "docker",
+            "args": ["run", "--rm", "-it", "-v${workspaceFolder:asp}:/asp", "sh-tools/toppers_sample:gcc-3.4.5", "make", "clean"]
+        },
+        {
+            "label": "make cleandep",
+            "type": "shell",
+            "command": "docker",
+            "args": ["run", "--rm", "-it", "-v${workspaceFolder:asp}:/asp", "sh-tools/toppers_sample:gcc-3.4.5", "make", "cleandep"]
+        },
+        {
+            "label": "make realclean",
+            "type": "shell",
+            "command": "docker",
+            "args": ["run", "--rm", "-it", "-v${workspaceFolder:asp}:/asp", "sh-tools/toppers_sample:gcc-3.4.5", "make", "realclean"]
+        },
+        {
+            "label": "prelaunch gdb",
+            "type": "shell",
+            "command": "docker run --rm -i -d -v${workspaceFolder:asp}:/asp -v${workspaceFolder:asp}:/workspace -p 1201:1201 -p 1202:1202 --name qemu00 sh-tools/qemu -monitor telnet:0.0.0.0:1201,server,nowait -serial tcp::1202,server,nodelay -drive file=SPIROM.IMG,if=mtd,format=raw -s -S; docker run --privileged -v${workspaceFolder:asp}:/asp -v${workspaceFolder:asp}:/workspace --name debug_sh -i -d --entrypoint=/bin/sh --link qemu00:qemu00 sh-tools/gdb"
+        },
+        {
+            "label": "postdebug gdb",
+            "type": "shell",
+            "command": "docker ps -a -f \"name=debug_sh\" -q | % { docker kill $_ }; docker ps -a -f \"name=debug_sh\" -q | % { docker rm $_ }; docker ps -a -f \"name=qemu00\" -q | % { docker kill $_ }"
+        }
+    ]
+}
