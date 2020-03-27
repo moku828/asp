@@ -70,7 +70,7 @@
         {
             "label": "prelaunch gdb",
             "type": "shell",
-            "command": "docker run --rm -i -d -v${workspaceFolder:asp}:/asp -v${workspaceFolder:asp}:/workspace -p 1201:1201 -p 1202:1202 --name qemu00 sh-tools/qemu -monitor telnet:0.0.0.0:1201,server,nowait -serial tcp::1202,server,nodelay -drive file=SPIROM.BIN,if=mtd,format=raw -s -S; docker run --privileged -v${workspaceFolder:asp}:/asp -v${workspaceFolder:asp}:/workspace --name debug_sh -i -d --entrypoint=/bin/sh --link qemu00:qemu00 sh-tools/gdb"
+            "command": "docker run --rm -i -d -v${workspaceFolder:asp}:/asp -v${workspaceFolder:asp}:/workspace -p 1201:1201 -p 1202:1202 --name qemu00 sh-tools/qemu -monitor telnet:0.0.0.0:1201,server,nowait -serial tcp::1202,server,nodelay -drive file=SPIROM.BIN,if=mtd,format=raw -drive file=sd.img,if=sd,format=raw -s -S; docker run --privileged -v${workspaceFolder:asp}:/asp -v${workspaceFolder:asp}:/workspace --name debug_sh -i -d --entrypoint=/bin/sh --link qemu00:qemu00 sh-tools/gdb"
         },
         {
             "label": "prelaunch gdb-pkg",
