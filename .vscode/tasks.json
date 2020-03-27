@@ -46,6 +46,18 @@
             "args": ["run", "--rm", "-it", "-v${workspaceFolder:asp}:/asp", "sh-tools/toppers_sample:gcc-3.4.5", "make", "realclean"]
         },
         {
+            "label": "copy asp.bin to sdroot as app.bin",
+            "type": "shell",
+            "command": "copy",
+            "args": ["${workspaceFolder:asp}\\obj\\asp.bin", "C:\\test\\sdroot\\app.bin"]
+        },
+        {
+            "label": "build sdimage",
+            "type": "shell",
+            "command": "C:\\Users\\basas\\source\\repos\\SDImageBuilder\\SDImageBuilder\\bin\\Debug\\SDImageBuilder.exe",
+            "args": ["C:\\test\\sdroot", "${workspaceFolder:asp}\\sd.img"]
+        },
+        {
             "label": "terminal monitor",
             "type": "shell",
             "command": "sleep 3; Start-Process -FilePath telnet -ArgumentList 127.0.0.1,1201 -WindowStyle Minimized"
