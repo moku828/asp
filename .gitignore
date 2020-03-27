@@ -1,3 +1,4 @@
 /obj
 *.bin
 *.img
+gdb.txt
