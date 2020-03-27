@@ -456,11 +456,15 @@ $END$
 	
 __kernel_vectors:											$NL$$TAB$
 	.long	_start		/* 0 */								$NL$$TAB$
-	.long	0     		/* 1 */								$NL$$TAB$
+	.long	0xFFF90000	/* 1 */								$NL$$TAB$
 	.long	_start		/* 2 */								$NL$$TAB$
-	.long	0     		/* 3 */								$NL$$NL$$TAB$
+	.long	0xFFF90000	/* 3 */								$NL$$NL$$TAB$
 	/* CPU exception */										$NL$
 $FOREACH excno EXCNO_RANGE$
+	$IF excno == 8$
+	$TAB$.long __kernel_vectors
+	$FORMAT(" /* %d */", +excno)$$NL$
+	$ELSE$
 	$IF excno == TINTNO_NMI$
 $ 
 $ NMI¤Î¾ì¹ç
@@ -499,6 +503,7 @@ $
 		$END$
 	$END$
 	$FORMAT(" /* %d */", +excno)$$NL$
+	$END$
 	$END$
 $END$
 																	$NL$
