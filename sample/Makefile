@@ -329,7 +329,7 @@ $(OBJFILE): $(APPL_CFG) kernel_cfg.timestamp $(ALL_OBJS) \
 #  バイナリファイルの生成
 #
 $(OBJNAME).bin: $(OBJFILE)
-	$(OBJCOPY) -j .text -j .data -O binary -S $(OBJFILE) $(OBJNAME).bin
+	$(OBJCOPY) -O binary -S $(OBJFILE) $(OBJNAME).bin
 
 #
 #  Sレコードファイルの生成
