@@ -68,6 +68,16 @@
             "command": "sleep 3; Start-Process -FilePath telnet -ArgumentList 127.0.0.1,1202 -WindowStyle Minimized"
         },
         {
+            "label": "terminal scif2",
+            "type": "shell",
+            "command": "sleep 3; Start-Process -FilePath telnet -ArgumentList 127.0.0.1,1203 -WindowStyle Minimized"
+        },
+        {
+            "label": "terminal scif3",
+            "type": "shell",
+            "command": "sleep 3; Start-Process -FilePath telnet -ArgumentList 127.0.0.1,1204 -WindowStyle Minimized"
+        },
+        {
             "label": "debug",
             "type": "shell",
             "command": "docker run --rm -it -v${workspaceFolder:asp}:/asp -v${workspaceFolder:asp}:/workspace --link qemu00:qemu00 sh-tools/gdb -x gdb.cmd obj/asp"
@@ -75,7 +85,7 @@
         {
             "label": "debug-package",
             "type": "shell",
-            "dependsOn":["terminal monitor", "terminal irq", "debug"],
+            "dependsOn":["terminal monitor", "terminal irq", "terminal scif2", "terminal scif3", "debug"],
             "dependsOrder": "parallel",
             "command": "echo done"
         },
@@ -87,7 +97,7 @@
         {
             "label": "prelaunch gdb-pkg",
             "type": "shell",
-            "dependsOn":["terminal monitor", "terminal irq", "prelaunch gdb"],
+            "dependsOn":["terminal monitor", "terminal irq", "terminal scif2", "terminal scif3", "prelaunch gdb"],
             "dependsOrder": "parallel",
             "command": "echo done"
         },
