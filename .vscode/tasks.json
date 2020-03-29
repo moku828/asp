@@ -60,22 +60,22 @@
         {
             "label": "terminal monitor",
             "type": "shell",
-            "command": "sleep 3; Start-Process -FilePath telnet -ArgumentList 127.0.0.1,1201 -WindowStyle Minimized"
+            "command": "sleep 4; Start-Process -FilePath telnet -ArgumentList 127.0.0.1,1201 -WindowStyle Minimized"
         },
         {
             "label": "terminal irq",
             "type": "shell",
-            "command": "sleep 3; Start-Process -FilePath telnet -ArgumentList 127.0.0.1,1202 -WindowStyle Minimized"
+            "command": "sleep 2; Start-Process -FilePath telnet -ArgumentList 127.0.0.1,1202 -WindowStyle Minimized"
         },
         {
             "label": "terminal scif2",
             "type": "shell",
-            "command": "sleep 3; Start-Process -FilePath telnet -ArgumentList 127.0.0.1,1203 -WindowStyle Minimized"
+            "command": "sleep 4; Start-Process -FilePath telnet -ArgumentList 127.0.0.1,1203 -WindowStyle Minimized"
         },
         {
             "label": "terminal scif3",
             "type": "shell",
-            "command": "sleep 3; Start-Process -FilePath telnet -ArgumentList 127.0.0.1,1204 -WindowStyle Minimized"
+            "command": "sleep 4; Start-Process -FilePath telnet -ArgumentList 127.0.0.1,1204 -WindowStyle Minimized"
         },
         {
             "label": "debug",
