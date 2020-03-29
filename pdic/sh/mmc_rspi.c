@@ -299,10 +299,10 @@ BYTE send_cmd (		/* Return value: R1 resp (bit7==1:Failed to send) */
 	}
 
 	/* Select the card and wait for ready except to stop multiple block read */
-	if (cmd != CMD12) {
+	//if (cmd != CMD12) {
 		deselect();
 		if (!select()) return 0xFF;
-	}
+	//}
 
 	/* Send command packet */
 	xchg_spi(0x40 | cmd);				/* Start + command index */
