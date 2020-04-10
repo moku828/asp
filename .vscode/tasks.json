@@ -58,6 +58,23 @@
             "args": ["C:\\test\\sdroot", "${workspaceFolder:asp}\\sd.img"]
         },
         {
+            "label": "copy sd.img to qemu from asp",
+            "type": "shell",
+            "command": "copy",
+            "args": ["${workspaceFolder:asp}\\sd.img", "C:\\test\\qemu"]
+        },
+        {
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "label": "build",
+            "type": "shell",
+            "dependsOn":["configure", "make asp.bin", "copy asp.bin to sdroot as app.bin", "build sdimage", "copy sd.img to qemu from asp"],
+            "dependsOrder": "sequence",
+            "command": "echo done"
+        },
+        {
             "label": "terminal monitor",
             "type": "shell",
             "command": "sleep 4; Start-Process -FilePath telnet -ArgumentList 127.0.0.1,1201 -WindowStyle Minimized"
