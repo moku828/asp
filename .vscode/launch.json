@@ -5,7 +5,7 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Debug with qemu within Docker",
+            "name": "Debug on qemu_buildenv",
             "type": "cppdbg",
             "request": "launch",
             "program": "/workspace/obj/asp",
@@ -30,6 +30,37 @@
                 }
             ],
             "preLaunchTask": "prelaunch gdb-pkg",
+            "postDebugTask": "postdebug gdb",
+            "sourceFileMap": {
+                "/asp": "${workspaceFolder:asp}"
+            }
+        },
+        {
+            "name": "Debug on qemu:latest",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "/workspace/obj/asp",
+            "args": [],
+            "stopAtEntry": true,
+            "cwd": "/workspace",
+            "environment": [],
+            "externalConsole": true,
+            "pipeTransport": {
+                "pipeCwd": "/workspace",
+                "pipeProgram": "docker.exe",
+                "pipeArgs": ["exec","-i","debug_sh","sh","-c"],
+                "debuggerPath": "/usr/local/sh-tools/bin/sh-elf-gdb -x gdb.cmd obj/asp"
+            },
+            "MIMode": "gdb",
+            //"miDebuggerPath": "/path/to/gdb",
+            "setupCommands": [
+                {
+                    "description": "gdb の再フォーマットを有効にする",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ],
+            "preLaunchTask": "prelaunch gdb-pkg(with launch qemu:latest)",
             "postDebugTask": "postdebug gdb",
             "sourceFileMap": {
                 "/asp": "${workspaceFolder:asp}"
