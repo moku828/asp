@@ -110,6 +110,7 @@
 #include "pdic/sh/xprintf.h"
 #include "pdic/sh/ff.h"
 #include "pdic/sh/diskio.h"
+#include "pdic/sh/sh_vdc3.h"
 #include "kernel_cfg.h"
 #include "sample1.h"
 void* luna_malloc(long size);
@@ -464,6 +465,9 @@ void main_task(intptr_t exinf)
 
 	SVC_PERROR(syslog_msk_log(LOG_UPTO(LOG_INFO), LOG_UPTO(LOG_EMERG)));
 	syslog(LOG_NOTICE, "Sample program starts (exinf = %d).", (int_t) exinf);
+
+	sh_vdc3_initialize();
+	sh_vdc3_fill();
 
 	/*
 	 *  ���ꥢ��ݡ��Ȥν����

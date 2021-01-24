@@ -79,7 +79,7 @@ KERNEL_COBJS := $(KERNEL_COBJS) target_config.o
 #  �����ƥॵ���ӥ��˴ؤ������
 #
 SYSSVC_DIR := $(SYSSVC_DIR) $(SRCDIR)/pdic/sh
-SYSSVC_COBJS := $(SYSSVC_COBJS) target_serial.o sh_scif.o mmc_rspi.o ff.o xprintf.o luna_malloc.o luna_fopen.o
+SYSSVC_COBJS := $(SYSSVC_COBJS) target_serial.o sh_scif.o mmc_rspi.o ff.o xprintf.o luna_malloc.o luna_fopen.o sh_vdc3.o
 
 #
 #  �ȥ졼�������˴ؤ�������
