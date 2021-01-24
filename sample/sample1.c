@@ -115,6 +115,11 @@
 void* luna_malloc(long size);
 void luna_free(void* ptr);
 void* luna_realloc(void* ptr, long size);
+void* luna_fopen(const char* filename);
+long luna_fread(void* ptr, long size, long n, void* fp);
+long luna_fseek(void* fp, long offset);
+long luna_fstat(void* fp);
+void luna_fclose(void* fp);
 
 
 /*---------------------------------------------------------*/
@@ -475,6 +480,21 @@ void main_task(intptr_t exinf)
 		p = (unsigned char *)luna_malloc(8);
 		p = luna_realloc(p, 16);
 		luna_free(p);
+	}
+	if (disk_initialize(0) & STA_NOINIT) {
+		while (1);
+	}
+
+	f_mount(&FatFs[0], "", 0);
+	{
+		void* fp;
+		unsigned char buf[8];
+		long n;
+		fp = luna_fopen("/ipag.ttf");
+		n = luna_fstat(fp);
+		luna_fseek(fp, 4);
+		n = luna_fread(buf, 1, sizeof(buf), fp);
+		luna_fclose(fp);
 	}
 	xputs("\nFatFs module test monitor for FRK-RN62N evaluation board\n");
 	xprintf("LFN=%s, CP=%u\n", FF_USE_LFN ? "Enabled" : "Disabled", FF_CODE_PAGE);
