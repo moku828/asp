@@ -515,6 +515,15 @@ void main_task(intptr_t exinf)
 	glyph_index = FT_Get_Char_Index(face, charcode);
 	error = FT_Load_Glyph(face, glyph_index, FT_LOAD_DEFAULT);
 	error = FT_Render_Glyph(face->glyph, FT_RENDER_MODE_NORMAL);
+	{
+		int lowergap = (int)face->glyph->bitmap_top - (int)face->glyph->bitmap.rows;
+		if (lowergap < 0)
+		{
+			lowergap = 0;
+		}
+		int uppergap = size - (int)face->glyph->bitmap.rows - lowergap;
+		sh_vdc3_drawbmp(0, uppergap, face->glyph->bitmap.width, face->glyph->bitmap.rows, face->glyph->bitmap.buffer, 0);
+	}
 	error = FT_Done_Face(face);
 	error = FT_Done_FreeType(library);
 	xputs("\nFatFs module test monitor for FRK-RN62N evaluation board\n");
