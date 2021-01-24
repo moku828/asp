@@ -45,7 +45,7 @@ void sh_vdc3_initialize()
 	GRA_VSYNC_TIM = 0x00000000;
 	GRCMEN2 = 0x00000002;
 	GRCBUSCNT2 = 0x00000000;
-	GROPSADR2 = 0x1C03C000;
+	GROPSADR2 = 0x1C0B4000;
 	GROPSWH2 = 0x00600190;
 	GROPSOFST2 = 0x00000320;
 	GROPDPHV2 = 0x000E005B;
@@ -56,7 +56,7 @@ void sh_vdc3_fill()
 {
 	volatile unsigned long x, y;
 	volatile unsigned short *p;
-	p = (unsigned short *)0x1C03C000;
+	p = (unsigned short *)0x1C0B4000;
 	for (y = 0; y < 96; y++)
 	{
 		for (x = 0; x < 400; x++)
