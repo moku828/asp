@@ -120,6 +120,8 @@ long luna_fread(void* ptr, long size, long n, void* fp);
 long luna_fseek(void* fp, long offset);
 long luna_fstat(void* fp);
 void luna_fclose(void* fp);
+#include <ft2build.h>
+#include FT_FREETYPE_H
 
 
 /*---------------------------------------------------------*/
@@ -453,6 +455,12 @@ void main_task(intptr_t exinf)
 	DWORD ofs = 0, sect = 0;
 	FATFS *fs;
 	static const BYTE ft[] = {0,12,16,32};
+	FT_Error error;
+	FT_Library library;
+	FT_Face face;
+	int size = 24;
+	FT_ULong charcode = 0x5922/*0x30CE*/;
+	FT_UInt glyph_index;
 
 	SVC_PERROR(syslog_msk_log(LOG_UPTO(LOG_INFO), LOG_UPTO(LOG_EMERG)));
 	syslog(LOG_NOTICE, "Sample program starts (exinf = %d).", (int_t) exinf);
@@ -496,6 +504,15 @@ void main_task(intptr_t exinf)
 		n = luna_fread(buf, 1, sizeof(buf), fp);
 		luna_fclose(fp);
 	}
+	error = FT_Init_FreeType(&library);
+	error = FT_New_Face(library, "/ipag.ttf", 0, &face);
+	error = FT_Set_Char_Size(face, 0, size * 64, 300, 300);
+	error = FT_Set_Pixel_Sizes(face, 0, size);
+	glyph_index = FT_Get_Char_Index(face, charcode);
+	error = FT_Load_Glyph(face, glyph_index, FT_LOAD_DEFAULT);
+	error = FT_Render_Glyph(face->glyph, FT_RENDER_MODE_NORMAL);
+	error = FT_Done_Face(face);
+	error = FT_Done_FreeType(library);
 	xputs("\nFatFs module test monitor for FRK-RN62N evaluation board\n");
 	xprintf("LFN=%s, CP=%u\n", FF_USE_LFN ? "Enabled" : "Disabled", FF_CODE_PAGE);
 
